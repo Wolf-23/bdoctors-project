@@ -54,15 +54,15 @@
                         </div>
                         {{-- SPECIALIZATION --}}
                         <div class="form-group row">
-                            <label for="specialization_id" class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+                            <label for="specialization" class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
                             <div class="col-md-6">
-                                <select name="specialization" id="specialization_id" class="form-control @error('specialization_id') is-invalid @enderror">
-                                    <option {{(old('specialization_id')=='')?'selected':''}} value="">Seleziona la specializzazione</option>
+                                <select name="specializations" id="specialization" class="form-control @error('specialization') is-invalid @enderror">
+                                    <option {{(old('specialization')=='')?'selected':''}} value="">Seleziona la specializzazione</option>
                                     @foreach ($specializations as $specialization)
-                                        <option {{(old('specialization_id')=='$specialization->id')?'selected':''}} value="{{$specialization->id}}">{{$specialization->name}}</option>
+                                        <option {{(old('specialization')=='$specialization->id')?'selected':''}} value="{{$specialization->id}}">{{$specialization->name}}</option>
                                     @endforeach
                                 </select>
-                                @error('specialization_id')
+                                @error('specialization')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

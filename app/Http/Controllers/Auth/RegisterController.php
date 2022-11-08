@@ -57,7 +57,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'surname' => ['required','string', 'max:100'],
             'address' => ['required','string', 'max:100'],
-            'specialization' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -72,14 +71,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'address' => $data['address'],
-            'specialization' => $data['specialization'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+         $user->specializations()->sync($data['specializations']);
+
+        return $user;
     }
 
 

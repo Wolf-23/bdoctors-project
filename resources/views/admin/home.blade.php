@@ -2,8 +2,14 @@
 
 @section('content')
     <div class="container">
-        <h1>Benvenuto {{Auth::user()->name}}</h1>
+        <a href="{{route('admin.profile')}}" class="btn btn-primary mb-3">Modifica Profilo</a>
+        <h1>Benvenuto {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
         <h3>Sei registrato con la mail {{Auth::user()->email}}</h3>
+        <h4>Le tue Specializzazioni:
+            @foreach (Auth::user()->specializations as $spec)
+                <span>{{ $spec->name }} </span>
+            @endforeach
+        </h4>
     </div>
 
 @endsection

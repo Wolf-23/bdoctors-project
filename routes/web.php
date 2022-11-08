@@ -21,6 +21,7 @@ Route::middleware('auth')
     ->prefix('admin')
 ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/profile', 'UserController@index')->name('profile');
 });
 
 Route::get("{any?}", function() {

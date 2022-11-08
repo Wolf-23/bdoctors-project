@@ -28,14 +28,15 @@ class SpecializationSeeder extends Seeder
         'Medicina sportiva',
         'Oftalmologia',
         'Ematologia',
-        'Reumatologia',
         'Nefrologia',
         'Endocrinologia',
         'Geriatria',
         'Allergologia',
         'Psichiatria',
         'Radioterapia',
-        'Urologia'
+        'Urologia',
+        'Andrologia',
+        'Ginecologia'
         ];
         foreach ($specializations as $specialization) {
             $newSpecialization = new Specialization();
