@@ -56,8 +56,8 @@
                         <div class="form-group row">
                             <label for="specialization_id" class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
                             <div class="col-md-6">
-                                <select name="specialization_id" id="specialization_id" class="form-control @error('specialization_id') is-invalid @enderror" required autocomplete="specialization_id" autofocus>
-                                    <option {{(old('specialization_id')=='')?'selected':''}} value="">Medicina di Base</option>
+                                <select name="specialization" id="specialization_id" class="form-control @error('specialization_id') is-invalid @enderror">
+                                    <option {{(old('specialization_id')=='')?'selected':''}} value="">Seleziona la specializzazione</option>
                                     @foreach ($specializations as $specialization)
                                         <option {{(old('specialization_id')=='$specialization->id')?'selected':''}} value="{{$specialization->id}}">{{$specialization->name}}</option>
                                     @endforeach
@@ -68,7 +68,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div> 
+                        </div>  
                         {{-- EMAIL --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>

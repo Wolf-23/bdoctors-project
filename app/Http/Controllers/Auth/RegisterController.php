@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Specialization;
 use App\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -56,13 +57,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'surname' => ['required','string', 'max:100'],
             'address' => ['required','string', 'max:100'],
-            'specialization' => ['required','string', 'max:255'],
+            'specialization' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-    /**
+    /**{{  }}
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -70,13 +71,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'address' => $data['address'],
-            'specializations' => $data['specializations'],
+            'specialization' => $data['specialization'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+
 }
