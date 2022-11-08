@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Specialization;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+       
     }
 
     /**
@@ -47,12 +49,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:100'],
             'surname' => ['required','string', 'max:100'],
             'address' => ['required','string', 'max:100'],
+            'specialization' => ['required','string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -70,6 +74,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'surname' => $data['surname'],
             'address' => $data['address'],
+            'specializations' => $data['specializations'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
