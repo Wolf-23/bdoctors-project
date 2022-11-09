@@ -79,6 +79,26 @@
                 </div>
                  --}}
                 
+            {{-- SPECIALIZATION --}}
+            <div class="my-2">Edit your specializations:</div>
+             <div class="row ml-1">
+                    @foreach ($specializations as $specialization)
+                    <div class="form-group form-check mx-2 col-3">
+                        @if ($errors->any())
+                            <input {{(in_array($specialization->id, old('specializations', [])))?'checked':''}} name="specializations[]" type="checkbox" class="form-check-input" id="specialization_{{$specialization->id}}" value="{{$specialization->id}}">
+                            <label class="form-check-label" for="specialization_{{$specialization->id}}">{{$specialization->name}}</label>
+                        @else
+                            <input {{(Auth::user()->specializations->contains($specialization))?'checked':''}} name="specializations[]" type="checkbox" class="form-check-input" id="specialization_{{$specialization->id}}" value="{{$specialization->id}}">
+                            <label class="form-check-label" for="specialization_{{$specialization->id}}">{{$specialization->name}}</label>
+                        @endif
+                    </div>
+                    @endforeach
+                @error('specializations')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
 
 
             </div>
