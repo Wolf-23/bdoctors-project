@@ -13,7 +13,7 @@
         <h5>Le tue Specializzazioni: </h5>
         <div class="row">
             @foreach (Auth::user()->specializations as $specialization)
-                <div class="col-2">{{ $specialization->name }} </div>
+                    <div class="col-2">{{ $specialization->name }} </div>
             @endforeach
         </div>
         <div>

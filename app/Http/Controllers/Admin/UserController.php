@@ -107,7 +107,14 @@ class UserController extends Controller
                 $data['cv'] = $cv;
             }
             $profileUpdate->update($data);
-            $profileUpdate->specializations()->sync($data['specializations']);
+            // Controllo che specializations esista su data 
+            if(array_key_exists('specializations', $data)) {
+                // Faccio la sync di specialization con i propri dati
+                $profileUpdate->specializations()->sync($data['specializations']);
+            } else {
+                // Faccio una sync vuota se non c'è nessun dato
+                $profileUpdate->specializations()->sync([]);
+            }
             return redirect()->route('admin.home');
     }
 
