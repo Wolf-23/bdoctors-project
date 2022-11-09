@@ -17,7 +17,7 @@
                 {{-- PHONE --}}
 
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{old('phone', Auth::user()->phone)}}"/>
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{old('phone', $profileEdit['phone'])}}"/>
 
                 @error('phone')
                     <div class='invalid-feedback alert alert-danger p-1'>
@@ -28,7 +28,7 @@
                 {{-- ADDRESS --}}
                 
                 <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', Auth::user()->address)}}"/>
+                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', $profileEdit['address'])}}"/>
 
                 @error('address')
                     <div class='invalid-feedback alert alert-danger p-1'>
@@ -46,8 +46,8 @@
                     @enderror
 
                     <div class="post_image px-2 d-flex">
-                        @if (Auth::user()->profile_pic)
-                            <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->profile_pic)}}"/>
+                        @if ($profileEdit['profile_pic'])
+                            <img class="img-fluid" style="   height: 100px; width: 100px;" src="{{ asset('storage/' .  $profileEdit['profile_pic'])}}"/>
                             <div class="px-2">Immagine corrente</div>
                         @else
                             <div>No loaded image</div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Specialization;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -59,11 +60,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $profileEdit = User::find($id);
+        $profileSpecialization = $profileEdit->specializations;
         $specializations = Specialization::all();
-
-        return view('admin.profile',compact('specializations'));
+        return view('admin.profile',compact('profileEdit', 'specializations', 'profileSpecialization'));
     }
 
     /**
@@ -73,10 +75,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
 
     {       
-
             $request->validate([
                 'address' => 'required|max:100',
                 'phone' => 'numeric|nullable',
@@ -84,18 +85,19 @@ class UserController extends Controller
                 'profile_pic' => 'image|max:8000|nullable',
                 'services' => 'string|max:255|nullable'
             ]);
-
+            // GRAZIE STACKOVERFLOW
+            $profileUpdate = User::find($id);
             $data = $request->all();
-            $img_path = Storage::put('profile_pic', $data['profile_pic']);
-            $data['profile_pic'] = $img_path;
-
-            
-            $user->update($data);
-           
-
+            if (array_key_exists('profile_pic', $data)) {
+                if ($profileUpdate->profile_pic) {
+                    Storage::delete($profileUpdate->profile_pic);
+                }
+                $profile_pic = Storage::put('profile_pic', $data['profile_pic']);
+                $data['profile_pic'] = $profile_pic;
+            }
+            $profileUpdate->update($data);
+            $profileUpdate->specializations()->sync($data['specializations']);
             return redirect()->route('admin.home');
-            
-
     }
 
     /**
@@ -106,6 +108,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profileDelete = User::find($id);
+        if ($profileDelete->profile_pic) {
+            Storage::delete($profileDelete->profile_pic);
+        }
+        $profileDelete->specializations()->sync([]);
+        Auth::logout();
+        $profileDelete->delete();
+        return redirect()->route('register');
     }
 }

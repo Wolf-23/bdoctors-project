@@ -2,14 +2,21 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('admin.profile.edit', [Auth::user()->id])}}" class="btn btn-primary mb-3">Modifica Profilo</a>
+        <a href="{{route('admin.profile.edit', [Auth::user()->id])}}" class="btn btn-primary">Modifica Profilo</a>
+        <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Elimina Profilo</button>
+          </form>
         <h1>Benvenuto {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
         <h3>Sei registrato con la mail {{Auth::user()->email}}</h3>
-        <h4>Le tue Specializzazioni:
+        <h5>Le tue Specializzazioni: </h5>
+        <div class="row">
             @foreach (Auth::user()->specializations as $spec)
-                <span>{{ $spec->name }} </span>
+                <div class="col-4">{{ $spec->name }} </div>
             @endforeach
-        </h4>
+        </div>
+       
     </div>
 
 @endsection
