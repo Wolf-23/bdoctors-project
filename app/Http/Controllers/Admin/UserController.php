@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Specialization;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -70,9 +71,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, User $user)
+
+    {       
+
+            $request->validate([
+                'address' => 'required|max:100',
+                'phone' => 'numeric|nullable',
+                'cv'  => 'file|max:5000|nullable',
+                'profile_pic' => 'image|max:8000|nullable',
+                'services' => 'string|max:255|nullable'
+            ]);
+
+            $data = $request->all();
+            $img_path = Storage::put('profile_pic', $data['profile_pic']);
+            $data['profile_pic'] = $img_path;
+
+            
+            $user->update($data);
+           
+
+            return redirect()->route('admin.home');
+            
+
     }
 
     /**
