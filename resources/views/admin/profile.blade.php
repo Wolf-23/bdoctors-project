@@ -39,18 +39,17 @@
                 {{-- PROFILE PIC --}}
 
                 <label for="profile_pic">Profile Picture</label>
-                <div class="mb-3 d-flex justify-content-between align-items-center">
+                <div class="mb-2">
                     <input id="profile_pic" type="file" name="profile_pic" class="form-control-file @error('profile_pic') is-invalid @enderror" alt="">
                     @error('profile_pic')
                         <div class="d-block invalid-feedback">{{$message}}</div>
                     @enderror
 
-                    <div class="post_image px-2 d-flex">
+                    <div class="mt-2">
                         @if ($profileEdit['profile_pic'])
-                            <img class="img-fluid" style="   height: 100px; width: 100px;" src="{{ asset('storage/' .  $profileEdit['profile_pic'])}}"/>
-                            <div class="px-2">Immagine corrente</div>
+                            <img class="img-fluid" style="width:150px;" src="{{ asset('storage/' .  $profileEdit['profile_pic'])}}"/>
                         @else
-                            <div>No loaded image</div>
+                        <img src="{{asset('images/avatar.png')}}" class="img-fluid mb-2" style="width:150px;"/>
                         @endif
                     </div>
                 </div>

@@ -16,6 +16,13 @@
                 <div class="col-4">{{ $spec->name }} </div>
             @endforeach
         </div>
+        <div>
+            @if (Auth::user()->profile_pic)
+                <img style="width:150px;" src="{{ asset('storage/' .  Auth::user()->profile_pic) }}"/>
+            @else
+                <img style="width:150px;" src="{{asset('images/avatar.png')}}">   
+            @endif
+        </div>
        
     </div>
 
