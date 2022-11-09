@@ -38,31 +38,49 @@
 
                 {{-- PROFILE PIC --}}
 
-                <label for="profile_pic">Profile Picture</label>
-                <div class="mb-2">
-                    <input id="profile_pic" type="file" name="profile_pic" class="form-control-file @error('profile_pic') is-invalid @enderror" alt="">
-                    @error('profile_pic')
-                        <div class="d-block invalid-feedback">{{$message}}</div>
-                    @enderror
-
-                    <div class="mt-2">
-                        @if ($profileEdit['profile_pic'])
-                            <img class="img-fluid" style="width:150px;" src="{{ asset('storage/' .  $profileEdit['profile_pic'])}}"/>
-                        @else
-                        <img src="{{asset('images/avatar.png')}}" class="img-fluid mb-2" style="width:150px;"/>
-                        @endif
+                <div class="row d-flex my-2">
+                    <div class="pic col-6">
+                        <label for="profile_pic">Profile Picture</label>
+                        <div class="mb-2">
+                            <input id="profile_pic" type="file" name="profile_pic" class="form-control-file @error('profile_pic') is-invalid @enderror">
+                            @error('profile_pic')
+                            <div class="d-block invalid-feedback">{{$message}}</div>
+                            @enderror
+                            
+                            <div class="mt-2">
+                            @if ($profileEdit['profile_pic'])
+                                <img class="img-fluid" style="width:150px;" src="{{ asset('storage/' .  $profileEdit['profile_pic'])}}"/>
+                                @else
+                                <img src="{{asset('images/avatar.png')}}" class="img-fluid mb-2" style="width:150px;"/>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    {{-- CV --}}
+                    <div class="cv col-6">
+                        <label for="cv">Curriculum</label>
+                        <div class="mb-2">
+                            <input id="cv" type="file" name="cv" class="form-control-file @error('cv') is-invalid @enderror">
+                            @error('cv')
+                            <div class="d-block invalid-feedback">{{$message}}</div>
+                            @enderror
+                            
+                            <div class="mt-2">
+                                @if ($profileEdit['cv'])
+                                    {{-- <iframe style="width:250px;" src="{{ asset('storage/' .  Auth::user()->cv) }}"></iframe> --}}
+                                    <h5>Hai Caricato il Curriculum!</h5>   
+                                @else
+                                    <h5>Nessun Curriculum inserito!</h5>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-success">Applica Modifiche</button>
-                <a class="btn btn-primary d-inline-block" href="{{route('admin.home')}}">Annulla</a>
-                
-                
-            {{-- SPECIALIZATION --}}
-            <div class="my-2">Edit your specializations:</div>
-             <div class="row ml-1">
+                {{-- SPECIALIZATION --}}
+                <div class="my-2">Edit your specializations:</div>
+                    <div class="row ml-1">
                     @foreach ($specializations as $specialization)
-                    <div class="form-group form-check mx-2 col-3">
+                    <div class="form-check col-3">
                         @if ($errors->any())
                             <input {{(in_array($specialization->id, old('specializations', [])))?'checked':''}} name="specializations[]" type="checkbox" class="form-check-input" id="specialization_{{$specialization->id}}" value="{{$specialization->id}}">
                             <label class="form-check-label" for="specialization_{{$specialization->id}}">{{$specialization->name}}</label>
@@ -72,13 +90,15 @@
                         @endif
                     </div>
                     @endforeach
-                @error('specializations')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                @enderror
+                    @error('specializations')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
             </div>
-            </div>
+            <button type="submit" class="btn btn-success">Applica Modifiche</button>
+            <a class="btn btn-primary d-inline-block" href="{{route('admin.home')}}">Annulla</a>
         </form>
     </div>
 

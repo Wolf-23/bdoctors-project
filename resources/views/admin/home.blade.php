@@ -8,7 +8,7 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Elimina Profilo</button>
           </form>
-        <h1>Benvenuto {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
+        <h1>Benvenuto Dr. {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
         <h3>Sei registrato con la mail {{Auth::user()->email}}</h3>
         <h5>Le tue Specializzazioni: </h5>
         <div class="row">
@@ -23,7 +23,7 @@
                 <img style="width:150px;" src="{{asset('images/avatar.png')}}">   
             @endif
         </div>
-       
-    </div>
+        <a class="btn btn-primary mt-3" href="{{ asset('storage/' .  Auth::user()->cv) }}" download>Download CV</a>
+    </div> 
 
 @endsection

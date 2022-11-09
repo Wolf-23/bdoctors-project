@@ -81,7 +81,7 @@ class UserController extends Controller
             $request->validate([
                 'address' => 'required|max:100',
                 'phone' => 'numeric|nullable',
-                'cv'  => 'file|max:5000|nullable',
+                'cv'  => 'file|max:5000|nullable|mimes:pdf',
                 'profile_pic' => 'image|max:8000|nullable',
                 'services' => 'string|max:255|nullable'
             ]);
@@ -94,6 +94,13 @@ class UserController extends Controller
                 }
                 $profile_pic = Storage::put('profile_pic', $data['profile_pic']);
                 $data['profile_pic'] = $profile_pic;
+            }
+            if (array_key_exists('cv', $data)) {
+                if ($profileUpdate->cv) {
+                    Storage::delete($profileUpdate->cv);
+                }
+                $cv = Storage::put('cv', $data['cv']);
+                $data['cv'] = $cv;
             }
             $profileUpdate->update($data);
             $profileUpdate->specializations()->sync($data['specializations']);
@@ -111,6 +118,9 @@ class UserController extends Controller
         $profileDelete = User::find($id);
         if ($profileDelete->profile_pic) {
             Storage::delete($profileDelete->profile_pic);
+        }
+        if ($profileDelete->cv) {
+            Storage::delete($profileDelete->cv);
         }
         $profileDelete->specializations()->sync([]);
         Auth::logout();
