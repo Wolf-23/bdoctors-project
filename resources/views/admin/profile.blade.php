@@ -6,7 +6,7 @@
         <h1>Dettagli Profilo</h1>
 
         
-        <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="POST" enctype="multipart/form-data" >
+        <form action="" method="POST" enctype="multipart/form-data" >
 
             @csrf
             @method('PUT')
@@ -61,13 +61,24 @@
 
                 {{-- PROFILE PIC --}}
 
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', Auth::user()->address)}}"/>
+                 {{--<label for="profile-pic">Profile Picture</label>
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <input id="profile-pic" type="file" name="profile-pic" class="form-control-file @error('profile-pic') is-invalid @enderror" alt="">
+                    @error('profile-pic')
+                        <div class="d-block invalid-feedback">{{$message}}</div>
+                    @enderror
 
-                @error('address')
-                    <div class='invalid-feedback alert alert-danger p-1'>
-                        {{$message}}
+                    <div class="post_image px-2 d-flex">
+                        @if ($profile->profile-pic)
+                            <img class="img-fluid" src="{{ asset('storage/' .  $profile->profile-pic) }}"/>
+                            <div class="px-2">Immagine corrente</div>
+                        @else
+                            <div>No loaded image</div>
+                        @endif
                     </div>
+                </div>
+                 --}}
+                
 
 
             </div>
