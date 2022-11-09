@@ -6,36 +6,13 @@
         <h1>Dettagli Profilo</h1>
 
         
-        <form action="" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('admin.profile.update' , Auth::user()->id )}}" method="POST" enctype="multipart/form-data" >
 
             @csrf
             @method('PUT')
             
 
             <div class="mb-3">
-
-                {{-- NAME --}}
-
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', Auth::user()->name)}}"/>
-
-                
-                @error('name')
-                    <div class='invalid-feedback alert alert-danger p-1'>
-                        {{$message}}
-                    </div>
-                @enderror
-
-                {{-- SURNAME --}}
-
-                <label for="surname" class="form-label">Surname</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="surname" name="surname" value="{{old('name', Auth::user()->surname)}}"/>
-
-                @error('surname')
-                    <div class='invalid-feedback alert alert-danger p-1'>
-                        {{$message}}
-                    </div>
-                @enderror
 
                 {{-- PHONE --}}
 
@@ -61,23 +38,26 @@
 
                 {{-- PROFILE PIC --}}
 
-                 {{--<label for="profile-pic">Profile Picture</label>
+                <label for="profile_pic">Profile Picture</label>
                 <div class="mb-3 d-flex justify-content-between align-items-center">
-                    <input id="profile-pic" type="file" name="profile-pic" class="form-control-file @error('profile-pic') is-invalid @enderror" alt="">
-                    @error('profile-pic')
+                    <input id="profile_pic" type="file" name="profile_pic" class="form-control-file @error('profile_pic') is-invalid @enderror" alt="">
+                    @error('profile_pic')
                         <div class="d-block invalid-feedback">{{$message}}</div>
                     @enderror
 
                     <div class="post_image px-2 d-flex">
-                        @if ($profile->profile-pic)
-                            <img class="img-fluid" src="{{ asset('storage/' .  $profile->profile-pic) }}"/>
+                        @if (Auth::user()->profile_pic)
+                            <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->profile_pic)}}"/>
                             <div class="px-2">Immagine corrente</div>
                         @else
                             <div>No loaded image</div>
                         @endif
                     </div>
                 </div>
-                 --}}
+
+                <button type="submit" class="btn btn-success">Applica Modifiche</button>
+                <a class="btn btn-primary d-inline-block" href="{{route('admin.home')}}">Annulla</a>
+                
                 
 
 
