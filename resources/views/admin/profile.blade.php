@@ -5,15 +5,61 @@
         <a href="{{route('admin.home')}}" class="btn btn-primary mb-3">Torna alla Home</a>
         <h1>Dettagli Profilo</h1>
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control @error('media') is-invalid @enderror" id="media" name="media" value="{{old('media', $post->media)}}"/>
-            @error('media')
-                <div class='invalid-feedback alert alert-danger p-1'>
-                    {{$message}}
-                </div>
-            @enderror
-        </div>
+        
+        <form action="">
+
+            @csrf
+
+            <div class="mb-3">
+
+                {{-- NAME --}}
+
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', Auth::user()->name)}}"/>
+
+                
+                @error('name')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
+                @enderror
+
+                {{-- SURNAME --}}
+
+                <label for="surname" class="form-label">Surname</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="surname" name="surname" value="{{old('name', Auth::user()->surname)}}"/>
+
+                @error('surname')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
+                @enderror
+
+                {{-- PHONE --}}
+
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{old('phone', Auth::user()->phone)}}"/>
+
+                @error('phone')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
+                @enderror
+
+                {{-- ADDRESS --}}
+                
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', Auth::user()->address)}}"/>
+
+                @error('address')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
+                @enderror
+
+
+            </div>
+        </form>
     </div>
 
 @endsection
