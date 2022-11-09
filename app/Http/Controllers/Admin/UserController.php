@@ -16,7 +16,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
+        
         return(view('admin.profile'));
     }
 
@@ -61,6 +62,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $specializations = Specialization::all();
+
         return view('admin.profile',compact('specializations'));
     }
 
