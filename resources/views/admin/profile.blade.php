@@ -76,15 +76,18 @@
                         </div>
                     </div>
                 </div>
-                {{-- SPECIALIZATION --}}
+                {{-- SPECIALIZATION --}}  
                 <div class="my-2">Edit your specializations:</div>
                     <div class="row ml-1">
                     @foreach ($specializations as $specialization)
                     <div class="form-check col-3">
+                        {{-- In caso di qualsiasi errore --}}
                         @if ($errors->any())
+                        {{-- Se nell array old, è contenuto anche l'id corrente che sto ciclando, allora rendilo checked --}}
                             <input {{(in_array($specialization->id, old('specializations', [])))?'checked':''}} name="specializations[]" type="checkbox" class="form-check-input" id="specialization_{{$specialization->id}}" value="{{$specialization->id}}">
                             <label class="form-check-label" for="specialization_{{$specialization->id}}">{{$specialization->name}}</label>
                         @else
+                        {{-- Di questo utente, di tutte le sue specializzazioni, controllo se all'interno è contenuta la spec. che sto ciclando, allora rendilo checked  --}}
                             <input {{(Auth::user()->specializations->contains($specialization))?'checked':''}} name="specializations[]" type="checkbox" class="form-check-input" id="specialization_{{$specialization->id}}" value="{{$specialization->id}}">
                             <label class="form-check-label" for="specialization_{{$specialization->id}}">{{$specialization->name}}</label>
                         @endif

@@ -88,14 +88,18 @@ class UserController extends Controller
             // GRAZIE STACKOVERFLOW
             $profileUpdate = User::find($id);
             $data = $request->all();
+            // Controllo che esista ProfilePic su $data
             if (array_key_exists('profile_pic', $data)) {
+                // Elimino il la vecchia img
                 if ($profileUpdate->profile_pic) {
                     Storage::delete($profileUpdate->profile_pic);
                 }
                 $profile_pic = Storage::put('profile_pic', $data['profile_pic']);
                 $data['profile_pic'] = $profile_pic;
             }
+            // Controllo che esista CV su $data
             if (array_key_exists('cv', $data)) {
+                // Elimino il vecchio cv
                 if ($profileUpdate->cv) {
                     Storage::delete($profileUpdate->cv);
                 }

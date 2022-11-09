@@ -12,18 +12,23 @@
         <h3>Sei registrato con la mail {{Auth::user()->email}}</h3>
         <h5>Le tue Specializzazioni: </h5>
         <div class="row">
-            @foreach (Auth::user()->specializations as $spec)
-                <div class="col-4">{{ $spec->name }} </div>
+            @foreach (Auth::user()->specializations as $specialization)
+                <div class="col-2">{{ $specialization->name }} </div>
             @endforeach
         </div>
         <div>
-            @if (Auth::user()->profile_pic)
+            @if (Auth::user()->profile_pic) 
                 <img style="width:150px;" src="{{ asset('storage/' .  Auth::user()->profile_pic) }}"/>
             @else
                 <img style="width:150px;" src="{{asset('images/avatar.png')}}">   
             @endif
         </div>
-        <a class="btn btn-primary mt-3" href="{{ asset('storage/' .  Auth::user()->cv) }}" download>Download CV</a>
+        @if ( Auth::user()->cv)
+            <a class="btn btn-primary mt-3" href="{{ asset('storage/' .  Auth::user()->cv) }}" download>Download CV</a>
+        @else
+            <h5 class="mt-3">Nessun CV caricato!</h5>  
+        @endif
+       
     </div> 
 
 @endsection
