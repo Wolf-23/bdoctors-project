@@ -6,9 +6,11 @@
         <h1>Dettagli Profilo</h1>
 
         
-        <form action="">
+        <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="POST" enctype="multipart/form-data" >
 
             @csrf
+            @method('PUT')
+            
 
             <div class="mb-3">
 
@@ -56,6 +58,16 @@
                         {{$message}}
                     </div>
                 @enderror
+
+                {{-- PROFILE PIC --}}
+
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', Auth::user()->address)}}"/>
+
+                @error('address')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
 
 
             </div>
