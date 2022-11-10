@@ -37,7 +37,6 @@ class UserSeeder extends Seeder
                 'phone' => '3332499973',
                 'services' => ''
             ],
-
             [
                 'name' => 'Marilena',
                 'surname' => 'Fiorentini',
@@ -49,7 +48,6 @@ class UserSeeder extends Seeder
                 'phone' => '32499975343',
                 'services' => ''
             ],
-
             [
                 'name' => 'Mario',
                 'surname' => 'Rossi',
@@ -61,7 +59,6 @@ class UserSeeder extends Seeder
                 'phone' => '32499967312',
                 'services' => ''
             ],
-
             [
                 'name' => 'Federico',
                 'surname' => 'Masotti',
@@ -73,7 +70,6 @@ class UserSeeder extends Seeder
                 'phone' => '3456789001',
                 'services' => ''
             ],
-
             [
                 'name' => 'Gianluigi',
                 'surname' => 'Fortunato',
@@ -83,6 +79,17 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '3336789543',
+                'services' => ''
+            ],
+            [
+                'name' => 'Marco',
+                'surname' => 'Verdi',
+                'email' => 'marco@gmail.com',
+                'password'  => Hash::make('testtest'),
+                'address' => 'Via Milano, 17',
+                'cv' => '',
+                'profile_pic' => '',
+                'phone' => '3462525369',
                 'services' => ''
             ],
         ];
