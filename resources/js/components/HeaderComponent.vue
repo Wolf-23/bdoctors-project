@@ -25,7 +25,7 @@
          return {
              menu: [
                  {
-                     name: 'Home ',
+                     name: 'Home',
                      routeLink: 'home'
                  },
                  {
@@ -44,8 +44,4 @@
  
  <style>
  </style>
- Footer
- © 2022 GitHub, Inc.
- Footer navigation
- Terms
  

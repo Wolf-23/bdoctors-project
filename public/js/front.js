@@ -1913,7 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       menu: [{
-        name: 'Home ',
+        name: 'Home',
         routeLink: 'home'
       }, {
         name: 'Blog',
@@ -18009,7 +18009,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   //modalità history(consigliata)
   routes: [{
-    path: '/home',
+    path: '/',
     name: 'MyHome',
     component: _pages_MyHome__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]

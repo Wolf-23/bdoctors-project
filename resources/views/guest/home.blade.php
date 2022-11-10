@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
-        <a href="{{route('admin.home')}}">Area amministrazione</a>
       
         <div id="root"></div>
         <script src="{{asset('js/front.js')}}"></script> 

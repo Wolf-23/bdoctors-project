@@ -13,7 +13,7 @@ const router = new VueRouter({
         mode: 'history',//modalità history(consigliata)
         routes:[
             {
-                path: '/home',
+                path: '/',
                 name:'MyHome',
                 component: MyHome
             },
