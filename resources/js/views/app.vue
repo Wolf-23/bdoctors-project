@@ -9,11 +9,10 @@
 <script>
 import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
-import MyHome from '../pages/MyHome.vue';
 
 
 export default {
-    components: { HeaderComponent, MainComponent, MyHome }
+    components: { HeaderComponent, MainComponent}
 }
 </script>
 

@@ -26,15 +26,11 @@
              menu: [
                  {
                      name: 'Home',
-                     routeLink: 'home'
+                     routeLink: 'MyHome'
                  },
                  {
-                     name: 'Blog',
-                     routeLink: 'blog'
-                 },
-                 {
-                     name: 'Contacts',
-                     routeLink: 'contacts'
+                     name: 'Doctors',
+                     routeLink: 'Doctors'
                  },
              ]
          }
