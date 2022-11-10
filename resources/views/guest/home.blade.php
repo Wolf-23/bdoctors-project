@@ -9,7 +9,7 @@
     </head>
     <body>
         <a href="{{route('admin.home')}}">Area amministrazione</a>
-        <h1>FRONT OFFICE</h1>
+      
         <div id="root"></div>
         <script src="{{asset('js/front.js')}}"></script> 
     </body>
