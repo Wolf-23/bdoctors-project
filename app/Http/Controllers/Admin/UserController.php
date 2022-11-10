@@ -83,7 +83,7 @@ class UserController extends Controller
                 'phone' => 'numeric|nullable',
                 'cv'  => 'file|max:5000|nullable|mimes:pdf',
                 'profile_pic' => 'image|max:8000|nullable',
-                'services' => 'string|max:255|nullable'
+                'services' => 'string|max:65000|nullable'
             ]);
             // GRAZIE STACKOVERFLOW
             $profileUpdate = User::find($id);

@@ -28,6 +28,10 @@
         @else
             <h5 class="mt-3">Nessun CV caricato!</h5>  
         @endif
+        @if (Auth::user()->services)
+            <h5>Prestazioni offerte:</h5>
+            <p>{{ Auth::user()->services }}</p>
+        @endif
        
     </div> 
 

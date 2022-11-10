@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '32499975312',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Sandra',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '3332499973',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Marilena',
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '32499975343',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Mario',
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '32499967312',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Federico',
@@ -68,7 +68,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '3456789001',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Gianluigi',
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '3336789543',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
             [
                 'name' => 'Marco',
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
                 'cv' => '',
                 'profile_pic' => '',
                 'phone' => '3462525369',
-                'services' => ''
+                'services' => 'Visita Specialistica'
             ],
         ];
             foreach ($users as $user) {

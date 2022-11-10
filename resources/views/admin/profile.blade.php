@@ -99,6 +99,17 @@
                         </div>
                     @enderror
                 </div>
+
+                {{-- SERVICES --}}
+                
+                <label for="services" class="form-label">Prestazioni</label>
+                <input type="text" class="form-control @error('services') is-invalid @enderror" id="services" name="services" value="{{old('services', $profileEdit['services'])}}"/>
+
+                @error('services')
+                    <div class='invalid-feedback alert alert-danger p-1'>
+                        {{$message}}
+                    </div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-success">Applica Modifiche</button>
             <a class="btn btn-primary d-inline-block" href="{{route('admin.home')}}">Annulla</a>

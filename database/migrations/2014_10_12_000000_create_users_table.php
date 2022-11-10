@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('cv')->nullable();
             $table->string('profile_pic')->nullable();
             $table->string('phone', 16)->nullable();
-            $table->string('services', 255)->nullable();
+            $table->text('services')->nullable();
             $table->timestamps();
         });
     }

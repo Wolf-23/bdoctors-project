@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-         $user->specializations()->sync($data['specializations']);
+        $user->specializations()->sync($data['specializations']);
 
         return $user;
     }
