@@ -16,10 +16,24 @@ class UserController extends Controller
     public function index()
     {
         $allUsers = User::all();
-        return response()->json([
-            'success' => true,
-            'results' => $allUsers
-        ]);
+        
+            return response()->json([
+                'success' => true,
+                'results' => $allUsers 
+            ]);
+        
+        
+        // $myJson = response()->json([
+        //     'success' => true,
+        //     'results' => $allUsers[1]     
+        // ]);
+
+        
+        
+      
+       
+
+       
     }
 
     /**

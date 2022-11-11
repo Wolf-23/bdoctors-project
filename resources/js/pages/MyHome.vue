@@ -3,13 +3,13 @@
     
     
     <form class="d-flex justify-content-center mt-5 advanced_search" role="search">
-      <input v-model="searchInput" @keyup="myFunction" class=" text-center form-control me-2" type="text" placeholder="Search" aria-label="Search">
+      <input v-model="searchInput" @keyup="inputValue" class=" text-center form-control me-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     
 
       <div :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in profiles" :key="index">
-        <div :class="profile.name.toLowerCase().includes(searchInput.toLowerCase())  ? 'visible' : 'd-none'">
+        <div>
           <router-link to="#" class="list-group-item list-group-item-action">{{profile.name}} {{profile.surname}}</router-link> 
         </div>
         
@@ -29,6 +29,7 @@ export default {
       profiles: [],
       filteredRes: [],
       searchInput: '',
+      
 
     }
   },
@@ -47,15 +48,16 @@ export default {
 
     searchFilter(){
       this.profiles.forEach(profile => {
-        if( profile.name.includes(this.searchInput)){
-          
+        if( profile.name.includes(this.searchInput) || profile.surname.includes(this.searchInput)){
+            
+          return profile.visibility = true;
         }
       })
     },
 
-    myFunction(){
+    inputValue(){
       this.searchInput = this.searchInput
-      this.profiles.forEach
+      
       console.log(this.searchInput)
       console.log(this.profiles)
       
@@ -64,7 +66,8 @@ export default {
                 
       axios.get('api/users')
       .then( resolve => {
-        this.profiles = resolve.data.results; 
+        this.profiles = resolve.data.results;
+      
         
       });
 

@@ -1,25 +1,25 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <div class="d-flex justify-content-between">
       <img src="" alt="" class="rounded-circle">
       <h2>name</h2>
     </div>
     <div>
-      <h3>INFORMAZIONI</h3>
-      <div class="container">
-        <h4>INDIRIZZO</h4>
+      <h3 class="mt-3">INFORMAZIONI</h3>
+      <div class="container mt-5">
+        <h5>INDIRIZZO</h5>
         <span></span>
-        <h4>SPECIALIZZAZIONI</h4>
+        <h5>SPECIALIZZAZIONI</h5>
         <span></span>
-        <h4>PRESTAZIONI OFFERTE</h4>
+        <h5>PRESTAZIONI OFFERTE</h5>
         <span></span>
       </div>
     </div>
-    <div>
+    <div class="mt-5">
       <h3>CONTATTAMI</h3>
       <span>email</span>
       <span>telefono</span>
-      <button>invia messaggio</button>
+      <button class="btn btn-primary">invia messaggio</button>
     </div>
   </div>
 </template>

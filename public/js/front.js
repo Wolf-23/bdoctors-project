@@ -2000,12 +2000,13 @@ __webpack_require__.r(__webpack_exports__);
     searchFilter: function searchFilter() {
       var _this = this;
       this.profiles.forEach(function (profile) {
-        if (profile.name.includes(_this.searchInput)) {}
+        if (profile.name.includes(_this.searchInput) || profile.surname.includes(_this.searchInput)) {
+          return profile.visibility = true;
+        }
       });
     },
-    myFunction: function myFunction() {
+    inputValue: function inputValue() {
       this.searchInput = this.searchInput;
-      this.profiles.forEach;
       console.log(this.searchInput);
       console.log(this.profiles);
     },
@@ -2133,7 +2134,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "container"
+    staticClass: "container mt-5"
   }, [_c("div", {
     staticClass: "d-flex justify-content-between"
   }, [_c("img", {
@@ -2142,9 +2143,15 @@ var staticRenderFns = [function () {
       src: "",
       alt: ""
     }
-  }), _vm._v(" "), _c("h2", [_vm._v("name")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
-    staticClass: "container"
-  }, [_c("h4", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", [_vm._v("invia messaggio")])])]);
+  }), _vm._v(" "), _c("h2", [_vm._v("name")])]), _vm._v(" "), _c("div", [_c("h3", {
+    staticClass: "mt-3"
+  }, [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
+    staticClass: "container mt-5"
+  }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]), _vm._v(" "), _c("div", {
+    staticClass: "mt-5"
+  }, [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary"
+  }, [_vm._v("invia messaggio")])])]);
 }];
 render._withStripped = true;
 
@@ -2189,7 +2196,7 @@ var render = function render() {
       value: _vm.searchInput
     },
     on: {
-      keyup: _vm.myFunction,
+      keyup: _vm.inputValue,
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.searchInput = $event.target.value;
@@ -2204,9 +2211,7 @@ var render = function render() {
     return _c("div", {
       key: index,
       "class": _vm.searchInput == "" ? "d-none" : " "
-    }, [_c("div", {
-      "class": profile.name.toLowerCase().includes(_vm.searchInput.toLowerCase()) ? "visible" : "d-none"
-    }, [_c("router-link", {
+    }, [_c("div", [_c("router-link", {
       staticClass: "list-group-item list-group-item-action",
       attrs: {
         to: "#"
