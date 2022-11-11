@@ -8,7 +8,7 @@
     </form>
     
 
-      <div :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in profiles" :key="index">
+      <div :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
         <div>
           <router-link to="#" class="list-group-item list-group-item-action">{{profile.name}} {{profile.surname}}</router-link> 
         </div>
@@ -36,8 +36,11 @@ export default {
   
   computed:
   {
-  
-    
+    filteredSearch: function(){
+        return this.profiles.filter((profile) => {
+          return profile.name.match(this.searchInput) || profile.surname.match(this.searchInput);
+        });
+    }  
   
   },
   mounted(){
@@ -46,14 +49,8 @@ export default {
 
   methods: {
 
-    searchFilter(){
-      this.profiles.forEach(profile => {
-        if( profile.name.includes(this.searchInput) || profile.surname.includes(this.searchInput)){
-            
-          return profile.visibility = true;
-        }
-      })
-    },
+    
+  
 
     inputValue(){
       this.searchInput = this.searchInput
