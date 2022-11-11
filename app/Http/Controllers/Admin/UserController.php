@@ -18,7 +18,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        
         return(view('admin.profile'));
     }
 
@@ -62,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $profileEdit = User::find($id);
+        $profileEdit =  Auth::user();
         $profileSpecialization = $profileEdit->specializations;
         $specializations = Specialization::all();
         return view('admin.profile',compact('profileEdit', 'specializations', 'profileSpecialization'));
