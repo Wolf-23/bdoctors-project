@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('admin.profile.edit', [Auth::user()->id])}}" class="btn btn-primary">Modifica Profilo</a>
+        <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
         <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
             @csrf
             @method('DELETE')
