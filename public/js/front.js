@@ -1949,8 +1949,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MyDoctors'
+  name: 'MyDoctors',
+  methods: {
+    data: function data() {
+      return {
+        profiles: []
+      };
+    },
+    getData: function getData() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
+        _this.profiles = resolve.data.results;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -1976,32 +1992,27 @@ __webpack_require__.r(__webpack_exports__);
       searchInput: ''
     };
   },
-  computed: {
-    filteredSearch: function filteredSearch() {
-      var _this = this;
-      this.searchInput = this.searchInput;
-      return this.profiles.filter(function (profile) {
-        return profile.name.toLowerCase().includes(_this.searchInput.toLowerCase());
-      });
-    }
-  },
+  computed: {},
   mounted: function mounted() {
     this.getData();
   },
   methods: {
-    myFunction: function myFunction() {
-      var _this2 = this;
-      this.searchInput = this.searchInput;
-      console.log(this.searchInput);
-      console.log(this.profiles);
-      return this.profiles.filter(function (profile) {
-        return profile.name.toLowerCase().includes(_this2.searchInput.toLowerCase());
+    searchFilter: function searchFilter() {
+      var _this = this;
+      this.profiles.forEach(function (profile) {
+        if (profile.name.includes(_this.searchInput)) {}
       });
     },
+    myFunction: function myFunction() {
+      this.searchInput = this.searchInput;
+      this.profiles.forEach;
+      console.log(this.searchInput);
+      console.log(this.profiles);
+    },
     getData: function getData() {
-      var _this3 = this;
+      var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
-        _this3.profiles = resolve.data.results;
+        _this2.profiles = resolve.data.results;
       });
     }
   }
@@ -2121,7 +2132,19 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      PAGINA DOCTORS\n  ")])]);
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex justify-content-between"
+  }, [_c("img", {
+    staticClass: "rounded-circle",
+    attrs: {
+      src: "",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("h2", [_vm._v("name")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("h4", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", [_vm._v("invia messaggio")])])]);
 }];
 render._withStripped = true;
 
@@ -2142,7 +2165,9 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {}, [_c("form", {
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("form", {
     staticClass: "d-flex justify-content-center mt-5 advanced_search",
     attrs: {
       role: "search"
@@ -2154,9 +2179,9 @@ var render = function render() {
       value: _vm.searchInput,
       expression: "searchInput"
     }],
-    staticClass: "col-4 text-center form-control me-2",
+    staticClass: "text-center form-control me-2",
     attrs: {
-      type: "search",
+      type: "text",
       placeholder: "Search",
       "aria-label": "Search"
     },
@@ -2164,7 +2189,7 @@ var render = function render() {
       value: _vm.searchInput
     },
     on: {
-      keydown: _vm.myFunction,
+      keyup: _vm.myFunction,
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.searchInput = $event.target.value;
@@ -2178,8 +2203,15 @@ var render = function render() {
   }, [_vm._v("Search")])]), _vm._v(" "), _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "search_list"
-    }, [_c("span", [_vm._v(" " + _vm._s(profile.name) + " " + _vm._s(profile.surname))])]);
+      "class": _vm.searchInput == "" ? "d-none" : " "
+    }, [_c("div", {
+      "class": profile.name.toLowerCase().includes(_vm.searchInput.toLowerCase()) ? "visible" : "d-none"
+    }, [_c("router-link", {
+      staticClass: "list-group-item list-group-item-action",
+      attrs: {
+        to: "#"
+      }
+    }, [_vm._v(_vm._s(profile.name) + " " + _vm._s(profile.surname))])], 1)]);
   })], 2);
 };
 var staticRenderFns = [];
