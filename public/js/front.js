@@ -1934,7 +1934,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: ''
+});
 
 /***/ }),
 
@@ -1969,24 +1971,37 @@ __webpack_require__.r(__webpack_exports__);
   name: 'MyHome',
   data: function data() {
     return {
-      profiles: []
+      profiles: [],
+      filteredRes: [],
+      searchInput: ''
     };
   },
-  computed: function computed() {},
+  computed: {
+    filteredSearch: function filteredSearch() {
+      var _this = this;
+      this.searchInput = this.searchInput;
+      return this.profiles.filter(function (profile) {
+        return profile.name.toLowerCase().includes(_this.searchInput.toLowerCase());
+      });
+    }
+  },
   mounted: function mounted() {
     this.getData();
   },
   methods: {
-    getData: function getData() {
-      var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
-        _this.profiles = resolve.data.results;
+    myFunction: function myFunction() {
+      var _this2 = this;
+      this.searchInput = this.searchInput;
+      console.log(this.searchInput);
+      console.log(this.profiles);
+      return this.profiles.filter(function (profile) {
+        return profile.name.toLowerCase().includes(_this2.searchInput.toLowerCase());
       });
     },
-    filteredSearch: function filteredSearch() {
-      var _this2 = this;
-      return this.contacts.filter(function (contatto) {
-        return contatto.name.toLowerCase().includes(_this2.mySearchValue.toLowerCase());
+    getData: function getData() {
+      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
+        _this3.profiles = resolve.data.results;
       });
     }
   }
@@ -2127,35 +2142,47 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {}, [_vm._m(0), _vm._v(" "), _vm._l(_vm.profiles, function (profile, index) {
-    return _c("div", {
-      key: index,
-      staticClass: "search_list"
-    }, [_c("span", [_vm._v(" " + _vm._s(profile.name) + " " + _vm._s(profile.surname))])]);
-  })], 2);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("form", {
+  return _c("div", {}, [_c("form", {
     staticClass: "d-flex justify-content-center mt-5 advanced_search",
     attrs: {
       role: "search"
     }
   }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.searchInput,
+      expression: "searchInput"
+    }],
     staticClass: "col-4 text-center form-control me-2",
     attrs: {
       type: "search",
       placeholder: "Search",
       "aria-label": "Search"
+    },
+    domProps: {
+      value: _vm.searchInput
+    },
+    on: {
+      keydown: _vm.myFunction,
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.searchInput = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("button", {
     staticClass: "btn btn-outline-success",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Search")])]);
-}];
+  }, [_vm._v("Search")])]), _vm._v(" "), _vm._l(_vm.profiles, function (profile, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "search_list"
+    }, [_c("span", [_vm._v(" " + _vm._s(profile.name) + " " + _vm._s(profile.surname))])]);
+  })], 2);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -18204,7 +18231,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/Documents/Final Project Boolean/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
