@@ -1949,8 +1949,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MyDoctors'
+  name: 'MyDoctors',
+  methods: {
+    data: function data() {
+      return {
+        profiles: []
+      };
+    },
+    getData: function getData() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
+        _this.profiles = resolve.data.results;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -1973,9 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       profiles: [],
       filteredRes: [],
-      searchInput: '',
-      message: 'Hello',
-      reversedMessage: ''
+      searchInput: ''
     };
   },
   computed: {},
@@ -2118,7 +2132,19 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      PAGINA DOCTORS\n  ")])]);
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex justify-content-between"
+  }, [_c("img", {
+    staticClass: "rounded-circle",
+    attrs: {
+      src: "",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("h2", [_vm._v("name")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("h4", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h4", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", [_vm._v("invia messaggio")])])]);
 }];
 render._withStripped = true;
 
@@ -2177,7 +2203,7 @@ var render = function render() {
   }, [_vm._v("Search")])]), _vm._v(" "), _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "search_list"
+      "class": _vm.searchInput == "" ? "d-none" : " "
     }, [_c("div", {
       "class": profile.name.toLowerCase().includes(_vm.searchInput.toLowerCase()) ? "visible" : "d-none"
     }, [_c("router-link", {
