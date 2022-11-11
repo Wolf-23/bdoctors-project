@@ -2,18 +2,21 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
-        <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Elimina Profilo</button>
-          </form>
+        <div class="mb-3">
+            <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
+            <a href="{{route('admin.messages.index', [Auth::user()->name])}}" class="btn btn-primary">Vedi Messaggi</a>
+            <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Elimina Profilo</button>
+            </form>
+        </div>
         <h1>Benvenuto Dr. {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
         <h3>Sei registrato con la mail {{Auth::user()->email}}</h3>
         <h5>Le tue Specializzazioni: </h5>
         <div class="row">
             @foreach (Auth::user()->specializations as $specialization)
-                    <div class="col-2">{{ $specialization->name }} </div>
+            <div class="col-2">{{ $specialization->name }} </div>
             @endforeach
         </div>
         <div>
