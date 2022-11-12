@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Specialization;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -14,26 +15,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $allUsers = User::all();
+    {   
         
-            return response()->json([
-                'success' => true,
-                'results' => $allUsers 
-            ]);
-        
-        
-        // $myJson = response()->json([
-        //     'success' => true,
-        //     'results' => $allUsers[1]     
-        // ]);
-
-        
-        
-      
-       
-
-       
+        $allUsers = User::with('specializations')->get(['id','name','surname']);  
+        return response()->json([
+            'success' => true,
+            'results' => $allUsers 
+        ]);
+     
     }
 
     /**
@@ -101,4 +90,6 @@ class UserController extends Controller
     {
         //
     }
-}
+};
+
+    

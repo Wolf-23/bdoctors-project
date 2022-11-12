@@ -1988,27 +1988,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
-      filteredRes: [],
+      newArray: [],
       searchInput: ''
     };
   },
-  computed: {},
+  computed: {
+    filteredSearch: function filteredSearch() {
+      var _this = this;
+      return this.profiles.filter(function (profile) {
+        return profile.name.match(_this.searchInput) || profile.surname.match(_this.searchInput);
+        // profile.specializations.map(spec => {
+        //   return console.log(spec.name, spec.id);
+        // })
+      });
+    }
+  },
   mounted: function mounted() {
     this.getData();
   },
   methods: {
-    searchFilter: function searchFilter() {
-      var _this = this;
-      this.profiles.forEach(function (profile) {
-        if (profile.name.includes(_this.searchInput) || profile.surname.includes(_this.searchInput)) {
-          return profile.visibility = true;
-        }
-      });
-    },
     inputValue: function inputValue() {
       this.searchInput = this.searchInput;
-      console.log(this.searchInput);
-      console.log(this.profiles);
     },
     getData: function getData() {
       var _this2 = this;
@@ -2207,7 +2207,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Search")])]), _vm._v(" "), _vm._l(_vm.profiles, function (profile, index) {
+  }, [_vm._v("Search")])]), _vm._v(" "), _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
       "class": _vm.searchInput == "" ? "d-none" : " "

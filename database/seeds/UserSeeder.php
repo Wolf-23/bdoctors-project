@@ -104,6 +104,9 @@ class UserSeeder extends Seeder
                 $newuser->profile_pic = $user['profile_pic'];
                 $newuser->phone = $user['phone'];
                 $newuser->services = $user['services'];
+                
+                $newuser->save();
+                $newuser->specializations()->sync($newuser->id,rand(1,10));
                 $newuser->save();
             }
     }
