@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
   <div class="container">
+    @if(session('danger'))
+        <div class="container">
+            <div class="alert alert-danger">
+                <i class="fa-regular fa-trash-can"></i> {{ session('danger') }} 
+            </div>
+        </div>
+    @endif
     <a href="{{route('admin.home', [Auth::user()->name])}}" class="btn btn-primary mb-3">Torna alla Home</a>
     <h2>I tuoi Messaggi:</h2>
     <table class="table table-dark">

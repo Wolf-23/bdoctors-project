@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+        @if(session('success'))
+            <div class="container">
+                <div class="alert alert-success">
+                    <i class="fa-solid  fa-circle-check"></i> {{ session('success') }} 
+                </div>
+            </div>
+        @endif
         <div class="mb-3">
             <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
            <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">

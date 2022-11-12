@@ -118,7 +118,7 @@ class UserController extends Controller
                 // Faccio una sync vuota se non c'è nessun dato
                 $profileUpdate->specializations()->sync([]);
             }
-            return redirect()->route('admin.home');
+            return redirect()->route('admin.home')->with('success', 'Hai modificato correttamente il tuo profilo');
     }
 
     /**
@@ -139,6 +139,6 @@ class UserController extends Controller
         $profileDelete->specializations()->sync([]);
         Auth::logout();
         $profileDelete->delete();
-        return redirect()->route('register');
+        return redirect()->route('register')->with('danger', 'Hai eliminato il profilo correttamente');
     }
 }
