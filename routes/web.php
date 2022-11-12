@@ -23,6 +23,7 @@ Route::middleware('auth')
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('profile', 'UserController');
     Route::resource('messages', 'MessageController');
+    Route::resource('reviews', 'ReviewController');
 
 });
 

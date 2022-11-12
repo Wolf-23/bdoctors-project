@@ -4,8 +4,7 @@
     <div class="container">
         <div class="mb-3">
             <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
-            <a href="{{route('admin.messages.index', [Auth::user()->name])}}" class="btn btn-primary">Vedi Messaggi</a>
-            <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
+           <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Elimina Profilo</button>
@@ -35,7 +34,16 @@
             <h5>Prestazioni offerte:</h5>
             <p>{{ Auth::user()->services }}</p>
         @endif
-       
-    </div> 
-
+        <div class="d-flex">    
+            <div class="col-6 my-3">
+                <h3>Hai ricevuto {{ count(Auth::user()->reviews) }} recensioni</h3>
+                <a href="{{route('admin.reviews.index', [Auth::user()->name])}}" class="btn btn-primary">Vedi Recensioni</a>
+            </div>
+            <div class="col-6 my-3">
+                <h3>Hai ricevuto {{ count(Auth::user()->messages) }} messaggi</h3>
+                <a href="{{route('admin.messages.index', [Auth::user()->name])}}" class="btn btn-primary">Vedi Messaggi</a>
+            </div>
+        </div>   
+    </div>
+ 
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Message;
+use App\Review;
 use App\Specialization;
 use App\User;
 use Illuminate\Http\Request;
@@ -18,7 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return(view('admin.profile'));
+        $messages = Message::all();
+        $reviews = Review::all();
+        return(view('admin.profile', compact('reviews', 'messages')));
     }
 
     /**
