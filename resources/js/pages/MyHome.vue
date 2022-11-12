@@ -27,8 +27,9 @@ export default {
   data(){
     return {
       profiles: [],
-      filteredRes: [],
+      newArray: [],
       searchInput: '',
+
       
 
     }
@@ -37,10 +38,18 @@ export default {
   computed:
   {
     filteredSearch: function(){
+
+
         return this.profiles.filter((profile) => {
-          return profile.name.match(this.searchInput) || profile.surname.match(this.searchInput);
-        });
-    }  
+        
+          return  profile.name.match(this.searchInput)||
+                  profile.surname.match(this.searchInput);
+                  // profile.specializations.map(spec => {
+                  //   return console.log(spec.name, spec.id);
+                  // })
+                  
+          });
+        }, 
   
   },
   mounted(){
@@ -50,15 +59,12 @@ export default {
   methods: {
 
     
-  
+    
 
     inputValue(){
       this.searchInput = this.searchInput
-      
-      console.log(this.searchInput)
-      console.log(this.profiles)
-      
     }, 
+
     getData(){
                 
       axios.get('api/users')

@@ -15,21 +15,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $specializations = Specialization::all();
-        $allUsers = User::with('specializations' )->get(['name','surname']);
+    {   
         
-        
-        
-        
-        
-
-            return response()->json([
-                'success' => true,
-                'results' => $allUsers 
-            ]);   
-
-            
+        $allUsers = User::with('specializations')->get(['id','name','surname']);  
+        return response()->json([
+            'success' => true,
+            'results' => $allUsers 
+        ]);
+     
     }
 
     /**
@@ -97,4 +90,6 @@ class UserController extends Controller
     {
         //
     }
-}
+};
+
+    

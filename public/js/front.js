@@ -1988,7 +1988,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
-      filteredRes: [],
+      newArray: [],
       searchInput: ''
     };
   },
@@ -1997,6 +1997,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       return this.profiles.filter(function (profile) {
         return profile.name.match(_this.searchInput) || profile.surname.match(_this.searchInput);
+        // profile.specializations.map(spec => {
+        //   return console.log(spec.name, spec.id);
+        // })
       });
     }
   },
@@ -2006,8 +2009,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     inputValue: function inputValue() {
       this.searchInput = this.searchInput;
-      console.log(this.searchInput);
-      console.log(this.profiles);
     },
     getData: function getData() {
       var _this2 = this;
