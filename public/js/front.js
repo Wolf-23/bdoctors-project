@@ -1988,7 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
-      newArray: [],
       searchInput: ''
     };
   },
@@ -1996,7 +1995,6 @@ __webpack_require__.r(__webpack_exports__);
     filteredSearch: function filteredSearch() {
       var _this = this;
       return this.profiles.filter(function (profile) {
-        console.log(profile);
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.includes(_this.searchInput)) {
             return profile.specializations[i].name.includes(_this.searchInput);
@@ -2216,7 +2214,7 @@ var render = function render() {
     }, [_c("div", [_c("router-link", {
       staticClass: "list-group-item list-group-item-action",
       attrs: {
-        to: "#"
+        to: "#\n      "
       }
     }, [_vm._v(_vm._s(profile.name) + " " + _vm._s(profile.surname))])], 1)]);
   })], 2);
