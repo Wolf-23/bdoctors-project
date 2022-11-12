@@ -38,20 +38,22 @@ export default {
   computed:
   {
     filteredSearch: function(){
-
-
-        return this.profiles.filter((profile) => {
+      
+     
+      return this.profiles.filter(profile => {
+        console.log(profile);
+        for(let i = 0 ; i < profile.specializations.length ; i++ ){
+          if(profile.specializations[i].name.includes(this.searchInput)){
+            return profile.specializations[i].name.includes(this.searchInput);
+          }
+          
+        }
         
-          return  profile.name.match(this.searchInput)||
-                  profile.surname.match(this.searchInput);
-                  // profile.specializations.map(spec => {
-                  //   return console.log(spec.name, spec.id);
-                  // })
-                  
-          });
-        }, 
-  
+      })
+         
+    }  
   },
+
   mounted(){
     this.getData()
   },

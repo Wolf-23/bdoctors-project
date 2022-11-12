@@ -1996,10 +1996,12 @@ __webpack_require__.r(__webpack_exports__);
     filteredSearch: function filteredSearch() {
       var _this = this;
       return this.profiles.filter(function (profile) {
-        return profile.name.match(_this.searchInput) || profile.surname.match(_this.searchInput);
-        // profile.specializations.map(spec => {
-        //   return console.log(spec.name, spec.id);
-        // })
+        console.log(profile);
+        for (var i = 0; i < profile.specializations.length; i++) {
+          if (profile.specializations[i].name.includes(_this.searchInput)) {
+            return profile.specializations[i].name.includes(_this.searchInput);
+          }
+        }
       });
     }
   },
@@ -18268,7 +18270,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/Documents/Final Project Boolean/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
