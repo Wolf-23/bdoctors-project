@@ -2293,7 +2293,7 @@ var staticRenderFns = [function () {
     staticClass: "right_side"
   }, [_c("div", {
     staticClass: "slogan"
-  }, [_c("h1", [_vm._v("Sei stufo di fare la Fila?")]), _vm._v(" "), _c("p", [_vm._v("Affidati a "), _c("b", [_vm._v("Bdoctors")]), _vm._v(", i migliori specialisti di Milano. ")]), _vm._v(" "), _c("p", {
+  }, [_c("h1", [_vm._v("Sei stufo di fare la Fila?")]), _vm._v(" "), _c("p", [_vm._v("Affidati a "), _c("b", [_vm._v("Bdoctors")]), _vm._v(", i migliori specialisti di Milano.")]), _vm._v(" "), _c("p", {
     staticClass: "text-square"
   }, [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?")]), _vm._v(" "), _c("p", [_vm._v("Dr. Girolamo Visconti")])]), _vm._v(" "), _c("div", {
     staticClass: "img-wrap"
@@ -18353,7 +18353,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopaci/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/utente/Desktop/final-project/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
