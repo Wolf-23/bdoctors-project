@@ -2187,7 +2187,7 @@ var render = function render() {
     staticClass: "px-5 left_side"
   }, [_vm._m(0), _vm._v(" "), _c("h1", {
     staticClass: "site_logo"
-  }, [_vm._v("BDoctors!!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti di Milano.")]), _vm._v(" "), _c("form", {
+  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti di Milano.")]), _vm._v(" "), _c("form", {
     staticClass: "home_search",
     staticStyle: {
       position: "relative"
