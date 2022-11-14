@@ -1954,17 +1954,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'MyDoctors',
+  data: function data() {
+    return {
+      profiles: [],
+      slug: null
+    };
+  },
   methods: {
-    data: function data() {
-      return {
-        profiles: []
-      };
-    },
     getData: function getData() {
       var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
+      var slug = this.$route.params.slug;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users/' + slug).then(function (resolve) {
         _this.profiles = resolve.data.results;
       });
+    },
+    mounted: function mounted() {
+      this.getData();
     }
   }
 });
@@ -2128,11 +2133,6 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "container mt-5"
   }, [_c("div", {
@@ -2143,15 +2143,24 @@ var staticRenderFns = [function () {
       src: "",
       alt: ""
     }
-  }), _vm._v(" "), _c("h2", [_vm._v("name")])]), _vm._v(" "), _c("div", [_c("h3", {
+  }), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.profiles.name) + " wow " + _vm._s(_vm.profiles.surname))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h3", {
     staticClass: "mt-3"
   }, [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
     staticClass: "container mt-5"
-  }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]), _vm._v(" "), _c("div", {
+  }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "mt-5"
   }, [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary"
-  }, [_vm._v("invia messaggio")])])]);
+  }, [_vm._v("invia messaggio")])]);
 }];
 render._withStripped = true;
 
@@ -2180,6 +2189,9 @@ var render = function render() {
     staticClass: "site_logo"
   }, [_vm._v("BDoctors")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti di Milano.")]), _vm._v(" "), _c("form", {
     staticClass: "home_search",
+    staticStyle: {
+      position: "relative"
+    },
     attrs: {
       role: "search"
     }
@@ -2212,13 +2224,7 @@ var render = function render() {
       type: "submit"
     }
   }, [_vm._v("Search")]), _vm._v(" "), _c("div", {
-    staticClass: "out-doctors",
-    staticStyle: {
-      position: "absolute",
-      right: "0",
-      left: "0",
-      "z-index": "100"
-    }
+    staticClass: "out-doctors"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
@@ -2256,12 +2262,17 @@ var render = function render() {
       staticClass: "card_title"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
       staticClass: "card_text"
-    }, [_vm._v(_vm._s(profile.specializations[0].name))]), _vm._v(" "), _c("a", {
-      staticClass: "btn btn-primary mb-3",
+    }, [_vm._v(_vm._s(profile.specializations[0].name))]), _vm._v(" "), _c("router-link", {
+      staticClass: "btn btn-primary",
       attrs: {
-        href: "#"
+        to: {
+          name: "slug",
+          params: {
+            slug: profile.name
+          }
+        }
       }
-    }, [_vm._v("Profilo")])])])]);
+    }, [_vm._v("Profilo")])], 1)])]);
   }), 0)])]);
 };
 var staticRenderFns = [function () {
@@ -18257,8 +18268,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'MyHome',
     component: _pages_MyHome__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/doctors',
-    name: 'Doctors',
+    path: '/:slug',
+    name: 'slug',
     component: _pages_MyDoctors__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });

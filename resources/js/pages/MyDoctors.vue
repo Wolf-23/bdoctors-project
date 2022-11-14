@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="d-flex justify-content-between">
       <img src="" alt="" class="rounded-circle">
-      <h2>name</h2>
+      <h2>{{profiles.name}} wow {{profiles.surname}}</h2>
     </div>
     <div>
       <h3 class="mt-3">INFORMAZIONI</h3>
@@ -28,22 +28,33 @@
 import axios from 'axios';
 export default {
     name: 'MyDoctors',
+    data() {
+      return {
+        profiles: [],
+        slug: null
+      }
+    },
+
     methods: {
-      data() {
-        return {
-          profiles: []
-        }
-      },
+
       getData(){
-                
-                axios.get('api/users')
-                .then( resolve => {
-                  this.profiles = resolve.data.results; 
+
+        let slug = this.$route.params.slug
+
+        axios.get('api/users/'+ slug)
+        .then( resolve => {
+        this.profiles = resolve.data.results; 
                   
-                });
-              }
-    
+        });
+      },
+
+      mounted(){
+      this.getData();
+    },
+
     }
+
+    
 }
 </script>
 

@@ -10,12 +10,12 @@
         <h1 class="site_logo">BDoctors</h1>
         <h1>Torva i migliori specialisti di Milano.</h1>
       
-      <form class="home_search" role="search">
+      <form class="home_search" style="position:relative;" role="search">
 
         <input v-model="searchInput" @keyup="inputValue" class="input_search" type="text" placeholder="Search" aria-label="Search">
         <button class="btn_search" type="submit">Search</button>
 
-        <div style="position:absolute; right: 0; left: 0; z-index: 100;" class="out-doctors">    
+        <div style="" class="out-doctors">    
         <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
           <div>
             <router-link to="#" class="list-group-item list-group-item-action list_profile">{{profile.name}} {{profile.surname}}</router-link> 
@@ -50,7 +50,7 @@
             <div class="card_body">
               <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
               <p class="card_text">{{profile.specializations[0].name}}</p>
-              <a href="#" class="btn btn-primary mb-3">Profilo</a>
+              <router-link class="btn btn-primary" :to="{name:'slug', params:{slug:profile.name}} ">Profilo</router-link>
             </div>
           </div>
         </div>

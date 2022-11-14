@@ -19,10 +19,11 @@ const router = new VueRouter({
                 component: MyHome
             },
             {
-                path: '/doctors',
-                name:'Doctors',
+                path: '/:slug',
+                name:'slug',
                 component: MyDoctors
             },
+
         ]
 })
 

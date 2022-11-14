@@ -12,7 +12,7 @@
         height: 600px;
         display: flex;
         margin-top: 50px;
-        overflow: hidden;
+        
         background-image: url('https://img.freepik.com/free-vector/clean-medical-background-vector_53876-140865.jpg?w=1480&t=st=1668387031~exp=1668387631~hmac=d27fe39e4e254822272b7ed286b6c59a64daf5d359d1fd5d35c22b2cd9b4a93f');
         background-size: cover;
 
@@ -69,8 +69,11 @@
             }
             .out-doctors {
 
+              position:absolute; 
+              right: 0; 
+              left: 0; 
+              z-index: 100;
                 
-                margin-top: 28px;
                 
                 .wrap-doctors {
                     .list_profile {
@@ -95,11 +98,17 @@
             .img-wrap {
                     height: 100%;
                     margin-top: 10px;
+                    overflow: hidden;
+                    border: white 1px solid ;
+                    display: flex;
+                    justify-content: center;
                     
                 .jumbo_img {
                      
                     height: 100%;
-                    object-fit: cover;                   
+                    
+                    object-fit: cover;
+                                       
                     
                 }
     

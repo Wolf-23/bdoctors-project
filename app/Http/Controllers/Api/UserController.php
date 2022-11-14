@@ -52,9 +52,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $user = User::where('name' , $slug)->first();
+
+        if($user){
+            return response()->json([
+                'success' => true,
+                'result' => $user
+            ]);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'user non trovato'
+            ]);
+        }
     }
 
     /**
