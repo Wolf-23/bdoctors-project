@@ -4,7 +4,7 @@
     
     <div class="px-5 left_side ">
       <div class="img-wrap d-flex">
-        <img class="" src="/storage/graphics/illustrazione-vaccinazione.png" alt="">
+        <img class="" src="/images/graphics/illustrazione-vaccinazione.png" alt="">
       </div>
       
         <h1 class="site_logo">BDoctors</h1>
@@ -34,7 +34,7 @@
         <p>Dr. Girolamo Visconti</p>
       </div>
       <div class="img-wrap">
-        <img class="jumbo_img" src="/storage/graphics/PngItem_4900561.png" alt="myImg">
+        <img class="jumbo_img" src="/images/graphics/DottorVisconti.png" alt="myImg">
       </div>
       
     </div>

@@ -2282,7 +2282,7 @@ var staticRenderFns = [function () {
     staticClass: "img-wrap d-flex"
   }, [_c("img", {
     attrs: {
-      src: "/storage/graphics/illustrazione-vaccinazione.png",
+      src: "/images/graphics/illustrazione-vaccinazione.png",
       alt: ""
     }
   })]);
@@ -2300,7 +2300,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "jumbo_img",
     attrs: {
-      src: "/storage/graphics/PngItem_4900561.png",
+      src: "/images/graphics/DottorVisconti.png",
       alt: "myImg"
     }
   })])]);
