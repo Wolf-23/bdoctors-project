@@ -29,7 +29,7 @@
     <div class="right_side">
       <div class="slogan">
         <h1>Sei stufo di fare la Fila?</h1>
-        <p>Affidati a <b>Bdoctors</b>, i migliori specialisti di Milano.</p>
+        <p>Affidati a <b>Bdoctors</b>, i migliori specialisti di Milano. </p>
         <p class="text-square"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?</p>
         <p>Dr. Girolamo Visconti</p>
       </div>
