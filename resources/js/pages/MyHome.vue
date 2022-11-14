@@ -7,7 +7,7 @@
         <img class="" src="/images/graphics/illustrazione-vaccinazione.png" alt="">
       </div>
       
-        <h1 class="site_logo">BDoctors</h1>
+        <h1 class="site_logo">BDoctors!!</h1>
         <h1>Torva i migliori specialisti di Milano.</h1>
       
       <form class="home_search" style="position:relative;" role="search">
