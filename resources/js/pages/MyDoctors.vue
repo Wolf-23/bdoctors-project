@@ -5,7 +5,7 @@
       <h2>{{profiles.name}} wow {{profiles.surname}}</h2>
     </div>
     <div>
-      <h3 class="mt-3">INFORMAZIONI</h3>
+      <h3 class="mt-3">INFORMAZIONIwewewe</h3>
       <div class="container mt-5">
         <h5>INDIRIZZO</h5>
         <span></span>
