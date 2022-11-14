@@ -2143,7 +2143,7 @@ var render = function render() {
       src: "",
       alt: ""
     }
-  }), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.profiles.name) + " wow " + _vm._s(_vm.profiles.surname))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]);
+  }), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.profiles.name) + " " + _vm._s(_vm.profiles.surname))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -18353,7 +18353,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/Documents/Final Project Boolean/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctors\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

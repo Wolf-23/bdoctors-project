@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="d-flex justify-content-between">
       <img src="" alt="" class="rounded-circle">
-      <h2>{{profiles.name}} wow {{profiles.surname}}</h2>
+      <h2>{{profiles.name}} {{profiles.surname}}</h2>
     </div>
     <div>
       <h3 class="mt-3">INFORMAZIONI</h3>
