@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {   
         
-        $allUsers = User::with('specializations')->get(['id','name','surname']);  
+        $allUsers = User::with('specializations')->get(['id','name','surname','profile_pic']);  
         return response()->json([
             'success' => true,
             'results' => $allUsers 
