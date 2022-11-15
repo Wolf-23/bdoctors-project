@@ -112,11 +112,8 @@ class UserSeeder extends Seeder
                 $newuser->cv = $user['cv'];
                 $newuser->profile_pic = $user['profile_pic'];
                 $newuser->phone = $user['phone'];
-                $newuser->services = $user['services'];
-                
-                $newuser->save();
-                $newuser->specializations()->sync($newuser->id,rand(1,10));
-                $newuser->save();
+                $newuser->services = $user['services'];   
+                $newuser->save();    
             }
     }
 }

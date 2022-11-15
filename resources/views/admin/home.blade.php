@@ -58,7 +58,8 @@
             </div>
         </div>
         <div class="mt-3 text-center">
-            <a href="{{route('admin.profile.edit', [Auth::user()->name])}}" class="btn btn-primary">Modifica Profilo</a>
+            <a href="{{route('admin.profile.edit', [Auth::user()])}}" class="btn btn-primary">Modifica Profilo</a>
+            <a href="{{route('admin.sponsorship.index', [Auth::user()->name])}}" class="btn btn-primary">Sponsorizza Profilo</a>
            <form class="d-inline-block" action="{{route('admin.profile.destroy', [Auth::user()->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
