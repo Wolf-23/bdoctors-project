@@ -2001,8 +2001,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
-          if (profile.specializations[i].name.includes(_this.searchInput)) {
-            return profile.specializations[i].name.includes(_this.searchInput);
+          if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
+            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
           }
         }
       });
@@ -2187,7 +2187,7 @@ var render = function render() {
     staticClass: "px-5 left_side"
   }, [_vm._m(0), _vm._v(" "), _c("h1", {
     staticClass: "site_logo"
-  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti di Milano.")]), _vm._v(" "), _c("form", {
+  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti di Milano.")]), _vm._v(" "), _c("div", {
     staticClass: "home_search",
     staticStyle: {
       position: "relative"
@@ -2212,7 +2212,6 @@ var render = function render() {
       value: _vm.searchInput
     },
     on: {
-      keyup: _vm.inputValue,
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.searchInput = $event.target.value;
@@ -2221,7 +2220,7 @@ var render = function render() {
   }), _vm._v(" "), _c("button", {
     staticClass: "btn_search",
     attrs: {
-      type: "submit"
+      type: ""
     }
   }, [_vm._v("Search")]), _vm._v(" "), _c("div", {
     staticClass: "out-doctors"
@@ -2235,7 +2234,19 @@ var render = function render() {
       attrs: {
         to: "#"
       }
-    }, [_vm._v(_vm._s(profile.name) + " " + _vm._s(profile.surname))])], 1)]);
+    }, [_c("div", {
+      staticClass: "img-wrapper_results"
+    }, [_c("img", {
+      staticClass: "card_img_top",
+      attrs: {
+        src: profile.profile_pic == false ? "images/avatar.png" : "storage/" + profile.profile_pic,
+        alt: "Card image cap"
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "name_search_results"
+    }, [_vm._v("\n                " + _vm._s(profile.name) + " " + _vm._s(profile.surname) + "\n              ")]), _vm._v(" "), _c("div", {
+      staticClass: "specializations_search_results"
+    }, [_c("span", [_vm._v(_vm._s(profile.specializations[0].name))])])])], 1)]);
   }), 0)])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
     staticClass: "ourDoctors"
   }, [_c("h1", {
@@ -18353,7 +18364,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/utente/Desktop/final-project/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

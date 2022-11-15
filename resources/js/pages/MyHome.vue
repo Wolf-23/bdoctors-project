@@ -10,19 +10,33 @@
         <h1 class="site_logo">BDoctors!*!</h1>
         <h1>Torva i migliori specialisti di Milano.</h1>
       
-      <form class="home_search" style="position:relative;" role="search">
+      <div class="home_search" style="position:relative;" role="search">
 
-        <input v-model="searchInput" @keyup="inputValue" class="input_search" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn_search" type="submit">Search</button>
+        <input v-model="searchInput" class="input_search" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn_search" type="">Search</button>
 
         <div style="" class="out-doctors">    
         <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
           <div>
-            <router-link to="#" class="list-group-item list-group-item-action list_profile">{{profile.name}} {{profile.surname}}</router-link> 
+            <router-link to="#" class="list-group-item list-group-item-action list_profile">
+
+              <div class="img-wrapper_results">
+                <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+              </div>
+
+              <div class="name_search_results">
+                {{profile.name}} {{profile.surname}}
+              </div>
+
+              <div class="specializations_search_results">
+                <span>{{profile.specializations[0].name}}</span>
+              </div>
+
+            </router-link> 
           </div>
         </div>
       </div>
-      </form>
+    </div>
       
     </div>
 
@@ -83,19 +97,23 @@ export default {
   
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length ; i++ ){
-          if(profile.specializations[i].name.includes(this.searchInput)){
-            return profile.specializations[i].name.includes(this.searchInput);
+          if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
+            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
           }  
         }
       })
-    }  
+    }
+    
   },
 
   mounted(){
     this.getData()
+    
   },
 
   methods: {
+
+    
 
     inputValue(){
       this.searchInput = this.searchInput
