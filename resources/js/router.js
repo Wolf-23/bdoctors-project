@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import MyHome from './pages/MyHome'
-import MyDoctors from './pages/MyDoctors'
+import MyHome from './pages/MyHome';
+import MyDoctors from './pages/MyDoctors';
+import MessageForm from './pages/MessageForm';
 Vue.use(VueRouter);
 
 
@@ -11,7 +12,7 @@ Vue.use(VueRouter);
 
 
 const router = new VueRouter({
-        mode: 'history',//modalità history(consigliata)
+        mode: 'history',
         routes:[
             {
                 path: '/',
@@ -24,7 +25,13 @@ const router = new VueRouter({
                 component: MyDoctors
             },
 
+            {
+                path: '/profile/:slug/message',
+                name:'MessageForm',
+                component: MessageForm
+            },
+
         ]
 })
 
-export default router;//diamo la possibilità di esportare router
+export default router;

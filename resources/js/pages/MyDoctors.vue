@@ -1,32 +1,30 @@
 <template>
-  <!-- <div v-if='' class="container mt-5">
+  <div class="container mt-5">
     <router-link :to="{name: 'MyHome'}">Torna alla Home</router-link>
     <div class="d-flex justify-content-between">
       <img src="" alt="" class="rounded-circle">
-      <h2>{{profiles.name}} {{profiles.surname}}</h2>
+      <h2>{{profile.name}} {{profile.surname}}</h2>
     </div>
     <div>
       <h3 class="mt-3">INFORMAZIONI</h3>
+      
       <div class="container mt-5">
         <h5>INDIRIZZO</h5>
-        <span></span>
+        <span>{{profile.address}}</span>
         <h5>SPECIALIZZAZIONI</h5>
-        <span></span>
+        <span v-for="(spec , index) in profile.specializations" :key = "index">{{spec.name}} </span>
         <h5>PRESTAZIONI OFFERTE</h5>
-        <span></span>
+        <span>{{profile.services}}</span>
       </div>
     </div>
     <div class="mt-5">
       <h3>CONTATTAMI</h3>
       <span>email</span>
       <span>telefono</span>
-      <button class="btn btn-primary">invia messaggio</button>
+      <router-link :to="{name:'MessageForm'}" class="btn btn-primary">invia messaggio</router-link>
     </div>
-  </div> -->
-  <div>
-      {{profile.name}}
-      <p>ciao</p>
   </div>
+  
 </template>
 
 <script>
