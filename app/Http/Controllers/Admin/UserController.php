@@ -120,10 +120,10 @@ class UserController extends Controller
                 $profileUpdate->specializations()->sync([]);
             }
 
-            $slug = $this->calculateSlug($data['title']);
-            $data['slug'] = $slug;
-            $profileUpdate->fill($data);
-            $profileUpdate->save();
+            // $slug = $this->calculateSlug($data['title']);
+            // $data['slug'] = $slug;
+            // $profileUpdate->fill($data);
+            // $profileUpdate->save();
 
             return redirect()->route('admin.home')->with('success', 'Hai modificato correttamente il tuo profilo');
     }
