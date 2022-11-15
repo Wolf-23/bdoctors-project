@@ -16,7 +16,7 @@
 
                 {{-- PHONE --}}
 
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">Telefono</label>
                 <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{old('phone', $profileEdit['phone'])}}"/>
 
                 @error('phone')
@@ -27,7 +27,7 @@
 
                 {{-- ADDRESS --}}
                 
-                <label for="address" class="form-label">Address</label>
+                <label for="address" class="form-label">Indirizzo</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', $profileEdit['address'])}}"/>
 
                 @error('address')
@@ -40,7 +40,7 @@
 
                 <div class="row d-flex my-2">
                     <div class="pic col-6">
-                        <label for="profile_pic">Profile Picture</label>
+                        <label for="profile_pic">Foto Profilo</label>
                         <div class="mb-2">
                             <input id="profile_pic" type="file" name="profile_pic" class="form-control-file @error('profile_pic') is-invalid @enderror">
                             @error('profile_pic')
@@ -77,10 +77,10 @@
                     </div>
                 </div>
                 {{-- SPECIALIZATION --}}  
-                <div class="my-2">Edit your specializations:</div>
+                <div class="my-2">Seleziona la tua Specializzazione:</div>
                     <div class="row ml-1">
                     @foreach ($specializations as $specialization)
-                    <div class="form-check col-3">
+                    <div class="form-check col-3"></div>
                         {{-- In caso di qualsiasi errore --}}
                         @if ($errors->any())
                         {{-- Se nell array old, è contenuto anche l'id corrente che sto ciclando, allora rendilo checked --}}
