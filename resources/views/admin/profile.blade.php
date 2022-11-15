@@ -27,7 +27,7 @@
 
                 {{-- ADDRESS --}}
                 
-                <label for="address" class="form-label">Indirizzo</label>
+                <label for="address" class="form-label mt-2">Indirizzo</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{old('address', $profileEdit['address'])}}"/>
 
                 @error('address')
@@ -80,7 +80,7 @@
                 <div class="my-2">Seleziona la tua Specializzazione:</div>
                     <div class="row ml-1">
                     @foreach ($specializations as $specialization)
-                    <div class="form-check col-3"></div>
+                    <div class="form-check col-3">
                         {{-- In caso di qualsiasi errore --}}
                         @if ($errors->any())
                         {{-- Se nell array old, è contenuto anche l'id corrente che sto ciclando, allora rendilo checked --}}
