@@ -28,10 +28,7 @@
                      name: 'Home',
                      routeLink: 'MyHome'
                  },
-                 {
-                     name: 'Doctors',
-                     routeLink: 'Doctors'
-                 },
+                 
              ]
          }
      }

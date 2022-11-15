@@ -19,8 +19,8 @@ const router = new VueRouter({
                 component: MyHome
             },
             {
-                path: '/:slug',
-                name:'slug',
+                path: '/profile/:slug',
+                name:'single-profile',
                 component: MyDoctors
             },
 

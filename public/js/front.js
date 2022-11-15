@@ -1915,9 +1915,6 @@ __webpack_require__.r(__webpack_exports__);
       menu: [{
         name: 'Home',
         routeLink: 'MyHome'
-      }, {
-        name: 'Doctors',
-        routeLink: 'Doctors'
       }]
     };
   }
@@ -1956,20 +1953,26 @@ __webpack_require__.r(__webpack_exports__);
   name: 'MyDoctors',
   data: function data() {
     return {
-      profiles: [],
+      profile: {},
       slug: null
     };
   },
+  mounted: function mounted() {
+    this.getSingleProfile();
+  },
   methods: {
-    getData: function getData() {
+    getSingleProfile: function getSingleProfile() {
       var _this = this;
       var slug = this.$route.params.slug;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users/' + slug).then(function (resolve) {
-        _this.profiles = resolve.data.results;
+      console.log(slug);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users' + slug).then(function (response) {
+        _this.profile = response.data.results;
+        console.log(_this.profile);
+      })["catch"](function (error) {
+        _this.$router.push({
+          name: 'not-found'
+        });
       });
-    },
-    mounted: function mounted() {
-      this.getData();
     }
   }
 });
@@ -1993,7 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
-      searchInput: ''
+      searchInput: '',
+      slug: null
     };
   },
   computed: {
@@ -2133,35 +2137,9 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "container mt-5"
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-between"
-  }, [_c("img", {
-    staticClass: "rounded-circle",
-    attrs: {
-      src: "",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.profiles.name) + " " + _vm._s(_vm.profiles.surname))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]);
+  return _c("div", [_vm._v("\n    " + _vm._s(_vm.profile) + "\n    "), _c("p", [_vm._v("ciao")])]);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", [_c("h3", {
-    staticClass: "mt-3"
-  }, [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
-    staticClass: "container mt-5"
-  }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _c("span"), _vm._v(" "), _c("h5", [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mt-5"
-  }, [_c("h3", [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("span", [_vm._v("email")]), _vm._v(" "), _c("span", [_vm._v("telefono")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary"
-  }, [_vm._v("invia messaggio")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -2277,9 +2255,9 @@ var render = function render() {
       staticClass: "btn btn-primary",
       attrs: {
         to: {
-          name: "slug",
+          name: "single-profile",
           params: {
-            slug: profile.name
+            slug: profile.slug
           }
         }
       }
@@ -18279,8 +18257,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'MyHome',
     component: _pages_MyHome__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/:slug',
-    name: 'slug',
+    path: '/profile/:slug',
+    name: 'single-profile',
     component: _pages_MyDoctors__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });

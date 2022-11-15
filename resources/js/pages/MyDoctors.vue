@@ -1,5 +1,6 @@
 <template>
-  <div class="container mt-5">
+  <!-- <div v-if='' class="container mt-5">
+    <router-link :to="{name: 'MyHome'}">Torna alla Home</router-link>
     <div class="d-flex justify-content-between">
       <img src="" alt="" class="rounded-circle">
       <h2>{{profiles.name}} {{profiles.surname}}</h2>
@@ -21,6 +22,10 @@
       <span>telefono</span>
       <button class="btn btn-primary">invia messaggio</button>
     </div>
+  </div> -->
+  <div>
+      {{profile}}
+      <p>ciao</p>
   </div>
 </template>
 
@@ -30,27 +35,35 @@ export default {
     name: 'MyDoctors',
     data() {
       return {
-        profiles: [],
+        profile: {},
         slug: null
       }
     },
 
+    mounted(){
+      this.getSingleProfile();
+    },
+
     methods: {
 
-      getData(){
+      getSingleProfile(){
 
-        let slug = this.$route.params.slug
+        const slug = this.$route.params.slug
+        console.log(slug)
 
-        axios.get('api/users/'+ slug)
-        .then( resolve => {
-        this.profiles = resolve.data.results; 
-                  
-        });
+        axios.get('/api/users' + slug)
+      .then( response => {
+        this.profile = response.data.results; 
+        console.log(this.profile) 
+      })
+        .catch((error => {
+          this.$router.push({name: 'not-found'})
+        }));
+
+        
       },
 
-      mounted(){
-      this.getData();
-    },
+      
 
     }
 

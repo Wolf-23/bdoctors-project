@@ -64,7 +64,7 @@
             <div class="card_body">
               <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
               <p class="card_text">{{profile.specializations[0].name}}</p>
-              <router-link class="btn btn-primary" :to="{name:'slug', params:{slug:profile.name}} ">Profilo</router-link>
+              <router-link class="btn btn-primary" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
             </div>
           </div>
         </div>
@@ -87,7 +87,8 @@ export default {
   data(){
     return {
       profiles: [],
-      searchInput: ''
+      searchInput: '',
+      slug: null,
     }
   },
   
