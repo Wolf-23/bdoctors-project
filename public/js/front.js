@@ -2069,7 +2069,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       profiles: [],
       searchInput: '',
-      slug: null
+      slug: null,
+      reviewsCheck: null,
+      majReviewsCheck: null,
+      checkby: []
     };
   },
   computed: {
@@ -2078,11 +2081,12 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase()) && profile.reviews.length > _this.reviewsCheck;
           }
         }
       });
-    }
+    },
+    filteredRew: function filteredRew() {}
   },
   mounted: function mounted() {
     this.getData();
@@ -2095,6 +2099,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this2.profiles = resolve.data.results;
+        console.log(_this2.profiles);
       });
     }
   }
@@ -2486,19 +2491,19 @@ var render = function render() {
     }
   }, [_vm._v("1")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "1"
+      value: "2"
     }
   }, [_vm._v("2")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "1"
+      value: "3"
     }
   }, [_vm._v("3")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "1"
+      value: "4"
     }
   }, [_vm._v("4")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "1"
+      value: "5"
     }
   }, [_vm._v("5")])]), _vm._v(" "), _c("label", {
     attrs: {
@@ -2601,7 +2606,12 @@ var render = function render() {
     }, [_c("div", [_c("router-link", {
       staticClass: "list-group-item list-group-item-action list_profile",
       attrs: {
-        to: "#"
+        to: {
+          name: "single-profile",
+          params: {
+            slug: profile.slug
+          }
+        }
       }
     }, [_c("div", {
       staticClass: "img-wrapper_results"
@@ -2620,9 +2630,47 @@ var render = function render() {
     staticClass: "ourDoctors"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
-  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.reviewsCheck,
+      expression: "reviewsCheck"
+    }],
+    attrs: {
+      name: "",
+      id: ""
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.reviewsCheck = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "0"
+    }
+  }), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1+")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("3+")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "5"
+    }
+  }, [_vm._v("5+")])]), _vm._v(" "), _c("div", {
     staticClass: "my_cards"
-  }, _vm._l(_vm.profiles, function (profile, index) {
+  }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "my_card_wrapper col-2 ml-5"

@@ -18,7 +18,7 @@
         <div style="" class="out-doctors">    
         <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
           <div>
-            <router-link to="#" class="list-group-item list-group-item-action list_profile">
+            <router-link :to="{name:'single-profile', params:{slug:profile.slug}}" class="list-group-item list-group-item-action list_profile">
 
               <div class="img-wrapper_results">
                 <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
@@ -55,8 +55,15 @@
   </div>
   <div class="ourDoctors">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
+      <select v-model="reviewsCheck" name="" id="">
+        <option value="0"></option>
+        <option value="1">1+</option>
+        <option value="3">3+</option>
+        <option value="5">5+</option>
+      </select>
+      
       <div class="my_cards">
-        <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in profiles" :key="index">
+        <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
           <div class="my_card">
             <div class="img-wrapper">
               <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
@@ -89,6 +96,9 @@ export default {
       profiles: [],
       searchInput: '',
       slug: null,
+      reviewsCheck: null,
+      majReviewsCheck: null,
+      checkby: []
     }
   },
   
@@ -99,10 +109,20 @@ export default {
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length ; i++ ){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-          }  
+            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase()) &&
+            profile.reviews.length > this.reviewsCheck;
+          }
+
+          
         }
-      })
+      });
+    },
+
+    filteredRew: function() {
+
+      
+
+      
     }
     
   },
@@ -114,8 +134,6 @@ export default {
 
   methods: {
 
-    
-
     inputValue(){
       this.searchInput = this.searchInput
     }, 
@@ -125,7 +143,10 @@ export default {
       axios.get('api/users')
       .then( resolve => {
         this.profiles = resolve.data.results;  
+        console.log(this.profiles)
       });
+
+      
     },
   }
 };
