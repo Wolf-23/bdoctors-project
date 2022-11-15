@@ -2009,22 +2009,39 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profile: [],
-      slug: null
+      name: null,
+      surname: null,
+      review_text: null,
+      vote: 4,
+      idProfile: null
     };
   },
   mounted: function mounted() {
     this.getSingleProfile();
   },
   methods: {
-    getSingleProfile: function getSingleProfile() {
+    sendreview: function sendreview() {
       var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/review/', {
+        'name': this.name,
+        'surname': this.surname,
+        'review_text': this.review_text,
+        'vote': this.vote,
+        'user_id': this.idProfile
+      }).then(function (param) {
+        _this.status = param.data.status;
+      });
+    },
+    getSingleProfile: function getSingleProfile() {
+      var _this2 = this;
       var slug = this.$route.params.slug;
       console.log(slug);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/' + slug).then(function (response) {
-        _this.profile = response.data.resolve;
-        console.log(_this.profile);
+        _this2.profile = response.data.resolve;
+        _this2.idProfile = response.data.resolve.id;
+        console.log(_this2.profile);
       })["catch"](function (error) {
-        _this.$router.push({
+        _this2.$router.push({
           name: 'not-found'
         });
       });
@@ -2383,7 +2400,135 @@ var render = function render() {
         name: "MessageForm"
       }
     }
-  }, [_vm._v("invia messaggio")])], 1)], 1);
+  }, [_vm._v("invia messaggio")])], 1), _vm._v(" "), _c("div", [_c("form", {
+    staticClass: "d-flex flex-column col-6",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.sendreview();
+      }
+    }
+  }, [_c("label", {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Nome")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.name,
+      expression: "name"
+    }],
+    attrs: {
+      type: "text",
+      name: "name",
+      id: "name"
+    },
+    domProps: {
+      value: _vm.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.name = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "surname"
+    }
+  }, [_vm._v("Cognome")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.surname,
+      expression: "surname"
+    }],
+    attrs: {
+      type: "text",
+      name: "surname",
+      id: "surname"
+    },
+    domProps: {
+      value: _vm.surname
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.surname = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.vote,
+      expression: "vote"
+    }],
+    attrs: {
+      name: "",
+      id: ""
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.vote = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("2")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("3")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("4")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("5")])]), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "review_text"
+    }
+  }, [_vm._v("Recensione")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.review_text,
+      expression: "review_text"
+    }],
+    attrs: {
+      name: "review_text",
+      id: "review_text"
+    },
+    domProps: {
+      value: _vm.review_text
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.review_text = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Invia")])])])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

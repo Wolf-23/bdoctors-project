@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Message;
+use App\Review;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
-        return response()->json(
-            [
-                'success' => true,
-                'results' => $messages
-            ]
-        );
+        //
     }
 
     /**
@@ -31,7 +25,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -41,16 +35,17 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
+        
         $data = request()->all();
-       
-        $newMessage = new Message();
-        $newMessage->fill($data);
-        $newMessage->save();
+        \Log::info($data);
+        $newRev = new Review();
+        $newRev->fill($data);
+        $newRev->save();
 
        return response()->json([
             'status' => true,
-            'response' => $newMessage
+            'response' => $newRev
        ]);
 
     }
