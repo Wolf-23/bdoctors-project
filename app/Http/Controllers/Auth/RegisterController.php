@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Specialization;
@@ -70,17 +71,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
+         
         $user = User::create([
             'name' => $data['name'],
-            'surname' => $data['surname'],
+            'surname' => $data['surname'], 
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user['slug'] = $this->calculateSlug($data['name'], $data['surname']);
+        $user->save();
         $user->specializations()->sync($data['specializations']);
+        
 
         return $user;
+    }
+
+    protected function calculateSlug($name, $surname) {
+
+        //inizio calcolo dello slug
+        $slug = Str::slug($name . '-' . $surname , '-');
+
+        $checkUser = User::where('slug', $slug)->first();
+
+        $counter = 1;
+
+        while($checkUser) {
+            $slug = Str::slug($name . '-' . $surname . '-' . $counter, '-');
+            $counter++;
+            $checkUser = User::where('slug', $slug)->first();
+        }
+        
+
+        return $slug;
+
     }
 
 

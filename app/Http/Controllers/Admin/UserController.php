@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str; 
 use App\Message;
 use App\Review;
 use App\Specialization;
@@ -118,6 +119,12 @@ class UserController extends Controller
                 // Faccio una sync vuota se non c'è nessun dato
                 $profileUpdate->specializations()->sync([]);
             }
+
+            $slug = $this->calculateSlug($data['title']);
+            $data['slug'] = $slug;
+            $profileUpdate->fill($data);
+            $profileUpdate->save();
+
             return redirect()->route('admin.home')->with('success', 'Hai modificato correttamente il tuo profilo');
     }
 
@@ -141,4 +148,24 @@ class UserController extends Controller
         $profileDelete->delete();
         return redirect()->route('register')->with('danger', 'Hai eliminato il profilo correttamente');
     }
+
+    // protected function calculateSlug($title) {
+
+    //     //inizio calcolo dello slug
+    //     $slug = Str::slug($title, '-');
+
+    //     $checkUser = User::withTrashed()->where('slug', $slug)->first();
+
+    //     $counter = 1;
+
+    //     while($checkUser) {
+    //         $slug = Str::slug($title . '-' . $counter, '-');
+    //         $counter++;
+    //         $checkUser = User::withTrashed()->where('slug', $slug)->first();
+    //     }
+    //     //fine calcolo dello slug
+
+    //     return $slug;
+
+    // }
 }

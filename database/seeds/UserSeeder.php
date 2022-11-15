@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Girolamo',
                 'surname' => 'De Prisco',
+                'slug' =>  '', 
                 'email' =>  'girolamo@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Veneto, 3',
@@ -29,6 +31,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Sandra',
                 'surname' => 'Iannone',
+                'slug' =>  '',
                 'email' => 'sandra@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Roma, 1',
@@ -40,6 +43,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Marilena',
                 'surname' => 'Fiorentini',
+                'slug' =>  '',
                 'email' => 'marilena@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'piazza Delle Erbe, 25',
@@ -51,6 +55,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Mario',
                 'surname' => 'Rossi',
+                'slug' =>  '',
                 'email' => 'mario@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Sicilia, 2',
@@ -62,6 +67,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Federico',
                 'surname' => 'Masotti',
+                'slug' =>  '',
                 'email' => 'federico@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Garibaldi, 5',
@@ -73,6 +79,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Gianluigi',
                 'surname' => 'Fortunato',
+                'slug' =>  '',
                 'email' => 'gianluigi@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'piazza Verdi, 15',
@@ -84,6 +91,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Marco',
                 'surname' => 'Verdi',
+                'slug' =>  '',
                 'email' => 'marco@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'Via Milano, 17',
@@ -98,6 +106,7 @@ class UserSeeder extends Seeder
                 $newuser->name = $user['name'];
                 $newuser->surname = $user['surname'];
                 $newuser->email = $user['email'];
+                $newuser->slug = Str::slug($user['slug']);
                 $newuser->password = $user['password'];
                 $newuser->address = $user['address'];
                 $newuser->cv = $user['cv'];
