@@ -11,6 +11,7 @@
                     <h6 class="card-subtitle mb-2 text-muted">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
                     <h6 class="card-text">Prezzo: {{  $sponsorship->price }} €</h6>
                     <a href="#" class="card-link btn btn-success">Sponsorizza il tuo profilo</a>
+                    <a href="{{route('admin.home')}}" class="card-link btn btn-primary">Torna alla Home</a>
                 </div>
             </div>
         @endforeach

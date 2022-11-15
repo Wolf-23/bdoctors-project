@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <a href="{{route('admin.home', [Auth::user()->name])}}" class="btn btn-primary mb-3">Torna alla Home</a>
+    <a href="{{route('admin.reviews.index')}}" class="btn btn-primary mb-3">Torna alle recensioni</a>
     <h1>Hai ricevuto una recensione da: {{$review->name}} {{$review->surname}}</h1>
     <h2>Voto ricevuto {{$review->vote}}</h2>
     <h3>Testo della recensione:</h3>

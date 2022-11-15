@@ -5,6 +5,7 @@
         <h2>Ricevuto in data {{$message->created_at}}</h2>
         <h4 class="text-secondary"><span class="text-dark">Oggetto:</span> {{$message->title}}</h4>
         <p class="text-secondary"><span class="font-weight-bold text-dark">Testo del messaggio:</span> {{$message->message_text}}</p>
+        <a href="{{route('admin.messages.index')}}" class="card-link btn btn-primary">Torna ai Messaggi</a>
         <a href="mailto:{{ $message->email }}" class="btn btn-primary">Rispondi</a>
     </div>
 @endsection
