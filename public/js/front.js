@@ -1947,7 +1947,47 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MessageForm'
+  name: 'MessageForm',
+  data: function data() {
+    return {
+      name: '',
+      surname: '',
+      email: '',
+      title: '',
+      messaggio: '',
+      status: '',
+      idProfile: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getIdProfile();
+  },
+  methods: {
+    sendMessage: function sendMessage() {
+      var _this = this;
+      axios.post('/api/users/message/', {
+        'name': this.name,
+        'surname': this.surname,
+        'title': this.title,
+        'email': this.email,
+        'message_text': this.messaggio,
+        'user_id': this.idProfile
+      }).then(function (param) {
+        _this.status = param.data.status;
+      });
+    },
+    getIdProfile: function getIdProfile() {
+      var _this2 = this;
+      var slug = this.$route.params.slug;
+      console.log(slug);
+      axios.get('/api/users/' + slug).then(function (response) {
+        _this2.profile = response.data.resolve;
+        _this2.idProfile = response.data.resolve.id;
+        console.log(_this2.idProfile);
+        console.log(_this2.profile);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2165,39 +2205,124 @@ var render = function render() {
       "for": "name"
     }
   }, [_vm._v("Nome")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.name,
+      expression: "name"
+    }],
     attrs: {
       type: "text",
       name: "name",
       id: "name"
+    },
+    domProps: {
+      value: _vm.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.name = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
       "for": "surname"
     }
   }, [_vm._v("Cognome")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.surname,
+      expression: "surname"
+    }],
     attrs: {
       type: "text",
       name: "surname",
       id: "surname"
+    },
+    domProps: {
+      value: _vm.surname
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.surname = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.email,
+      expression: "email"
+    }],
+    attrs: {
+      type: "email",
+      name: "email",
+      id: "email"
+    },
+    domProps: {
+      value: _vm.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.email = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
       "for": "title"
     }
-  }, [_vm._v("Tolo")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Title")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.title,
+      expression: "title"
+    }],
     attrs: {
       type: "text",
       name: "title",
       id: "title"
+    },
+    domProps: {
+      value: _vm.title
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.title = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
       "for": "message_text"
     }
   }, [_vm._v("Messaggio")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.messaggio,
+      expression: "messaggio"
+    }],
     attrs: {
       name: "message_text",
       id: "message_text"
+    },
+    domProps: {
+      value: _vm.messaggio
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.messaggio = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("button", {
     attrs: {

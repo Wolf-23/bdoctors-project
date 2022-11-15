@@ -31,7 +31,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -41,8 +41,18 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $data = request()->all();
+        \Log::info($data);
+        $newMessage = new Message();
+        $newMessage->fill($data);
+        $newMessage->save();
+
+       return response()->json([
+            'status' => true,
+            'response' => $newMessage
+       ]);
+
     }
 
     /**
