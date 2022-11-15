@@ -18,6 +18,6 @@ class SpecializationUserSeeder extends Seeder
         foreach ($users as $user) {
             $randomSpec = rand(0, count($specializations));
             $user->specializations()->attach($randomSpec);
-        }
+        } 
     }
 }
