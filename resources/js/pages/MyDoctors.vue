@@ -24,7 +24,7 @@
     </div>
   </div> -->
   <div>
-      {{profile}}
+      {{profile.name}}
       <p>ciao</p>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
     name: 'MyDoctors',
     data() {
       return {
-        profile: {},
+        profile: [],
         slug: null
       }
     },
@@ -48,12 +48,12 @@ export default {
 
       getSingleProfile(){
 
-        const slug = this.$route.params.slug
+        let slug = this.$route.params.slug
         console.log(slug)
 
-        axios.get('/api/users' + slug)
+        axios.get('/api/users/' + slug )
       .then( response => {
-        this.profile = response.data.results; 
+        this.profile = response.data.resolve; 
         console.log(this.profile) 
       })
         .catch((error => {

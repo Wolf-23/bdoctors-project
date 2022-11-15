@@ -1953,7 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'MyDoctors',
   data: function data() {
     return {
-      profile: {},
+      profile: [],
       slug: null
     };
   },
@@ -1965,8 +1965,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       var slug = this.$route.params.slug;
       console.log(slug);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users' + slug).then(function (response) {
-        _this.profile = response.data.results;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/' + slug).then(function (response) {
+        _this.profile = response.data.resolve;
         console.log(_this.profile);
       })["catch"](function (error) {
         _this.$router.push({
@@ -2137,7 +2137,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.profile) + "\n    "), _c("p", [_vm._v("ciao")])]);
+  return _c("div", [_vm._v("\n    " + _vm._s(_vm.profile.name) + "\n    "), _c("p", [_vm._v("ciao")])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -18342,7 +18342,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

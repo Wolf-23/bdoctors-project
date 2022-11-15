@@ -54,12 +54,12 @@ class UserController extends Controller
      */
     public function show($slug)
     {
-        $user = User::where('name' , $slug)->first();
+        $user = User::where('slug' , $slug)->first();
 
         if($user){
             return response()->json([
                 'success' => true,
-                'result' => $user
+                'resolve' => $user
             ]);
         }else {
             return response()->json([

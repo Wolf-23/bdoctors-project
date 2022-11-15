@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Girolamo',
                 'surname' => 'De Prisco',
-                'slug' =>  '', 
+                'slug' =>  'girolamo-deprisco', 
                 'email' =>  'girolamo@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Veneto, 3',
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Sandra',
                 'surname' => 'Iannone',
-                'slug' =>  '',
+                'slug' =>  'sandra-iannone',
                 'email' => 'sandra@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Roma, 1',
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Marilena',
                 'surname' => 'Fiorentini',
-                'slug' =>  '',
+                'slug' =>  'marlinea-fiorentini',
                 'email' => 'marilena@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'piazza Delle Erbe, 25',
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Mario',
                 'surname' => 'Rossi',
-                'slug' =>  '',
+                'slug' =>  'mario-rossi',
                 'email' => 'mario@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Sicilia, 2',
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Federico',
                 'surname' => 'Masotti',
-                'slug' =>  '',
+                'slug' =>  'federico-masotti',
                 'email' => 'federico@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'via Garibaldi, 5',
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Gianluigi',
                 'surname' => 'Fortunato',
-                'slug' =>  '',
+                'slug' =>  'gianluigi-fortunato',
                 'email' => 'gianluigi@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'piazza Verdi, 15',
@@ -91,7 +91,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Marco',
                 'surname' => 'Verdi',
-                'slug' =>  '',
+                'slug' =>  'marco-verdi',
                 'email' => 'marco@gmail.com',
                 'password'  => Hash::make('testtest'),
                 'address' => 'Via Milano, 17',
