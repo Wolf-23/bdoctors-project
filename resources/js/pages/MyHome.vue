@@ -55,12 +55,17 @@
   </div>
   <div class="ourDoctors mt-5">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
+      <div class="container mb-3">
+        <div>
+          <label for="mediaVoto">Voto: {{mediaVoto}}</label>
+          <input type="range" v-model="mediaVoto" min="0" max="5" name="mediaVoto" id="mediaVoto">
+        </div>
+       <div>
+         <label for="reviewsRange">Numero di recensioni:{{reviewsCheck}}</label>
+         <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
+       </div>
 
-      <label for="mediaVoto">Voto: {{mediaVoto}}</label>
-      <input type="range" v-model="mediaVoto" min="0" max="5" name="mediaVoto" id="mediaVoto">
-      
-      <label for="reviewsRange">{{reviewsCheck}}</label>
-      <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
+      </div>
 
       <div class="my_cards pb-5">
         <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
@@ -185,7 +190,12 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+  input{
+    border-radius: 10px;
+    outline-color: #3da9fc;
+    border: none;
+  }
+  
 </style>
 
