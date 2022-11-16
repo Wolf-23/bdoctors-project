@@ -2085,16 +2085,18 @@ __webpack_require__.r(__webpack_exports__);
             return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase()) && profile.reviews.length >= _this.reviewsCheck;
           }
         }
-        for (var _i = 0; _i < _this.profiles.length; _i++) {
-          var divisore = _this.profiles[_i].reviews.length;
-          var somma = 0;
-          var x = 0;
-          while (x < divisore) {
-            somma += _this.profiles[_i].reviews[x].vote;
-            x++;
-          }
-          _this.mediaVotoProfilo = Math.floor(somma / divisore);
-        }
+
+        // for(let i = 0; i < this.profiles.length; i++){
+        //   let divisore = this.profiles[i].reviews.length
+        //   let somma = 0;
+        //   let x = 0;
+
+        //   while( x < divisore ){
+        //     somma += this.profiles[i].reviews[x].vote;
+        //     x++
+        //   } 
+        //   this.mediaVotoProfilo = Math.floor(somma / divisore) 
+        // }
       });
     },
     filteredVote: function filteredVote() {
@@ -2121,7 +2123,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this2.profiles = resolve.data.results;
-        _this2.avgVote = resolve.data.results;
+        _this2.avgVote = resolve.data.media;
+        console.log(_this2.profiles);
+        console.log(_this2.avgVote);
       });
     }
   }
@@ -18891,7 +18895,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

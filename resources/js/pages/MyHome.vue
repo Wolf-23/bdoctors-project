@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div>
   <div class="home_jumbo">
     
     <div class="px-5 left_side ">
@@ -76,9 +76,7 @@
           </div>
         </div>
       </div>
-      
-    
-  </div>
+    </div>
 </div>
 
 
@@ -109,7 +107,8 @@ export default {
     filteredSearch: function(){
       
       return this.profiles.filter(profile => {
-        for(let i = 0 ; i < profile.specializations.length ; i++ ){
+        
+        for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())
             && profile.reviews.length >= this.reviewsCheck;
@@ -117,20 +116,20 @@ export default {
         }   
         
 
-        for(let i = 0; i < this.profiles.length; i++){
-          let divisore = this.profiles[i].reviews.length
-          let somma = 0;
-          let x = 0;
+        
+        
 
-          while( x < divisore ){
-            somma += this.profiles[i].reviews[x].vote;
-            x++
-          }
-          
-          
-          this.mediaVotoProfilo = Math.floor(somma / divisore)
-          
-        }
+        // for(let i = 0; i < this.profiles.length; i++){
+        //   let divisore = this.profiles[i].reviews.length
+        //   let somma = 0;
+        //   let x = 0;
+
+        //   while( x < divisore ){
+        //     somma += this.profiles[i].reviews[x].vote;
+        //     x++
+        //   } 
+        //   this.mediaVotoProfilo = Math.floor(somma / divisore) 
+        // }
           
 
       });
@@ -175,7 +174,11 @@ export default {
       axios.get('api/users')
       .then( resolve => {
         this.profiles = resolve.data.results;
-        this.avgVote = resolve.data.results;
+        this.avgVote = resolve.data.media;
+        console.log(this.profiles)
+        console.log(this.avgVote)
+        
+        
         
       });
 
