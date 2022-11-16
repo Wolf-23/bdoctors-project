@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <MainComponent />
+    <MainComponent class="main_color"/>
     
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+  .main_color{
+    background-color: #90b4ce;
+    height: 100%;
+  }
 </style>

@@ -7,11 +7,10 @@
         border-radius: 20px;
         border-bottom-right-radius: 50px;
         width: 70%;
-        padding: 20px 0px 20px 0px;
+        padding: 50px 0px 20px 0px;
         margin: auto;
         height: 600px;
         display: flex;
-        margin-top: 50px;
         
         background-image: url('https://img.freepik.com/free-vector/clean-medical-background-vector_53876-140865.jpg?w=1480&t=st=1668387031~exp=1668387631~hmac=d27fe39e4e254822272b7ed286b6c59a64daf5d359d1fd5d35c22b2cd9b4a93f');
         background-size: cover;
@@ -153,22 +152,23 @@
         border-top: .1px solid rgb(216, 216, 216);
         border-bottom: .1px solid rgb(216, 216, 216);
         padding-bottom: 100px;
-        margin-top: 50px;
         .my_cards {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: scroll;
-            &::-webkit-scrollbar {
-                width: 3px;               /* width of the entire scrollbar */
+            &::-webkit-scrollbar { 
+                height: 2px;
+                max-width: 2px;
             }
             
             &::-webkit-scrollbar-track {
-              background: #F8FAFC;        /* color of the tracking area */
+              background: #90b4ce;        /* color of the tracking area */
             }
             
             &::-webkit-scrollbar-thumb {
-              background-image: radial-gradient(#DDF8F6);    /* color of the scroll thumb */
-              border-radius: 30px;       /* roundness of the scroll thumb */
+              background-color: whitesmoke;    /* color of the scroll thumb */
+              border-radius: 50%;       /* roundness of the scroll thumb */
+              opacity: 1;
             }
             
             .my_card_wrapper {
@@ -178,8 +178,8 @@
                     width: 200px;
                     border: .1px solid rgb(216, 216, 216);
                     border-radius: 20px;
-                    padding: 0;
                     overflow: hidden;
+                    background-color: whitesmoke;
                     
     
                     .img-wrapper {
