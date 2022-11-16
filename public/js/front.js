@@ -2071,7 +2071,6 @@ __webpack_require__.r(__webpack_exports__);
       searchInput: '',
       slug: null,
       reviewsCheck: 0,
-      majReviewsCheck: null,
       mediaVoto: 0,
       mediaVotoProfilo: null,
       avgVote: ['']
@@ -2083,9 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            if (profile.reviews.length > _this.reviewsCheck) {
-              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
-            }
+            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase()) && profile.reviews.length >= _this.reviewsCheck;
           }
         }
         for (var _i = 0; _i < _this.profiles.length; _i++) {
@@ -2096,8 +2093,6 @@ __webpack_require__.r(__webpack_exports__);
             somma += _this.profiles[_i].reviews[x].vote;
             x++;
           }
-          console.log('CICLO GRANDE' + _i);
-          console.log(divisore, somma);
           _this.mediaVotoProfilo = Math.floor(somma / divisore);
         }
       });
@@ -2111,7 +2106,6 @@ __webpack_require__.r(__webpack_exports__);
           somma = +this.profiles[i].reviews[x].vote;
           x++;
         }
-        console.log('CICLO GRANDE' + i);
         return divisore / somma;
       }
     }
@@ -2127,9 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this2.profiles = resolve.data.results;
-        _this2.avgVote = resolve.data.media;
-        console.log(_this2.profiles);
-        console.log(_this2.avgVote);
+        _this2.avgVote = resolve.data.results;
       });
     }
   }
@@ -2657,8 +2649,7 @@ var render = function render() {
       staticClass: "specializations_search_results"
     }, [_c("span", [_vm._v(_vm._s(profile.specializations[0].name))])])])], 1)]);
   }), 0)])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
-    staticClass: "ourDoctors",
-    style: _vm.filteredSearch.length == 0 ? "height:500px;" : ""
+    staticClass: "ourDoctors"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
   }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("label", {
@@ -18714,15 +18705,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/pages/MyHome.vue ***!
   \***************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MyHome_vue_vue_type_template_id_c98e7418_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyHome.vue?vue&type=template&id=c98e7418&scoped=true& */ "./resources/js/pages/MyHome.vue?vue&type=template&id=c98e7418&scoped=true&");
 /* harmony import */ var _MyHome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyHome.vue?vue&type=script&lang=js& */ "./resources/js/pages/MyHome.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _MyHome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _MyHome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -18752,7 +18742,7 @@ component.options.__file = "resources/js/pages/MyHome.vue"
 /*!****************************************************************!*\
   !*** ./resources/js/pages/MyHome.vue?vue&type=script&lang=js& ***!
   \****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18901,7 +18891,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

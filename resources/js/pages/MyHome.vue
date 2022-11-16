@@ -53,7 +53,7 @@
       
     </div>
   </div>
-  <div class="ourDoctors" :style="filteredSearch.length == 0 ? 'height:500px;' : ''">
+  <div class="ourDoctors">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
 
       <label for="mediaVoto">Voto: {{mediaVoto}}</label>
@@ -97,7 +97,7 @@ export default {
       searchInput: '',
       slug: null,
       reviewsCheck: 0,
-      majReviewsCheck: null,
+
       mediaVoto: 0,
       mediaVotoProfilo: null,
       avgVote: [''],
@@ -111,9 +111,8 @@ export default {
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length ; i++ ){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-            if(profile.reviews.length > this.reviewsCheck){
-                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase()) 
-            }
+            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())
+            && profile.reviews.length >= this.reviewsCheck;
           }
         }   
         
@@ -127,8 +126,8 @@ export default {
             somma += this.profiles[i].reviews[x].vote;
             x++
           }
-          console.log('CICLO GRANDE' + i)
-          console.log(divisore, somma)
+          
+          
           this.mediaVotoProfilo = Math.floor(somma / divisore)
           
         }
@@ -148,7 +147,7 @@ export default {
             somma =+ this.profiles[i].reviews[x].vote;
             x++
           }
-          console.log('CICLO GRANDE' + i)
+          
           return (divisore / somma)
         }
 
@@ -175,11 +174,8 @@ export default {
                 
       axios.get('api/users')
       .then( resolve => {
-        this.profiles = resolve.data.results; 
-        this.avgVote = resolve.data.media; 
-        
-        console.log(this.profiles)
-        console.log(this.avgVote)
+        this.profiles = resolve.data.results;
+        this.avgVote = resolve.data.results;
         
       });
 
