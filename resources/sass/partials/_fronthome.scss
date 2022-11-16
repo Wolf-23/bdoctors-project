@@ -158,6 +158,18 @@
             display: flex;
             flex-wrap: nowrap;
             overflow-x: scroll;
+            &::-webkit-scrollbar {
+                width: 3px;               /* width of the entire scrollbar */
+            }
+            
+            &::-webkit-scrollbar-track {
+              background: #F8FAFC;        /* color of the tracking area */
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-image: radial-gradient(#DDF8F6);    /* color of the scroll thumb */
+              border-radius: 30px;       /* roundness of the scroll thumb */
+            }
             
             .my_card_wrapper {
                 
@@ -190,6 +202,7 @@
             }
             
         }
+
     }
     
 

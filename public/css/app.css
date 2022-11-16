@@ -11070,6 +11070,23 @@ a.text-dark:focus {
   overflow-x: scroll;
 }
 
+.ourDoctors .my_cards::-webkit-scrollbar {
+  width: 3px;
+  /* width of the entire scrollbar */
+}
+
+.ourDoctors .my_cards::-webkit-scrollbar-track {
+  background: #F8FAFC;
+  /* color of the tracking area */
+}
+
+.ourDoctors .my_cards::-webkit-scrollbar-thumb {
+  background-image: radial-gradient(#DDF8F6);
+  /* color of the scroll thumb */
+  border-radius: 30px;
+  /* roundness of the scroll thumb */
+}
+
 .ourDoctors .my_cards .my_card_wrapper .my_card {
   width: 200px;
   border: 0.1px solid rgb(216, 216, 216);
