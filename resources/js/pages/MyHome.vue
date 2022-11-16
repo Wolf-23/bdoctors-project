@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-5">
   <div class="home_jumbo">
     
     <div class="px-5 left_side ">
@@ -8,12 +8,12 @@
       </div>
       
         <h1 class="site_logo">BDoctors!*!</h1>
-        <h1>Torva i migliori specialisti di Milano.</h1>
+        <h1>Torva i migliori specialisti della tua città!</h1>
       
       <div class="home_search" style="position:relative;" role="search">
 
-        <input v-model="searchInput" class="input_search" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn_search" type="">Search</button>
+        <input v-model="searchInput" class="input_search" type="text" placeholder="cerca..." aria-label="Search">
+        <button class="btn_search" type="">Cerca</button>
 
         <div style="" class="out-doctors">    
         <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
@@ -42,8 +42,8 @@
 
     <div class="right_side">
       <div class="slogan">
-        <h1>Sei stufo di fare la Fila?</h1>
-        <p>Affidati a <b>Bdoctors</b>, i migliori specialisti di Milano.</p>
+        <h1>Sei stufo di fare la fila?</h1>
+        <p>Affidati a <b>Bdoctors</b>, i migliori specialisti della tua città!</p>
         <p class="text-square"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?</p>
         <p>Dr. Girolamo Visconti</p>
       </div>
@@ -53,7 +53,7 @@
       
     </div>
   </div>
-  <div class="ourDoctors">
+  <div class="ourDoctors mt-5">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
 
       <label for="mediaVoto">Voto: {{mediaVoto}}</label>
@@ -62,9 +62,9 @@
       <label for="reviewsRange">{{reviewsCheck}}</label>
       <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
 
-      <div class="my_cards">
+      <div class="my_cards pb-5">
         <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
-          <div class="my_card">
+          <div class="my_card pb-2">
             <div class="img-wrapper">
               <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
             </div>

@@ -1,22 +1,25 @@
 <template>
-  <div>
-    <form @submit.prevent='sendMessage()' class="d-flex flex-column col-6">
-        <label for="name">Nome</label>
+  <div class="container-fluid eb_width">
+    <h1 class="pt-5 ml-3">Scrivimi</h1>
+    <form @submit.prevent='sendMessage'>
+      <div class="d-flex flex-column col-6">
+        <label for="name" class="mt-5 textGray">Nome</label>
         <input type="text" v-model="name" name="name" id="name">
 
-        <label for="surname">Cognome</label>
+        <label class="mt-3 textGray" for="surname">Cognome</label>
         <input type="text" v-model="surname" name="surname" id="surname">
 
-        <label for="email">Email</label>
+        <label class="mt-3 textGray" for="email">Email</label>
         <input type="email" v-model="email" name="email" id="email">
 
 
-        <label for="title">Title</label>
+        <label class="mt-3 textGray" for="title">Oggetto</label>
         <input type="text" v-model="title" name="title" id="title">
 
-        <label for="message_text">Messaggio</label>
-        <textarea v-model="messaggio" name="message_text"  id="message_text"></textarea>
-        <button type="submit">Invia</button>
+        <label class="mt-3 textGray" for="message_text">Messaggio</label>
+        <textarea v-model="messaggio" name="message_text"  id="message_text" rows="6"></textarea>
+      </div>  
+        <button type="submit" :disabled="sending" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
     </form>
   </div>
 </template>
@@ -33,7 +36,8 @@ export default {
             title: '',
             messaggio: '',
             status: '',
-            idProfile: ''
+            idProfile: '',
+            sending: false
 
         }
     },
@@ -76,6 +80,20 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+   .eb_width{
+      height: calc(100vh - 71px);
+      overflow-y: auto;
+      input, textarea{
+        border-radius: 10px;
+        outline-color: #3da9fc;
+        border: none;
+      }
+      h1{
+        color: #094067
+      }
+      .textGray{
+        color:#5f6c7b;
+      }
+    }
 </style>
