@@ -7,7 +7,6 @@
     </div>
     <div>
       <h3 class="mt-3">INFORMAZIONI</h3>
-      
       <div class="container mt-5">
         <h5>INDIRIZZO</h5>
         <span>{{profile.address}}</span>
@@ -25,26 +24,25 @@
     </div>
 
     <div>
-    <form @submit.prevent='sendreview()' class="d-flex flex-column col-6">
-        <label for="name">Nome</label>
-        <input type="text" v-model="name" name="name" id="name">
+      <form @submit.prevent='sendreview()' class="d-flex flex-column col-6">
+          <label for="name">Nome</label>
+          <input type="text" v-model="name" name="name" id="name">
 
-        <label for="surname">Cognome</label>
-        <input type="text" v-model="surname" name="surname" id="surname">
+          <label for="surname">Cognome</label>
+          <input type="text" v-model="surname" name="surname" id="surname">
 
-        <select v-model='vote' name="" id="">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label for="review_text">Recensione</label>
-        <textarea v-model="review_text" name="review_text"  id="review_text"></textarea>
-        <button type="submit">Invia</button>
-    </form>
-  </div>
-
+          <select v-model='vote' name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <label for="review_text">Recensione</label>
+          <textarea v-model="review_text" name="review_text"  id="review_text"></textarea>
+          <button type="submit">Invia</button>
+      </form>
+    </div>
   </div>
   
 </template>
@@ -56,27 +54,20 @@ export default {
     data() {
       return {
         profile: [],
-        
-
         name: null,
         surname: null,
         review_text: null,
         vote: 4,
         idProfile: null
-
       }
     },
 
     mounted(){
       this.getSingleProfile();
-    
     },
 
     methods: {
-
       sendreview(){
-        
-        
         axios.post('/api/users/review/', { 
             'name': this.name,
             'surname': this.surname,
@@ -89,27 +80,19 @@ export default {
       },
 
       getSingleProfile(){
-
         let slug = this.$route.params.slug
         console.log(slug)
-        
         axios.get('/api/users/' + slug)
-      .then( response => {
-        this.profile = response.data.resolve;
-        this.idProfile = response.data.resolve.id 
-        console.log(this.profile) 
-      })
-      .catch(error => {
+          .then( response => {
+          this.profile = response.data.resolve;
+          this.idProfile = response.data.resolve.id 
+          console.log(this.profile) 
+        })
+        .catch(error => {
           this.$router.push({name: 'not-found'})
         });
-        
       },
-
-      
-
     }
-
-    
 }
 </script>
 
