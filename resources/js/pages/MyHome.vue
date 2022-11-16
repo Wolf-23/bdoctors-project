@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-5">
   <div class="home_jumbo">
     
     <div class="px-5 left_side ">
@@ -55,17 +55,12 @@
   </div>
   <div class="ourDoctors mt-5">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
-      <div class="container mb-3">
-        <div>
-          <label for="mediaVoto">Voto: {{mediaVoto}}</label>
-          <input type="range" v-model="mediaVoto" min="0" max="5" name="mediaVoto" id="mediaVoto">
-        </div>
-       <div>
-         <label for="reviewsRange">Numero di recensioni:{{reviewsCheck}}</label>
-         <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
-       </div>
 
-      </div>
+      <label for="mediaVoto">Voto: {{mediaVoto}}</label>
+      <input type="range" v-model="mediaVoto" min="0" max="5" name="mediaVoto" id="mediaVoto">
+      
+      <label for="reviewsRange">{{reviewsCheck}}</label>
+      <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
 
       <div class="my_cards pb-5">
         <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
@@ -103,72 +98,49 @@ export default {
 
       mediaVoto: 0,
       mediaVotoProfilo: null,
-      avgVote: [''],
+      avgVote: null,
     }
   },
   
   computed:
   {
     filteredSearch: function(){
-      
+      this.filteredAvg();
       return this.profiles.filter(profile => {
-        
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())
-            && profile.reviews.length >= this.reviewsCheck;
+            && profile.reviews.length >= this.reviewsCheck && profile.avg >= this.mediaVoto;
           }
         }   
-        
-
-        
-        
-
-        // for(let i = 0; i < this.profiles.length; i++){
-        //   let divisore = this.profiles[i].reviews.length
-        //   let somma = 0;
-        //   let x = 0;
-
-        //   while( x < divisore ){
-        //     somma += this.profiles[i].reviews[x].vote;
-        //     x++
-        //   } 
-        //   this.mediaVotoProfilo = Math.floor(somma / divisore) 
-        // }
-          
-
       });
-    },
-
-    filteredVote() {
-
-      for(let i = 0; i < this.profiles.length; i++){
-          let divisore = this.profiles[i].reviews.length
-          let somma = 0;
-          let x = 0;
-
-          while( x < divisore ){
-            somma =+ this.profiles[i].reviews[x].vote;
-            x++
-          }
-          
-          return (divisore / somma)
-        }
-
-      
-    }
-    
+    },    
   },
 
   mounted(){
     this.getData()
-    
-    
+    this.mymethods()
   },
 
   methods: {
 
+    filteredAvg(){
+      this.profiles.forEach( profile => {
+        this.avgVote.forEach( avg => {
+          if(avg.user_id == profile.id){
+          return profile.avg = avg.avgVote
+        }
+        })
+        
+      })
+    },
 
+    mymethods(){
+      this.profiles.forEach( oneProfile => {
+        console.log('myProfile')
+        console.log(oneProfile);
+      })
+    },
 
     inputValue(){
       this.searchInput = this.searchInput
@@ -179,26 +151,15 @@ export default {
       axios.get('api/users')
       .then( resolve => {
         this.profiles = resolve.data.results;
-        this.avgVote = resolve.data.media;
-        console.log(this.profiles)
-        console.log(this.avgVote)
-        
-        
-        
+        this.avgVote = resolve.data.media;        
       });
-
-      
     },
   }
 };
 </script>
 
-<style lang="scss" scoped>
-  input{
-    border-radius: 10px;
-    outline-color: #3da9fc;
-    border: none;
-  }
-  
+<style lang="sass" scoped>
+
 </style>
+
 

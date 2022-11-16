@@ -23,24 +23,6 @@ class UserController extends Controller
         ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
         ->groupBy('user_id')
         ->get();
-
-        
-        $newUsers = DB::table('users')->get();
-
-        $arr1 = [];
-        foreach($myReviews as $avgVote){
-            $arr1[] = $avgVote;
-        }
-
-        $arr2 = [];
-        foreach($newUsers as $myUsers) {
-            $arr2[] = $myUsers;
-        }
-
-        $finalArr = array_merge($arr1,$arr2);
-        
-
-        
         
         $allUsers = User::with(['specializations','reviews'])
         
@@ -52,8 +34,6 @@ class UserController extends Controller
             'success' => true,
             'results' => $allUsers, 
             'media' => $myReviews,
-            'newUsers' => $finalArr
-            
         ]);
      
     }
