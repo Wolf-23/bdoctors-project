@@ -53,15 +53,15 @@
       
     </div>
   </div>
-  <div class="ourDoctors">
+  <div class="ourDoctors" :style="filteredSearch.length == 0 ? 'height:500px;' : ''">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
-      <select v-model="reviewsCheck" name="" id="">
-        <option value="0"></option>
-        <option value="1">1+</option>
-        <option value="3">3+</option>
-        <option value="5">5+</option>
-      </select>
+
+      <label for="mediaVoto">Voto: {{mediaVoto}}</label>
+      <input type="range" v-model="mediaVoto" min="0" max="5" name="mediaVoto" id="mediaVoto">
       
+      <label for="reviewsRange">{{reviewsCheck}}</label>
+      <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
+
       <div class="my_cards">
         <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
           <div class="my_card">
@@ -96,31 +96,64 @@ export default {
       profiles: [],
       searchInput: '',
       slug: null,
-      reviewsCheck: null,
+      reviewsCheck: 0,
       majReviewsCheck: null,
-      checkby: []
+      mediaVoto: 0,
+      mediaVotoProfilo: null,
+      avgVote: [''],
     }
   },
   
   computed:
   {
     filteredSearch: function(){
-  
+      
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length ; i++ ){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase()) &&
-            profile.reviews.length > this.reviewsCheck;
-          }
+            if(profile.reviews.length > this.reviewsCheck){
+              if(this.avgVote > )
+                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase()) 
+              }
+            }
+            
+            
+          }   
+        
 
+        for(let i = 0; i < this.profiles.length; i++){
+          let divisore = this.profiles[i].reviews.length
+          let somma = 0;
+          let x = 0;
+
+          while( x < divisore ){
+            somma += this.profiles[i].reviews[x].vote;
+            x++
+          }
+          console.log('CICLO GRANDE' + i)
+          console.log(divisore, somma)
+          this.mediaVotoProfilo = Math.floor(somma / divisore)
           
         }
+          
+
       });
     },
 
-    filteredRew: function() {
+    filteredVote() {
 
-      
+      for(let i = 0; i < this.profiles.length; i++){
+          let divisore = this.profiles[i].reviews.length
+          let somma = 0;
+          let x = 0;
+
+          while( x < divisore ){
+            somma =+ this.profiles[i].reviews[x].vote;
+            x++
+          }
+          console.log('CICLO GRANDE' + i)
+          return (divisore / somma)
+        }
 
       
     }
@@ -130,9 +163,12 @@ export default {
   mounted(){
     this.getData()
     
+    
   },
 
   methods: {
+
+
 
     inputValue(){
       this.searchInput = this.searchInput
@@ -142,8 +178,12 @@ export default {
                 
       axios.get('api/users')
       .then( resolve => {
-        this.profiles = resolve.data.results;  
+        this.profiles = resolve.data.results; 
+        this.avgVote = resolve.data.media; 
+        
         console.log(this.profiles)
+        console.log(this.avgVote)
+        
       });
 
       

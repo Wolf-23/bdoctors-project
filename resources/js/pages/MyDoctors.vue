@@ -92,7 +92,7 @@ export default {
 
         let slug = this.$route.params.slug
         console.log(slug)
-
+        
         axios.get('/api/users/' + slug)
       .then( response => {
         this.profile = response.data.resolve;
