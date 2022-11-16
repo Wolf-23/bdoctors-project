@@ -112,13 +112,10 @@ export default {
         for(let i = 0 ; i < profile.specializations.length ; i++ ){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
             if(profile.reviews.length > this.reviewsCheck){
-              if(this.avgVote > )
                 return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase()) 
-              }
             }
-            
-            
-          }   
+          }
+        }   
         
 
         for(let i = 0; i < this.profiles.length; i++){

@@ -2056,9 +2056,84 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/MyHome.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\lupin\\Desktop\\bdoctors-project\\resources\\js\\pages\\MyHome.vue: Unexpected token (28:32)\n\n\u001b[0m \u001b[90m 26 |\u001b[39m           \u001b[36mif\u001b[39m(profile\u001b[33m.\u001b[39mspecializations[i]\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtoLowerCase()\u001b[33m.\u001b[39mincludes(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msearchInput\u001b[33m.\u001b[39mtoLowerCase())){\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m             \u001b[36mif\u001b[39m(profile\u001b[33m.\u001b[39mreviews\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mreviewsCheck){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m               \u001b[36mif\u001b[39m(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mavgVote \u001b[33m>\u001b[39m )\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m                 \u001b[36mreturn\u001b[39m profile\u001b[33m.\u001b[39mspecializations[i]\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtoLowerCase()\u001b[33m.\u001b[39mincludes(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msearchInput\u001b[33m.\u001b[39mtoLowerCase()) \u001b[0m\n\u001b[0m \u001b[90m 30 |\u001b[39m               }\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m             }\u001b[0m\n    at instantiate (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:67:32)\n    at constructor (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:364:12)\n    at Parser.raise (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:3364:19)\n    at Parser.unexpected (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:3397:16)\n    at Parser.parseExprAtom (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11568:22)\n    at Parser.parseExprSubscripts (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11171:23)\n    at Parser.parseUpdate (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11153:21)\n    at Parser.parseMaybeUnary (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11127:23)\n    at Parser.parseMaybeUnaryOrPrivate (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10956:61)\n    at Parser.parseExprOpBaseRightExpr (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11055:34)\n    at Parser.parseExprOpRightExpr (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11049:21)\n    at Parser.parseExprOp (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:11010:27)\n    at Parser.parseExprOps (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10966:17)\n    at Parser.parseMaybeConditional (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10937:23)\n    at Parser.parseMaybeAssign (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10895:21)\n    at Parser.parseExpressionBase (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10845:23)\n    at C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10840:39\n    at Parser.allowInAnd (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12635:16)\n    at Parser.parseExpression (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:10840:17)\n    at Parser.parseHeaderExpression (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13181:22)\n    at Parser.parseIfStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13280:22)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12952:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13497:25)\n    at Parser.parseBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13489:10)\n    at Parser.parseBlock (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13477:10)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12993:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at Parser.parseIfStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13281:28)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12952:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13497:25)\n    at Parser.parseBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13489:10)\n    at Parser.parseBlock (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13477:10)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12993:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at Parser.parseIfStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13281:28)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12952:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13497:25)\n    at Parser.parseBlockBody (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13489:10)\n    at Parser.parseBlock (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13477:10)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12993:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)\n    at C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13532:10\n    at Parser.withSmartMixTopicForbiddingContext (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12617:14)\n    at Parser.parseFor (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13531:10)\n    at Parser.parseForStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:13235:19)\n    at Parser.parseStatementContent (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12933:21)\n    at Parser.parseStatement (C:\\Users\\lupin\\Desktop\\bdoctors-project\\node_modules\\@babel\\parser\\lib\\index.js:12917:17)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MyHome',
+  data: function data() {
+    return {
+      profiles: [],
+      searchInput: '',
+      slug: null,
+      reviewsCheck: 0,
+      majReviewsCheck: null,
+      mediaVoto: 0,
+      mediaVotoProfilo: null,
+      avgVote: ['']
+    };
+  },
+  computed: {
+    filteredSearch: function filteredSearch() {
+      var _this = this;
+      return this.profiles.filter(function (profile) {
+        for (var i = 0; i < profile.specializations.length; i++) {
+          if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
+            if (profile.reviews.length > _this.reviewsCheck) {
+              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            }
+          }
+        }
+        for (var _i = 0; _i < _this.profiles.length; _i++) {
+          var divisore = _this.profiles[_i].reviews.length;
+          var somma = 0;
+          var x = 0;
+          while (x < divisore) {
+            somma += _this.profiles[_i].reviews[x].vote;
+            x++;
+          }
+          console.log('CICLO GRANDE' + _i);
+          console.log(divisore, somma);
+          _this.mediaVotoProfilo = Math.floor(somma / divisore);
+        }
+      });
+    },
+    filteredVote: function filteredVote() {
+      for (var i = 0; i < this.profiles.length; i++) {
+        var divisore = this.profiles[i].reviews.length;
+        var somma = 0;
+        var x = 0;
+        while (x < divisore) {
+          somma = +this.profiles[i].reviews[x].vote;
+          x++;
+        }
+        console.log('CICLO GRANDE' + i);
+        return divisore / somma;
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.getData();
+  },
+  methods: {
+    inputValue: function inputValue() {
+      this.searchInput = this.searchInput;
+    },
+    getData: function getData() {
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
+        _this2.profiles = resolve.data.results;
+        _this2.avgVote = resolve.data.media;
+        console.log(_this2.profiles);
+        console.log(_this2.avgVote);
+      });
+    }
+  }
+});
 
 /***/ }),
 
