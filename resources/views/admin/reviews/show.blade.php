@@ -7,7 +7,7 @@
         @if ($review->vote < $n)
             <i class="fa-star fa-regular"></i>
         @else
-            <i class="fa-star fa-solid"></i> 
+            <i class="fa-star fa-solid text-warning"></i> 
         @endif
     @endfor
     

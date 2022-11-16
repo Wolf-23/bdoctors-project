@@ -20,7 +20,15 @@
         <th scope="row">{{$review->id}}</th>
           <td>{{$review->name}}</td>
           <td>{{$review->surname}}</td>
-          <td>{{$review->vote}}</td>
+          <td>
+            @for ($n = 1; $n <= 5; $n++)
+                @if ($review->vote < $n)
+                    <i class="fa-star fa-regular"></i>
+                @else
+                    <i class="fa-star text-warning fa-solid"></i> 
+                @endif
+            @endfor
+          </td>
           <td>{{$review->created_at}}</td>
           <td class="text-center">
             <a href="{{route('admin.reviews.show', ['review' => $review->id])}}" class="btn btn-success">Vedi</a>
