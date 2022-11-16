@@ -38,10 +38,11 @@ class ReviewController extends Controller
     {
         
         $data = request()->all();
-        \Log::info($data);
+        
         $newRev = new Review();
         $newRev->fill($data);
         $newRev->save();
+        
 
        return response()->json([
             'status' => true,

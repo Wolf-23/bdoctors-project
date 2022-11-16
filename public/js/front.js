@@ -2070,9 +2070,11 @@ __webpack_require__.r(__webpack_exports__);
       profiles: [],
       searchInput: '',
       slug: null,
-      reviewsCheck: null,
+      reviewsCheck: 0,
       majReviewsCheck: null,
-      checkby: []
+      mediaVoto: 0,
+      mediaVotoProfilo: null,
+      avgVote: ['']
     };
   },
   computed: {
@@ -2081,12 +2083,38 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase()) && profile.reviews.length > _this.reviewsCheck;
+            if (profile.reviews.length > _this.reviewsCheck) {
+              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            }
           }
+        }
+        for (var _i = 0; _i < _this.profiles.length; _i++) {
+          var divisore = _this.profiles[_i].reviews.length;
+          var somma = 0;
+          var x = 0;
+          while (x < divisore) {
+            somma += _this.profiles[_i].reviews[x].vote;
+            x++;
+          }
+          console.log('CICLO GRANDE' + _i);
+          console.log(divisore, somma);
+          _this.mediaVotoProfilo = Math.floor(somma / divisore);
         }
       });
     },
-    filteredRew: function filteredRew() {}
+    filteredVote: function filteredVote() {
+      for (var i = 0; i < this.profiles.length; i++) {
+        var divisore = this.profiles[i].reviews.length;
+        var somma = 0;
+        var x = 0;
+        while (x < divisore) {
+          somma = +this.profiles[i].reviews[x].vote;
+          x++;
+        }
+        console.log('CICLO GRANDE' + i);
+        return divisore / somma;
+      }
+    }
   },
   mounted: function mounted() {
     this.getData();
@@ -2099,7 +2127,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this2.profiles = resolve.data.results;
+        _this2.avgVote = resolve.data.media;
         console.log(_this2.profiles);
+        console.log(_this2.avgVote);
       });
     }
   }
@@ -2627,10 +2657,41 @@ var render = function render() {
       staticClass: "specializations_search_results"
     }, [_c("span", [_vm._v(_vm._s(profile.specializations[0].name))])])])], 1)]);
   }), 0)])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
-    staticClass: "ourDoctors"
+    staticClass: "ourDoctors",
+    style: _vm.filteredSearch.length == 0 ? "height:500px;" : ""
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
-  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("select", {
+  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "mediaVoto"
+    }
+  }, [_vm._v("Voto: " + _vm._s(_vm.mediaVoto))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.mediaVoto,
+      expression: "mediaVoto"
+    }],
+    attrs: {
+      type: "range",
+      min: "0",
+      max: "5",
+      name: "mediaVoto",
+      id: "mediaVoto"
+    },
+    domProps: {
+      value: _vm.mediaVoto
+    },
+    on: {
+      __r: function __r($event) {
+        _vm.mediaVoto = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "reviewsRange"
+    }
+  }, [_vm._v(_vm._s(_vm.reviewsCheck))]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2638,37 +2699,21 @@ var render = function render() {
       expression: "reviewsCheck"
     }],
     attrs: {
-      name: "",
-      id: ""
+      type: "range",
+      min: "0",
+      max: "10",
+      name: "reviewsRange",
+      id: "reviewsRange"
+    },
+    domProps: {
+      value: _vm.reviewsCheck
     },
     on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-        _vm.reviewsCheck = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      __r: function __r($event) {
+        _vm.reviewsCheck = $event.target.value;
       }
     }
-  }, [_c("option", {
-    attrs: {
-      value: "0"
-    }
-  }), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "1"
-    }
-  }, [_vm._v("1+")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "3"
-    }
-  }, [_vm._v("3+")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "5"
-    }
-  }, [_vm._v("5+")])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
     staticClass: "my_cards"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {

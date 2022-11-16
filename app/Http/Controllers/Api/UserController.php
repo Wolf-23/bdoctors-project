@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Review;
 use App\Specialization;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -17,10 +19,20 @@ class UserController extends Controller
     public function index()
     {   
         
-        $allUsers = User::with(['specializations','reviews'])->get(['id','name','surname','slug','profile_pic']);  
+        $myReviews = DB::table('reviews')
+        ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
+        ->groupBy('user_id')
+        ->get();
+        
+        $allUsers = User::with(['specializations','reviews'])
+        ->get(['id','name','surname','slug','profile_pic']);
+
+
+         
         return response()->json([
             'success' => true,
-            'results' => $allUsers 
+            'results' => $allUsers, 
+            'media' => $myReviews
         ]);
      
     }
