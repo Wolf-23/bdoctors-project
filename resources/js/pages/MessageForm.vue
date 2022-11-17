@@ -19,7 +19,7 @@
         <label class="mt-3 textGray" for="message_text">Messaggio</label>
         <textarea v-model="messaggio" name="message_text"  id="message_text" rows="6"></textarea>
       </div>  
-        <button type="submit" :disabled="sending" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+        <button :disabled="sending" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
     </form>
   </div>
 </template>
@@ -96,4 +96,7 @@ export default {
         color:#5f6c7b;
       }
     }
+
+
+    
 </style>
