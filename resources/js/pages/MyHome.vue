@@ -63,7 +63,6 @@
     <div class="filters-wrapper d-flex m-auto col-6 ">
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
-        <!-- <span v-for="(star, index) in 5" :key="index" :style="mediaVoto >= index? 'background-color:yellow;':''" >☆</span> -->
         <div class="votes">
           <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilità Filtro</button>
           <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
@@ -171,13 +170,6 @@ export default {
         }
         })
         
-      })
-    },
-
-    mymethods(){
-      this.profiles.forEach( oneProfile => {
-        console.log('myProfile')
-        console.log(oneProfile);
       })
     },
 

@@ -2120,12 +2120,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    mymethods: function mymethods() {
-      this.profiles.forEach(function (oneProfile) {
-        console.log('myProfile');
-        console.log(oneProfile);
-      });
-    },
     inputValue: function inputValue() {
       this.searchInput = this.searchInput;
     },
