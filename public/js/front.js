@@ -2071,7 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
       profiles: [],
       searchInput: '',
       reviewsCheck: 0,
-      mediaVoto: 1,
+      mediaVoto: 0,
       avgVote: null
     };
   },
@@ -2079,23 +2079,15 @@ __webpack_require__.r(__webpack_exports__);
     filteredSearch: function filteredSearch() {
       var _this = this;
       this.filteredAvg();
-
       //filtraggio per specializzazione che include...as....
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            console.log(profile);
-            var avgVoteFinal = console.log(profile.avg);
             //1 Return filtraggio specializzazioni
             if (profile.reviews.length >= _this.reviewsCheck) {
+              console.log(profile);
               if (profile.avg >= _this.mediaVoto) return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
             }
-
-            //2 Return filtraggio numero recensioni 
-            // && profile.reviews.length >= this.reviewsCheck
-
-            //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            // &&  profile.avg >= this.mediaVoto;
           }
         }
       });
@@ -2119,10 +2111,12 @@ __webpack_require__.r(__webpack_exports__);
       this.profiles.forEach(function (profile) {
         _this2.avgVote.forEach(function (avg) {
           if (avg.user_id == profile.id) {
-            return profile.avg = avg.avgVote;
-          }
-          if (profile.avg == undefined) {
-            return profile.avg = 1;
+            profile.avg = avg.avgVote;
+            if (profile.avg == undefined) {
+              profile.avg = 1;
+            } else {
+              return profile.avg = avg.avgVote;
+            }
           }
         });
       });
