@@ -130,12 +130,11 @@ export default {
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
             //1 Return filtraggio specializzazioni
             if(profile.reviews.length >= this.reviewsCheck){
-              console.log(profile);
+              
               if(profile.avg >= this.mediaVoto){
                 return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-              } else if (profile.reviews.length == 0) { 
-                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-              }
+              } 
+                
                 
             }
           }

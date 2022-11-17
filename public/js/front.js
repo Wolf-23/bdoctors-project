@@ -2085,10 +2085,7 @@ __webpack_require__.r(__webpack_exports__);
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
             //1 Return filtraggio specializzazioni
             if (profile.reviews.length >= _this.reviewsCheck) {
-              console.log(profile);
               if (profile.avg >= _this.mediaVoto) {
-                return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
-              } else if (profile.reviews.length == 0) {
                 return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
               }
             }
