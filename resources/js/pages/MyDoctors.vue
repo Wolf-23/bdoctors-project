@@ -8,8 +8,8 @@
       </div>
       <div class="d-flex-flex-column">
           <div>
-            <h2 class="mt-3 ml-3">INFORMAZIONI</h2>
-            <div class="container mt-5">
+            <h2 class="mt-3">INFORMAZIONI</h2>
+            <div class="container my-5">
               <h5>INDIRIZZO</h5>
               <span class="textGray">{{profile.address}}</span>
               <h5 class="mt-2">SPECIALIZZAZIONI</h5>
@@ -18,13 +18,13 @@
               <span class="textGray">{{profile.services}}</span>
             </div>
           </div>
-          <div class="my-5">
-              <h2 class="mt-1">CONTATTAMI</h2>
+          <h2 class="mt-3">CONTATTAMI</h2>
+          <div class="container my-5">
               <h5 class="">E-MAIL</h5>
               <span class="textGray">{{profile.email}}</span>
               <h5 class="">TELEFONO</h5>  
-              <span class="textGray">{{profile.phone}}</span>
-              <router-link :to="{name:'MessageForm'}" class="btn btn-primary ml-3">invia messaggio</router-link>
+              <span class="textGray">{{profile.phone}}</span><br>
+              <router-link :to="{name:'MessageForm'}" class="btn btn-primary mt-2">invia messaggio</router-link>
           </div>
       </div>
     </div>

@@ -2426,9 +2426,9 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "d-flex-flex-column"
   }, [_c("div", [_c("h2", {
-    staticClass: "mt-3 ml-3"
+    staticClass: "mt-3"
   }, [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
-    staticClass: "container mt-5"
+    staticClass: "container my-5"
   }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span", {
     staticClass: "textGray"
   }, [_vm._v(_vm._s(_vm.profile.address))]), _vm._v(" "), _c("h5", {
@@ -2442,16 +2442,16 @@ var render = function render() {
     staticClass: "mt-2"
   }, [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span", {
     staticClass: "textGray"
-  }, [_vm._v(_vm._s(_vm.profile.services))])], 2)]), _vm._v(" "), _c("div", {
-    staticClass: "my-5"
-  }, [_c("h2", {
-    staticClass: "mt-1"
-  }, [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("h5", {}, [_vm._v("E-MAIL")]), _vm._v(" "), _c("span", {
+  }, [_vm._v(_vm._s(_vm.profile.services))])], 2)]), _vm._v(" "), _c("h2", {
+    staticClass: "mt-3"
+  }, [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("div", {
+    staticClass: "container my-5"
+  }, [_c("h5", {}, [_vm._v("E-MAIL")]), _vm._v(" "), _c("span", {
     staticClass: "textGray"
   }, [_vm._v(_vm._s(_vm.profile.email))]), _vm._v(" "), _c("h5", {}, [_vm._v("TELEFONO")]), _vm._v(" "), _c("span", {
     staticClass: "textGray"
-  }, [_vm._v(_vm._s(_vm.profile.phone))]), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary ml-3",
+  }, [_vm._v(_vm._s(_vm.profile.phone))]), _c("br"), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-primary mt-2",
     attrs: {
       to: {
         name: "MessageForm"
