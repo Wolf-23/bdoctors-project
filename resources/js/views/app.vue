@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <MainComponent class="main_color"/>
+    <MainComponent />
     
   </div>
 </template>

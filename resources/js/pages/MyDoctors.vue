@@ -40,7 +40,13 @@
           <label class="mt-3 textGray h5 text-left" for="surname">Cognome</label>
           <input type="text" v-model="surname" name="surname" id="surname">
 
-          
+          <select v-model="vote" name="vote" id="vote">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
           <label class="mt-3 textGray h5 text-left" for="review_text">Recensione</label>
           <textarea v-model="review_text" name="review_text"  id="review_text" rows="6"></textarea>
 

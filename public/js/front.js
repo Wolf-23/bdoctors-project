@@ -2530,7 +2530,49 @@ var render = function render() {
         _vm.surname = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("label", {
+  }), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.vote,
+      expression: "vote"
+    }],
+    attrs: {
+      name: "vote",
+      id: "vote"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.vote = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("2")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("3")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "4"
+    }
+  }, [_vm._v("4")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "5"
+    }
+  }, [_vm._v("5")])]), _vm._v(" "), _c("label", {
     staticClass: "mt-3 textGray h5 text-left",
     attrs: {
       "for": "review_text"
@@ -2843,9 +2885,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("MainComponent", {
-    staticClass: "main_color"
-  })], 1);
+  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("MainComponent")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
