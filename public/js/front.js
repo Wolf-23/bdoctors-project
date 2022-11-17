@@ -2600,11 +2600,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary mt-3 ml-3 mb-5",
-    attrs: {
-      href: "",
-      type: "submit"
-    }
+    staticClass: "btn btn-primary mt-3 ml-3 mb-5"
   }, [_vm._v("Invia")])])])], 1);
 };
 var staticRenderFns = [function () {

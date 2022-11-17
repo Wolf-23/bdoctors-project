@@ -52,7 +52,7 @@
           <textarea v-model="review_text" name="review_text"  id="review_text" rows="6"></textarea>
 
         </div>
-          <button href="" type="submit" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+          <button type="" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
       </form>
     </div>
   </div>
