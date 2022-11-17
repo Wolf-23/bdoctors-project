@@ -2076,13 +2076,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    //funzione dedicata al filtraggio
     filteredSearch: function filteredSearch() {
       var _this = this;
-      //funzione che genera la media del voto
       this.filteredAvg();
 
-      //filtraggio per specializzazione che include...
+      //filtraggio per specializzazione che include...asd
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
@@ -2530,6 +2528,10 @@ var render = function render() {
         _vm.surname = $event.target.value;
       }
     }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "Voto"
+    }
   }), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
@@ -2799,7 +2801,7 @@ var render = function render() {
         _vm.reviewsCheck = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _vm.filteredSearch ? _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _c("div", {
     staticClass: "my_cards pb-5"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
@@ -2832,7 +2834,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("Profilo")])], 1)])]);
-  }), 0) : _vm._e()])]);
+  }), 0)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

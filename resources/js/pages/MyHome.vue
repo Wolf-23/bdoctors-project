@@ -79,7 +79,7 @@
     </div>
       
 
-    <div  v-if='filteredSearch' class="my_cards pb-5">
+    <div class="my_cards pb-5">
       <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
         <div class="my_card pb-2">
           <div class="img-wrapper">
@@ -123,13 +123,10 @@ export default {
   
   computed:
   {
-    //funzione dedicata al filtraggio
     filteredSearch: function(){
-
-      //funzione che genera la media del voto
       this.filteredAvg();
 
-      //filtraggio per specializzazione che include...
+      //filtraggio per specializzazione che include...asd
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
