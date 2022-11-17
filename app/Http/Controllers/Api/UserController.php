@@ -25,7 +25,6 @@ class UserController extends Controller
         ->get();
         
         $allUsers = User::with(['specializations','reviews'])
-        
         ->get(['id','name','surname','slug','profile_pic']);
 
 
@@ -33,7 +32,7 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'results' => $allUsers, 
-            'media' => $myReviews,
+            'media' => $myReviews
         ]);
      
     }
