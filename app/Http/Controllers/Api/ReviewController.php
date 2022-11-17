@@ -43,12 +43,12 @@ class ReviewController extends Controller
         $newRev->fill($data);
         $newRev->save();
         
-        
+
        return response()->json([
             'status' => true,
             'response' => $newRev
        ]);
-       
+
     }
 
     /**
