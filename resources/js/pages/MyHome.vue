@@ -132,13 +132,17 @@ export default {
             console.log(profile)
             let avgVoteFinal = console.log(profile.avg); 
             //1 Return filtraggio specializzazioni
-            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())
+            if(profile.reviews.length >= this.reviewsCheck){
+              if(profile.avg >= this.mediaVoto)
+              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());  
+            }
+            
   
             //2 Return filtraggio numero recensioni 
-            && profile.reviews.length >= this.reviewsCheck
+            // && profile.reviews.length >= this.reviewsCheck
 
             //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            &&  profile.avg >= this.mediaVoto;
+            // &&  profile.avg >= this.mediaVoto;
             
 
           }
@@ -149,10 +153,20 @@ export default {
 
   mounted(){
     this.getData()
-    this.mymethods()
+    
   },
 
   methods: {
+
+    checkReviews(){
+
+      return profile.reviews.length >= this.reviewsCheck
+    },
+
+    checkVote(){
+
+      return profile.avg >= this.mediaVoto
+    },
 
     aMethod(n){
       this.mediaVoto = n;

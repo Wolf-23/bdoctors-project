@@ -2087,13 +2087,15 @@ __webpack_require__.r(__webpack_exports__);
             console.log(profile);
             var avgVoteFinal = console.log(profile.avg);
             //1 Return filtraggio specializzazioni
-            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())
+            if (profile.reviews.length >= _this.reviewsCheck) {
+              if (profile.avg >= _this.mediaVoto) return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            }
 
             //2 Return filtraggio numero recensioni 
-            && profile.reviews.length >= _this.reviewsCheck
+            // && profile.reviews.length >= this.reviewsCheck
 
             //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            && profile.avg >= _this.mediaVoto;
+            // &&  profile.avg >= this.mediaVoto;
           }
         }
       });
@@ -2101,9 +2103,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getData();
-    this.mymethods();
   },
   methods: {
+    checkReviews: function checkReviews() {
+      return profile.reviews.length >= this.reviewsCheck;
+    },
+    checkVote: function checkVote() {
+      return profile.avg >= this.mediaVoto;
+    },
     aMethod: function aMethod(n) {
       this.mediaVoto = n;
     },
@@ -2600,7 +2607,10 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary mt-3 ml-3 mb-5"
+    staticClass: "btn btn-primary mt-3 ml-3 mb-5",
+    attrs: {
+      type: ""
+    }
   }, [_vm._v("Invia")])])])], 1);
 };
 var staticRenderFns = [function () {
