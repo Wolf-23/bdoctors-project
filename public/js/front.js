@@ -2070,59 +2070,67 @@ __webpack_require__.r(__webpack_exports__);
     return {
       profiles: [],
       searchInput: '',
-      slug: null,
       reviewsCheck: 0,
-      mediaVoto: 0,
-      mediaVotoProfilo: null,
-      avgVote: ['']
+      mediaVoto: 1,
+      avgVote: null
     };
   },
   computed: {
+    //funzione dedicata al filtraggio
     filteredSearch: function filteredSearch() {
       var _this = this;
+      //funzione che genera la media del voto
+      this.filteredAvg();
+
+      //filtraggio per specializzazione che include...
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase()) && profile.reviews.length >= _this.reviewsCheck;
+            //1 Return filtraggio specializzazioni
+            return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())
+
+            //2 Return filtraggio numero recensioni 
+            && profile.reviews.length >= _this.reviewsCheck
+
+            //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
+            && profile.avg >= _this.mediaVoto;
           }
-        }
-        for (var _i = 0; _i < _this.profiles.length; _i++) {
-          var divisore = _this.profiles[_i].reviews.length;
-          var somma = 0;
-          var x = 0;
-          while (x < divisore) {
-            somma += _this.profiles[_i].reviews[x].vote;
-            x++;
-          }
-          _this.mediaVotoProfilo = Math.floor(somma / divisore);
         }
       });
-    },
-    filteredVote: function filteredVote() {
-      for (var i = 0; i < this.profiles.length; i++) {
-        var divisore = this.profiles[i].reviews.length;
-        var somma = 0;
-        var x = 0;
-        while (x < divisore) {
-          somma = +this.profiles[i].reviews[x].vote;
-          x++;
-        }
-        return divisore / somma;
-      }
     }
   },
   mounted: function mounted() {
     this.getData();
+    this.mymethods();
   },
   methods: {
+    aMethod: function aMethod(n) {
+      this.mediaVoto = n;
+    },
+    filteredAvg: function filteredAvg() {
+      var _this2 = this;
+      this.profiles.forEach(function (profile) {
+        _this2.avgVote.forEach(function (avg) {
+          if (avg.user_id == profile.id) {
+            return profile.avg = avg.avgVote;
+          }
+        });
+      });
+    },
+    mymethods: function mymethods() {
+      this.profiles.forEach(function (oneProfile) {
+        console.log('myProfile');
+        console.log(oneProfile);
+      });
+    },
     inputValue: function inputValue() {
       this.searchInput = this.searchInput;
     },
     getData: function getData() {
-      var _this2 = this;
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
-        _this2.profiles = resolve.data.results;
-        _this2.avgVote = resolve.data.results;
+        _this3.profiles = resolve.data.results;
+        _this3.avgVote = resolve.data.media;
       });
     }
   }
@@ -2669,22 +2677,17 @@ var render = function render() {
     staticClass: "ourDoctors mt-5"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
-  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("div", {
-    staticClass: "container mb-3"
-  }, [_c("div", [_c("label", {
-    attrs: {
-      "for": "mediaVoto"
-    }
-  }, [_vm._v("Voto: " + _vm._s(_vm.mediaVoto))]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.mediaVoto,
       expression: "mediaVoto"
     }],
+    staticClass: "d-none",
     attrs: {
       type: "range",
-      min: "0",
+      min: "1",
       max: "5",
       name: "mediaVoto",
       id: "mediaVoto"
@@ -2697,11 +2700,42 @@ var render = function render() {
         _vm.mediaVoto = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", [_c("label", {
-    attrs: {
-      "for": "reviewsRange"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "filters-wrapper d-flex m-auto col-6"
+  }, [_c("div", {
+    staticClass: "filters mb-5 mr-2"
+  }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
+    staticClass: "votes"
+  }, [_c("button", {
+    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
+    on: {
+      click: function click($event) {
+        return _vm.aMethod(0);
+      }
     }
-  }, [_vm._v("Numero di recensioni:" + _vm._s(_vm.reviewsCheck))]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Disabilità Filtro")]), _vm._v(" "), _vm._l(5, function (index) {
+    return _c("a", {
+      key: index,
+      staticClass: "star",
+      style: _vm.mediaVoto >= index ? "color:rgb(260, 210, 143);" : "",
+      attrs: {
+        href: ""
+      },
+      on: {
+        click: [function ($event) {
+          $event.preventDefault();
+        }, function ($event) {
+          return _vm.aMethod(index);
+        }]
+      }
+    }, [_c("i", {
+      staticClass: "fa-solid fa-star"
+    })]);
+  })], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "filters mb-5"
+  }, [_c("div", {
+    staticClass: "num-recensioni d-flex flex-column"
+  }, [_vm._m(2), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2723,7 +2757,7 @@ var render = function render() {
         _vm.reviewsCheck = $event.target.value;
       }
     }
-  })])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _vm.filteredSearch ? _c("div", {
     staticClass: "my_cards pb-5"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
@@ -2742,11 +2776,11 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "card_body"
     }, [_c("h5", {
-      staticClass: "card_title text-light"
+      staticClass: "card_title"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
-      staticClass: "card_text text-secondary"
+      staticClass: "card_text"
     }, [_vm._v(_vm._s(profile.specializations[0].name))]), _vm._v(" "), _c("router-link", {
-      staticClass: "btn btn_eb_color",
+      staticClass: "btn btn-primary",
       attrs: {
         to: {
           name: "single-profile",
@@ -2756,7 +2790,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("Profilo")])], 1)])]);
-  }), 0)])]);
+  }), 0) : _vm._e()])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2781,6 +2815,14 @@ var staticRenderFns = [function () {
   }, [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?")]), _vm._v(" "), _c("p", [_vm._v("Dr. Girolamo Visconti")])]), _vm._v(" "), _c("div", {
     staticClass: "img-wrap"
   })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    attrs: {
+      "for": "reviewsRange"
+    }
+  }, [_c("h5", [_vm._v("Numero di Recensioni")])]);
 }];
 render._withStripped = true;
 
@@ -2899,7 +2941,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "input[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}", ""]);
+exports.push([module.i, "input[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
 
 // exports
 
@@ -19837,7 +19879,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
