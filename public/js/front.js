@@ -2080,7 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       this.filteredAvg();
 
-      //filtraggio per specializzazione che include...asd
+      //filtraggio per specializzazione che include...as....
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {

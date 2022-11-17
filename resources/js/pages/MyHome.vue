@@ -126,7 +126,7 @@ export default {
     filteredSearch: function(){
       this.filteredAvg();
 
-      //filtraggio per specializzazione che include...asd
+      //filtraggio per specializzazione che include...as....
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
