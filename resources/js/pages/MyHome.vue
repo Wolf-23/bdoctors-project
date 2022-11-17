@@ -111,6 +111,7 @@ export default {
   data(){
     return {
       profiles: [],
+      myRev: null,
       searchInput: '',
       
       reviewsCheck: 0,
@@ -123,19 +124,21 @@ export default {
   computed:
   {
     filteredSearch: function(){
+      
       this.filteredAvg();
+      
       //filtraggio per specializzazione che include...as....
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-            //1 Return filtraggio specializzazioni
-            if(profile.reviews.length >= this.reviewsCheck){
-              
-              if(profile.avg >= this.mediaVoto){
-                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-              } 
-                
-                
+            if(this.myRev.length == 0){
+              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+            } else {
+              if(profile.reviews.length >= this.reviewsCheck){
+                if(profile.avg >= this.mediaVoto){
+                  return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+                }  
+              }
             }
           }
         }   
@@ -179,8 +182,12 @@ export default {
       axios.get('api/users')
       .then( resolve => {
         this.profiles = resolve.data.results;
-        this.avgVote = resolve.data.media;        
+        this.avgVote = resolve.data.media;
+        this.myRev = resolve.data.reviews;
+        
       });
+        
+      
     },
   }
 };

@@ -24,7 +24,7 @@ class UserController extends Controller
         ->groupBy('user_id')
         ->get();
 
-        $myReviewsTable = Review::all();
+        $myReviewsTable = Review::all(); 
         
         $allUsers = User::with(['specializations','reviews'])
         ->get(['id','name','surname','slug','profile_pic']);
