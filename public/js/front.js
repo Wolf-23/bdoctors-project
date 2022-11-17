@@ -2084,6 +2084,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
+      myRev: null,
       searchInput: '',
       reviewsCheck: 0,
       mediaVoto: 0,
@@ -2094,17 +2095,18 @@ __webpack_require__.r(__webpack_exports__);
     filteredSearch: function filteredSearch() {
       var _this = this;
       this.filteredAvg();
+
       //filtraggio per specializzazione che include...as....
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            //1 Return filtraggio specializzazioni
-            if (profile.reviews.length >= _this.reviewsCheck) {
-              console.log(profile);
-              if (profile.avg >= _this.mediaVoto) {
-                return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
-              } else if (profile.reviews.length == 0) {
-                return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            if (_this.myRev.length == 0) {
+              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            } else {
+              if (profile.reviews.length >= _this.reviewsCheck) {
+                if (profile.avg >= _this.mediaVoto) {
+                  return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+                }
               }
             }
           }
@@ -2140,6 +2142,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this3.profiles = resolve.data.results;
         _this3.avgVote = resolve.data.media;
+        _this3.myRev = resolve.data.reviews;
       });
     }
   }
