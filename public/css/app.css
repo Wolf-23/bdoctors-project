@@ -10932,86 +10932,107 @@ a.text-dark:focus {
   }
 }
 
-.home_jumbo {
+.eb_height {
+  height: calc(100vh - 71px);
+  padding-bottom: 100px;
+}
+
+.eb_height .eb_shadow {
+  width: 65%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border-bottom-right-radius: 50px;
+  height: 660px;
+  position: absolute;
+  top: 7%;
+  left: 16%;
+  z-index: 1;
+}
+
+.eb_height .home_jumbo {
   background-color: rgb(89, 210, 212);
   border-radius: 20px;
   border-bottom-right-radius: 50px;
-  width: 70%;
+  width: 65%;
   padding: 50px 0px 20px 0px;
   margin: auto;
-  height: 600px;
   display: flex;
+  position: absolute;
+  top: 4%;
+  left: 19%;
+  z-index: 2;
   background-image: url("https://img.freepik.com/free-vector/clean-medical-background-vector_53876-140865.jpg?w=1480&t=st=1668387031~exp=1668387631~hmac=d27fe39e4e254822272b7ed286b6c59a64daf5d359d1fd5d35c22b2cd9b4a93f");
   background-size: cover;
 }
 
-.home_jumbo .left_side {
-  height: 100%;
+.eb_height .home_jumbo .left_side {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   border-right: 10px dotted rgb(81, 81, 81);
 }
 
-.home_jumbo .left_side .site_logo {
+.eb_height .home_jumbo .left_side .img-wrap {
+  width: 60%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.eb_height .home_jumbo .left_side .img-wrap img {
+  width: 100%;
+}
+
+.eb_height .home_jumbo .left_side .site_logo {
   background-color: black;
   color: white;
   padding: 20px;
   text-align: center;
 }
 
-.home_jumbo .left_side .img-wrap {
-  height: 50%;
-  margin-left: 50px;
-}
-
-.home_jumbo .left_side .img-wrap img {
-  height: 100%;
-}
-
-.home_jumbo .left_side .home_search {
-  margin-top: 5px;
-}
-
-.home_jumbo .left_side .input_search {
+.eb_height .home_jumbo .left_side .input_search {
   position: relative;
   text-align: center;
-  width: 60%;
+  width: 70%;
   padding: 20px;
   margin-top: -20px;
   border: none;
 }
 
-.home_jumbo .left_side .btn_search {
+.eb_height .home_jumbo .left_side .btn_search {
   margin-left: 10px;
   border: none;
   background-color: rgb(253, 224, 61);
   padding: 20px 40px 20px 40px;
+  border-radius: 10px;
 }
 
-.home_jumbo .left_side .btn_search img {
+.eb_height .home_jumbo .left_side .btn_search img {
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.home_jumbo .left_side .out-doctors {
+.eb_height .home_jumbo .left_side .out-doctors {
   position: absolute;
   right: 0;
   left: 0;
   z-index: 100;
   height: 225px;
+  width: 70%;
   overflow: auto;
 }
 
-.home_jumbo .left_side .out-doctors .wrap-doctors .list_profile {
+.eb_height .home_jumbo .left_side .out-doctors .wrap-doctors .list_profile {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.home_jumbo .left_side .out-doctors .wrap-doctors .list_profile:hover {
+.eb_height .home_jumbo .left_side .out-doctors .wrap-doctors .list_profile:hover {
   background-color: rgb(231, 231, 231);
 }
 
-.home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .specializations_search_results {
+.eb_height .home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .specializations_search_results {
   background-color: rgb(162, 219, 234);
   padding: 5px;
   padding-left: 10px;
@@ -11019,53 +11040,47 @@ a.text-dark:focus {
   border-radius: 10px;
 }
 
-.home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .img-wrapper_results {
+.eb_height .home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .img-wrapper_results {
   height: 50px;
   width: 50px;
 }
 
-.home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .img-wrapper_results img {
+.eb_height .home_jumbo .left_side .out-doctors .wrap-doctors .list_profile .img-wrapper_results img {
   height: 100%;
 }
 
-.home_jumbo .right_side {
+.eb_height .home_jumbo .right_side {
   width: 50%;
-  padding: 50px;
   display: flex;
   flex-direction: column;
 }
 
-.home_jumbo .right_side .text-square {
+.eb_height .home_jumbo .right_side .text-square {
   background-color: white;
   padding: 20px;
 }
 
-.home_jumbo .right_side .img-wrap {
-  height: 100%;
-  margin-top: 10px;
-  border: white 1px solid;
-  display: flex;
-  justify-content: center;
-  overflow-y: auto;
-}
-
-.home_jumbo .right_side .img-wrap .jumbo_img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.eb_height .home_jumbo .right_side .img-wrap {
+  height: 310px;
+  background-image: url("/images/graphics/DottorVisconti.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 .ourDoctors {
   text-align: center;
-  border-top: 0.1px solid rgb(216, 216, 216);
   border-bottom: 0.1px solid rgb(216, 216, 216);
   padding-bottom: 100px;
+  padding-top: 40px;
 }
 
 .ourDoctors .my_cards {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  width: 80%;
+  margin: auto;
 }
 
 .ourDoctors .my_cards::-webkit-scrollbar {
@@ -11074,7 +11089,7 @@ a.text-dark:focus {
 }
 
 .ourDoctors .my_cards::-webkit-scrollbar-track {
-  background: #90b4ce;
+  background: #094067;
   /* color of the tracking area */
 }
 
@@ -11087,16 +11102,17 @@ a.text-dark:focus {
 }
 
 .ourDoctors .my_cards .my_card_wrapper .my_card {
-  width: 200px;
+  width: 240px;
   border: 0.1px solid rgb(216, 216, 216);
   border-radius: 20px;
   overflow: hidden;
-  background-color: whitesmoke;
+  background-color: #094067;
 }
 
 .ourDoctors .my_cards .my_card_wrapper .my_card .img-wrapper {
   width: 100%;
-  height: 150px;
+  height: 180px;
+  border-bottom: 1px solid white;
 }
 
 .ourDoctors .my_cards .my_card_wrapper .my_card .img-wrapper .card_img_top {
@@ -11108,5 +11124,9 @@ a.text-dark:focus {
 
 .ourDoctors .my_cards .my_card_wrapper .my_card .card_body {
   padding-top: 20px;
+}
+
+.ourDoctors .my_cards .my_card_wrapper .my_card .card_body .btn_eb_color {
+  background-color: rgb(253, 224, 61);
 }
 

@@ -1,168 +1,176 @@
 
-
-    
-
-    .home_jumbo {
-        background-color: rgb(89, 210, 212);
-        border-radius: 20px;
-        border-bottom-right-radius: 50px;
-        width: 70%;
-        padding: 50px 0px 20px 0px;
-        margin: auto;
-        height: 600px;
-        display: flex;
-        
-        background-image: url('https://img.freepik.com/free-vector/clean-medical-background-vector_53876-140865.jpg?w=1480&t=st=1668387031~exp=1668387631~hmac=d27fe39e4e254822272b7ed286b6c59a64daf5d359d1fd5d35c22b2cd9b4a93f');
-        background-size: cover;
-
-        .left_side {
-            
-            height: 100%;
-            
-            width: 50%;
-            border-right: 10px dotted rgb(81, 81, 81);            
-            
-            .site_logo {
-
-                background-color: black;
-                color: white;
-                padding: 20px;
-                text-align: center;
-            }
-
-            .img-wrap {
-                
-                height: 50%;
-                margin-left: 50px;
-                
-                img {
-                    height: 100%;
-                }
-            }
-
-            .home_search {
-                margin-top: 5px;    
-            }
-
-            .input_search {      
-                position: relative;
-                text-align: center;
-                width: 60%;
-                padding: 20px;
-                margin-top: -20px;
-                border: none;
-            }
-
-            .btn_search {
-                
-                margin-left: 10px;
-                border: none;
-                background-color: rgb(253, 224, 61);
-                padding: 20px 40px 20px 40px;
-                
-                img {
-
-                    object-fit: cover;
-                }
-                
-            }
-            .out-doctors {
-
-              position:absolute; 
-              right: 0; 
-              left: 0; 
-              z-index: 100;
-              
-              height: 225px;
-              overflow: auto;
-                
-                .wrap-doctors {
-                    .list_profile {
-
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        &:hover{
-
-                            background-color: rgb(231, 231, 231);
-                        }
-
-                        .specializations_search_results{
-
-                            background-color: rgb(162, 219, 234);
-                            padding: 5px;
-                            padding-left: 10px;
-                            padding-right: 10px;
-                            border-radius: 10px;
-                        }
-                        .img-wrapper_results {
-                            
-                            height: 50px;
-                            width: 50px;
-
-                            img {
-
-                             height: 100%;
-                            }
-                        }
-                    }
-                }  
-            }
+    .eb_height{
+        height: calc(100vh - 71px);
+        padding-bottom: 100px;
+        .eb_shadow{
+            width: 65%;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 20px;
+            border-bottom-right-radius: 50px;
+            height: 660px;
+            position: absolute;
+            top: 7%;
+            left: 16%;
+            z-index: 1;
         }
-        
-        .right_side {
-            
-            width: 50%;
-            padding: 50px;
+        .home_jumbo {
+            background-color: rgb(89, 210, 212);
+            border-radius: 20px;
+            border-bottom-right-radius: 50px;
+            width: 65%;
+            padding: 50px 0px 20px 0px;
+            margin: auto;
             display: flex;
-            flex-direction: column;
+            position: absolute;
+            top: 4%;
+            left: 19%;
+            z-index: 2;
             
-            
-            .text-square {
-
-                background-color: white;
-                padding: 20px;
-            }
-            .img-wrap {
-                    height: 100%;
-                    margin-top: 10px;
-                    border: white 1px solid ;
+            background-image: url('https://img.freepik.com/free-vector/clean-medical-background-vector_53876-140865.jpg?w=1480&t=st=1668387031~exp=1668387631~hmac=d27fe39e4e254822272b7ed286b6c59a64daf5d359d1fd5d35c22b2cd9b4a93f');
+            background-size: cover;
+    
+            .left_side {
+                
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                border-right: 10px dotted rgb(81, 81, 81);            
+                
+                .img-wrap {
+                    
+                    width: 60%;
+                    margin-inline: auto;
                     display: flex;
                     justify-content: center;
-                    overflow-y: auto;
                     
-                .jumbo_img {
-                     
-                    height: 100%;
-                    
-                    object-fit: cover;
-                                       
-                    
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .site_logo {
+    
+                    background-color: black;
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
                 }
     
+                .input_search {      
+                    position: relative;
+                    text-align: center;
+                    width: 70%;
+                    padding: 20px;
+                    margin-top: -20px;
+                    border: none;
+                }
+    
+                .btn_search {
+                    
+                    margin-left: 10px;
+                    border: none;
+                    background-color: rgb(253, 224, 61);
+                    padding: 20px 40px 20px 40px;
+                    border-radius: 10px;
+                    img {
+
+                        object-fit: cover;
+                    }
+                }
+                .out-doctors {
+    
+                  position:absolute; 
+                  right: 0; 
+                  left: 0; 
+                  z-index: 100;
+                  
+                  height: 225px;
+                  width: 70%;
+                  overflow: auto;
+                    
+                    .wrap-doctors {
+                        .list_profile {
+    
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+    
+                            &:hover{
+    
+                                background-color: rgb(231, 231, 231);
+                            }
+    
+                            .specializations_search_results{
+    
+                                background-color: rgb(162, 219, 234);
+                                padding: 5px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                border-radius: 10px;
+                            }
+                            .img-wrapper_results {
+                                
+                                height: 50px;
+                                width: 50px;
+    
+                                img {
+    
+                                 height: 100%;
+                                }
+                            }
+                            
+                        }
+                    }  
+                }
             }
             
+            .right_side {
+                
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                
+                
+                .text-square {
+    
+                    background-color: white;
+                    padding: 20px;
+                }
+                .img-wrap {
+                    height: 310px;
+                    background-image: url('/images/graphics/DottorVisconti.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position-x: center;
+                }
+        
+            }
+                
         }
     }
+    
+
+    
 
 
     .ourDoctors {
         text-align: center;
-        border-top: .1px solid rgb(216, 216, 216);
         border-bottom: .1px solid rgb(216, 216, 216);
         padding-bottom: 100px;
+        padding-top: 40px;
         .my_cards {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: scroll;
+            width: 80%;
+            margin: auto;
             &::-webkit-scrollbar { 
                 height: 2px;
                 max-width: 2px;
             }
             
             &::-webkit-scrollbar-track {
-              background: #90b4ce;        /* color of the tracking area */
+              background: #094067;        /* color of the tracking area */
             }
             
             &::-webkit-scrollbar-thumb {
@@ -172,19 +180,18 @@
             }
             
             .my_card_wrapper {
-                
-
                 .my_card {
-                    width: 200px;
+                    width: 240px;
                     border: .1px solid rgb(216, 216, 216);
                     border-radius: 20px;
                     overflow: hidden;
-                    background-color: whitesmoke;
+                    background-color: #094067;
                     
     
                     .img-wrapper {
                         width: 100%;
-                        height: 150px;
+                        height: 180px;
+                        border-bottom: 1px solid white;
                         
                         .card_img_top {
                             width: 100%;
@@ -197,6 +204,9 @@
                     
                     .card_body {
                         padding-top: 20px;
+                        .btn_eb_color{
+                            background-color: rgb(253, 224, 61);
+                        }
                     }
                 }
             }

@@ -17,8 +17,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .main_color{
-    background-color: #90b4ce;
-    height: 100%;
-  }
+  
 </style>
