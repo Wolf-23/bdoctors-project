@@ -40,12 +40,25 @@
           <label class="mt-3 textGray h5 text-left" for="surname">Cognome</label>
           <input type="text" v-model="surname" name="surname" id="surname">
 
+          <label for="vote">Vote</label>
+          <select v-model="vote" name="vote" id="vote">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
           
           <label class="mt-3 textGray h5 text-left" for="review_text">Recensione</label>
           <textarea v-model="review_text" name="review_text"  id="review_text" rows="6"></textarea>
 
         </div>
+<<<<<<< HEAD
           <button href="" type="submit" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+=======
+          <button href="" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+>>>>>>> 2644cacc2c6358d54f046e46b0496c3f1d5b3762
       </form>
     </div>
   </div>
@@ -62,7 +75,7 @@ export default {
         name: null,
         surname: null,
         review_text: null,
-        vote: null,
+        vote: 2,
         idProfile: null
       }
     },
@@ -117,5 +130,4 @@ export default {
     outline-color: #3da9fc;
     border: none;
   }
-
 </style>
