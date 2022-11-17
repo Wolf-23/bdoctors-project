@@ -131,8 +131,12 @@ export default {
             //1 Return filtraggio specializzazioni
             if(profile.reviews.length >= this.reviewsCheck){
               console.log(profile);
-              if(profile.avg >= this.mediaVoto)
-              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());  
+              if(profile.avg >= this.mediaVoto){
+                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+              } else if (profile.reviews.length == 0) { 
+                return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+              }
+                
             }
           }
         }   
@@ -147,16 +151,6 @@ export default {
 
   methods: {
 
-    checkReviews(){
-
-      return profile.reviews.length >= this.reviewsCheck
-    },
-
-    checkVote(){
-
-      return profile.avg >= this.mediaVoto
-    },
-
     aMethod(n){
       this.mediaVoto = n;
     },
@@ -164,13 +158,13 @@ export default {
     filteredAvg(){
       this.profiles.forEach( profile => {
         this.avgVote.forEach( avg => {
+
           if(avg.user_id == profile.id){
-            profile.avg = avg.avgVote
-            if(profile.avg == undefined){
-              profile.avg = 1
-            } else {
-              return profile.avg = avg.avgVote
-            }
+          return profile.avg = avg.avgVote
+        }
+
+        if(profile.avg == undefined){
+          return profile.avg = 0;
         }
         })
         
