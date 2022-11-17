@@ -2084,6 +2084,8 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
+            console.log(profile);
+            var avgVoteFinal = console.log(profile.avg);
             //1 Return filtraggio specializzazioni
             return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())
 
@@ -2111,6 +2113,9 @@ __webpack_require__.r(__webpack_exports__);
         _this2.avgVote.forEach(function (avg) {
           if (avg.user_id == profile.id) {
             return profile.avg = avg.avgVote;
+          }
+          if (profile.avg == undefined) {
+            return profile.avg = 1;
           }
         });
       });

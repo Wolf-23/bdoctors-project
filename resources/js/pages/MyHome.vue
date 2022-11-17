@@ -125,20 +125,22 @@ export default {
   {
     filteredSearch: function(){
       this.filteredAvg();
-
+      
       //filtraggio per specializzazione che include...as....
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-
+            console.log(profile)
+            let avgVoteFinal = console.log(profile.avg); 
             //1 Return filtraggio specializzazioni
             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())
   
             //2 Return filtraggio numero recensioni 
-            && profile.reviews.length >= this.reviewsCheck 
+            && profile.reviews.length >= this.reviewsCheck
 
             //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            && profile.avg >= this.mediaVoto;
+            &&  profile.avg >= this.mediaVoto;
+            
 
           }
         }   
@@ -162,6 +164,10 @@ export default {
         this.avgVote.forEach( avg => {
           if(avg.user_id == profile.id){
           return profile.avg = avg.avgVote
+        }
+
+        if(profile.avg == undefined){
+          return profile.avg = 1;
         }
         })
         
