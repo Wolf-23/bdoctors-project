@@ -40,7 +40,7 @@
           <label class="mt-3 textGray h5 text-left" for="surname">Cognome</label>
           <input type="text" v-model="surname" name="surname" id="surname">
 
-          <label for="Voto"></label>
+          <label class="mt-3 textGray h5 text-left" for="Voto">Voto</label>
           <select v-model="vote" name="vote" id="vote">
             <option value="1">1</option>
             <option value="2">2</option>

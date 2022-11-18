@@ -2528,10 +2528,11 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
+    staticClass: "mt-3 textGray h5 text-left",
     attrs: {
       "for": "Voto"
     }
-  }), _vm._v(" "), _c("select", {
+  }, [_vm._v("Voto")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2704,7 +2705,7 @@ var render = function render() {
         return _vm.aMethod(0);
       }
     }
-  }, [_vm._v("Disabilità Filtro")]), _vm._v(" "), _vm._l(5, function (index) {
+  }, [_vm._v("Disabilita Filtro")]), _vm._v(" "), _vm._l(5, function (index) {
     return _c("a", {
       key: index,
       staticClass: "star",
@@ -19903,7 +19904,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/marcopaci/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
