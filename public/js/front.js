@@ -2770,7 +2770,7 @@ var render = function render() {
   }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
     staticClass: "votes"
   }, [_c("button", {
-    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
+    style: _vm.mediaVoto == 0 ? "background-color:rgb(233, 44, 82)" : "",
     on: {
       click: function click($event) {
         return _vm.aMethod(0);
@@ -20111,7 +20111,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
