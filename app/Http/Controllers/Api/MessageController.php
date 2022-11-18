@@ -46,8 +46,8 @@ class MessageController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'max:255',
-            'surname' => 'max:255',
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
             'title' => 'required|max:255',
             'email' => 'required|max:255',
             'message_text' => 'required',
