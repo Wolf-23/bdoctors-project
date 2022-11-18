@@ -125,99 +125,90 @@
 import axios from 'axios';
 
 export default {
-name: 'MyHome',
-data(){
-  return {
-    profiles: [],
-    searchInput: '',
-    
-    reviewsCheck: 0,
 
-    mediaVoto: 1,
-    avgVote: null,
-  }
-},
-
-computed:
-{
-  filteredSearch: function(){
-    this.filteredAvg();
-    
-    //filtraggio per specializzazione che include...as....
-    return this.profiles.filter(profile => {
-      for(let i = 0 ; i < profile.specializations.length; i++){
-        if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-          console.log(profile)
-          let avgVoteFinal = console.log(profile.avg); 
-          //1 Return filtraggio specializzazioni
-          if(profile.reviews.length >= this.reviewsCheck){
-            if(profile.avg >= this.mediaVoto)
-            return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());  
-          }
-          
-
-          //2 Return filtraggio numero recensioni 
-          // && profile.reviews.length >= this.reviewsCheck
-
-          //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-          // &&  profile.avg >= this.mediaVoto;
-          
-
-        }
-      }   
-    });
-  },    
-},
-
-mounted(){
-  this.getData()
-  
-},
-
-methods: {
-
-  checkReviews(){
-
-    return profile.reviews.length >= this.reviewsCheck
-  },
-
-  checkVote(){
-
-    return profile.avg >= this.mediaVoto
-  },
-
-  aMethod(n){
-    this.mediaVoto = n;
-  },
-
-  filteredAvg(){
-    this.profiles.forEach( profile => {
-      this.avgVote.forEach( avg => {
-        if(avg.user_id == profile.id){
-        return profile.avg = avg.avgVote
-      }
-
-      if(profile.avg == undefined){
-        return profile.avg = 1;
-      }
-      })
+  name: 'MyHome',
+  data(){
+    return {
+      profiles: [],
+      myRev: null,
+      searchInput: '',
       
-    })
+      reviewsCheck: 0,
+
+      mediaVoto: 0,
+      avgVote: null,
+    }
+  },
+  
+  computed:
+  {
+    filteredSearch: function(){
+      
+      this.filteredAvg();
+      
+      //filtraggio per specializzazione che include...as....
+      return this.profiles.filter(profile => {
+        for(let i = 0 ; i < profile.specializations.length; i++){
+          if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
+            if(this.myRev.length == 0){
+              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+            } else {
+              if(profile.reviews.length >= this.reviewsCheck){
+                if(profile.avg >= this.mediaVoto){
+                  return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+                }  
+              }
+            }
+          }
+        }   
+      });
+    },    
   },
 
-  inputValue(){
-    this.searchInput = this.searchInput
-  }, 
-
-  getData(){
-              
-    axios.get('api/users')
-    .then( resolve => {
-      this.profiles = resolve.data.results;
-      this.avgVote = resolve.data.media;        
-    });
+  mounted(){
+    this.getData()
+    
   },
-}
+
+  methods: {
+
+    aMethod(n){
+      this.mediaVoto = n;
+    },
+
+    filteredAvg(){
+      this.profiles.forEach( profile => {
+        this.avgVote.forEach( avg => {
+
+          if(avg.user_id == profile.id){
+          return profile.avg = avg.avgVote
+        }
+
+        if(profile.avg == undefined){
+          return profile.avg = 0;
+        }
+        })
+        
+      })
+    },
+
+    inputValue(){
+      this.searchInput = this.searchInput
+    }, 
+
+    getData(){
+                
+      axios.get('api/users')
+      .then( resolve => {
+        this.profiles = resolve.data.results;
+        this.avgVote = resolve.data.media;
+        this.myRev = resolve.data.reviews;
+        
+      });
+        
+      
+    },
+  }
 };
 </script>
 

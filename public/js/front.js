@@ -2069,9 +2069,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
+      myRev: null,
       searchInput: '',
       reviewsCheck: 0,
-      mediaVoto: 1,
+      mediaVoto: 0,
       avgVote: null
     };
   },
@@ -2084,18 +2085,15 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            console.log(profile);
-            var avgVoteFinal = console.log(profile.avg);
-            //1 Return filtraggio specializzazioni
-            if (profile.reviews.length >= _this.reviewsCheck) {
-              if (profile.avg >= _this.mediaVoto) return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            if (_this.myRev.length == 0) {
+              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            } else {
+              if (profile.reviews.length >= _this.reviewsCheck) {
+                if (profile.avg >= _this.mediaVoto) {
+                  return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+                }
+              }
             }
-
-            //2 Return filtraggio numero recensioni 
-            // && profile.reviews.length >= this.reviewsCheck
-
-            //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            // &&  profile.avg >= this.mediaVoto;
           }
         }
       });
@@ -2105,12 +2103,6 @@ __webpack_require__.r(__webpack_exports__);
     this.getData();
   },
   methods: {
-    checkReviews: function checkReviews() {
-      return profile.reviews.length >= this.reviewsCheck;
-    },
-    checkVote: function checkVote() {
-      return profile.avg >= this.mediaVoto;
-    },
     aMethod: function aMethod(n) {
       this.mediaVoto = n;
     },
@@ -2122,7 +2114,7 @@ __webpack_require__.r(__webpack_exports__);
             return profile.avg = avg.avgVote;
           }
           if (profile.avg == undefined) {
-            return profile.avg = 1;
+            return profile.avg = 0;
           }
         });
       });
@@ -2135,6 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this3.profiles = resolve.data.results;
         _this3.avgVote = resolve.data.media;
+        _this3.myRev = resolve.data.reviews;
       });
     }
   }
@@ -19910,7 +19903,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

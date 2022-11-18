@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {   
-        
+            
         $myReviews = DB::table('reviews')
         ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
         ->groupBy('user_id')
