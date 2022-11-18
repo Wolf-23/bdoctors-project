@@ -124,7 +124,7 @@ export default {
     height: 400px;
   }
   h1, h2, h3, h5, p{
-    color: #094067
+    color: #094067;
   }
   .textGray{
     color:#5f6c7b;

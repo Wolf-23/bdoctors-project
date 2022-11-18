@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
@@ -42,7 +43,22 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {   
-        $data = request()->all();
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'max:255',
+            'surname' => 'max:255',
+            'title' => 'required|max:255',
+            'email' => 'required|max:255',
+            'message_text' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
        
         $newMessage = new Message();
         $newMessage->fill($data);

@@ -1970,9 +1970,10 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       title: '',
       messaggio: '',
-      status: '',
+      status: false,
       idProfile: '',
-      sending: false
+      sending: false,
+      errors: {}
     };
   },
   mounted: function mounted() {
@@ -1993,12 +1994,15 @@ __webpack_require__.r(__webpack_exports__);
         _this.status = param.data.status;
         _this.sending = false;
         if (_this.status) {
+          _this.errors = {};
           _this.name = '';
           _this.surname = '';
           _this.title = '';
           _this.email = '';
           _this.messaggio = '';
           _this.user_id = '';
+        } else {
+          _this.errors = param.data.errors;
         }
       });
     },
@@ -2317,8 +2321,12 @@ var render = function render() {
   return _c("div", {
     staticClass: "container-fluid eb_width"
   }, [_c("h1", {
-    staticClass: "pt-5 ml-3"
-  }, [_vm._v("Scrivimi")]), _vm._v(" "), _c("form", {
+    staticClass: "pt-5 text-center"
+  }, [_vm._v("Scrivimi")]), _vm._v(" "), _vm.status ? _c("div", {
+    staticClass: "alert alert-success"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle-check"
+  }), _vm._v(" Grazie di averci contattato! Il Dottore risponderà entro 48 ore!\n  ")]) : _vm._e(), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -2326,9 +2334,9 @@ var render = function render() {
       }
     }
   }, [_c("div", {
-    staticClass: "d-flex flex-column col-6"
+    staticClass: "d-flex flex-column col-6 m-auto"
   }, [_c("label", {
-    staticClass: "mt-5 textGray",
+    staticClass: "mt-5 textGray font-weight-bold",
     attrs: {
       "for": "name"
     }
@@ -2339,6 +2347,7 @@ var render = function render() {
       value: _vm.name,
       expression: "name"
     }],
+    "class": _vm.errors.name ? "is-invalid" : "",
     attrs: {
       type: "text",
       name: "name",
@@ -2353,8 +2362,13 @@ var render = function render() {
         _vm.name = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.name, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray",
+    staticClass: "mt-3 textGray font-weight-bold",
     attrs: {
       "for": "surname"
     }
@@ -2365,6 +2379,7 @@ var render = function render() {
       value: _vm.surname,
       expression: "surname"
     }],
+    "class": _vm.errors.surname ? "is-invalid" : "",
     attrs: {
       type: "text",
       name: "surname",
@@ -2379,8 +2394,13 @@ var render = function render() {
         _vm.surname = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.surname, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray",
+    staticClass: "mt-3 textGray font-weight-bold",
     attrs: {
       "for": "email"
     }
@@ -2391,6 +2411,7 @@ var render = function render() {
       value: _vm.email,
       expression: "email"
     }],
+    "class": _vm.errors.email ? "is-invalid" : "",
     attrs: {
       type: "email",
       name: "email",
@@ -2405,8 +2426,13 @@ var render = function render() {
         _vm.email = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.email, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray",
+    staticClass: "mt-3 textGray font-weight-bold",
     attrs: {
       "for": "title"
     }
@@ -2417,6 +2443,7 @@ var render = function render() {
       value: _vm.title,
       expression: "title"
     }],
+    "class": _vm.errors.title ? "is-invalid" : "",
     attrs: {
       type: "text",
       name: "title",
@@ -2431,8 +2458,13 @@ var render = function render() {
         _vm.title = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.title, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray",
+    staticClass: "mt-3 textGray font-weight-bold",
     attrs: {
       "for": "message_text"
     }
@@ -2443,6 +2475,7 @@ var render = function render() {
       value: _vm.messaggio,
       expression: "messaggio"
     }],
+    "class": _vm.errors.message_text ? "is-invalid" : "",
     attrs: {
       name: "message_text",
       id: "message_text",
@@ -2457,13 +2490,27 @@ var render = function render() {
         _vm.messaggio = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary mt-3 ml-3 mb-5",
+  }), _vm._v(" "), _vm._l(_vm.errors.message_text, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
+  })], 2), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-center"
+  }, [_c("button", {
+    staticClass: "btn btn-primary mt-3 p-2 mb-5",
     attrs: {
       type: "submit",
       disabled: _vm.sending
     }
-  }, [_vm._v("Invia")])])]);
+  }, [_vm._v("Invia")]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-primary mt-3 p-2 mb-5 ml-2",
+    attrs: {
+      to: {
+        name: "single-profile"
+      }
+    }
+  }, [_vm._v("Torna al profilo")])], 1)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2821,7 +2868,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _c("div", {
-    staticClass: "my_cards pb-5"
+    staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
@@ -3018,7 +3065,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_width[data-v-298400f2] {\n  height: calc(100vh - 71px);\n  overflow-y: auto;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}", ""]);
+exports.push([module.i, ".eb_width[data-v-298400f2] {\n  overflow-y: auto;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}", ""]);
 
 // exports
 
@@ -3056,7 +3103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}\n@media screen and (max-width: 800px) {\n.myCards[data-v-c98e7418] {\n    flex-wrap: nowrap;\n    flex-direction: column;\n}\n}", ""]);
 
 // exports
 
