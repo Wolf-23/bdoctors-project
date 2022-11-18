@@ -11096,6 +11096,7 @@ a.text-dark:focus {
   border-radius: 20px;
   overflow: hidden;
   background-color: #094067;
+  color: white;
 }
 
 .ourDoctors .my_cards .my_card_wrapper .my_card .img-wrapper {
