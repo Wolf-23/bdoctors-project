@@ -17,27 +17,27 @@
                         <input v-model="searchInput" class="input_search" type="text" placeholder="cerca..." aria-label="Search">
                         <button class="btn_search" type="">Cerca</button>
 
-                        <div style="" class="out-doctors">    
-                            <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
-                                <div>
-                                    <router-link :to="{name:'single-profile', params:{slug:profile.slug}}" class="list-group-item list-group-item-action list_profile">
+                                <!-- <div style="" class="out-doctors">    
+                                  <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in profiles.specializations" :key="index">
+                                    <div>
+                                      <router-link :to="{name:'single-profile', params:{slug:profile.slug}}" class="list-group-item list-group-item-action list_profile">
 
                                         <div class="img-wrapper_results">
-                                            <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+                                          <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
                                         </div>
 
                                         <div class="name_search_results">
-                                            {{profile.name}} {{profile.surname}}
+                                          {{profile.name}} {{profile.surname}}
                                         </div>
 
                                         <div class="specializations_search_results">
-                                            <span>{{profile.specializations[0].name}}</span>
+                                          <span>{{profile.specializations[0].name}}</span>
                                         </div>
 
-                                    </router-link> 
-                                </div>
-                            </div>
-                        </div>
+                                      </router-link> 
+                                    </div>
+                                  </div>
+                                </div> -->
                     </div>
                 </div>
                 <div class="right_side px-4">
@@ -61,6 +61,8 @@
 
     <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
     <div class="filters-wrapper d-flex m-auto col-6 ">
+      <input v-model="searchInput" class="input_search_spec" type="text" placeholder="cerca..." aria-label="Search">
+      
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
         <div class="votes">
@@ -208,13 +210,7 @@ export default {
     width: 50%;
     margin:auto;
 
-
-  .votes {
-
-  
-  
-  }
-
+    
 
   button {
 
@@ -225,7 +221,17 @@ export default {
   padding: 10px;
 }
 
+
+
 }
+
+.input_search_spec {      
+                    position: relative;
+                    text-align: center;
+                    height:50px;
+                    width: 70%;
+                    border: none;
+                }
 
   
 </style>
