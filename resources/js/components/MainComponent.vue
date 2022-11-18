@@ -13,7 +13,6 @@ export default {
 <style scoped lang="scss">
   .main_color{
     background-color: whitesmoke;
-    height: calc(100vh - 71px);
     overflow-y: auto;
     &::-webkit-scrollbar { 
         width: 6px;
