@@ -2868,7 +2868,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _c("div", {
-    staticClass: "my_cards pb-5"
+    staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
@@ -3103,7 +3103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}\n@media screen and (max-width: 800px) {\n.myCards[data-v-c98e7418] {\n    flex-wrap: nowrap;\n    flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -20158,7 +20158,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/utente/Desktop/final-project/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

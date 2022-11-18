@@ -96,7 +96,7 @@
     </div>
       
 
-    <div class="my_cards pb-5">
+    <div class="my_cards pb-5 d-flex flex-wrap myCards">
       <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in filteredSearch" :key="index">
         <div class="my_card pb-2">
           <div class="img-wrapper">
@@ -247,6 +247,12 @@ input{
         padding: 10px;
         }
 
+}
+@media screen and (max-width: 800px) {
+  .myCards {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 }
 
 
