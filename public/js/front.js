@@ -2640,52 +2640,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "position-relative container-fluid"
-  }, [_c("div", {
-    staticClass: "eb_height"
-  }, [_c("div", {
-    staticClass: "eb_shadow"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "home_jumbo"
-  }, [_c("div", {
-    staticClass: "px-5 left_side"
-  }, [_vm._m(0), _vm._v(" "), _c("h1", {
-    staticClass: "site_logo"
-  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti della tua città!")]), _vm._v(" "), _c("div", {
-    staticClass: "home_search pt-3",
-    staticStyle: {
-      position: "relative"
-    },
-    attrs: {
-      role: "search"
-    }
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.searchInput,
-      expression: "searchInput"
-    }],
-    staticClass: "input_search",
-    attrs: {
-      type: "text",
-      placeholder: "cerca...",
-      "aria-label": "Search"
-    },
-    domProps: {
-      value: _vm.searchInput
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.searchInput = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn_search",
-    attrs: {
-      type: ""
-    }
-  }, [_vm._v("Cerca")])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "ourDoctors mt-5"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
@@ -2769,7 +2724,7 @@ var render = function render() {
     staticClass: "filters mb-5"
   }, [_c("div", {
     staticClass: "num-recensioni d-flex flex-column"
-  }, [_vm._m(2), _vm._v(" "), _c("input", {
+  }, [_vm._m(1), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2830,17 +2785,31 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "eb_height"
+  }, [_c("div", {
+    staticClass: "eb_shadow"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "home_jumbo"
+  }, [_c("div", {
+    staticClass: "px-5 left_side"
+  }, [_c("div", {
     staticClass: "img-wrap d-flex"
   }, [_c("img", {
     attrs: {
       src: "/images/graphics/illustrazione-vaccinazione.png",
       alt: ""
     }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  })]), _vm._v(" "), _c("h1", {
+    staticClass: "site_logo"
+  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti della tua città!")]), _vm._v(" "), _c("div", {
+    staticClass: "home_search pt-3",
+    staticStyle: {
+      position: "relative"
+    },
+    attrs: {
+      role: "search"
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "right_side px-4"
   }, [_c("div", {
     staticClass: "slogan"
@@ -2848,7 +2817,7 @@ var staticRenderFns = [function () {
     staticClass: "text-square"
   }, [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?")]), _vm._v(" "), _c("p", [_vm._v("Dr. Girolamo Visconti")])]), _vm._v(" "), _c("div", {
     staticClass: "img-wrap"
-  })]);
+  })])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

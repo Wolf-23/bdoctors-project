@@ -13,10 +13,6 @@
                     <h1>Torva i migliori specialisti della tua città!</h1>
             
                     <div class="home_search pt-3" style="position:relative;" role="search">
-
-                        <input v-model="searchInput" class="input_search" type="text" placeholder="cerca..." aria-label="Search">
-                        <button class="btn_search" type="">Cerca</button>
-
                                 <!-- <div style="" class="out-doctors">    
                                   <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in profiles.specializations" :key="index">
                                     <div>
