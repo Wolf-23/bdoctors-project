@@ -2069,9 +2069,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
+      myRev: null,
       searchInput: '',
       reviewsCheck: 0,
-      mediaVoto: 1,
+      mediaVoto: 0,
       avgVote: null
     };
   },
@@ -2084,18 +2085,15 @@ __webpack_require__.r(__webpack_exports__);
       return this.profiles.filter(function (profile) {
         for (var i = 0; i < profile.specializations.length; i++) {
           if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            console.log(profile);
-            var avgVoteFinal = console.log(profile.avg);
-            //1 Return filtraggio specializzazioni
-            if (profile.reviews.length >= _this.reviewsCheck) {
-              if (profile.avg >= _this.mediaVoto) return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            if (_this.myRev.length == 0) {
+              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+            } else {
+              if (profile.reviews.length >= _this.reviewsCheck) {
+                if (profile.avg >= _this.mediaVoto) {
+                  return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
+                }
+              }
             }
-
-            //2 Return filtraggio numero recensioni 
-            // && profile.reviews.length >= this.reviewsCheck
-
-            //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            // &&  profile.avg >= this.mediaVoto;
           }
         }
       });
@@ -2105,12 +2103,6 @@ __webpack_require__.r(__webpack_exports__);
     this.getData();
   },
   methods: {
-    checkReviews: function checkReviews() {
-      return profile.reviews.length >= this.reviewsCheck;
-    },
-    checkVote: function checkVote() {
-      return profile.avg >= this.mediaVoto;
-    },
     aMethod: function aMethod(n) {
       this.mediaVoto = n;
     },
@@ -2122,7 +2114,7 @@ __webpack_require__.r(__webpack_exports__);
             return profile.avg = avg.avgVote;
           }
           if (profile.avg == undefined) {
-            return profile.avg = 1;
+            return profile.avg = 0;
           }
         });
       });
@@ -2135,6 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
         _this3.profiles = resolve.data.results;
         _this3.avgVote = resolve.data.media;
+        _this3.myRev = resolve.data.reviews;
       });
     }
   }
@@ -2691,15 +2684,42 @@ var render = function render() {
     attrs: {
       type: ""
     }
+  }, [_vm._v("Cerca")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.searchInput,
+      expression: "searchInput"
+    }],
+    staticClass: "input_search",
+    attrs: {
+      type: "text",
+      placeholder: "cerca...",
+      "aria-label": "Search"
+    },
+    domProps: {
+      value: _vm.searchInput
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.searchInput = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn_search",
+    attrs: {
+      type: ""
+    }
   }, [_vm._v("Cerca")]), _vm._v(" "), _c("div", {
-    staticClass: "out-doctors position-absolute"
+    staticClass: "out-doctors"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "wrap-doctors",
       "class": _vm.searchInput == "" ? "d-none" : " "
     }, [_c("div", [_c("router-link", {
-      staticClass: "list-group-item list-group-item-action list_profile d-flex justify-content-between align-items-center",
+      staticClass: "list-group-item list-group-item-action list_profile",
       attrs: {
         to: {
           name: "single-profile",
@@ -2718,10 +2738,10 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "name_search_results"
-    }, [_vm._v("\n                                      " + _vm._s(profile.name) + " " + _vm._s(profile.surname) + "\n                                  ")]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                                          " + _vm._s(profile.name) + " " + _vm._s(profile.surname) + "\n                                      ")]), _vm._v(" "), _c("div", {
       staticClass: "specializations_search_results"
     }, [_c("span", [_vm._v(_vm._s(profile.specializations[0].name))])])])], 1)]);
-  }), 0)])]), _vm._v(" "), _c("div", {
+  }), 0)])])]), _vm._v(" "), _c("div", {
     staticClass: "d-none d-lg-flex eb_dott"
   }), _vm._v(" "), _vm._m(3)])])]), _vm._v(" "), _c("div", {
     staticClass: "ourDoctors mt-5"
@@ -2781,7 +2801,7 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa-solid fa-star"
     })]);
-  })], 2)]), _vm._v(" "), _c("div", {
+  })], 2), _vm._v(" "), _c("div", {
     staticClass: "filters mb-5"
   }, [_c("div", {
     staticClass: "num-recensioni d-flex flex-column"
@@ -3020,7 +3040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "input[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, "input[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}\n.input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}", ""]);
 
 // exports
 

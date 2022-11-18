@@ -22,24 +22,28 @@
                     <input v-model="searchInput" class="input_search border-0 position-relative text-center" type="text" placeholder="cerca..." aria-label="Search">
                     <button class="btn_search border-0" type="">Cerca</button>
 
-                    <div style="" class="out-doctors position-absolute">    
-                        <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
-                            <div>
-                                <router-link :to="{name:'single-profile', params:{slug:profile.slug}}" class="list-group-item list-group-item-action list_profile d-flex justify-content-between align-items-center">
+                        <input v-model="searchInput" class="input_search" type="text" placeholder="cerca..." aria-label="Search">
+                        <button class="btn_search" type="">Cerca</button>
 
-                                    <div class="img-wrapper_results">
-                                        <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
-                                    </div>
+                        <div style="" class="out-doctors">    
+                            <div class="wrap-doctors" :class="searchInput == '' ? 'd-none' :' ' " v-for="(profile, index) in filteredSearch" :key="index">
+                                <div>
+                                    <router-link :to="{name:'single-profile', params:{slug:profile.slug}}" class="list-group-item list-group-item-action list_profile">
 
-                                    <div class="name_search_results">
-                                        {{profile.name}} {{profile.surname}}
-                                    </div>
+                                        <div class="img-wrapper_results">
+                                            <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+                                        </div>
 
-                                    <div class="specializations_search_results">
-                                        <span>{{profile.specializations[0].name}}</span>
-                                    </div>
+                                        <div class="name_search_results">
+                                            {{profile.name}} {{profile.surname}}
+                                        </div>
 
-                                </router-link> 
+                                        <div class="specializations_search_results">
+                                            <span>{{profile.specializations[0].name}}</span>
+                                        </div>
+
+                                    </router-link> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,14 +79,13 @@
     <div class="ourDoctors mt-5">
       <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
 
-      <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
-      <div class="filters-wrapper d-flex m-auto col-6 ">
-        <div class="filters mb-5 mr-2">
-          <h4>Usa i Filtri</h4>
-          <div class="votes">
-            <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilità Filtro</button>
-            <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
-          </div>
+    <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
+    <div class="filters-wrapper d-flex m-auto col-6 ">
+      <div class="filters mb-5 mr-2">
+        <h4>Usa i Filtri</h4>
+        <div class="votes">
+          <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilità Filtro</button>
+          <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
         </div>
         <div class="filters mb-5">
           <div class="num-recensioni d-flex flex-column">
@@ -127,11 +130,12 @@ export default {
   data(){
     return {
       profiles: [],
+      myRev: null,
       searchInput: '',
       
       reviewsCheck: 0,
 
-      mediaVoto: 1,
+      mediaVoto: 0,
       avgVote: null,
     }
   },
@@ -139,28 +143,22 @@ export default {
   computed:
   {
     filteredSearch: function(){
+      
       this.filteredAvg();
       
       //filtraggio per specializzazione che include...as....
       return this.profiles.filter(profile => {
         for(let i = 0 ; i < profile.specializations.length; i++){
           if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-            console.log(profile)
-            let avgVoteFinal = console.log(profile.avg); 
-            //1 Return filtraggio specializzazioni
-            if(profile.reviews.length >= this.reviewsCheck){
-              if(profile.avg >= this.mediaVoto)
-              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());  
+            if(this.myRev.length == 0){
+              return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+            } else {
+              if(profile.reviews.length >= this.reviewsCheck){
+                if(profile.avg >= this.mediaVoto){
+                  return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+                }  
+              }
             }
-            
-  
-            //2 Return filtraggio numero recensioni 
-            // && profile.reviews.length >= this.reviewsCheck
-
-            //3 Return filtraggio per media voto con dati recuperati da filteredAvg()
-            // &&  profile.avg >= this.mediaVoto;
-            
-
           }
         }   
       });
@@ -174,16 +172,6 @@ export default {
 
   methods: {
 
-    checkReviews(){
-
-      return profile.reviews.length >= this.reviewsCheck
-    },
-
-    checkVote(){
-
-      return profile.avg >= this.mediaVoto
-    },
-
     aMethod(n){
       this.mediaVoto = n;
     },
@@ -191,12 +179,13 @@ export default {
     filteredAvg(){
       this.profiles.forEach( profile => {
         this.avgVote.forEach( avg => {
+
           if(avg.user_id == profile.id){
           return profile.avg = avg.avgVote
         }
 
         if(profile.avg == undefined){
-          return profile.avg = 1;
+          return profile.avg = 0;
         }
         })
         
@@ -212,8 +201,12 @@ export default {
       axios.get('api/users')
       .then( resolve => {
         this.profiles = resolve.data.results;
-        this.avgVote = resolve.data.media;        
+        this.avgVote = resolve.data.media;
+        this.myRev = resolve.data.reviews;
+        
       });
+        
+      
     },
   }
 };
@@ -234,13 +227,7 @@ export default {
     width: 50%;
     margin:auto;
 
-
-  .votes {
-
-  
-  
-  }
-
+    
 
   button {
 
@@ -251,7 +238,17 @@ export default {
   padding: 10px;
 }
 
+
+
 }
+
+.input_search_spec {      
+                    position: relative;
+                    text-align: center;
+                    height:50px;
+                    width: 70%;
+                    border: none;
+                }
 
   
 </style>
