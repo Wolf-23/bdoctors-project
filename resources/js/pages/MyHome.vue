@@ -17,7 +17,7 @@
               </div>
               <h2 class="text-center">Trova i migliori specialisti della tua città!</h2>
       
-              <div class="home_search position-relative" role="search">
+              <!-- <div class="home_search position-relative" role="search">
 
                   <input v-model="searchInput" class="input_search border-0 position-relative text-center" type="text" placeholder="cerca..." aria-label="Search">
                   <button class="btn_search border-0" type="">Cerca</button>
@@ -43,7 +43,7 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> -->
           </div>
           <div class="d-none d-lg-flex eb_dott">
 
@@ -77,6 +77,8 @@
 
     <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
     <div class="filters-wrapper d-flex m-auto col-6 ">
+      <input v-model="searchInput" class="input_search_spec" type="text" placeholder="cerca..." aria-label="Search">
+
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
         <div class="votes">
@@ -220,36 +222,39 @@ methods: {
 </script>
 
 <style lang="scss" scoped>
+
+.input_search_spec {
+      position: relative;
+      text-align: center;
+      height:50px;
+      width: 70%;
+      border: none;
+  }
+
 input{
   border-radius: 10px;
   outline-color: #3da9fc;
   border: none;
 }
 
-.filters {
+      .filters {
 
-  background-color: white;
-  padding: 10px 20px 10px 20px;
-  border-radius: 20px;
-  width: 50%;
-  margin:auto;
+        background-color: white;
+        padding: 10px 20px 10px 20px;
+        border-radius: 20px;
+        width: 50%;
+        margin:auto;
 
+        
 
-.votes {
+        button {
 
-
-
-}
-
-
-button {
-
-border: none;
-background-color: rgb(119, 167, 245);
-color: white;
-border-radius: 20px;
-padding: 10px;
-}
+        border: none;
+        background-color: rgb(119, 167, 245);
+        color: white;
+        border-radius: 20px;
+        padding: 10px;
+        }
 
 }
 
