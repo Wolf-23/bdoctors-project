@@ -2039,7 +2039,8 @@ __webpack_require__.r(__webpack_exports__);
       surname: null,
       review_text: null,
       vote: null,
-      idProfile: null
+      idProfile: null,
+      sending: false
     };
   },
   mounted: function mounted() {
@@ -2048,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendreview: function sendreview() {
       var _this = this;
+      this.sending = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/review/', {
         'name': this.name,
         'surname': this.surname,
@@ -2055,7 +2057,15 @@ __webpack_require__.r(__webpack_exports__);
         'vote': this.vote,
         'user_id': this.idProfile
       }).then(function (param) {
+        _this.sending = false;
         _this.status = param.data.status;
+        if (_this.status) {
+          _this.name = '';
+          _this.surname = '';
+          _this.review_text = '';
+          _this.vote = '';
+          _this.idProfile = '';
+        }
       });
     },
     getSingleProfile: function getSingleProfile() {
@@ -2663,7 +2673,8 @@ var render = function render() {
   })]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary mt-3 ml-3 mb-5",
     attrs: {
-      type: ""
+      type: "",
+      disabled: _vm.sending
     }
   }, [_vm._v("Invia")])])])], 1);
 };

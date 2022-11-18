@@ -52,7 +52,7 @@
           <textarea v-model="review_text" name="review_text"  id="review_text" rows="6"></textarea>
 
         </div>
-          <button type="" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+          <button type="" :disabled="sending" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
       </form>
     </div>
   </div>
@@ -70,7 +70,8 @@ export default {
         surname: null,
         review_text: null,
         vote: null,
-        idProfile: null
+        idProfile: null,
+        sending: false
       }
     },
 
@@ -80,6 +81,7 @@ export default {
 
     methods: {
       sendreview(){
+        this.sending = true;
         axios.post('/api/users/review/', { 
             'name': this.name,
             'surname': this.surname,
@@ -87,7 +89,15 @@ export default {
             'vote': this.vote,
             'user_id': this.idProfile
           }).then( param => {
+              this.sending = false;
                this.status = param.data.status
+               if(this.status){
+                    this.name = '';
+                    this.surname = '';
+                    this.review_text = '';
+                    this.vote = '';
+                    this.idProfile = '';
+              }
             });
       },
 
