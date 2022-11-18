@@ -76,8 +76,8 @@
     <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
 
     <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
-    <div class="filters-wrapper d-flex m-auto col-6 ">
-      <input v-model="searchInput" class="input_search_spec" type="text" placeholder="cerca..." aria-label="Search">
+    <div class="filters-wrapper d-flex m-auto col-8">
+      <input v-model="searchInput" class="input_search_spec mr-2" type="text" placeholder="cerca..." aria-label="Search">
 
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
@@ -97,7 +97,7 @@
       
 
     <div class="my_cards pb-5">
-      <div class="my_card_wrapper col-2 ml-5" v-for="(profile, index) in filteredSearch" :key="index">
+      <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in filteredSearch" :key="index">
         <div class="my_card pb-2">
           <div class="img-wrapper">
             <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">

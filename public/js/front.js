@@ -2721,7 +2721,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "filters-wrapper d-flex m-auto col-6"
+    staticClass: "filters-wrapper d-flex m-auto col-8"
   }, [_c("input", {
     directives: [{
       name: "model",
@@ -2729,7 +2729,7 @@ var render = function render() {
       value: _vm.searchInput,
       expression: "searchInput"
     }],
-    staticClass: "input_search_spec",
+    staticClass: "input_search_spec mr-2",
     attrs: {
       type: "text",
       placeholder: "cerca...",
@@ -2804,7 +2804,7 @@ var render = function render() {
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "my_card_wrapper col-2 ml-5"
+      staticClass: "my_card_wrapper col-2 ml-5 mx-3"
     }, [_c("div", {
       staticClass: "my_card pb-2"
     }, [_c("div", {
@@ -20090,7 +20090,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
