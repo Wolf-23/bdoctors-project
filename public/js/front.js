@@ -2817,7 +2817,7 @@ var render = function render() {
   }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
     staticClass: "votes"
   }, [_c("button", {
-    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
+    style: _vm.mediaVoto == 0 ? "background-color:rgb(233, 44, 82)" : "",
     on: {
       click: function click($event) {
         return _vm.aMethod(0);

@@ -82,7 +82,7 @@
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
         <div class="votes">
-          <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
+          <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:rgb(233, 44, 82)':''">Disabilita Filtro</button>
           <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
         </div>
       </div>
