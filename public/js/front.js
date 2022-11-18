@@ -2645,23 +2645,22 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "position-relative container-fluid"
+  return _c("div", [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "eb_jumbo container-fluid px-0"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "eb_height"
   }, [_c("div", {
-    staticClass: "eb_shadow"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "home_jumbo"
+    staticClass: "container shadow-drop-2-center home_jumbo px-0 m-auto"
   }, [_c("div", {
-    staticClass: "px-5 left_side"
-  }, [_vm._m(0), _vm._v(" "), _c("h1", {
-    staticClass: "site_logo"
-  }, [_vm._v("BDoctors!*!")]), _vm._v(" "), _c("h1", [_vm._v("Torva i migliori specialisti della tua città!")]), _vm._v(" "), _c("div", {
-    staticClass: "home_search pt-3",
-    staticStyle: {
-      position: "relative"
-    },
+    staticClass: "row eb_space"
+  }, [_c("div", {
+    staticClass: "col-12 col-lg-5 flex-lg-column justify-content-center eb_border"
+  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Trova i migliori specialisti della tua città!")]), _vm._v(" "), _c("div", {
+    staticClass: "home_search position-relative",
     attrs: {
       role: "search"
     }
@@ -2672,7 +2671,7 @@ var render = function render() {
       value: _vm.searchInput,
       expression: "searchInput"
     }],
-    staticClass: "input_search",
+    staticClass: "input_search border-0 position-relative text-center",
     attrs: {
       type: "text",
       placeholder: "cerca...",
@@ -2688,19 +2687,19 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("button", {
-    staticClass: "btn_search",
+    staticClass: "btn_search border-0",
     attrs: {
       type: ""
     }
   }, [_vm._v("Cerca")]), _vm._v(" "), _c("div", {
-    staticClass: "out-doctors"
+    staticClass: "out-doctors position-absolute"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "wrap-doctors",
       "class": _vm.searchInput == "" ? "d-none" : " "
     }, [_c("div", [_c("router-link", {
-      staticClass: "list-group-item list-group-item-action list_profile",
+      staticClass: "list-group-item list-group-item-action list_profile d-flex justify-content-between align-items-center",
       attrs: {
         to: {
           name: "single-profile",
@@ -2719,10 +2718,12 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "name_search_results"
-    }, [_vm._v("\n                                            " + _vm._s(profile.name) + " " + _vm._s(profile.surname) + "\n                                        ")]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                                      " + _vm._s(profile.name) + " " + _vm._s(profile.surname) + "\n                                  ")]), _vm._v(" "), _c("div", {
       staticClass: "specializations_search_results"
     }, [_c("span", [_vm._v(_vm._s(profile.specializations[0].name))])])])], 1)]);
-  }), 0)])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "d-none d-lg-flex eb_dott"
+  }), _vm._v(" "), _vm._m(3)])])]), _vm._v(" "), _c("div", {
     staticClass: "ourDoctors mt-5"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
@@ -2784,7 +2785,7 @@ var render = function render() {
     staticClass: "filters mb-5"
   }, [_c("div", {
     staticClass: "num-recensioni d-flex flex-column"
-  }, [_vm._m(2), _vm._v(" "), _c("input", {
+  }, [_vm._m(4), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2839,14 +2840,26 @@ var render = function render() {
         }
       }
     }, [_vm._v("Profilo")])], 1)])]);
-  }), 0)])]);
+  }), 0)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "img-wrap d-flex"
+    staticClass: "eb_jumbotron px-0 container-fluid"
   }, [_c("img", {
+    attrs: {
+      src: "/images/graphics/wave.svg",
+      alt: ""
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "eb_img"
+  }, [_c("img", {
+    staticClass: "img-fluid",
     attrs: {
       src: "/images/graphics/illustrazione-vaccinazione.png",
       alt: ""
@@ -2856,14 +2869,33 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "right_side px-4"
+    staticClass: "d-flex mb-4 justify-content-center bg-dark align-items-center"
+  }, [_c("h1", {
+    staticClass: "site_logo text-light"
+  }, [_vm._v("BDoctors!*!")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-12 d-lg-flex col-lg-5 pb-0 pt-3"
   }, [_c("div", {
-    staticClass: "slogan"
-  }, [_c("h1", [_vm._v("Sei stufo di fare la fila?")]), _vm._v(" "), _c("p", [_vm._v("Affidati a "), _c("b", [_vm._v("Bdoctors")]), _vm._v(", i migliori specialisti della tua città!")]), _vm._v(" "), _c("p", {
-    staticClass: "text-square"
-  }, [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?")]), _vm._v(" "), _c("p", [_vm._v("Dr. Girolamo Visconti")])]), _vm._v(" "), _c("div", {
+    staticClass: "slogan d-flex flex-column justify-content-between"
+  }, [_c("h2", {
+    staticClass: "h1 eb_fs text-center pl-2 text-lg-left"
+  }, [_vm._v("Sei stufo di fare la fila?")]), _vm._v(" "), _c("p", {
+    staticClass: "text-center pl-2 text-lg-left"
+  }, [_vm._v("Affidati a "), _c("b", [_vm._v("Bdoctors")]), _vm._v(", i migliori specialisti della tua città!")]), _vm._v(" "), _c("p", {
+    staticClass: "text-square bg-light mx-2"
+  }, [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?")]), _vm._v(" "), _c("p", {
+    staticClass: "pl-2 h5"
+  }, [_vm._v("Dr. Girolamo Visconti")]), _vm._v(" "), _c("div", {
     staticClass: "img-wrap"
-  })]);
+  }, [_c("img", {
+    attrs: {
+      src: "/images/graphics/DottorVisconti.png",
+      alt: ""
+    }
+  })])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -19926,7 +19958,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
