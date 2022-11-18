@@ -49,7 +49,7 @@ export default {
 
 
         sendMessage(){
-            
+            this.sending = true;
             axios.post('/api/users/message/', {
                 'name': this.name,
                 'surname': this.surname,
@@ -59,6 +59,15 @@ export default {
                 'user_id': this.idProfile
             }).then( param => {
                this.status = param.data.status
+               this.sending = false
+               if(this.status){
+                    this.name = '';
+                    this.surname = '';
+                    this.title = '';
+                    this.email = '';
+                    this.messaggio = '';
+                    this.user_id = '';
+               }
             })
         },
 

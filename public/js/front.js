@@ -1981,6 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendMessage: function sendMessage() {
       var _this = this;
+      this.sending = true;
       axios.post('/api/users/message/', {
         'name': this.name,
         'surname': this.surname,
@@ -1990,6 +1991,15 @@ __webpack_require__.r(__webpack_exports__);
         'user_id': this.idProfile
       }).then(function (param) {
         _this.status = param.data.status;
+        _this.sending = false;
+        if (_this.status) {
+          _this.name = '';
+          _this.surname = '';
+          _this.title = '';
+          _this.email = '';
+          _this.messaggio = '';
+          _this.user_id = '';
+        }
       });
     },
     getIdProfile: function getIdProfile() {
@@ -20090,7 +20100,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
