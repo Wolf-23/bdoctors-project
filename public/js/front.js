@@ -2544,8 +2544,16 @@ var render = function render() {
   }, [_vm._v("Torna alla Home")]), _vm._v(" "), _c("h1", {
     staticClass: "mt-2"
   }, [_vm._v("Dottor. " + _vm._s(_vm.profile.name) + " " + _vm._s(_vm.profile.surname))]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-between align-items-center"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-around align-items-center"
+  }, [_c("div", {
+    staticClass: "d-flex border border-2 eb_square rounded-circle"
+  }, [_c("img", {
+    staticClass: "rounded-circle img-fluid",
+    attrs: {
+      src: _vm.profile.profile_pic == false ? "images/avatar.png" : "/storage/" + _vm.profile.profile_pic,
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "d-flex-flex-column"
   }, [_c("div", [_c("h2", {
     staticClass: "mt-3"
@@ -2725,19 +2733,7 @@ var render = function render() {
     }
   }, [_vm._v("Invia")])])])], 1);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex border border-2 eb_square img-fluid rounded-circle"
-  }, [_c("img", {
-    staticClass: "rounded-circle",
-    attrs: {
-      src: "",
-      alt: ""
-    }
-  })]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 

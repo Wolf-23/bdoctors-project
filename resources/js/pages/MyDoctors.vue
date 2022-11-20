@@ -2,9 +2,9 @@
   <div class="container pt-5 px-5">
     <router-link :to="{name: 'MyHome'}" class="btn btn-primary mb-3">Torna alla Home</router-link>
     <h1 class="mt-2">Dottor. {{profile.name}} {{profile.surname}}</h1>
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex border border-2 eb_square img-fluid rounded-circle">
-          <img src="" alt="" class="rounded-circle">
+    <div class="d-flex justify-content-around align-items-center">
+      <div class="d-flex border border-2 eb_square rounded-circle">
+          <img :src=" profile.profile_pic == false ? 'images/avatar.png' : '/storage/'+ profile.profile_pic" alt="" class="rounded-circle img-fluid">
       </div>
       <div class="d-flex-flex-column">
           <div>
