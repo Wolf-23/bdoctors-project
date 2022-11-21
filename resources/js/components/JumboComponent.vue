@@ -43,7 +43,7 @@ export default {
                 },
                 {
                     title: 'Prescrizioni Private',
-                    icon: 'fa-pills',
+                    icon: 'fa-capsules',
                     text: 'BDoctor non fa pagare per la scrittura di prescrizioni. Tutti i nostri studi medici si trovano accanto a una farmacia. Non paghi la tassa NHS ma paghi invece il costo del farmaco specifico.'
                 },
                 {
