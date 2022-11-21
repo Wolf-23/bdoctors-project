@@ -22,4 +22,5 @@ Route::get('users', 'Api\UserController@index');
 Route::get('users/{slug}', 'Api\UserController@show');
 Route::post('users/message' , 'Api\MessageController@store');
 Route::post('users/review' , 'Api\ReviewController@store');
+Route::get('specializations', 'api\SpecializationController@index');
 

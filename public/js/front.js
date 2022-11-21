@@ -2108,67 +2108,83 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       profiles: [],
-      myRev: null,
-      searchInput: '',
+      // chiamata api
+      specializations: [],
+      selectSpecialization: '',
+      // v-model specialization
       reviewsCheck: 0,
-      mediaVoto: 0,
-      avgVote: null
+      //v-model numero recensioni
+      avgVote: 1,
+      //v-model media voti
+
+      myRev: null,
+      //
+      mediaVoto: 0
     };
   },
   computed: {
-    filteredSearch: function filteredSearch() {
-      var _this = this;
-      this.filteredAvg();
+    // filteredSearch: function(){
 
-      //filtraggio per specializzazione che include...as....
-      return this.profiles.filter(function (profile) {
-        for (var i = 0; i < profile.specializations.length; i++) {
-          if (profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase())) {
-            if (_this.myRev.length == 0) {
-              return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
-            } else {
-              if (profile.reviews.length >= _this.reviewsCheck) {
-                if (profile.avg >= _this.mediaVoto) {
-                  return profile.specializations[i].name.toLowerCase().includes(_this.searchInput.toLowerCase());
-                }
-              }
-            }
-          }
-        }
-      });
-    }
+    // this.filteredAvg();
+
+    //filtraggio per specializzazione che include...as....
+    //     return this.profiles.filter(profile => {
+    //       for(let i = 0 ; i < profile.specializations.length; i++){
+    //         if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
+    //           if(this.myRev.length == 0){
+    //             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+    //           } else {
+    //             if(profile.reviews.length >= this.reviewsCheck){
+    //               if(profile.avg >= this.mediaVoto){
+    //                 return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
+    //               }  
+    //             }
+    //           }
+    //         }
+    //       }   
+    //     });
+    //   },    
   },
   mounted: function mounted() {
     this.getData();
+    this.getSpecializations();
   },
   methods: {
-    aMethod: function aMethod(n) {
-      this.mediaVoto = n;
-    },
-    filteredAvg: function filteredAvg() {
-      var _this2 = this;
-      this.profiles.forEach(function (profile) {
-        _this2.avgVote.forEach(function (avg) {
-          if (avg.user_id == profile.id) {
-            return profile.avg = avg.avgVote;
-          }
-          if (profile.avg == undefined) {
-            return profile.avg = 0;
-          }
-        });
+    getSpecializations: function getSpecializations() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/specializations/').then(function (response) {
+        _this.specializations = response.data.results;
       });
-    },
-    inputValue: function inputValue() {
-      this.searchInput = this.searchInput;
     },
     getData: function getData() {
-      var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users').then(function (resolve) {
-        _this3.profiles = resolve.data.results;
-        _this3.avgVote = resolve.data.media;
-        _this3.myRev = resolve.data.reviews;
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users', {
+        params: {
+          specializationName: this.selectSpecialization,
+          // avgVote: this.avgVote,
+          reviewsNumber: this.reviewsCheck
+        }
+      }).then(function (resolve) {
+        _this2.profiles = resolve.data.results;
+        console.log(resolve.data);
       });
     }
+  },
+  aMethod: function aMethod(n) {
+    this.mediaVoto = n;
+  },
+  filteredAvg: function filteredAvg() {
+    var _this3 = this;
+    this.profiles.forEach(function (profile) {
+      _this3.avgVote.forEach(function (avg) {
+        if (avg.user_id == profile.id) {
+          return profile.avg = avg.avgVote;
+        }
+        if (profile.avg == undefined) {
+          return profile.avg = 0;
+        }
+      });
+    });
   }
 });
 
@@ -2812,7 +2828,9 @@ var render = function render() {
     staticClass: "ourDoctors mt-5"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
-  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("div", {
+    staticClass: "filters-wrapper d-flex m-auto col-8"
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2835,36 +2853,48 @@ var render = function render() {
         _vm.mediaVoto = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "filters-wrapper d-flex m-auto col-8"
-  }, [_c("input", {
+  }), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.searchInput,
-      expression: "searchInput"
+      value: _vm.selectSpecialization,
+      expression: "selectSpecialization"
     }],
-    staticClass: "input_search_spec mr-2",
-    attrs: {
-      type: "text",
-      placeholder: "cerca...",
-      "aria-label": "Search"
-    },
-    domProps: {
-      value: _vm.searchInput
-    },
     on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.searchInput = $event.target.value;
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.selectSpecialization = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
       }
     }
-  }), _vm._v(" "), _c("div", {
+  }, [_c("option", {
+    attrs: {
+      value: ""
+    }
+  }), _vm._v(" "), _vm._l(_vm.specializations, function (specialization, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: specialization.id
+      }
+    }, [_vm._v(_vm._s(specialization.name))]);
+  })], 2), _vm._v(" "), _c("button", {
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.getData();
+      }
+    }
+  }, [_vm._v("Cerca")]), _vm._v(" "), _c("div", {
     staticClass: "filters mb-5 mr-2"
   }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
     staticClass: "votes"
   }, [_c("button", {
-    style: _vm.mediaVoto == 0 ? "background-color:rgb(233, 44, 82)" : "",
+    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
     on: {
       click: function click($event) {
         return _vm.aMethod(0);
@@ -2916,7 +2946,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _c("div", {
     staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
-  }, _vm._l(_vm.filteredSearch, function (profile, index) {
+  }, _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "my_card_wrapper col-2 ml-5 mx-3"
@@ -20205,7 +20235,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
