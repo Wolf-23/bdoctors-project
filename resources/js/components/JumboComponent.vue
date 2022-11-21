@@ -1,5 +1,5 @@
 <template>
-    <section class="eb_jumbo container-fluid px-0">
+    <section class="eb_jumbo py-5 container-fluid px-0">
         <div class="row mx-0 eb_flex align-items-center py-4">
             <div class="col-12 col-md-5 pb-4 pb-md-0 eb_fl d-flex flex-column align-items-center align-items-md-start position-relative">
                 <div class="title_shadow">

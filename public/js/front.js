@@ -2313,9 +2313,9 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "title text-center pb-5 mb-2"
+    staticClass: "title text-center"
   }, [_c("h2", {
-    staticClass: "text-dark"
+    staticClass: "text-dark font-weight-bold"
   }, [_vm._v("Perchè BDoctors?")])]);
 }];
 render._withStripped = true;
@@ -2447,7 +2447,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("section", {
-    staticClass: "eb_jumbo container-fluid px-0"
+    staticClass: "eb_jumbo py-5 container-fluid px-0"
   }, [_c("div", {
     staticClass: "row mx-0 eb_flex align-items-center py-4"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
@@ -3028,14 +3028,105 @@ var render = function render() {
     staticClass: "container-fluid px-0"
   }, [_vm._m(1), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("div", {
     staticClass: "ourDoctors text-center mt-5"
-  }, [_c("h1", {
-    staticClass: "mt-5 py-4"
-  }, [_vm._v("Scegli il tuo prossimo Specialista!")]), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v("Scegli il tuo prossimo Specialista!")]), _vm._v(" "), _c("div", {
     staticClass: "container m-auto col-8"
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "row justify-content-center align-items-center"
   }, [_c("div", {
     staticClass: "col-12 col-md-6 col-lg-4"
+  }, [_c("div", {
+    staticClass: "filters mb-5 mr-2 d-flex flex-column"
+  }, [_c("h3", {
+    staticClass: "pb-2"
+  }, [_vm._v("Media Voto")]), _vm._v(" "), _c("div", {
+    staticClass: "votes d-md-block"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.mediaVoto,
+      expression: "mediaVoto"
+    }],
+    staticClass: "d-none",
+    attrs: {
+      type: "range",
+      min: "1",
+      max: "5",
+      name: "mediaVoto",
+      id: "mediaVoto"
+    },
+    domProps: {
+      value: _vm.mediaVoto
+    },
+    on: {
+      __r: function __r($event) {
+        _vm.mediaVoto = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn ml-md-2 mb-2 mb-md-0 mr-md-2",
+    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
+    on: {
+      click: function click($event) {
+        return _vm.aMethod(0);
+      }
+    }
+  }, [_vm._v("Disabilita Filtro")]), _vm._v(" "), _c("div", {
+    staticClass: "d-md-inline"
+  }, _vm._l(5, function (index) {
+    return _c("a", {
+      key: index,
+      staticClass: "star",
+      style: _vm.mediaVoto >= index ? "color: rgb(252, 153, 6);" : "",
+      attrs: {
+        href: ""
+      },
+      on: {
+        click: [function ($event) {
+          $event.preventDefault();
+        }, function ($event) {
+          return _vm.aMethod(index);
+        }]
+      }
+    }, [_c("i", {
+      staticClass: "fa-solid fa-star"
+    })]);
+  }), 0)])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-md-6 col-lg-4"
+  }, [_c("div", {
+    staticClass: "filters mb-5"
+  }, [_c("h3", {
+    staticClass: "pb-2"
+  }, [_vm._v("Numero Recensioni")]), _vm._v(" "), _c("div", {
+    staticClass: "num-recensioni d-flex flex-column"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.reviewsCheck,
+      expression: "reviewsCheck"
+    }],
+    attrs: {
+      type: "range",
+      min: "0",
+      max: "10",
+      name: "reviewsRange",
+      id: "reviewsRange"
+    },
+    domProps: {
+      value: _vm.reviewsCheck
+    },
+    on: {
+      __r: function __r($event) {
+        _vm.reviewsCheck = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 d-flex flex-column justify-content-center"
+  }, [_c("h3", {
+    staticClass: "d-block pb-2"
+  }, [_vm._v("Specializzazioni")]), _vm._v(" "), _c("div", {
+    staticClass: "filters_2 d-flex pb-5 m-auto align-self-center"
   }, [_c("select", {
     directives: [{
       name: "model",
@@ -3065,119 +3156,38 @@ var render = function render() {
         value: specialization.id
       }
     }, [_vm._v(_vm._s(specialization.name))]);
-  })], 2)]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 col-md-6 col-lg-4"
-  }, [_c("button", {
+  })], 2), _vm._v(" "), _c("button", {
+    staticClass: "btn",
     on: {
       click: function click($event) {
         $event.preventDefault();
         return _vm.getData();
       }
     }
-  }, [_vm._v("Cerca")]), _vm._v(" "), _c("div", {
-    staticClass: "filters mb-5 mr-2"
-  }, [_c("h4", [_vm._v("Media Voto")]), _vm._v(" "), _c("div", {
-    staticClass: "votes"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.mediaVoto,
-      expression: "mediaVoto"
-    }],
-    staticClass: "d-none",
-    attrs: {
-      type: "range",
-      min: "1",
-      max: "5",
-      name: "mediaVoto",
-      id: "mediaVoto"
-    },
-    domProps: {
-      value: _vm.mediaVoto
-    },
-    on: {
-      __r: function __r($event) {
-        _vm.mediaVoto = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("button", {
-    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
-    on: {
-      click: function click($event) {
-        return _vm.aMethod(0);
-      }
-    }
-  }, [_vm._v("Disabilita Filtro")]), _vm._v(" "), _vm._l(5, function (index) {
-    return _c("a", {
-      key: index,
-      staticClass: "star",
-      style: _vm.mediaVoto >= index ? "color:rgb(260, 210, 143);" : "",
-      attrs: {
-        href: ""
-      },
-      on: {
-        click: [function ($event) {
-          $event.preventDefault();
-        }, function ($event) {
-          return _vm.aMethod(index);
-        }]
-      }
-    }, [_c("i", {
-      staticClass: "fa-solid fa-star"
-    })]);
-  })], 2)])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 col-md-6 col-lg-4"
+  }, [_vm._v("Cerca")])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
+    staticClass: "container-fluid pb-5"
   }, [_c("div", {
-    staticClass: "filters mb-5"
-  }, [_c("div", {
-    staticClass: "num-recensioni d-flex flex-column"
-  }, [_vm._m(2), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.reviewsCheck,
-      expression: "reviewsCheck"
-    }],
-    attrs: {
-      type: "range",
-      min: "0",
-      max: "10",
-      name: "reviewsRange",
-      id: "reviewsRange"
-    },
-    domProps: {
-      value: _vm.reviewsCheck
-    },
-    on: {
-      __r: function __r($event) {
-        _vm.reviewsCheck = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
-    staticClass: "container pb-5"
-  }, [_c("div", {
-    staticClass: "row justify-content-center align-items-center"
+    staticClass: "d-flex my_cards flex-wrap"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "col-7 col-sm-5 col-md-4 col-lg-3 my_card pb-2"
+      staticClass: "card shadow-drop-2-center pb-2"
     }, [_c("div", {
-      staticClass: "img-wrapper"
+      staticClass: "eb_img"
     }, [_c("img", {
-      staticClass: "card_img_top",
+      staticClass: "card-img-top",
       attrs: {
         src: profile.profile_pic == false ? "images/avatar.png" : "storage/" + profile.profile_pic,
         alt: "Card image cap"
       }
     })]), _vm._v(" "), _c("div", {
-      staticClass: "card_body"
-    }, [_c("h5", {
-      staticClass: "card_title"
+      staticClass: "card-body"
+    }, [profile.sponsorships > 0 ? _c("div", [_vm._v("\n                Profilo sponsorizzato\n              ")]) : _c("div"), _vm._v(" "), _c("h3", {
+      staticClass: "card-title eb_color"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
-      staticClass: "card_text"
+      staticClass: "card-text eb_size text-secondary"
     }, [_vm._v(_vm._s(profile.specializations[0].name))]), _vm._v(" "), _c("router-link", {
-      staticClass: "btn btn-primary",
+      staticClass: "btn",
       attrs: {
         to: {
           name: "single-profile",
@@ -3187,7 +3197,9 @@ var render = function render() {
         }
       }
     }, [_vm._v("Profilo")])], 1)]);
-  }), 0)]) : _c("div", [_c("h1", [_vm._v("Non ci sono risultati")])])])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
+  }), 0)]) : _c("div", {
+    staticClass: "square container shadow-drop-2-center m-auto p-5"
+  }, [_c("h2", [_vm._v("Spiacenti, la ricerca da lei effettuata non ha prodotto alcun risultato. Cambia il filtro di ricerca!")])])])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3247,14 +3259,6 @@ var staticRenderFns = [function () {
       alt: ""
     }
   })])])])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    attrs: {
-      "for": "reviewsRange"
-    }
-  }, [_c("h5", [_vm._v("Numero di Recensioni")])]);
 }];
 render._withStripped = true;
 
@@ -3295,7 +3299,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".title[data-v-5821c7d3] {\n  top: 17%;\n  left: 28%;\n  z-index: 2;\n}\n.title h2[data-v-5821c7d3] {\n  font-size: 5.5rem;\n  color: #094067;\n}\ni[data-v-5821c7d3] {\n  font-size: 4rem;\n  color: #094067;\n}\np[data-v-5821c7d3] {\n  font-size: 1.2rem;\n}", ""]);
+exports.push([module.i, ".title[data-v-5821c7d3] {\n  padding-bottom: 100px;\n}\n.title h2[data-v-5821c7d3] {\n  font-size: 5.5rem;\n  color: #094067;\n}\ni[data-v-5821c7d3] {\n  font-size: 4rem;\n  color: #094067;\n}\np[data-v-5821c7d3] {\n  font-size: 1.2rem;\n}\n@media screen and (max-width: 449px) {\n.title h2[data-v-5821c7d3] {\n    font-size: 2.5rem;\n}\n}", ""]);
 
 // exports
 
@@ -3428,7 +3432,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, "@media screen and (max-width: 425px) {\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}", ""]);
 
 // exports
 

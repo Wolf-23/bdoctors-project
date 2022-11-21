@@ -1,7 +1,7 @@
 <template>
     <section class="container-fluid mt-5 pb-3 border-0">
-        <div class="title text-center pb-5 mb-2">
-            <h2 class="text-dark">Perchè BDoctors?</h2>
+        <div class="title text-center">
+            <h2 class="text-dark font-weight-bold">Perchè BDoctors?</h2>
         </div>
         <div class="row justify-content-between">
             <div v-for="(card,index) in cards" :key="index" class="col-12 col-md-6 col-lg-3 text-center">
@@ -47,9 +47,7 @@ export default {
 
 <style scoped lang="scss">
     .title{
-        top: 17%;
-        left: 28%;
-        z-index: 2;
+        padding-bottom: 100px;
         h2{
             font-size: 5.5rem;
             color: #094067;
@@ -62,6 +60,14 @@ export default {
     }
     p{
         font-size: 1.2rem;
+    }
+
+    @media  screen and (max-width: 449px) {
+        .title{
+            h2{
+                font-size: 2.5rem;
+            }
+        }
     }
 
 </style>

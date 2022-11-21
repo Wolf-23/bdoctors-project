@@ -122,6 +122,30 @@ class MessageSeeder extends Seeder
                 'email' => 'lisalodoni@gmail.com',
                 'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
                 'user_id' => '7'
+            ],
+            [
+                'name' => 'Alissa',
+                'surname' => 'Loni',
+                'title' => 'Radiografia',
+                'email' => 'alissaloni@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '8'
+            ],
+            [
+                'name' => 'PierGiorgio',
+                'surname' => 'Amato',
+                'title' => 'Radiografia',
+                'email' => 'pieramato@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '8'
+            ],
+            [
+                'name' => 'Filippo',
+                'surname' => 'Tagoro',
+                'title' => 'Radiografia',
+                'email' => 'filippotag@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '8'
             ]
         ];
         foreach ($messages as $message) {
