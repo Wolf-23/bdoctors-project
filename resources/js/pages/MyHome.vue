@@ -5,7 +5,7 @@
     </div>
     
     <div class="eb_jumbo container-fluid px-0"></div>
-    <div class="container-fluid">
+    <div class="container-fluid px-0">
       <div class="eb_height">
         <div class="container shadow-drop-2-center home_jumbo px-0 m-auto">
           <div class="row eb_space">
@@ -37,6 +37,8 @@
               </div>
             </div>
       </div>
+
+      <JumboComponent/>
 
 
   
@@ -85,6 +87,7 @@
     </div>
 
     </div>
+    <CardHomeComponent/>
   </div>
 
 
@@ -93,8 +96,11 @@
 
 <script>
 import axios from 'axios';
+import CardHomeComponent from '../components/CardHomeComponent.vue';
+import JumboComponent from '../components/JumboComponent.vue';
 
 export default {
+  components: { JumboComponent, CardHomeComponent },
 
   name: 'MyHome',
   data(){
