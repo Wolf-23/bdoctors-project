@@ -42,58 +42,64 @@
 
 
   
-      <div class="ourDoctors mt-5">
-    <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
+      <div class="ourDoctors text-center mt-5">
+        <h1 class="mt-5 py-4">Scegli il tuo prossimo Specialista!</h1>
     
-    <div class="filters-wrapper d-flex m-auto col-8 ">
-      
-      <select v-model="selectSpecialization">
-        <option value=""></option>
-        <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
-      </select>
-      <button @click.prevent="getData()">Cerca</button>
-      <div class="filters mb-5 mr-2">
-        <h4>Media Voto</h4>
-        <div class="votes">
-          <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
-          <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
-          <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
-        </div>
-      </div>
-      <div class="filters mb-5">
-        <div class="num-recensioni d-flex flex-column">
-          <label for="reviewsRange"><h5>Numero di Recensioni</h5></label>
-          <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
-          <span>{{reviewsCheck}}</span>
-        </div> 
-      </div>
-    </div>
+        <div class="container m-auto col-8 ">
+          <div class="row">
 
-      
-
-      <div v-if="profiles.length > 0" class="my_cards pb-5 d-flex flex-wrap myCards">
-        <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in filteredSearch" :key="index">
-          <div class="my_card pb-2">
-            <div class="img-wrapper">
-              <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+            <div class="col-12 col-md-6 col-lg-4">
+              <select v-model="selectSpecialization">
+                <option value=""></option>
+                <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
+              </select>
             </div>
-            <div class="card_body">
-              <div v-if="profile.sponsorships.length > 0" class="sponsored">
-                Sponsorizzato
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <button @click.prevent="getData()">Cerca</button>
+              <div class="filters mb-5 mr-2">
+                <h4>Media Voto</h4>
+                <div class="votes">
+                  <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
+                  <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
+                  <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
+                </div>
               </div>
-              <div v-else></div>
-              <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
-              <p class="card_text">{{profile.specializations[0].name}}</p>
-              <router-link class="btn btn-primary" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="filters mb-5">
+                <div class="num-recensioni d-flex flex-column">
+                  <label for="reviewsRange"><h5>Numero di Recensioni</h5></label>
+                  <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
+                  <span>{{reviewsCheck}}</span>
+                </div> 
+              </div>
+            </div>
+          </div> 
+        </div>
+
+      
+
+        <div v-if="profiles.length > 0" class="container pb-5">
+          <div class="row justify-content-center align-items-center">
+            <div v-for="(profile, index) in filteredSearch" :key="index" class="col-7 col-sm-5 col-md-4 col-lg-3 my_card pb-2">
+              <div class="img-wrapper">
+                <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+              </div>
+              <div class="card_body">
+                <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
+                <p class="card_text">{{profile.specializations[0].name}}</p>
+                <router-link class="btn btn-primary" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-else>
-        <h1>Non ci sono risultati</h1>
-      </div>
-    </div>
+        <div v-else>
+          <h1>Non ci sono risultati</h1>
+        </div>
 
+      </div>
     </div>
     <CardHomeComponent/>
   </div>
@@ -177,7 +183,7 @@ export default {
         })
       })
     }
-
+      
   },           
 }
 </script>
@@ -219,15 +225,9 @@ input{
         }
 
 }
-@media screen and (max-width: 800px) {
-  .myCards {
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-}
-
 
 </style>
+
 
 
 

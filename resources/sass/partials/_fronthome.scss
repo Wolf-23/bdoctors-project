@@ -120,51 +120,30 @@
 
 
     .ourDoctors {
-        text-align: center;
         padding-bottom: 100px;
         padding-top: 40px;
-        .my_cards {
-            display: flex;
-            flex-wrap: nowrap;
-            width: 80%;
-            margin: auto;
-            
-            .my_card_wrapper {
-                .my_card {
-                    width: 240px;
-                    border: .1px solid rgb(216, 216, 216);
-                    border-radius: 20px;
-                    overflow: hidden;
-                    background-color: #90b4ce;
-                    color: white;
-
-                    
-    
-                    .img-wrapper {
-                        width: 100%;
-                        height: 180px;
-                        border-bottom: 1px solid white;
-                        
-                        .card_img_top {
-                            width: 100%;
-                            height: 100%; 
-                            object-fit: cover;
-                                 
-                        }
-                    }
-    
-                    
-                    .card_body {
-                        padding-top: 20px;
-                        .btn_eb_color{
-                            background-color: rgb(253, 224, 61);
-                        }
-                    }
+        .my_card {
+            border: .1px solid rgb(216, 216, 216);
+            border-radius: 20px;
+            background-color: #90b4ce;
+            color: white;
+            .img-wrapper {
+                width: 100%;
+                height: 180px;
+                border-bottom: 1px solid white;       
+                .card_img_top {
+                    width: 100%;
+                    height: 100%; 
+                    object-fit: cover;                  
+                }
+            }     
+            .card_body {
+                padding-top: 20px;
+                .btn_eb_color{
+                    background-color: rgb(253, 224, 61);
                 }
             }
-            
         }
-
     }
     
     .shadow-drop-2-center {

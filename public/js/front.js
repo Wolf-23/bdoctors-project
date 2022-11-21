@@ -3027,11 +3027,15 @@ var render = function render() {
   }), _vm._v(" "), _c("div", {
     staticClass: "container-fluid px-0"
   }, [_vm._m(1), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("div", {
-    staticClass: "ourDoctors mt-5"
+    staticClass: "ourDoctors text-center mt-5"
   }, [_c("h1", {
     staticClass: "mt-5 py-4"
-  }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("div", {
-    staticClass: "filters-wrapper d-flex m-auto col-8"
+  }, [_vm._v("Scegli il tuo prossimo Specialista!")]), _vm._v(" "), _c("div", {
+    staticClass: "container m-auto col-8"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12 col-md-6 col-lg-4"
   }, [_c("select", {
     directives: [{
       name: "model",
@@ -3061,7 +3065,9 @@ var render = function render() {
         value: specialization.id
       }
     }, [_vm._v(_vm._s(specialization.name))]);
-  })], 2), _vm._v(" "), _c("button", {
+  })], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-md-6 col-lg-4"
+  }, [_c("button", {
     on: {
       click: function click($event) {
         $event.preventDefault();
@@ -3120,7 +3126,9 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa-solid fa-star"
     })]);
-  })], 2)]), _vm._v(" "), _c("div", {
+  })], 2)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-md-6 col-lg-4"
+  }, [_c("div", {
     staticClass: "filters mb-5"
   }, [_c("div", {
     staticClass: "num-recensioni d-flex flex-column"
@@ -3146,14 +3154,14 @@ var render = function render() {
         _vm.reviewsCheck = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
-    staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
+    staticClass: "container pb-5"
+  }, [_c("div", {
+    staticClass: "row justify-content-center align-items-center"
   }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "my_card_wrapper col-2 ml-5 mx-3"
-    }, [_c("div", {
-      staticClass: "my_card pb-2"
+      staticClass: "col-7 col-sm-5 col-md-4 col-lg-3 my_card pb-2"
     }, [_c("div", {
       staticClass: "img-wrapper"
     }, [_c("img", {
@@ -3164,9 +3172,7 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "card_body"
-    }, [profile.sponsorships.length > 0 ? _c("div", {
-      staticClass: "sponsored"
-    }, [_vm._v("\n              Sponsorizzato\n            ")]) : _c("div"), _vm._v(" "), _c("h5", {
+    }, [_c("h5", {
       staticClass: "card_title"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
       staticClass: "card_text"
@@ -3180,8 +3186,8 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("Profilo")])], 1)])]);
-  }), 0) : _c("div", [_c("h1", [_vm._v("Non ci sono risultati")])])])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
+    }, [_vm._v("Profilo")])], 1)]);
+  }), 0)]) : _c("div", [_c("h1", [_vm._v("Non ci sono risultati")])])])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3422,7 +3428,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}\n@media screen and (max-width: 800px) {\n.myCards[data-v-c98e7418] {\n    flex-wrap: nowrap;\n    flex-direction: column;\n}\n}", ""]);
+exports.push([module.i, ".input_search_spec[data-v-c98e7418] {\n  position: relative;\n  text-align: center;\n  height: 50px;\n  width: 70%;\n  border: none;\n}\ninput[data-v-c98e7418] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.filters[data-v-c98e7418] {\n  background-color: white;\n  padding: 10px 20px 10px 20px;\n  border-radius: 20px;\n  width: 50%;\n  margin: auto;\n}\n.filters button[data-v-c98e7418] {\n  border: none;\n  background-color: rgb(119, 167, 245);\n  color: white;\n  border-radius: 20px;\n  padding: 10px;\n}", ""]);
 
 // exports
 
@@ -20711,7 +20717,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
