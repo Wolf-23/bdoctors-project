@@ -2112,7 +2112,9 @@ __webpack_require__.r(__webpack_exports__);
       review_text: null,
       vote: null,
       idProfile: null,
-      sending: false
+      sending: false,
+      errors: {},
+      status: false
     };
   },
   mounted: function mounted() {
@@ -2132,11 +2134,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.sending = false;
         _this.status = param.data.status;
         if (_this.status) {
+          _this.errors = {};
           _this.name = '';
           _this.surname = '';
           _this.review_text = '';
           _this.vote = '';
           _this.idProfile = '';
+        } else {
+          _this.errors = param.data.errors;
         }
       });
     },
@@ -2834,6 +2839,7 @@ var render = function render() {
       expression: "name"
     }],
     staticClass: "p-2",
+    "class": _vm.errors.name ? "is-invalid" : "",
     attrs: {
       type: "text",
       name: "name",
@@ -2848,6 +2854,11 @@ var render = function render() {
         _vm.name = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.name, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n        ")]);
   }), _vm._v(" "), _c("label", {
     staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
@@ -2861,6 +2872,7 @@ var render = function render() {
       expression: "surname"
     }],
     staticClass: "p-2",
+    "class": _vm.errors.surname ? "is-invalid" : "",
     attrs: {
       type: "text",
       name: "surname",
@@ -2875,6 +2887,11 @@ var render = function render() {
         _vm.surname = $event.target.value;
       }
     }
+  }), _vm._v(" "), _vm._l(_vm.errors.surname, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n        ")]);
   }), _vm._v(" "), _c("label", {
     staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
@@ -2888,6 +2905,7 @@ var render = function render() {
       expression: "vote"
     }],
     staticClass: "border-0 p-2",
+    "class": _vm.errors.vote ? "is-invalid" : "",
     attrs: {
       name: "vote",
       id: "vote"
@@ -2923,7 +2941,12 @@ var render = function render() {
     attrs: {
       value: "5"
     }
-  }, [_vm._v("5")])]), _vm._v(" "), _c("label", {
+  }, [_vm._v("5")])]), _vm._v(" "), _vm._l(_vm.errors.vote, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n        ")]);
+  }), _vm._v(" "), _c("label", {
     staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
       "for": "review_text"
@@ -2936,6 +2959,7 @@ var render = function render() {
       expression: "review_text"
     }],
     staticClass: "px-2 pt-1",
+    "class": _vm.errors.message_text ? "is-invalid" : "",
     attrs: {
       name: "review_text",
       id: "review_text",
@@ -2950,13 +2974,22 @@ var render = function render() {
         _vm.review_text = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _vm._l(_vm.errors.review_text, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "invalid-feedback"
+    }, [_vm._v("\n          " + _vm._s(error) + "\n        ")]);
+  })], 2), _vm._v(" "), _c("button", {
     staticClass: "btn mt-3 mb-5",
     attrs: {
       type: "",
       disabled: _vm.sending
     }
-  }, [_vm._v("Invia")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Invia")]), _vm._v(" "), _vm.status ? _c("div", {
+    staticClass: "alert alert-success ml-4 mb-4"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle-check"
+  }), _vm._v(" Grazie per aver recensito il tuo Dottore!\n        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-center justify-content-md-end"
   }, [_c("router-link", {
     staticClass: "btn mb-3",
@@ -20676,7 +20709,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

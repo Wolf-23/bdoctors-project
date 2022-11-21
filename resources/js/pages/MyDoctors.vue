@@ -35,25 +35,40 @@
         <div class="d-flex flex-column pt-4">
           <h2 class="my-5 font-weight-bold eb_color">RECENSISCI IL TUO DOTTORE</h2>
           <label for="name" class="text-secondary h5 text-left">Nome</label>
-          <input type="text" class="p-2" v-model="name" name="name" id="name">
+          <input type="text" :class="errors.name?'is-invalid':''" class="p-2" v-model="name" name="name" id="name">
+          <div v-for="(error, index) in errors.name" :key="index" class="invalid-feedback">
+            {{error}}
+          </div>
 
           <label class="mt-3 text-secondary h5 text-left" for="surname">Cognome</label>
-          <input type="text" class="p-2" v-model="surname" name="surname" id="surname">
+          <input type="text" :class="errors.surname?'is-invalid':''" class="p-2" v-model="surname" name="surname" id="surname">
+          <div v-for="(error, index) in errors.surname" :key="index" class="invalid-feedback">
+            {{error}}
+          </div>
 
           <label class="mt-3 text-secondary h5 text-left" for="Voto">Voto</label>
-          <select class="border-0 p-2" v-model="vote" name="vote" id="vote">
+          <select :class="errors.vote?'is-invalid':''" class="border-0 p-2" v-model="vote" name="vote" id="vote">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+          <div v-for="(error, index) in errors.vote" :key="index" class="invalid-feedback">
+            {{error}}
+          </div>
 
           <label class="mt-3 text-secondary h5 text-left" for="review_text">Recensione</label>
-          <textarea v-model="review_text" name="review_text" class="px-2 pt-1"  id="review_text" rows="6"></textarea>
+          <textarea v-model="review_text" name="review_text" :class="errors.message_text?'is-invalid':''" class="px-2 pt-1"  id="review_text" rows="6"></textarea>
+          <div v-for="(error, index) in errors.review_text" :key="index" class="invalid-feedback">
+            {{error}}
+          </div>
 
         </div>
           <button type="" :disabled="sending" class="btn mt-3 mb-5">Invia</button>
+          <div v-if="status" class="alert alert-success ml-4 mb-4">
+            <i class="fa-solid  fa-circle-check"></i> Grazie per aver recensito il tuo Dottore!
+          </div>
       </form>
     </div>
     <div class="d-flex justify-content-center justify-content-md-end">
@@ -75,7 +90,9 @@ export default {
         review_text: null,
         vote: null,
         idProfile: null,
-        sending: false
+        sending: false,
+        errors: {},
+        status: false
       }
     },
 
@@ -96,11 +113,14 @@ export default {
               this.sending = false;
                this.status = param.data.status
                if(this.status){
+                    this.errors = {};
                     this.name = '';
                     this.surname = '';
                     this.review_text = '';
                     this.vote = '';
                     this.idProfile = '';
+              }else{
+                this.errors = param.data.errors;
               }
             });
       },

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
@@ -37,7 +38,21 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         
-        $data = request()->all();
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'vote' => 'required|numeric',
+            'review_text' => 'required|max:65000'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
         
         $newRev = new Review();
         $newRev->fill($data);
