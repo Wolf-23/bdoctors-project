@@ -26,17 +26,19 @@ class UserController extends Controller
      
         if($data['specializationName'] == ''){
         
-        $allUsers = User::with(['specializations','reviews'])
+        $allUsers = User::with(['specializations','reviews','sponsorships'])
         ->get(['id','name','surname','slug','profile_pic']);
             
         } else {
-        $allUsers = User::with([ 'specializations', 'reviews'])
+        $allUsers = User::with([ 'specializations', 'reviews','sponsorships'])
         ->whereHas('specializations', function ($q){
             $data = request()->all();
             $q->where('specialization_id', '=' , $data['specializationName']);})
 
         ->whereHas('reviews',function(){},'>=',$data['reviewsNumber'])
         ->get();
+
+        $allUsers->sortByDesc('sponsorships');
         }
          
         return response()->json([

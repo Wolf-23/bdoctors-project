@@ -3164,7 +3164,9 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "card_body"
-    }, [_c("h5", {
+    }, [profile.sponsorships.length > 0 ? _c("div", {
+      staticClass: "sponsored"
+    }, [_vm._v("\n              Sponsorizzato\n            ")]) : _c("div"), _vm._v(" "), _c("h5", {
       staticClass: "card_title"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
       staticClass: "card_text"
@@ -20709,7 +20711,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

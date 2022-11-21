@@ -78,6 +78,10 @@
               <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
             </div>
             <div class="card_body">
+              <div v-if="profile.sponsorships.length > 0" class="sponsored">
+                Sponsorizzato
+              </div>
+              <div v-else></div>
               <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
               <p class="card_text">{{profile.specializations[0].name}}</p>
               <router-link class="btn btn-primary" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
@@ -173,7 +177,7 @@ export default {
         })
       })
     }
-      
+
   },           
 }
 </script>
