@@ -53,7 +53,7 @@
       </select>
       <button @click.prevent="getData()">Cerca</button>
       <div class="filters mb-5 mr-2">
-        <h4>Usa i Filtri</h4>
+        <h4>Media Voto</h4>
         <div class="votes">
           <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
           <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
@@ -72,7 +72,7 @@
       
 
       <div v-if="profiles.length > 0" class="my_cards pb-5 d-flex flex-wrap myCards">
-        <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in profiles" :key="index">
+        <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in filteredSearch" :key="index">
           <div class="my_card pb-2">
             <div class="img-wrapper">
               <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
@@ -111,39 +111,21 @@ export default {
     return {
       profiles: [], // chiamata api
       specializations: [],
-
-      selectSpecialization: '', // v-model specialization
-      reviewsCheck: 0, //v-model numero recensioni
-      avgVote: 1,  //v-model media voti
-
-      myRev: null, //
-      mediaVoto: 0,
+      selectSpecialization: '', // filtro specializzazioni
+      reviewsCheck: 0, //filtra numero recensioni
+      mediaVoto: 1, // filtra mediaVoti ( stelline )
     }
   },
   
   computed:
   {
-    // filteredSearch: function(){
-      
-      // this.filteredAvg();
-      
-      //filtraggio per specializzazione che include...as....
-  //     return this.profiles.filter(profile => {
-  //       for(let i = 0 ; i < profile.specializations.length; i++){
-  //         if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-  //           if(this.myRev.length == 0){
-  //             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-  //           } else {
-  //             if(profile.reviews.length >= this.reviewsCheck){
-  //               if(profile.avg >= this.mediaVoto){
-  //                 return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-  //               }  
-  //             }
-  //           }
-  //         }
-  //       }   
-  //     });
-  //   },    
+    filteredSearch: function(){
+      return this.profiles.filter( profile => {
+      if(profile.avgVote >= this.mediaVoto){
+      return profile
+      } 
+      })
+    }
   },
 
   mounted(){
@@ -155,49 +137,45 @@ export default {
   methods: {
 
     aMethod(n){
-      this.mediaVoto = n;
+    return this.mediaVoto = n;
     },
 
     getSpecializations(){
-                axios.get('/api/specializations/')
-                .then((response) =>{
-                    this.specializations = response.data.results
-                })  
-            }, 
+      axios.get('/api/specializations/')
+      .then((response) =>{
+      this.specializations = response.data.results
+      })  
+    }, 
 
     getData(){
       axios.get('api/users',{
         params:{
           specializationName: this.selectSpecialization,
-          // avgVote: this.avgVote,
+          avgVote: this.mediaVoto,
           reviewsNumber: this.reviewsCheck
         }
       })
-      .then( resolve => {
+      .then( resolve => { 
         this.profiles = resolve.data.results;
-        console.log(resolve.data);  
-      })
-      
-    }
-    
-  },
-    filteredAvg(){
-      this.profiles.forEach( profile => {
-        this.avgVote.forEach( avg => {
 
-          if(avg.user_id == profile.id){
-          return profile.avg = avg.avgVote
-        }
-
-        if(profile.avg == undefined){
-          return profile.avg = 0;
-        }
-        })
+        // calcolo Media Voto per ogni profilo filtrato
+        return this.profiles.forEach(profile => {
+          profile.avgVote = 0
+          this.mediaVoto = profile.avgVote;
         
-      })
-    },             
-  }
+          let sum = 0
+          for(let x = 0 ; x < profile.reviews.length ; x++){
+            sum += profile.reviews[x].vote;
+          }
 
+          let average = sum / profile.reviews.length
+          return profile.avgVote = Math.floor(average,0);
+        })
+      })
+    }
+      
+  },           
+}
 </script>
 
 

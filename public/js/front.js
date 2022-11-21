@@ -2187,39 +2187,22 @@ __webpack_require__.r(__webpack_exports__);
       // chiamata api
       specializations: [],
       selectSpecialization: '',
-      // v-model specialization
+      // filtro specializzazioni
       reviewsCheck: 0,
-      //v-model numero recensioni
-      avgVote: 1,
-      //v-model media voti
-
-      myRev: null,
-      //
-      mediaVoto: 0
+      //filtra numero recensioni
+      mediaVoto: 1 // filtra mediaVoti ( stelline )
     };
   },
+
   computed: {
-    // filteredSearch: function(){
-
-    // this.filteredAvg();
-
-    //filtraggio per specializzazione che include...as....
-    //     return this.profiles.filter(profile => {
-    //       for(let i = 0 ; i < profile.specializations.length; i++){
-    //         if(profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase())){
-    //           if(this.myRev.length == 0){
-    //             return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-    //           } else {
-    //             if(profile.reviews.length >= this.reviewsCheck){
-    //               if(profile.avg >= this.mediaVoto){
-    //                 return profile.specializations[i].name.toLowerCase().includes(this.searchInput.toLowerCase());
-    //               }  
-    //             }
-    //           }
-    //         }
-    //       }   
-    //     });
-    //   },    
+    filteredSearch: function filteredSearch() {
+      var _this = this;
+      return this.profiles.filter(function (profile) {
+        if (profile.avgVote >= _this.mediaVoto) {
+          return profile;
+        }
+      });
+    }
   },
   mounted: function mounted() {
     this.getData();
@@ -2227,40 +2210,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     aMethod: function aMethod(n) {
-      this.mediaVoto = n;
+      return this.mediaVoto = n;
     },
     getSpecializations: function getSpecializations() {
-      var _this = this;
+      var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/specializations/').then(function (response) {
-        _this.specializations = response.data.results;
+        _this2.specializations = response.data.results;
       });
     },
     getData: function getData() {
-      var _this2 = this;
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users', {
         params: {
           specializationName: this.selectSpecialization,
-          // avgVote: this.avgVote,
+          avgVote: this.mediaVoto,
           reviewsNumber: this.reviewsCheck
         }
       }).then(function (resolve) {
-        _this2.profiles = resolve.data.results;
-        console.log(resolve.data);
+        _this3.profiles = resolve.data.results;
+
+        // calcolo Media Voto per ogni profilo filtrato
+        return _this3.profiles.forEach(function (profile) {
+          profile.avgVote = 0;
+          _this3.mediaVoto = profile.avgVote;
+          var sum = 0;
+          for (var x = 0; x < profile.reviews.length; x++) {
+            sum += profile.reviews[x].vote;
+          }
+          var average = sum / profile.reviews.length;
+          return profile.avgVote = Math.floor(average, 0);
+        });
       });
     }
-  },
-  filteredAvg: function filteredAvg() {
-    var _this3 = this;
-    this.profiles.forEach(function (profile) {
-      _this3.avgVote.forEach(function (avg) {
-        if (avg.user_id == profile.id) {
-          return profile.avg = avg.avgVote;
-        }
-        if (profile.avg == undefined) {
-          return profile.avg = 0;
-        }
-      });
-    });
   }
 });
 
@@ -3056,7 +3037,7 @@ var render = function render() {
     }
   }, [_vm._v("Cerca")]), _vm._v(" "), _c("div", {
     staticClass: "filters mb-5 mr-2"
-  }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Media Voto")]), _vm._v(" "), _c("div", {
     staticClass: "votes"
   }, [_c("input", {
     directives: [{
@@ -3134,7 +3115,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
     staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
-  }, _vm._l(_vm.profiles, function (profile, index) {
+  }, _vm._l(_vm.filteredSearch, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "my_card_wrapper col-2 ml-5 mx-3"

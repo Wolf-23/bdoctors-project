@@ -22,87 +22,30 @@ class UserController extends Controller
             
         $data = request()->all();
         $specializationName = $data['specializationName'];
-        
-        // $avgVote = $data['avgVote'];
         $reviewsNumber = $data['reviewsNumber'];
-        
-        $avgVoteCalc = DB::table('reviews')
-        ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
-        ->groupBy('user_id')
-        ->get();
-
-        $reviewsLength = DB::table('users')
-        ->select('users.id', DB::raw('COUNT(reviews.user_id) AS reviews_count'))
-        ->join('reviews', 'users.id', '=', 'reviews.user_id')
-        ->groupBy('users.id')
-        ->get();
-
-        // $myReviewsTable = Review::all(); 
-        
-        // $allUsers = User::with(['specializations','reviews'])->get();
-
-       
-
-        
+     
         if($data['specializationName'] == ''){
-            
-            $allUsers = User::with(['specializations','reviews'])
-            ->get(['id','name','surname','slug','profile_pic']);
+        
+        $allUsers = User::with(['specializations','reviews'])
+        ->get(['id','name','surname','slug','profile_pic']);
             
         } else {
-  
-                $allUsers = User::with([ 'specializations', 'reviews'])
-                ->whereHas('specializations', function ($q){
-                    $data = request()->all();
-                    $q->where('specialization_id', '=' , $data['specializationName']);    
-                })
-                ->whereHas('reviews',function($q){
-                    
-                },'>=',$data['reviewsNumber'])
-                
-                ->get();                
-            }
+        $allUsers = User::with([ 'specializations', 'reviews'])
+        ->whereHas('specializations', function ($q){
+            $data = request()->all();
+            $q->where('specialization_id', '=' , $data['specializationName']);})
 
-            
-
-          
-        
+        ->whereHas('reviews',function(){},'>=',$data['reviewsNumber'])
+        ->get();
+        }
          
         return response()->json([
             'success' => true,
             'results' => $allUsers,
             'reviews_count' => $allUsers
         ]);
-     
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $user = User::where('slug' , $slug)->with('specializations')->first();
@@ -118,40 +61,6 @@ class UserController extends Controller
                 'message' => 'user non trovato'
             ]);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 };
 
