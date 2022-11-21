@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar px-3 navbar-expand-md shadow-sm">
+    <div class="navbar px-3 navbar-expand-md">
 
         <ul class="navbar-nav mr-auto">
              <li class="nav-item active" v-for="(link , index) in menu" :key="index">
@@ -9,8 +9,9 @@
  
         <div class="navbar navbar-expand-md shadow-sm">
         <ul class="navbar-nav mr-auto">
-             <li class="nav-item active">
-                 <a href="http://127.0.0.1:8000/login" class="nav-link btn eb_bg text-secondary">{{'Login'}}</a>
+             <li class="nav-item active d-flex">
+                 <a href="http://127.0.0.1:8000/login" class="nav-link btn eb_bg text-secondary mx-1">{{'Login'}}</a>
+                 <a href="http://127.0.0.1:8000/register" class="nav-link btn eb_bg text-secondary mx-1">{{'Register'}}</a>
              </li>
         </ul>
      
@@ -38,9 +39,7 @@
  <style scoped lang="scss">
     .navbar{
         background-color:#094067;
-        .eb_bg{
-            background-color: transparent;
-        }
+        box-shadow: none !important;
     }
 
  </style>

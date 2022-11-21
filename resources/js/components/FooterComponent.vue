@@ -1,10 +1,10 @@
 <template>
-    <div class="myFooter">
+    <div class="myFooter py-2">
       <p>Powered By:</p>
       <p class="bigText">DIVISIONE 1</p>
-      <p class="biggerText"> THE BLANKET TEAM </p>
+      <p class="biggerText">THE BLANKET TEAM</p>
       
-      <span>• Alessio Maria Scoppetta • Riccardo Lupinu • Erik Borgogno  • Marco Paci • Davide Capoccia •</span>
+      <span> &lt; Alessio Maria Scoppetta  •  Riccardo Lupinu  •  Erik Borgogno  •  Marco Paci  •  Davide Capoccia  /> </span>
     </div>
   </template>
   

@@ -2219,12 +2219,12 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "myFooter"
+    staticClass: "myFooter py-2"
   }, [_c("p", [_vm._v("Powered By:")]), _vm._v(" "), _c("p", {
     staticClass: "bigText"
   }, [_vm._v("DIVISIONE 1")]), _vm._v(" "), _c("p", {
     staticClass: "biggerText"
-  }, [_vm._v(" THE BLANKET TEAM ")]), _vm._v(" "), _c("span", [_vm._v("• Alessio Maria Scoppetta • Riccardo Lupinu • Erik Borgogno  • Marco Paci • Davide Capoccia •")])]);
+  }, [_vm._v("THE BLANKET TEAM")]), _vm._v(" "), _c("span", [_vm._v(" < Alessio Maria Scoppetta  •  Riccardo Lupinu  •  Erik Borgogno  •  Marco Paci  •  Davide Capoccia  /> ")])]);
 }];
 render._withStripped = true;
 
@@ -2246,7 +2246,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "navbar px-3 navbar-expand-md shadow-sm"
+    staticClass: "navbar px-3 navbar-expand-md"
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto"
   }, _vm._l(_vm.menu, function (link, index) {
@@ -2266,13 +2266,18 @@ var render = function render() {
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto"
   }, [_c("li", {
-    staticClass: "nav-item active"
+    staticClass: "nav-item active d-flex"
   }, [_c("a", {
-    staticClass: "nav-link btn eb_bg text-secondary",
+    staticClass: "nav-link btn eb_bg text-secondary mx-1",
     attrs: {
       href: "http://127.0.0.1:8000/login"
     }
-  }, [_vm._v(_vm._s("Login"))])])])])]);
+  }, [_vm._v(_vm._s("Login"))]), _vm._v(" "), _c("a", {
+    staticClass: "nav-link btn eb_bg text-secondary mx-1",
+    attrs: {
+      href: "http://127.0.0.1:8000/register"
+    }
+  }, [_vm._v(_vm._s("Register"))])])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3046,7 +3051,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n}\n.navbar .eb_bg[data-v-153bfd55] {\n  background-color: transparent;\n}", ""]);
+exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n}", ""]);
 
 // exports
 
