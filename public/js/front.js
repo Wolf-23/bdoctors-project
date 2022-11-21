@@ -2226,6 +2226,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getSpecializations();
   },
   methods: {
+    aMethod: function aMethod(n) {
+      this.mediaVoto = n;
+    },
     getSpecializations: function getSpecializations() {
       var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/specializations/').then(function (response) {
@@ -2245,9 +2248,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(resolve.data);
       });
     }
-  },
-  aMethod: function aMethod(n) {
-    this.mediaVoto = n;
   },
   filteredAvg: function filteredAvg() {
     var _this3 = this;
@@ -3018,30 +3018,7 @@ var render = function render() {
     staticClass: "mt-5 py-4"
   }, [_vm._v("Specialisti in Evidenza")]), _vm._v(" "), _c("div", {
     staticClass: "filters-wrapper d-flex m-auto col-8"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.mediaVoto,
-      expression: "mediaVoto"
-    }],
-    staticClass: "d-none",
-    attrs: {
-      type: "range",
-      min: "1",
-      max: "5",
-      name: "mediaVoto",
-      id: "mediaVoto"
-    },
-    domProps: {
-      value: _vm.mediaVoto
-    },
-    on: {
-      __r: function __r($event) {
-        _vm.mediaVoto = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("select", {
+  }, [_c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -3081,7 +3058,30 @@ var render = function render() {
     staticClass: "filters mb-5 mr-2"
   }, [_c("h4", [_vm._v("Usa i Filtri")]), _vm._v(" "), _c("div", {
     staticClass: "votes"
-  }, [_c("button", {
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.mediaVoto,
+      expression: "mediaVoto"
+    }],
+    staticClass: "d-none",
+    attrs: {
+      type: "range",
+      min: "1",
+      max: "5",
+      name: "mediaVoto",
+      id: "mediaVoto"
+    },
+    domProps: {
+      value: _vm.mediaVoto
+    },
+    on: {
+      __r: function __r($event) {
+        _vm.mediaVoto = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("button", {
     style: _vm.mediaVoto == 0 ? "background-color:red" : "",
     on: {
       click: function click($event) {
@@ -3132,7 +3132,7 @@ var render = function render() {
         _vm.reviewsCheck = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
     staticClass: "my_cards pb-5 d-flex flex-wrap myCards"
   }, _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
@@ -3165,7 +3165,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("Profilo")])], 1)])]);
-  }), 0)])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
+  }), 0) : _c("div", [_c("h1", [_vm._v("Non ci sono risultati")])])])], 1), _vm._v(" "), _c("CardHomeComponent")], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -20695,7 +20695,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

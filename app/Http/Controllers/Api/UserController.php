@@ -56,7 +56,9 @@ class UserController extends Controller
                     $data = request()->all();
                     $q->where('specialization_id', '=' , $data['specializationName']);    
                 })
-                ->whereHas('reviews',function(){},'>=',$data['reviewsNumber'])
+                ->whereHas('reviews',function($q){
+                    
+                },'>=',$data['reviewsNumber'])
                 
                 ->get();                
             }

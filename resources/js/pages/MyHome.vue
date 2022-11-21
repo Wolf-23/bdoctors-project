@@ -46,7 +46,7 @@
     <h1 class="mt-5 py-4">Specialisti in Evidenza</h1>
     
     <div class="filters-wrapper d-flex m-auto col-8 ">
-      <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
+      
       <select v-model="selectSpecialization">
         <option value=""></option>
         <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
@@ -55,6 +55,7 @@
       <div class="filters mb-5 mr-2">
         <h4>Usa i Filtri</h4>
         <div class="votes">
+          <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
           <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
           <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
         </div>
@@ -70,7 +71,7 @@
 
       
 
-      <div class="my_cards pb-5 d-flex flex-wrap myCards">
+      <div v-if="profiles.length > 0" class="my_cards pb-5 d-flex flex-wrap myCards">
         <div class="my_card_wrapper col-2 ml-5 mx-3" v-for="(profile, index) in profiles" :key="index">
           <div class="my_card pb-2">
             <div class="img-wrapper">
@@ -83,6 +84,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div v-else>
+        <h1>Non ci sono risultati</h1>
       </div>
     </div>
 
@@ -150,6 +154,10 @@ export default {
 
   methods: {
 
+    aMethod(n){
+      this.mediaVoto = n;
+    },
+
     getSpecializations(){
                 axios.get('/api/specializations/')
                 .then((response) =>{
@@ -173,11 +181,6 @@ export default {
     }
     
   },
-
-    aMethod(n){
-      this.mediaVoto = n;
-    },
-
     filteredAvg(){
       this.profiles.forEach( profile => {
         this.avgVote.forEach( avg => {
