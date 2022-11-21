@@ -2263,6 +2263,11 @@ var render = function render() {
     }, [_vm._v(_vm._s(link.name))])], 1);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "navbar navbar-expand-md shadow-sm"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarNav"
+    }
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto"
   }, [_c("li", {
@@ -2277,9 +2282,27 @@ var render = function render() {
     attrs: {
       href: "http://127.0.0.1:8000/register"
     }
-  }, [_vm._v(_vm._s("Register"))])])])])]);
+  }, [_vm._v(_vm._s("Register"))])])])])])]);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "navbar-toggler",
+    attrs: {
+      type: "button",
+      "data-toggle": "collapse",
+      "data-target": "#navbarNav",
+      "aria-controls": "navbarNav",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation"
+    }
+  }, [_c("span", {
+    staticClass: "navbar-toggler-icon d-flex justify-content-center align-items-center"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-bars text-secondary"
+  })])]);
+}];
 render._withStripped = true;
 
 
@@ -3051,7 +3074,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n}", ""]);
+exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n}\n.navbar i[data-v-153bfd55] {\n  font-size: 1.4rem;\n}", ""]);
 
 // exports
 
@@ -3070,7 +3093,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main_color[data-v-3ee370e9] {\n  background-color: whitesmoke;\n}", ""]);
+exports.push([module.i, ".main_color[data-v-3ee370e9] {\n  background-color: whitesmoke;\n  height: 100%;\n}", ""]);
 
 // exports
 
@@ -3108,7 +3131,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_square[data-v-99b66ea2] {\n  width: 300px;\n  border: 1px solid #0A4067;\n}\n.eb_square img[data-v-99b66ea2] {\n  width: 100%;\n}\n.eb_color[data-v-99b66ea2] {\n  color: #0A4067;\n}\n.textGray[data-v-99b66ea2] {\n  color: #5f6c7b;\n}\ninput[data-v-99b66ea2], textarea[data-v-99b66ea2], select[data-v-99b66ea2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.btn[data-v-99b66ea2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
+exports.push([module.i, ".eb_color[data-v-99b66ea2] {\n  color: #0A4067;\n}\n.textGray[data-v-99b66ea2] {\n  color: #5f6c7b;\n}\ninput[data-v-99b66ea2], textarea[data-v-99b66ea2], select[data-v-99b66ea2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.btn[data-v-99b66ea2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
 
 // exports
 

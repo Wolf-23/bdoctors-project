@@ -13,5 +13,6 @@ export default {
 <style scoped lang="scss">
   .main_color{
     background-color: whitesmoke;
+    height: 100%;
   }
 </style>

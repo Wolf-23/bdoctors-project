@@ -1,5 +1,8 @@
 <template>
-    <section class="container-fluid my-5 border-0">
+    <section class="container-fluid mt-5 pb-3 border-0">
+        <div class="title text-center pb-5 mb-2">
+            <h2 class="text-dark">Perchè BDoctors?</h2>
+        </div>
         <div class="row justify-content-between">
             <div v-for="(card,index) in cards" :key="index" class="col-12 col-md-6 col-lg-3 text-center">
                 <i class="fa-solid pb-4" :class="card.icon"></i>
@@ -43,6 +46,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .title{
+        top: 17%;
+        left: 28%;
+        z-index: 2;
+        h2{
+            font-size: 5.5rem;
+            color: #094067;
+        }
+    }
+
     i{
         font-size: 4rem;
         color: #094067;
@@ -50,4 +63,5 @@ export default {
     p{
         font-size: 1.2rem;
     }
+
 </style>

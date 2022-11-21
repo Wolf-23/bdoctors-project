@@ -123,13 +123,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .eb_square{
-    width: 300px;
-    border: 1px solid #0A4067;
-    img{
-      width: 100%;
-    }
-  }
+  
   .eb_color{
     color: #0A4067;
   }
