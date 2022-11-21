@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Review;
 use App\Specialization;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,23 +20,56 @@ class UserController extends Controller
     public function index()
     {   
             
-        $myReviews = DB::table('reviews')
+        $data = request()->all();
+        $specializationName = $data['specializationName'];
+        
+        // $avgVote = $data['avgVote'];
+        $reviewsNumber = $data['reviewsNumber'];
+        
+        $avgVoteCalc = DB::table('reviews')
         ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
         ->groupBy('user_id')
         ->get();
 
-        $myReviewsTable = Review::all(); 
+        $reviewsLength = DB::table('users')
+        ->select('users.id', DB::raw('COUNT(reviews.user_id) AS reviews_count'))
+        ->join('reviews', 'users.id', '=', 'reviews.user_id')
+        ->groupBy('users.id')
+        ->get();
+
+        // $myReviewsTable = Review::all(); 
         
-        $allUsers = User::with(['specializations','reviews'])
-        ->get(['id','name','surname','slug','profile_pic']);
+        // $allUsers = User::with(['specializations','reviews'])->get();
 
+       
 
+        
+        if($data['specializationName'] == ''){
+            
+            $allUsers = User::with(['specializations','reviews'])
+            ->get(['id','name','surname','slug','profile_pic']);
+            
+        } else {
+  
+                $allUsers = User::with([ 'specializations', 'reviews'])
+                ->whereHas('specializations', function ($q){
+                    $data = request()->all();
+                    $q->where('specialization_id', '=' , $data['specializationName']);    
+                })
+                ->whereHas('reviews',function(){},'>=',$data['reviewsNumber'])
+                
+                ->get();                
+            }
+
+            
+
+          
+        
          
         return response()->json([
             'success' => true,
-            'results' => $allUsers, 
-            'media' => $myReviews,
-            'reviews' => $myReviewsTable
+            'results' => $allUsers,
+            'reviews_count' => $allUsers
         ]);
      
     }
