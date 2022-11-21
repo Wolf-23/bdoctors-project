@@ -2246,7 +2246,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "navbar p-0 px-3 navbar-expand-md shadow-sm"
+    staticClass: "navbar px-3 navbar-expand-md shadow-sm"
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto"
   }, _vm._l(_vm.menu, function (link, index) {
@@ -2295,7 +2295,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "main_color"
+    staticClass: "main_color container-fluid px-0"
   }, [_c("router-view")], 1);
 };
 var staticRenderFns = [];
@@ -2321,12 +2321,8 @@ var render = function render() {
   return _c("div", {
     staticClass: "container-fluid eb_width"
   }, [_c("h1", {
-    staticClass: "pt-5 text-center"
-  }, [_vm._v("Scrivimi")]), _vm._v(" "), _vm.status ? _c("div", {
-    staticClass: "alert alert-success"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-circle-check"
-  }), _vm._v(" Grazie di averci contattato! Il Dottore risponderà entro 48 ore!\n  ")]) : _vm._e(), _vm._v(" "), _c("form", {
+    staticClass: "pt-5 text-center font-weight-bold"
+  }, [_vm._v("Scrivimi")]), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -2336,7 +2332,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "d-flex flex-column col-6 m-auto"
   }, [_c("label", {
-    staticClass: "mt-5 textGray font-weight-bold",
+    staticClass: "mt-5 text-secondary font-weight-bold",
     attrs: {
       "for": "name"
     }
@@ -2347,6 +2343,7 @@ var render = function render() {
       value: _vm.name,
       expression: "name"
     }],
+    staticClass: "p-2",
     "class": _vm.errors.name ? "is-invalid" : "",
     attrs: {
       type: "text",
@@ -2368,7 +2365,7 @@ var render = function render() {
       staticClass: "invalid-feedback"
     }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray font-weight-bold",
+    staticClass: "mt-3 text-secondary font-weight-bold",
     attrs: {
       "for": "surname"
     }
@@ -2379,6 +2376,7 @@ var render = function render() {
       value: _vm.surname,
       expression: "surname"
     }],
+    staticClass: "p-2",
     "class": _vm.errors.surname ? "is-invalid" : "",
     attrs: {
       type: "text",
@@ -2400,7 +2398,7 @@ var render = function render() {
       staticClass: "invalid-feedback"
     }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray font-weight-bold",
+    staticClass: "mt-3 text-secondary font-weight-bold",
     attrs: {
       "for": "email"
     }
@@ -2411,6 +2409,7 @@ var render = function render() {
       value: _vm.email,
       expression: "email"
     }],
+    staticClass: "p-2",
     "class": _vm.errors.email ? "is-invalid" : "",
     attrs: {
       type: "email",
@@ -2432,7 +2431,7 @@ var render = function render() {
       staticClass: "invalid-feedback"
     }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray font-weight-bold",
+    staticClass: "mt-3 text-secondary font-weight-bold",
     attrs: {
       "for": "title"
     }
@@ -2443,6 +2442,7 @@ var render = function render() {
       value: _vm.title,
       expression: "title"
     }],
+    staticClass: "p-2",
     "class": _vm.errors.title ? "is-invalid" : "",
     attrs: {
       type: "text",
@@ -2464,7 +2464,7 @@ var render = function render() {
       staticClass: "invalid-feedback"
     }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray font-weight-bold",
+    staticClass: "mt-3 text-secondary font-weight-bold",
     attrs: {
       "for": "message_text"
     }
@@ -2475,6 +2475,7 @@ var render = function render() {
       value: _vm.messaggio,
       expression: "messaggio"
     }],
+    staticClass: "px-2 pt-1",
     "class": _vm.errors.message_text ? "is-invalid" : "",
     attrs: {
       name: "message_text",
@@ -2496,21 +2497,27 @@ var render = function render() {
       staticClass: "invalid-feedback"
     }, [_vm._v("\n          " + _vm._s(error) + "\n      ")]);
   })], 2), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-center"
+    staticClass: "d-flex justify-content-center align-items-center"
   }, [_c("button", {
-    staticClass: "btn btn-primary mt-3 p-2 mb-5",
+    staticClass: "btn mt-3 p-2 mb-5",
     attrs: {
       type: "submit",
       disabled: _vm.sending
     }
   }, [_vm._v("Invia")]), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary mt-3 p-2 mb-5 ml-2",
+    staticClass: "btn mt-3 p-2 mb-5 ml-2",
     attrs: {
       to: {
         name: "single-profile"
       }
     }
-  }, [_vm._v("Torna al profilo")])], 1)])]);
+  }, [_c("i", {
+    staticClass: "fa-solid fa-arrow-left"
+  }), _vm._v(" Torna al profilo")]), _vm._v(" "), _vm.status ? _c("div", {
+    staticClass: "alert alert-success ml-4 mb-4"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle-check"
+  }), _vm._v(" Grazie di averci contattato! Il Dottore risponderà entro 48 ore!\n      ")]) : _vm._e()], 1)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2534,60 +2541,61 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container pt-5 px-5"
-  }, [_c("router-link", {
-    staticClass: "btn btn-primary mb-3",
-    attrs: {
-      to: {
-        name: "MyHome"
-      }
-    }
-  }, [_vm._v("Torna alla Home")]), _vm._v(" "), _c("h1", {
-    staticClass: "mt-2"
-  }, [_vm._v("Dottor. " + _vm._s(_vm.profile.name) + " " + _vm._s(_vm.profile.surname))]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-around align-items-center"
+  }, [_c("h1", {
+    staticClass: "mt-2 text-center text-md-left"
+  }, [_vm._v("Dottor. "), _c("span", {
+    staticClass: "font-weight-bold"
+  }, [_vm._v(_vm._s(_vm.profile.name) + " " + _vm._s(_vm.profile.surname))])]), _vm._v(" "), _c("div", {
+    staticClass: "row justify-content-around align-items-center"
   }, [_c("div", {
-    staticClass: "d-flex border border-2 eb_square rounded-circle"
+    staticClass: "col-10 col-lg-5 eb_square"
   }, [_c("img", {
-    staticClass: "rounded-circle img-fluid",
+    staticClass: "img-fluid",
     attrs: {
-      src: _vm.profile.profile_pic == false ? "images/avatar.png" : "/storage/" + _vm.profile.profile_pic,
+      src: _vm.profile.profile_pic == false ? "/images/avatar.png" : "/storage/" + _vm.profile.profile_pic,
       alt: ""
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex-flex-column"
+    staticClass: "flex-column col-10 col-lg-5"
   }, [_c("div", [_c("h2", {
-    staticClass: "mt-3"
+    staticClass: "mt-3 eb_color text-center text-md-left font-weight-bold"
   }, [_vm._v("INFORMAZIONI")]), _vm._v(" "), _c("div", {
-    staticClass: "container my-5"
-  }, [_c("h5", [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span", {
-    staticClass: "textGray"
+    staticClass: "container border-left border-primary my-5"
+  }, [_c("h5", {
+    staticClass: "font-weight-bold pl-2 pl-md-0 text-secondary"
+  }, [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("span", {
+    staticClass: "textGray pl-2 pl-md-0"
   }, [_vm._v(_vm._s(_vm.profile.address))]), _vm._v(" "), _c("h5", {
-    staticClass: "mt-2"
+    staticClass: "mt-2 pl-2 pl-md-0 font-weight-bold text-secondary"
   }, [_vm._v("SPECIALIZZAZIONI")]), _vm._v(" "), _vm._l(_vm.profile.specializations, function (spec, index) {
     return _c("span", {
       key: index,
-      staticClass: "textGray"
+      staticClass: "textGray pl-2 pl-md-0"
     }, [_vm._v(_vm._s(spec.name) + " ")]);
   }), _vm._v(" "), _c("h5", {
-    staticClass: "mt-2"
+    staticClass: "mt-2 pl-2 pl-md-0 font-weight-bold text-secondary"
   }, [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span", {
-    staticClass: "textGray"
+    staticClass: "textGray pl-2 pl-md-0"
   }, [_vm._v(_vm._s(_vm.profile.services))])], 2)]), _vm._v(" "), _c("h2", {
-    staticClass: "mt-3"
+    staticClass: "mt-3 text-center text-md-left eb_color font-weight-bold"
   }, [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("div", {
-    staticClass: "container my-5"
-  }, [_c("h5", {}, [_vm._v("E-MAIL")]), _vm._v(" "), _c("span", {
-    staticClass: "textGray"
-  }, [_vm._v(_vm._s(_vm.profile.email))]), _vm._v(" "), _c("h5", {}, [_vm._v("TELEFONO")]), _vm._v(" "), _c("span", {
-    staticClass: "textGray"
+    staticClass: "container my-5 border-left border-primary"
+  }, [_c("h5", {
+    staticClass: "pl-2 pl-md-0 mt-2 font-weight-bold text-secondary"
+  }, [_vm._v("E-MAIL")]), _vm._v(" "), _c("span", {
+    staticClass: "pl-2 pl-md-0 textGray"
+  }, [_vm._v(_vm._s(_vm.profile.email))]), _vm._v(" "), _c("h5", {
+    staticClass: "pl-2 pl-md-0 mt-2 font-weight-bold text-secondary"
+  }, [_vm._v("TELEFONO")]), _vm._v(" "), _c("span", {
+    staticClass: "pl-2 pl-md-0 textGray"
   }, [_vm._v(_vm._s(_vm.profile.phone))]), _c("br"), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary mt-2",
+    staticClass: "ml-2 ml-md-0 btn btn-group mt-2",
     attrs: {
       to: {
         name: "MessageForm"
       }
     }
-  }, [_vm._v("invia messaggio")])], 1)])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Invia messaggio")])], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "text-center"
   }, [_c("form", {
     on: {
@@ -2599,9 +2607,9 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "d-flex flex-column pt-4"
   }, [_c("h2", {
-    staticClass: "my-5"
+    staticClass: "my-5 font-weight-bold eb_color"
   }, [_vm._v("RECENSISCI IL TUO DOTTORE")]), _vm._v(" "), _c("label", {
-    staticClass: "textGray h5 text-left",
+    staticClass: "text-secondary h5 text-left",
     attrs: {
       "for": "name"
     }
@@ -2612,6 +2620,7 @@ var render = function render() {
       value: _vm.name,
       expression: "name"
     }],
+    staticClass: "p-2",
     attrs: {
       type: "text",
       name: "name",
@@ -2627,7 +2636,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray h5 text-left",
+    staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
       "for": "surname"
     }
@@ -2638,6 +2647,7 @@ var render = function render() {
       value: _vm.surname,
       expression: "surname"
     }],
+    staticClass: "p-2",
     attrs: {
       type: "text",
       name: "surname",
@@ -2653,7 +2663,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray h5 text-left",
+    staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
       "for": "Voto"
     }
@@ -2664,6 +2674,7 @@ var render = function render() {
       value: _vm.vote,
       expression: "vote"
     }],
+    staticClass: "border-0 p-2",
     attrs: {
       name: "vote",
       id: "vote"
@@ -2700,7 +2711,7 @@ var render = function render() {
       value: "5"
     }
   }, [_vm._v("5")])]), _vm._v(" "), _c("label", {
-    staticClass: "mt-3 textGray h5 text-left",
+    staticClass: "mt-3 text-secondary h5 text-left",
     attrs: {
       "for": "review_text"
     }
@@ -2711,6 +2722,7 @@ var render = function render() {
       value: _vm.review_text,
       expression: "review_text"
     }],
+    staticClass: "px-2 pt-1",
     attrs: {
       name: "review_text",
       id: "review_text",
@@ -2726,12 +2738,23 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary mt-3 ml-3 mb-5",
+    staticClass: "btn mt-3 mb-5",
     attrs: {
       type: "",
       disabled: _vm.sending
     }
-  }, [_vm._v("Invia")])])])], 1);
+  }, [_vm._v("Invia")])])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-center justify-content-md-end"
+  }, [_c("router-link", {
+    staticClass: "btn mb-3",
+    attrs: {
+      to: {
+        name: "MyHome"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-arrow-left"
+  }), _vm._v(" Torna alla Home")])], 1)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3023,7 +3046,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  height: 71px;\n}\n.navbar .eb_bg[data-v-153bfd55] {\n  background-color: transparent;\n}", ""]);
+exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n}\n.navbar .eb_bg[data-v-153bfd55] {\n  background-color: transparent;\n}", ""]);
 
 // exports
 
@@ -3042,7 +3065,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main_color[data-v-3ee370e9] {\n  background-color: whitesmoke;\n  overflow-y: auto;\n}\n.main_color[data-v-3ee370e9]::-webkit-scrollbar {\n  width: 6px;\n}\n.main_color[data-v-3ee370e9]::-webkit-scrollbar-track {\n  background: whitesmoke; /* color of the tracking area */\n}\n.main_color[data-v-3ee370e9]::-webkit-scrollbar-thumb {\n  background-color: #094067; /* color of the scroll thumb */\n  border-radius: 30px; /* roundness of the scroll thumb */\n  opacity: 1;\n  height: 10px;\n}", ""]);
+exports.push([module.i, ".main_color[data-v-3ee370e9] {\n  background-color: whitesmoke;\n}", ""]);
 
 // exports
 
@@ -3061,7 +3084,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_width[data-v-298400f2] {\n  overflow-y: auto;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}", ""]);
+exports.push([module.i, ".eb_width[data-v-298400f2] {\n  overflow-y: auto;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}\n.eb_width .btn[data-v-298400f2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
 
 // exports
 
@@ -3080,7 +3103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_square[data-v-99b66ea2] {\n  width: 400px;\n  height: 400px;\n}\nh1[data-v-99b66ea2], h2[data-v-99b66ea2], h3[data-v-99b66ea2], h5[data-v-99b66ea2], p[data-v-99b66ea2] {\n  color: #094067;\n}\n.textGray[data-v-99b66ea2] {\n  color: #5f6c7b;\n}\ninput[data-v-99b66ea2], textarea[data-v-99b66ea2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}", ""]);
+exports.push([module.i, ".eb_square[data-v-99b66ea2] {\n  width: 300px;\n  border: 1px solid #0A4067;\n}\n.eb_square img[data-v-99b66ea2] {\n  width: 100%;\n}\n.eb_color[data-v-99b66ea2] {\n  color: #0A4067;\n}\n.textGray[data-v-99b66ea2] {\n  color: #5f6c7b;\n}\ninput[data-v-99b66ea2], textarea[data-v-99b66ea2], select[data-v-99b66ea2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.btn[data-v-99b66ea2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
 
 // exports
 

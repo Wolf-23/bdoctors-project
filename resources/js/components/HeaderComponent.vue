@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar p-0 px-3 navbar-expand-md shadow-sm">
+    <div class="navbar px-3 navbar-expand-md shadow-sm">
 
         <ul class="navbar-nav mr-auto">
              <li class="nav-item active" v-for="(link , index) in menu" :key="index">
@@ -38,7 +38,6 @@
  <style scoped lang="scss">
     .navbar{
         background-color:#094067;
-        height: 71px;
         .eb_bg{
             background-color: transparent;
         }

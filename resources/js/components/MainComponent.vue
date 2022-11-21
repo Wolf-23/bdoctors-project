@@ -1,5 +1,5 @@
 <template>
-  <div class="main_color">
+  <div class="main_color container-fluid px-0">
     <router-view></router-view>
   </div>
 </template>
@@ -13,20 +13,5 @@ export default {
 <style scoped lang="scss">
   .main_color{
     background-color: whitesmoke;
-    overflow-y: auto;
-    &::-webkit-scrollbar { 
-        width: 6px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: whitesmoke;        /* color of the tracking area */
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background-color: #094067;    /* color of the scroll thumb */
-      border-radius: 30px;       /* roundness of the scroll thumb */
-      opacity: 1;
-      height: 10px;
-    }
   }
 </style>

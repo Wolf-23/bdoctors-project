@@ -127,23 +127,8 @@
         .my_cards {
             display: flex;
             flex-wrap: nowrap;
-            overflow-x: scroll;
             width: 80%;
             margin: auto;
-            &::-webkit-scrollbar { 
-                height: 2px;
-                max-width: 2px;
-            }
-            
-            &::-webkit-scrollbar-track {
-              background: #094067;        /* color of the tracking area */
-            }
-            
-            &::-webkit-scrollbar-thumb {
-              background-color: whitesmoke;    /* color of the scroll thumb */
-              border-radius: 50%;       /* roundness of the scroll thumb */
-              opacity: 1;
-            }
             
             .my_card_wrapper {
                 .my_card {

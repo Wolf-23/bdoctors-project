@@ -1,31 +1,31 @@
 <template>
   <div class="container pt-5 px-5">
-    <router-link :to="{name: 'MyHome'}" class="btn btn-primary mb-3">Torna alla Home</router-link>
-    <h1 class="mt-2">Dottor. {{profile.name}} {{profile.surname}}</h1>
-    <div class="d-flex justify-content-around align-items-center">
-      <div class="d-flex border border-2 eb_square rounded-circle">
-          <img :src=" profile.profile_pic == false ? 'images/avatar.png' : '/storage/'+ profile.profile_pic" alt="" class="rounded-circle img-fluid">
+    <h1 class="mt-2 text-center text-md-left">Dottor. <span class="font-weight-bold">{{profile.name}} {{profile.surname}}</span></h1>
+    <div class="row justify-content-around align-items-center">
+      <div class="col-10 col-lg-5 eb_square">
+          <img :src=" profile.profile_pic == false ? '/images/avatar.png' : '/storage/'+ profile.profile_pic" alt="" class="img-fluid">
       </div>
-      <div class="d-flex-flex-column">
+      <div class="flex-column col-10 col-lg-5">
           <div>
-            <h2 class="mt-3">INFORMAZIONI</h2>
-            <div class="container my-5">
-              <h5>INDIRIZZO</h5>
-              <span class="textGray">{{profile.address}}</span>
-              <h5 class="mt-2">SPECIALIZZAZIONI</h5>
-              <span  class="textGray" v-for="(spec , index) in profile.specializations" :key = "index">{{spec.name}} </span>
-              <h5 class="mt-2">PRESTAZIONI OFFERTE</h5>
-              <span class="textGray">{{profile.services}}</span>
+            <h2 class="mt-3 eb_color text-center text-md-left font-weight-bold">INFORMAZIONI</h2>
+            <div class="container border-left border-primary my-5">
+              <h5 class="font-weight-bold pl-2 pl-md-0 text-secondary">INDIRIZZO</h5>
+              <span class="textGray pl-2 pl-md-0">{{profile.address}}</span>
+              <h5 class="mt-2 pl-2 pl-md-0 font-weight-bold text-secondary">SPECIALIZZAZIONI</h5>
+              <span  class="textGray pl-2 pl-md-0" v-for="(spec , index) in profile.specializations" :key = "index">{{spec.name}} </span>
+              <h5 class="mt-2 pl-2 pl-md-0 font-weight-bold text-secondary">PRESTAZIONI OFFERTE</h5>
+              <span class="textGray pl-2 pl-md-0">{{profile.services}}</span>
             </div>
           </div>
-          <h2 class="mt-3">CONTATTAMI</h2>
-          <div class="container my-5">
-              <h5 class="">E-MAIL</h5>
-              <span class="textGray">{{profile.email}}</span>
-              <h5 class="">TELEFONO</h5>  
-              <span class="textGray">{{profile.phone}}</span><br>
-              <router-link :to="{name:'MessageForm'}" class="btn btn-primary mt-2">invia messaggio</router-link>
+          <h2 class="mt-3 text-center text-md-left eb_color font-weight-bold">CONTATTAMI</h2>
+          <div class="container my-5 border-left border-primary">
+              <h5 class="pl-2 pl-md-0 mt-2 font-weight-bold text-secondary">E-MAIL</h5>
+              <span class="pl-2 pl-md-0 textGray">{{profile.email}}</span>
+              <h5 class="pl-2 pl-md-0 mt-2 font-weight-bold text-secondary">TELEFONO</h5>  
+              <span class="pl-2 pl-md-0 textGray">{{profile.phone}}</span><br>
+              <router-link :to="{name:'MessageForm'}" class="ml-2 ml-md-0 btn btn-group mt-2">Invia messaggio</router-link>
           </div>
+          
       </div>
     </div>
     
@@ -33,27 +33,31 @@
     <div class="text-center">
       <form @submit.prevent='sendreview()'>
         <div class="d-flex flex-column pt-4">
-          <h2 class="my-5">RECENSISCI IL TUO DOTTORE</h2>
-          <label for="name" class="textGray h5 text-left">Nome</label>
-          <input type="text" v-model="name" name="name" id="name">
+          <h2 class="my-5 font-weight-bold eb_color">RECENSISCI IL TUO DOTTORE</h2>
+          <label for="name" class="text-secondary h5 text-left">Nome</label>
+          <input type="text" class="p-2" v-model="name" name="name" id="name">
 
-          <label class="mt-3 textGray h5 text-left" for="surname">Cognome</label>
-          <input type="text" v-model="surname" name="surname" id="surname">
+          <label class="mt-3 text-secondary h5 text-left" for="surname">Cognome</label>
+          <input type="text" class="p-2" v-model="surname" name="surname" id="surname">
 
-          <label class="mt-3 textGray h5 text-left" for="Voto">Voto</label>
-          <select v-model="vote" name="vote" id="vote">
+          <label class="mt-3 text-secondary h5 text-left" for="Voto">Voto</label>
+          <select class="border-0 p-2" v-model="vote" name="vote" id="vote">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <label class="mt-3 textGray h5 text-left" for="review_text">Recensione</label>
-          <textarea v-model="review_text" name="review_text"  id="review_text" rows="6"></textarea>
+
+          <label class="mt-3 text-secondary h5 text-left" for="review_text">Recensione</label>
+          <textarea v-model="review_text" name="review_text" class="px-2 pt-1"  id="review_text" rows="6"></textarea>
 
         </div>
-          <button type="" :disabled="sending" class="btn btn-primary mt-3 ml-3 mb-5">Invia</button>
+          <button type="" :disabled="sending" class="btn mt-3 mb-5">Invia</button>
       </form>
+    </div>
+    <div class="d-flex justify-content-center justify-content-md-end">
+      <router-link :to="{name: 'MyHome'}" class="btn mb-3"><i class="fa-solid fa-arrow-left"></i> Torna alla Home</router-link>
     </div>
   </div>
   
@@ -120,19 +124,28 @@ export default {
 
 <style scoped lang="scss">
   .eb_square{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    border: 1px solid #0A4067;
+    img{
+      width: 100%;
+    }
   }
-  h1, h2, h3, h5, p{
-    color: #094067;
+  .eb_color{
+    color: #0A4067;
   }
+
   .textGray{
     color:#5f6c7b;
   }
-  input, textarea{
+  input, textarea, select{
     border-radius: 10px;
     outline-color: #3da9fc;
     border: none;
+  }
+  
+  .btn{
+    background-color:#0A4067;
+    color: whitesmoke;
   }
 
 </style>
