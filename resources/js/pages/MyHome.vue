@@ -55,7 +55,7 @@
                 <h3 class="pb-2">Media Voto</h3>
                 <div class="votes d-md-block">
                   <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
-                  <button class="btn ml-md-2 mb-2 mb-md-0 mr-md-2" @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
+                  <button class="btn ml-md-2 mb-2 mb-md-0 mr-md-2" @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:#ef4565':''">Disabilita Filtro</button>
                   <div class="d-md-inline">
                     <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color: rgb(252, 153, 6);':''" ><i class="fa-solid fa-star"></i></a>
                   </div>

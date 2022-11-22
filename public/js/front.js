@@ -2729,7 +2729,7 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "card-body d-flex flex-column justify-content-around align-items-center"
     }, [_c("h4", {
-      staticClass: "card-title text-center py-1"
+      staticClass: "card-title text-center textBlue py-1"
     }, [_vm._v(_vm._s(card.name))]), _vm._v(" "), _c("div", {
       staticClass: "text-center py-1"
     }, _vm._l(5, function (index) {
@@ -2765,7 +2765,9 @@ var render = function render() {
       staticClass: "col-sm-12 col-lg-7 border-left"
     }, [_c("div", {
       staticClass: "card-body"
-    }, [_c("p", [_vm._v(_vm._s(card.text))])])])])]);
+    }, [_c("p", {
+      staticClass: "textGray"
+    }, [_vm._v(_vm._s(card.text))])])])])]);
   }), 0)])]);
 };
 var staticRenderFns = [];
@@ -3012,9 +3014,9 @@ var render = function render() {
   return _c("div", {
     staticClass: "container pt-5 px-5"
   }, [_c("h1", {
-    staticClass: "mt-2 text-center text-md-left eb_title text-pop-up-top pt-5"
+    staticClass: "mt-2 text-center text-md-left eb_title text-pop-up-top pt-5 textGray"
   }, [_vm._v("Dottor. "), _c("span", {
-    staticClass: "font-weight-bold"
+    staticClass: "eb_color font-weight-bold"
   }, [_vm._v(_vm._s(_vm.profile.name) + " " + _vm._s(_vm.profile.surname))])]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-around align-items-center"
   }, [_c("div", {
@@ -3319,7 +3321,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("button", {
     staticClass: "btn ml-md-2 mb-2 mb-md-0 mr-md-2",
-    style: _vm.mediaVoto == 0 ? "background-color:red" : "",
+    style: _vm.mediaVoto == 0 ? "background-color:#ef4565" : "",
     on: {
       click: function click($event) {
         return _vm.aMethod(0);
@@ -3697,7 +3699,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-e5fd6b2c] {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #fff;\n  background-clip: border-box;\n  border: 0 solid transparent;\n  border-radius: 0;\n  margin-top: 20px;\n}\n.card .star[data-v-e5fd6b2c] {\n  color: #0A4067;\n}\n.eb_title[data-v-e5fd6b2c] {\n  font-size: 4rem;\n  margin-top: 150px;\n  color: #0A4067;\n}\n.text-pop-up-top[data-v-e5fd6b2c] {\n  animation: text-pop-up-top-e5fd6b2c 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-e5fd6b2c {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n.shadow-drop-2-center[data-v-e5fd6b2c] {\n  animation: shadow-drop-2-center-e5fd6b2c 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes shadow-drop-2-center-e5fd6b2c {\n0% {\n    transform: translateZ(0);\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);\n}\n100% {\n    transform: translateZ(50px);\n    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);\n}\n}\n@media screen and (max-width: 425px) {\n.eb_title[data-v-e5fd6b2c] {\n    font-size: 2.5rem;\n}\n}", ""]);
+exports.push([module.i, ".card[data-v-e5fd6b2c] {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #fff;\n  background-clip: border-box;\n  border: 0 solid transparent;\n  border-radius: 0;\n  margin-top: 20px;\n}\n.card .star[data-v-e5fd6b2c] {\n  color: #0A4067;\n}\n.eb_title[data-v-e5fd6b2c] {\n  font-size: 4rem;\n  margin-top: 150px;\n  color: #0A4067;\n}\n.textGray[data-v-e5fd6b2c] {\n  color: #5f6c7b;\n}\n.textBlue[data-v-e5fd6b2c] {\n  color: #0A4067;\n}\n.text-pop-up-top[data-v-e5fd6b2c] {\n  animation: text-pop-up-top-e5fd6b2c 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-e5fd6b2c {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n.shadow-drop-2-center[data-v-e5fd6b2c] {\n  animation: shadow-drop-2-center-e5fd6b2c 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes shadow-drop-2-center-e5fd6b2c {\n0% {\n    transform: translateZ(0);\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);\n}\n100% {\n    transform: translateZ(50px);\n    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);\n}\n}\n@media screen and (max-width: 425px) {\n.eb_title[data-v-e5fd6b2c] {\n    font-size: 2.5rem;\n}\n}", ""]);
 
 // exports
 
@@ -21419,7 +21421,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/utente/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

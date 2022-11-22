@@ -1,6 +1,6 @@
 <template>
   <div class="container pt-5 px-5">
-    <h1 class="mt-2 text-center text-md-left eb_title text-pop-up-top pt-5">Dottor. <span class="font-weight-bold">{{profile.name}} {{profile.surname}}</span></h1>
+    <h1 class="mt-2 text-center text-md-left eb_title text-pop-up-top pt-5 textGray">Dottor. <span class="eb_color font-weight-bold">{{profile.name}} {{profile.surname}}</span></h1>
     <div class="row justify-content-around align-items-center">
       <div class="col-10 col-lg-5 eb_square">
           <img :src=" profile.profile_pic == false ? '/images/avatar.png' : '/storage/'+ profile.profile_pic" alt="" class="img-fluid">
