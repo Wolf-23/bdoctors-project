@@ -30,6 +30,9 @@
     </div>
 
     <ReviewComponent/>
+    <div class="m-auto text-center">
+        <router-link class="btn" :to="{name:'AllReviews'} ">Tutte le recensioni</router-link>
+    </div>
     
 
     <div class="text-center">
