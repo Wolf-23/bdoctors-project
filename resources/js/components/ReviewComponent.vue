@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-5">
                             <div class="card-body d-flex flex-column justify-content-around align-items-center">
-                                <h4 class="card-title text-center py-1">{{card.name}}</h4>
+                                <h4 class="card-title text-center textBlue py-1">{{card.name}}</h4>
                                 <div class="text-center py-1">
                                     <a class="star" v-for="index in 5" :key="index" href ="" :style="card.vote >= index? 'color: rgb(252, 153, 6);':''" ><i class="fa-solid fa-star"></i></a>
                                 </div>
@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-sm-12 col-lg-7 border-left">
                             <div class="card-body">
-                                <p>{{card.text}}</p>
+                                <p class="textGray">{{card.text}}</p>
                             </div>
                         </div>
                     </div>
@@ -78,6 +78,12 @@ export default {
     .eb_title{
         font-size: 4rem;
         margin-top: 150px;
+        color: #0A4067;
+    }
+    .textGray{
+    color:#5f6c7b;
+    }
+    .textBlue{
         color: #0A4067;
     }
 
