@@ -3,7 +3,6 @@
     <HeaderComponent />
     <MainComponent />
     <FooterComponent />
-    
   </div>
 </template>
 
@@ -19,5 +18,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  
 </style>

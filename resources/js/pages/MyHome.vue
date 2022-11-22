@@ -242,7 +242,18 @@ export default {
       }
   }
 
-  @media screen and (max-width:425px) {
+  @media screen and (max-width:625px) {
+
+    .eb_height{
+      padding-bottom: 0;
+      .home_jumbo{
+        width: 100% !important;
+        border-radius: 0;
+        .eb_space{
+          margin: 0 !important;
+        }
+      }
+    }
     .ourDoctors{
       h1{
         font-size: 2.5rem;

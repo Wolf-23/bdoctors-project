@@ -1,6 +1,6 @@
 <template>
-    <section class="eb_jumbo py-5 container-fluid px-0">
-        <div class="row mx-0 eb_flex align-items-center py-4">
+    <section class="eb_jumbo container-fluid px-0">
+        <div class="row mx-0 eb_flex align-items-center">
             <div class="col-12 col-md-5 pb-4 pb-md-0 eb_fl d-flex flex-column align-items-center align-items-md-start position-relative">
                 <div class="title_shadow">
                     <h1 class="d-none d-md-block">BDoctors</h1>
@@ -65,9 +65,11 @@ export default {
         background-blend-mode: overlay;
         background-color: rgba($color: #000000, $alpha: 0.7);
         margin-top: 7rem;
+        padding: 5rem 0;
         
         .eb_flex{
             justify-content: space-evenly;
+            padding: 4rem 0;
             .title_shadow h1{
                 font-size: 5.5rem;
                 color: rgba($color: #FFFFFF, $alpha: 0.1);
@@ -107,6 +109,17 @@ export default {
             }
         }        
     }
+
+    @media screen and (max-width:425px) {
+        .eb_jumbo{
+            margin-top: 0;
+            padding-top: 0;
+            .eb_flex{
+                padding-top: 0;
+            }
+        }
+    }
+
 
     @media screen and (max-width: 768px) {
         .title {

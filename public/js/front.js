@@ -2480,9 +2480,9 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("section", {
-    staticClass: "eb_jumbo py-5 container-fluid px-0"
+    staticClass: "eb_jumbo container-fluid px-0"
   }, [_c("div", {
-    staticClass: "row mx-0 eb_flex align-items-center py-4"
+    staticClass: "row mx-0 eb_flex align-items-center"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-md-6"
   }, _vm._l(_vm.cards, function (card, index) {
@@ -3522,7 +3522,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_jumbo[data-v-5e449999] {\n  background-image: url(\"/images/graphics/jumbotron_medical.png\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: overlay;\n  background-color: rgba(0, 0, 0, 0.7);\n  margin-top: 7rem;\n}\n.eb_jumbo .eb_flex[data-v-5e449999] {\n  justify-content: space-evenly;\n}\n.eb_jumbo .eb_flex .title_shadow h1[data-v-5e449999] {\n  font-size: 5.5rem;\n  color: rgba(255, 255, 255, 0.1);\n}\n.eb_jumbo .eb_flex .title[data-v-5e449999] {\n  top: 9%;\n  left: 0%;\n  z-index: 2;\n}\n.eb_jumbo .eb_flex .title h2[data-v-5e449999] {\n  font-size: 5.5rem;\n}\n.eb_jumbo .eb_flex p[data-v-5e449999] {\n  font-size: 1.2rem;\n  color: whitesmoke;\n}\n.eb_jumbo .eb_flex .btn[data-v-5e449999] {\n  outline: 2px solid whitesmoke;\n  color: whitesmoke;\n}\n.eb_jumbo .eb_flex .btn[data-v-5e449999]:hover {\n  outline-color: black;\n  background-color: white;\n  color: black;\n}\n.eb_jumbo .eb_card .eb_square[data-v-5e449999] {\n  width: 70px;\n  height: 70px;\n  background-color: #C6EAEC;\n}\n.eb_jumbo .eb_card p[data-v-5e449999] {\n  font-size: 1.2rem;\n}\n@media screen and (max-width: 768px) {\n.title[data-v-5e449999] {\n    position: static !important;\n    text-align: center !important;\n}\n.title h2[data-v-5e449999] {\n    font-size: 2.8rem !important;\n}\n}", ""]);
+exports.push([module.i, ".eb_jumbo[data-v-5e449999] {\n  background-image: url(\"/images/graphics/jumbotron_medical.png\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: overlay;\n  background-color: rgba(0, 0, 0, 0.7);\n  margin-top: 7rem;\n  padding: 5rem 0;\n}\n.eb_jumbo .eb_flex[data-v-5e449999] {\n  justify-content: space-evenly;\n  padding: 4rem 0;\n}\n.eb_jumbo .eb_flex .title_shadow h1[data-v-5e449999] {\n  font-size: 5.5rem;\n  color: rgba(255, 255, 255, 0.1);\n}\n.eb_jumbo .eb_flex .title[data-v-5e449999] {\n  top: 9%;\n  left: 0%;\n  z-index: 2;\n}\n.eb_jumbo .eb_flex .title h2[data-v-5e449999] {\n  font-size: 5.5rem;\n}\n.eb_jumbo .eb_flex p[data-v-5e449999] {\n  font-size: 1.2rem;\n  color: whitesmoke;\n}\n.eb_jumbo .eb_flex .btn[data-v-5e449999] {\n  outline: 2px solid whitesmoke;\n  color: whitesmoke;\n}\n.eb_jumbo .eb_flex .btn[data-v-5e449999]:hover {\n  outline-color: black;\n  background-color: white;\n  color: black;\n}\n.eb_jumbo .eb_card .eb_square[data-v-5e449999] {\n  width: 70px;\n  height: 70px;\n  background-color: #C6EAEC;\n}\n.eb_jumbo .eb_card p[data-v-5e449999] {\n  font-size: 1.2rem;\n}\n@media screen and (max-width: 425px) {\n.eb_jumbo[data-v-5e449999] {\n    margin-top: 0;\n    padding-top: 0;\n}\n.eb_jumbo .eb_flex[data-v-5e449999] {\n    padding-top: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.title[data-v-5e449999] {\n    position: static !important;\n    text-align: center !important;\n}\n.title h2[data-v-5e449999] {\n    font-size: 2.8rem !important;\n}\n}", ""]);
 
 // exports
 
@@ -3617,7 +3617,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 425px) {\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}", ""]);
+exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}", ""]);
 
 // exports
 
