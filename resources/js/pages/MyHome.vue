@@ -27,7 +27,7 @@
                     <div class="slogan d-flex flex-column justify-content-between">
                         <h2 class="h1 eb_fs text-center pl-2 text-lg-left">Sei stufo di fare la fila?</h2>
                         <p class="text-center pl-2 text-lg-left">Affidati a <b>Bdoctors</b>, i migliori specialisti della tua città!</p>
-                        <p class="text-square bg-light mx-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?</p>
+                        <p class="text-square bg-light mx-2">« Il medico dovrebbe essere opaco per i suoi pazienti e, al pari di uno specchio, mostrare loro null'altro che ciò che viene mostrato a lui »</p>
                         <p class="pl-2 h5">Dr. Girolamo Visconti</p>
                         <div class="img-wrap">
                           <img src="/images/graphics/DottorVisconti.png" alt="">
@@ -42,8 +42,8 @@
 
 
   
-      <div class="ourDoctors text-center mt-5">
-        <h1>Scegli il tuo prossimo Specialista!</h1>
+      <div class="ourDoctors text-center">
+        <h1 class="text-pop-up-top font-weight-bold">Scegli il tuo prossimo Specialista!</h1>
     
         <div class="container m-auto col-8">
           <div class="row justify-content-center align-items-center">
@@ -112,6 +112,7 @@
 
       </div>
     </div>
+    <ParallaxComponent/>
     <CardHomeComponent/>
   </div>
 
@@ -123,9 +124,10 @@
 import axios from 'axios';
 import CardHomeComponent from '../components/CardHomeComponent.vue';
 import JumboComponent from '../components/JumboComponent.vue';
+import ParallaxComponent from '../components/ParallaxComponent.vue';
 
 export default {
-  components: { JumboComponent, CardHomeComponent },
+  components: { JumboComponent, CardHomeComponent, ParallaxComponent },
 
   name: 'MyHome',
   data(){
@@ -200,7 +202,46 @@ export default {
 </script>
 
 
-<style lang="scss" scoped> 
+<style lang="scss" scoped>
+
+  .text-pop-up-top {
+    -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  @-webkit-keyframes text-pop-up-top {
+      0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+      }
+      100% {
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+      }
+      }
+      @keyframes text-pop-up-top {
+      0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+      }
+      100% {
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+      }
+  }
+
   @media screen and (max-width:425px) {
     .ourDoctors{
       h1{
