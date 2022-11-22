@@ -3599,16 +3599,39 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "container-fluid eb_height flex-column d-flex align-items-end justify-content-center"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "d-flex mt-4 mr-3"
+  }, [_c("router-link", {
+    staticClass: "btn mb-3",
+    attrs: {
+      to: {
+        name: "MyHome"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-arrow-left"
+  }), _vm._v(" Torna alla Home")])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "container-fluid d-flex justify-content-center align-items-center"
-  }, [_c("h1", {
-    staticClass: "font-weight-bold"
-  }, [_vm._v("404")])]);
+    staticClass: "mainbox d-flex justify-content-end mr-3"
+  }, [_c("div", {
+    staticClass: "err"
+  }, [_vm._v("4")]), _vm._v(" "), _c("i", {
+    staticClass: "far fa-question-circle fa-spin"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "err2"
+  }, [_vm._v("4")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "d-flex mt-4 justify-content-end mr-3"
+  }, [_c("h3", [_vm._v("Page Not Found!")])]);
 }];
 render._withStripped = true;
 
@@ -3858,7 +3881,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div[data-v-a26bf910] {\n  height: calc(100vh - 263px);\n}\ndiv h1[data-v-a26bf910] {\n  font-size: 5rem;\n}", ""]);
+exports.push([module.i, ".eb_height[data-v-a26bf910] {\n  background-image: url(\"/images/graphics/404.png\");\n  background-size: contain;\n  background-position-x: left;\n  background-repeat: no-repeat;\n}\n.eb_height .mainbox .err[data-v-a26bf910] {\n  color: #0A4067;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 14rem;\n}\n.eb_height .mainbox .far[data-v-a26bf910] {\n  font-size: 11.5rem;\n  color: #0A4067;\n}\n.eb_height .mainbox .err2[data-v-a26bf910] {\n  color: #0A4067;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 14rem;\n}\n.eb_height h3[data-v-a26bf910] {\n  text-align: center;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 3rem;\n  color: #0A4067;\n}\n.eb_height .btn[data-v-a26bf910] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}\n.eb_height .btn[data-v-a26bf910]:hover {\n  background-color: whitesmoke;\n  color: #0A4067;\n  outline: 2px solid #0A4067;\n}", ""]);
 
 // exports
 
@@ -21627,7 +21650,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/utente/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
