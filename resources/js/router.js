@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import MyHome from './pages/MyHome';
 import MyDoctors from './pages/MyDoctors';
 import MessageForm from './pages/MessageForm';
+import AllReviews from './pages/AllReviews';
+import NotFound from './pages/NotFound';
 Vue.use(VueRouter);
 
 
@@ -30,6 +32,16 @@ const router = new VueRouter({
                 name:'MessageForm',
                 component: MessageForm
             },
+            {
+                path: '/profile/:slug/allreviews',
+                name:'AllReviews',
+                component: AllReviews
+            },
+            {
+                path: "/:catchAll(.*)",
+                name: "NotFound",
+                component: NotFound,
+            }
 
         ]
 })

@@ -1,7 +1,7 @@
 <template>
     <section class="container-fluid mt-5 pb-3 border-0">
-        <div class="title text-center pb-5 mb-2">
-            <h2 class="text-dark">Perchè BDoctors?</h2>
+        <div class="title text-center">
+            <h2 class="text-dark font-weight-bold text-pop-up-top">Perchè BDoctors?</h2>
         </div>
         <div class="row justify-content-between">
             <div v-for="(card,index) in cards" :key="index" class="col-12 col-md-6 col-lg-3 text-center">
@@ -47,9 +47,7 @@ export default {
 
 <style scoped lang="scss">
     .title{
-        top: 17%;
-        left: 28%;
-        z-index: 2;
+        padding-bottom: 100px;
         h2{
             font-size: 5.5rem;
             color: #094067;
@@ -62,6 +60,54 @@ export default {
     }
     p{
         font-size: 1.2rem;
+    }
+
+    .text-pop-up-top {
+	-webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes text-pop-up-top {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: none;
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+                    transform: translateY(-50px);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+        }
+        @keyframes text-pop-up-top {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: none;
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+                    transform: translateY(-50px);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+
+
+    @media  screen and (max-width: 449px) {
+        .title{
+            h2{
+                font-size: 2.5rem;
+            }
+        }
     }
 
 </style>

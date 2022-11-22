@@ -27,7 +27,7 @@
                     <div class="slogan d-flex flex-column justify-content-between">
                         <h2 class="h1 eb_fs text-center pl-2 text-lg-left">Sei stufo di fare la fila?</h2>
                         <p class="text-center pl-2 text-lg-left">Affidati a <b>Bdoctors</b>, i migliori specialisti della tua città!</p>
-                        <p class="text-square bg-light mx-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus rerum accusamus! Quas, magni corporis eveniet omnis quisquam qui tenetur?</p>
+                        <p class="text-square bg-light mx-2">« Il medico dovrebbe essere opaco per i suoi pazienti e, al pari di uno specchio, mostrare loro null'altro che ciò che viene mostrato a lui »</p>
                         <p class="pl-2 h5">Dr. Girolamo Visconti</p>
                         <div class="img-wrap">
                           <img src="/images/graphics/DottorVisconti.png" alt="">
@@ -42,35 +42,31 @@
 
 
   
-      <div class="ourDoctors text-center mt-5">
-        <h1 class="mt-5 py-4">Scegli il tuo prossimo Specialista!</h1>
+      <div class="ourDoctors text-center">
+        <h1 class="text-pop-up-top font-weight-bold">Scegli il tuo prossimo Specialista!</h1>
     
-        <div class="container m-auto col-8 ">
-          <div class="row">
+        <div class="container m-auto col-8">
+          <div class="row justify-content-center align-items-center">
+
+            
 
             <div class="col-12 col-md-6 col-lg-4">
-              <select v-model="selectSpecialization">
-                <option value=""></option>
-                <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
-              </select>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-              <button @click.prevent="getData()">Cerca</button>
-              <div class="filters mb-5 mr-2">
-                <h4>Media Voto</h4>
-                <div class="votes">
+              <div class="filters mb-5 mr-2 d-flex flex-column">
+                <h3 class="pb-2">Media Voto</h3>
+                <div class="votes d-md-block">
                   <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
-                  <button @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:red':''">Disabilita Filtro</button>
-                  <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color:rgb(260, 210, 143);':''" ><i class="fa-solid fa-star"></i></a>
+                  <button class="btn ml-md-2 mb-2 mb-md-0 mr-md-2" @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:#ef4565':''">Disabilita Filtro</button>
+                  <div class="d-md-inline">
+                    <a @click.prevent class="star" v-for="index in 5" :key="index" @click="aMethod(index)" href ="" :style="mediaVoto >= index? 'color: rgb(252, 153, 6);':''" ><i class="fa-solid fa-star"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="filters mb-5">
+                <h3 class="pb-2">Numero Recensioni</h3>
                 <div class="num-recensioni d-flex flex-column">
-                  <label for="reviewsRange"><h5>Numero di Recensioni</h5></label>
                   <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
                   <span>{{reviewsCheck}}</span>
                 </div> 
@@ -79,28 +75,44 @@
           </div> 
         </div>
 
+        <div class="col-12 d-flex flex-column justify-content-center">
+          <h3 class="d-block pb-2">Specializzazioni</h3>
+          <div class="filters_2 d-flex pb-5 m-auto align-self-center">
+            <select v-model="selectSpecialization">
+              <option value=""></option>
+              <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
+            </select>
+            <button class="btn" @click.prevent="getData()">Cerca</button>
+          </div>
+        </div>
+
       
 
-        <div v-if="profiles.length > 0" class="container pb-5">
-          <div class="row justify-content-center align-items-center">
-            <div v-for="(profile, index) in filteredSearch" :key="index" class="col-7 col-sm-5 col-md-4 col-lg-3 my_card pb-2">
-              <div class="img-wrapper">
-                <img class="card_img_top" :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+        <div v-if="profiles.length > 0" class="container-fluid pb-5">
+          <div class="d-flex my_cards flex-wrap">
+            <div v-for="(profile, index) in filteredSearch" :key="index" class="card shadow-drop-2-center pb-2">
+              <div class="eb_img">
+                <img class="card-img-top " :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
               </div>
-              <div class="card_body">
-                <h5 class="card_title">Dr. {{profile.name}} <br> {{profile.surname}}</h5>
-                <p class="card_text">{{profile.specializations[0].name}}</p>
-                <router-link class="btn btn-primary" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
+              <div class="card-body">
+                <div v-if="profile.sponsorships > 0">
+                  Profilo sponsorizzato
+                </div>
+                <div v-else></div>
+                <h3 class="card-title eb_color">Dr. {{profile.name}} <br> {{profile.surname}}</h3>
+                <p class="card-text eb_size text-secondary">{{profile.specializations[0].name}}</p>
+                <router-link class="btn" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
               </div>
             </div>
           </div>
         </div>
-        <div v-else>
-          <h1>Non ci sono risultati</h1>
+        <div v-else class="square container shadow-drop-2-center m-auto p-5">
+          <h2>Spiacenti, la ricerca da lei effettuata non ha prodotto alcun risultato. Cambia il filtro di ricerca!</h2>
         </div>
 
       </div>
     </div>
+    <ParallaxComponent/>
     <CardHomeComponent/>
   </div>
 
@@ -112,9 +124,10 @@
 import axios from 'axios';
 import CardHomeComponent from '../components/CardHomeComponent.vue';
 import JumboComponent from '../components/JumboComponent.vue';
+import ParallaxComponent from '../components/ParallaxComponent.vue';
 
 export default {
-  components: { JumboComponent, CardHomeComponent },
+  components: { JumboComponent, CardHomeComponent, ParallaxComponent },
 
   name: 'MyHome',
   data(){
@@ -191,41 +204,66 @@ export default {
 
 <style lang="scss" scoped>
 
-.input_search_spec {
-      position: relative;
-      text-align: center;
-      height:50px;
-      width: 70%;
-      border: none;
+  .text-pop-up-top {
+    -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
 
-input{
-  border-radius: 10px;
-  outline-color: #3da9fc;
-  border: none;
-}
+  @-webkit-keyframes text-pop-up-top {
+      0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+      }
+      100% {
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+      }
+      }
+      @keyframes text-pop-up-top {
+      0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+      }
+      100% {
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+      }
+  }
 
-      .filters {
+  @media screen and (max-width:625px) {
 
-        background-color: white;
-        padding: 10px 20px 10px 20px;
-        border-radius: 20px;
-        width: 50%;
-        margin:auto;
-
-        
-
-        button {
-
-        border: none;
-        background-color: rgb(119, 167, 245);
-        color: white;
-        border-radius: 20px;
-        padding: 10px;
+    .eb_height{
+      padding-bottom: 0;
+      .home_jumbo{
+        width: 100% !important;
+        border-radius: 0;
+        .eb_space{
+          margin: 0 !important;
         }
-
-}
-
+      }
+    }
+    .ourDoctors{
+      h1{
+        font-size: 2.5rem;
+      }
+      .filters_2{
+        width: 80%;
+      }
+      
+    }
+  }
 </style>
 
 

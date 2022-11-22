@@ -120,30 +120,97 @@
 
 
     .ourDoctors {
-        padding-bottom: 100px;
-        padding-top: 40px;
-        .my_card {
-            border: .1px solid rgb(216, 216, 216);
-            border-radius: 20px;
-            background-color: #90b4ce;
-            color: white;
-            .img-wrapper {
+        margin-bottom: 100px;
+        margin-top: 200px;
+        h1{
+            font-size: 4.5rem;
+            color: #0A4067;
+            padding-bottom: 70px;
+        }
+        .filters_2{
+            width: 40%;
+            select{
                 width: 100%;
-                height: 180px;
-                border-bottom: 1px solid white;       
-                .card_img_top {
-                    width: 100%;
-                    height: 100%; 
-                    object-fit: cover;                  
-                }
-            }     
-            .card_body {
-                padding-top: 20px;
-                .btn_eb_color{
-                    background-color: rgb(253, 224, 61);
+                padding: 10px;
+                border: none;
+                outline-color: #0A4067;
+            }
+            .btn {
+                border: none;
+                background-color: #0A4067;
+                color: whitesmoke;
+                border-radius: none;
+                &:hover{
+                    background-color: whitesmoke;
+                    color: #0A4067;
+                    outline: 2px solid #0A4067;
                 }
             }
         }
+        .filters { 
+            .btn{
+                border: none;
+                background-color: #0A4067;
+                color: whitesmoke;
+            }
+            .star{
+                color:#0A4067;
+            }
+        }
+        .my_cards {
+            justify-content: space-evenly;
+            margin-top: 20px;
+            .card{
+                width: 19.5rem;
+                margin: 40px 10px;
+                border-radius: 20px;
+                .eb_img{
+                    height: 310px;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+                .eb_color{
+                    color: #0A4067;
+                }
+                .eb_size{
+                    font-size: 1.2rem;
+                }
+                .btn{
+                    background-color: #0A4067;
+                    color: whitesmoke;
+                    border: none;
+                    padding: 0.8rem 1.5rem;
+                    &:hover{
+                        background-color: whitesmoke;
+                        color: #0A4067;
+                        outline: 2px solid #0A4067;
+                    }
+                }
+            }
+        }
+
+        .square{
+            margin: 200px 0;
+            background-color: #0A4067;
+            border-radius: 20px;
+            h2{
+                color: whitesmoke;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    input{
+        border-radius: 10px;
+        outline-color: #3da9fc;
+        border: none;
+    }
+
+    h3{
+        color: #0A4067;
     }
     
     .shadow-drop-2-center {

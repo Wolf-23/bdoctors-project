@@ -100,6 +100,18 @@ class UserSeeder extends Seeder
                 'phone' => '3462525369',
                 'services' => 'Visita Specialistica'
             ],
+            [
+                'name' => 'Axel',
+                'surname' => 'Fiorentini',
+                'slug' =>  'axel-fiorentini',
+                'email' => 'axel@gmail.com',
+                'password'  => Hash::make('testtest'),
+                'address' => 'Via Chieri, 19',
+                'cv' => '',
+                'profile_pic' => '',
+                'phone' => '3462675369',
+                'services' => 'Visita Specialistica'
+            ],
         ];
             foreach ($users as $user) {
                 $newuser = new User();

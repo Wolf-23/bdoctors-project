@@ -158,8 +158,8 @@ class ReviewSeeder extends Seeder
                 'name' => 'Angelo',
                 'surname' => 'Neri',
                 'review_text' =>  'Medico frettoloso!',
-                'vote' => '3',
-                'user_id' => '6'
+                'vote' => '4',
+                'user_id' => '8'
             ],
         ];
         foreach ($reviews as $review) {

@@ -1,6 +1,6 @@
 <template>
   <div class="container pt-5 px-5">
-    <h1 class="mt-2 text-center text-md-left">Dottor. <span class="font-weight-bold">{{profile.name}} {{profile.surname}}</span></h1>
+    <h1 class="mt-2 text-center text-md-left eb_title text-pop-up-top pt-5 textGray">Dottor. <span class="eb_color font-weight-bold">{{profile.name}} {{profile.surname}}</span></h1>
     <div class="row justify-content-around align-items-center">
       <div class="col-10 col-lg-5 eb_square">
           <img :src=" profile.profile_pic == false ? '/images/avatar.png' : '/storage/'+ profile.profile_pic" alt="" class="img-fluid">
@@ -28,25 +28,30 @@
           
       </div>
     </div>
+
+    <ReviewComponent/>
+    <div class="m-auto text-center">
+        <router-link class="btn" :to="{name:'AllReviews'} ">Tutte le recensioni</router-link>
+    </div>
     
 
     <div class="text-center">
       <form @submit.prevent='sendreview()'>
         <div class="d-flex flex-column pt-4">
-          <h2 class="my-5 font-weight-bold eb_color">RECENSISCI IL TUO DOTTORE</h2>
-          <label for="name" class="text-secondary h5 text-left">Nome</label>
+          <h2 class="font-weight-bold eb_color h1 text-pop-up-top">RECENSISCI IL TUO DOTTORE</h2>
+          <label for="name" class="text-secondary h5 text-left font-weight-bold">Nome</label>
           <input type="text" :class="errors.name?'is-invalid':''" class="p-2" v-model="name" name="name" id="name">
           <div v-for="(error, index) in errors.name" :key="index" class="invalid-feedback">
             {{error}}
           </div>
 
-          <label class="mt-3 text-secondary h5 text-left" for="surname">Cognome</label>
+          <label class="mt-3 text-secondary h5 text-left font-weight-bold" for="surname">Cognome</label>
           <input type="text" :class="errors.surname?'is-invalid':''" class="p-2" v-model="surname" name="surname" id="surname">
           <div v-for="(error, index) in errors.surname" :key="index" class="invalid-feedback">
             {{error}}
           </div>
 
-          <label class="mt-3 text-secondary h5 text-left" for="Voto">Voto</label>
+          <label class="mt-3 text-secondary h5 text-left font-weight-bold" for="Voto">Voto</label>
           <select :class="errors.vote?'is-invalid':''" class="border-0 p-2" v-model="vote" name="vote" id="vote">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -58,7 +63,7 @@
             {{error}}
           </div>
 
-          <label class="mt-3 text-secondary h5 text-left" for="review_text">Recensione</label>
+          <label class="mt-3 text-secondary h5 text-left font-weight-bold" for="review_text">Recensione</label>
           <textarea v-model="review_text" name="review_text" :class="errors.message_text?'is-invalid':''" class="px-2 pt-1"  id="review_text" rows="6"></textarea>
           <div v-for="(error, index) in errors.review_text" :key="index" class="invalid-feedback">
             {{error}}
@@ -80,72 +85,76 @@
 
 <script>
 import axios from 'axios';
+import ReviewComponent from '../components/ReviewComponent.vue';
 export default {
-    name: 'MyDoctors',
+    name: "MyDoctors",
     data() {
-      return {
-        profile: [],
-        name: null,
-        surname: null,
-        review_text: null,
-        vote: null,
-        idProfile: null,
-        sending: false,
-        errors: {},
-        status: false
-      }
+        return {
+            profile: [],
+            name: null,
+            surname: null,
+            review_text: null,
+            vote: null,
+            idProfile: null,
+            sending: false,
+            errors: {},
+            status: false
+        };
     },
-
-    mounted(){
-      this.getSingleProfile();
+    mounted() {
+        this.getSingleProfile();
     },
-
     methods: {
-      sendreview(){
-        this.sending = true;
-        axios.post('/api/users/review/', { 
-            'name': this.name,
-            'surname': this.surname,
-            'review_text': this.review_text,
-            'vote': this.vote,
-            'user_id': this.idProfile
-          }).then( param => {
-              this.sending = false;
-               this.status = param.data.status
-               if(this.status){
+        sendreview() {
+            this.sending = true;
+            axios.post("/api/users/review/", {
+                "name": this.name,
+                "surname": this.surname,
+                "review_text": this.review_text,
+                "vote": this.vote,
+                "user_id": this.idProfile
+            }).then(param => {
+                this.sending = false;
+                this.status = param.data.status;
+                if (this.status) {
                     this.errors = {};
-                    this.name = '';
-                    this.surname = '';
-                    this.review_text = '';
-                    this.vote = '';
-                    this.idProfile = '';
-              }else{
-                this.errors = param.data.errors;
-              }
+                    this.name = "";
+                    this.surname = "";
+                    this.review_text = "";
+                    this.vote = "";
+                    this.idProfile = "";
+                }
+                else {
+                    this.errors = param.data.errors;
+                }
             });
-      },
-
-      getSingleProfile(){
-        let slug = this.$route.params.slug
-        console.log(slug)
-        axios.get('/api/users/' + slug)
-          .then( response => {
-          this.profile = response.data.resolve;
-          this.idProfile = response.data.resolve.id 
-          console.log(this.profile) 
-        })
-        .catch(error => {
-          this.$router.push({name: 'not-found'})
-        });
-      },
-    }
+        },
+        getSingleProfile() {
+            let slug = this.$route.params.slug;
+            console.log(slug);
+            axios.get("/api/users/" + slug)
+                .then(response => {
+                this.profile = response.data.resolve;
+                this.idProfile = response.data.resolve.id;
+                console.log(this.profile);
+            })
+                .catch(error => {
+                this.$router.push({ name: "not-found" });
+            });
+        },
+    },
+    components: { ReviewComponent }
 }
 </script>
 
 <style scoped lang="scss">
   
+  .eb_title{
+    font-size: 4.5rem;
+  }
   .eb_color{
     color: #0A4067;
+    margin-top: 150px;
   }
 
   .textGray{
@@ -161,5 +170,49 @@ export default {
     background-color:#0A4067;
     color: whitesmoke;
   }
+
+  .text-pop-up-top {
+	-webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes text-pop-up-top {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: none;
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+                    transform: translateY(-50px);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+    }
+    @keyframes text-pop-up-top {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: none;
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+                    transform: translateY(-50px);
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    @media screen and (max-width:425px) {
+        .eb_title{
+            font-size: 2.5rem;
+        }
+    }
 
 </style>

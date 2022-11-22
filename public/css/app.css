@@ -11058,36 +11058,112 @@ a.text-dark:focus {
 }
 
 .ourDoctors {
-  padding-bottom: 100px;
-  padding-top: 40px;
+  margin-bottom: 100px;
+  margin-top: 200px;
 }
 
-.ourDoctors .my_card {
-  border: 0.1px solid rgb(216, 216, 216);
+.ourDoctors h1 {
+  font-size: 4.5rem;
+  color: #0A4067;
+  padding-bottom: 70px;
+}
+
+.ourDoctors .filters_2 {
+  width: 40%;
+}
+
+.ourDoctors .filters_2 select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline-color: #0A4067;
+}
+
+.ourDoctors .filters_2 .btn {
+  border: none;
+  background-color: #0A4067;
+  color: whitesmoke;
+  border-radius: none;
+}
+
+.ourDoctors .filters_2 .btn:hover {
+  background-color: whitesmoke;
+  color: #0A4067;
+  outline: 2px solid #0A4067;
+}
+
+.ourDoctors .filters .btn {
+  border: none;
+  background-color: #0A4067;
+  color: whitesmoke;
+}
+
+.ourDoctors .filters .star {
+  color: #0A4067;
+}
+
+.ourDoctors .my_cards {
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.ourDoctors .my_cards .card {
+  width: 19.5rem;
+  margin: 40px 10px;
   border-radius: 20px;
-  background-color: #90b4ce;
-  color: white;
 }
 
-.ourDoctors .my_card .img-wrapper {
-  width: 100%;
-  height: 180px;
-  border-bottom: 1px solid white;
+.ourDoctors .my_cards .card .eb_img {
+  height: 310px;
 }
 
-.ourDoctors .my_card .img-wrapper .card_img_top {
-  width: 100%;
+.ourDoctors .my_cards .card .eb_img img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
-.ourDoctors .my_card .card_body {
-  padding-top: 20px;
+.ourDoctors .my_cards .card .eb_color {
+  color: #0A4067;
 }
 
-.ourDoctors .my_card .card_body .btn_eb_color {
-  background-color: rgb(253, 224, 61);
+.ourDoctors .my_cards .card .eb_size {
+  font-size: 1.2rem;
+}
+
+.ourDoctors .my_cards .card .btn {
+  background-color: #0A4067;
+  color: whitesmoke;
+  border: none;
+  padding: 0.8rem 1.5rem;
+}
+
+.ourDoctors .my_cards .card .btn:hover {
+  background-color: whitesmoke;
+  color: #0A4067;
+  outline: 2px solid #0A4067;
+}
+
+.ourDoctors .square {
+  margin: 200px 0;
+  background-color: #0A4067;
+  border-radius: 20px;
+}
+
+.ourDoctors .square h2 {
+  color: whitesmoke;
+  font-size: 3rem;
+}
+
+input {
+  border-radius: 10px;
+  outline-color: #3da9fc;
+  border: none;
+}
+
+h3 {
+  color: #0A4067;
 }
 
 .shadow-drop-2-center {
