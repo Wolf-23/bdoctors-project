@@ -64,12 +64,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         $profileEdit =  Auth::user();
         $profileSpecialization = $profileEdit->specializations;
         $specializations = Specialization::all();
-        return view('admin.profile',compact('profileEdit', 'specializations', 'profileSpecialization'));
+        return view('admin.profile', compact('profileEdit', 'specializations', 'profileSpecialization'));
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
 
     {       
             $request->validate([
@@ -90,7 +90,7 @@ class UserController extends Controller
                 'services' => 'string|max:65000|nullable'
             ]);
             // GRAZIE STACKOVERFLOW
-            $profileUpdate = User::find($id);
+            $profileUpdate = User::where('id', Auth::user()->id)->first();
             $data = $request->all();
             // Controllo che esista ProfilePic su $data
             if (array_key_exists('profile_pic', $data)) {
@@ -134,9 +134,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $profileDelete = User::find($id);
+        $profileDelete = User::where('id', Auth::user()->id)->first();;
         if ($profileDelete->profile_pic) {
             Storage::delete($profileDelete->profile_pic);
         }
@@ -144,6 +144,7 @@ class UserController extends Controller
             Storage::delete($profileDelete->cv);
         }
         $profileDelete->specializations()->sync([]);
+        $profileDelete->sponsorships()->sync([]);
         Auth::logout();
         $profileDelete->delete();
         return redirect()->route('register')->with('danger', 'Hai eliminato il profilo correttamente');

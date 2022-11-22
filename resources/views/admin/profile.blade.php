@@ -6,7 +6,7 @@
         <h1>Dettagli Profilo</h1>
 
         
-        <form action="{{route('admin.profile.update' , Auth::user()->id )}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('admin.update')}}" method="POST" enctype="multipart/form-data" >
 
             @csrf
             @method('PUT')

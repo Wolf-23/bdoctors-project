@@ -21,7 +21,11 @@ Route::middleware('auth')
     ->prefix('admin')
 ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('profile', 'UserController');
+    // Route::resource('profile', 'UserController');
+    Route::get('/index', 'UserController@index')->name('index');
+    Route::get('/edit', 'UserController@edit')->name('edit');
+    Route::put('/update', 'UserController@update')->name('update');
+    Route::delete('/destroy', 'UserController@destroy')->name('destroy');
     Route::resource('messages', 'MessageController');
     Route::resource('reviews', 'ReviewController');
     Route::resource('sponsorship', 'SponsorshipController');

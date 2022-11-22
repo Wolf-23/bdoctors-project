@@ -27,6 +27,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// The checkout route
+const checkout = require('./routes/checkout');
+app.use('/checkout', checkout);
+
 const app = new Vue({
     el: '#app',
 });

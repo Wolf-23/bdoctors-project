@@ -4,18 +4,65 @@
     <div class="container">
         <h1 class="text-center">Sponsorizza il tuo profilo</h1>
         <p class="text-center">Sponsorizzando il tuo profilo, nelle ricerche comparirà prima degli altri dottori, inoltre il tuo profilo verrà aggiunto alla sezione "Medici in evidenza".</p>
-        @foreach ($sponsorships as $sponsorship )
-            <div class="card my-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $sponsorship->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
-                    <h6 class="card-text">Prezzo: {{  $sponsorship->price }} €</h6>
-                    <a href="#" class="card-link btn btn-success">Sponsorizza il tuo profilo</a>
-                </div>
-            </div>
-        @endforeach
         <div class="text-center">
-            <a href="{{route('admin.home')}}" class="card-link btn btn-primary">Torna alla Home</a>
+          @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now())
+            <h2 class="text-center mt-5">La tua sponsorizzazione scade il {{$newSponsorships->last()->ends_at}}</h2>
+          @endif
+          <form action="{{route('admin.sponsorship.store')}}" method="POST">
+          @csrf
+          <select name="sponsorship_id" id="" required>
+            <option value="" selected disabled>Seleziona una sponsorizzazione</option>
+            @foreach ($sponsorships as $sponsorship)
+            <option value="{{$sponsorship->id}}" >{{$sponsorship->name}} - {{$sponsorship->price}} € - {{$sponsorship->duration}} H</option>
+            @endforeach
+        </select>
         </div>
+        <div id="dropin-wrapper">
+          <div id="checkout-message"></div>
+          <div id="dropin-container"></div>
+          <button id="submit-button"  @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now()) disabled @endif>Submit payment</button>
+      </div>
+      <div class="text-center">
+        <a href="{{route('admin.home')}}" class="card-link btn btn-primary">Torna alla Home</a>
+      </div>
     </div>
+    <script>
+      var button = document.querySelector('#submit-button');
+    
+      braintree.dropin.create({
+        // Insert your tokenization key here
+        authorization: 'sandbox_5ryf9pb3_b7kn78s25f6b6wzd',
+        container: '#dropin-container'
+      }, function (createErr, instance) {
+        button.addEventListener('click', function () {
+          instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+            // When the user clicks on the 'Submit payment' button this code will send the
+            // encrypted payment information in a variable called a payment method nonce
+            $.ajax({
+              type: 'POST',
+              url: '/checkout',
+              data: {'paymentMethodNonce': payload.nonce}
+            }).done(function(result) {
+              // Tear down the Drop-in UI
+              instance.teardown(function (teardownErr) {
+                if (teardownErr) {
+                  console.error('Could not tear down Drop-in UI!');
+                } else {
+                  console.info('Drop-in UI has been torn down!');
+                  // Remove the 'Submit payment' button
+                  $('#submit-button').remove();
+                }
+              });
+    
+              if (result.success) {
+                $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
+              } else {
+                console.log(result);
+                $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
+              }
+            });
+          });
+        });
+      });
+    </script>
 @endsection
