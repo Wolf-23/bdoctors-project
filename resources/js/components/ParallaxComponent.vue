@@ -23,7 +23,7 @@
 
 
                 <div class="square-center logo-width px-0 py-5 py-xl-0 col-12 col-xl-6 redx">
-                    <h2>Partnership</h2>
+                    <h2 class="font-weight-bold">Partnership</h2>
                 </div>
 
                 <div class="col-12 d-flex col-md-3 px-0 mx-o flex-wrap flex-md-nowrap flex-xl-wrap">
@@ -83,6 +83,12 @@ export default {
         }
         .eb_bg{
             background-color: #fff;
+        }
+    }
+
+    @media screen and (max-width:425px) {
+        .square-center h2{
+            font-size: 3rem !important;
         }
     }
     
