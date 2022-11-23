@@ -6,7 +6,7 @@
         <p class="text-center">Sponsorizzando il tuo profilo, nelle ricerche comparirà prima degli altri dottori, inoltre il tuo profilo verrà aggiunto alla sezione "Medici in evidenza". Scegli tra queste sponsorizzazioni e procedi con il pagamento</p>
         <div class="row">
           @foreach ($sponsorships as $sponsorship )
-          <div class="card my-3 col-12 col-md-4 p-3 bg-primary b">
+          <div class="card my-3 col-12 col-md-4 p-3 bg-primary">
               <div class="card-body">
                   <h5 class="card-title text-warning py-1">{{ $sponsorship->name }}</h5>
                   <h6 class="card-subtitle py-1 mb-2">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
