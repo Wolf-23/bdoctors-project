@@ -69,7 +69,7 @@ protected $dates = [
             return redirect()->back()->with('status', 'errore');
         }else{
             $newSponsorship->starts_at = Carbon::now();
-            $newSponsorship->ends_at = $currentDateTime->addMinutes(1);
+            $newSponsorship->ends_at = $currentDateTime->addHours($sponsorship->duration);
             $newSponsorship->fill($data);
             $newSponsorship->save();
         }
