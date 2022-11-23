@@ -3599,39 +3599,14 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "container-fluid eb_height flex-column d-flex align-items-end justify-content-center"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
-    staticClass: "d-flex mt-4 mr-3"
-  }, [_c("router-link", {
-    staticClass: "btn mb-3",
-    attrs: {
-      to: {
-        name: "MyHome"
-      }
-    }
-  }, [_c("i", {
-    staticClass: "fa-solid fa-arrow-left"
-  }), _vm._v(" Torna alla Home")])], 1)]);
+  return _vm._m(0);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mainbox d-flex justify-content-end mr-3"
-  }, [_c("div", {
-    staticClass: "err"
-  }, [_vm._v("4")]), _vm._v(" "), _c("i", {
-    staticClass: "far fa-question-circle fa-spin"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "err2"
-  }, [_vm._v("4")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex mt-4 justify-content-end mr-3"
-  }, [_c("h3", [_vm._v("Page Not Found!")])]);
+  return _c("main", [_c("h1", [_vm._v("4"), _c("span", [_c("i", {
+    staticClass: "fa-solid fa-ghost"
+  })]), _vm._v("4")]), _vm._v(" "), _c("h2", [_vm._v("Error: 404 page not found")]), _vm._v(" "), _c("p", [_vm._v("Sorry, the page you're looking for cannot be accessed")])]);
 }];
 render._withStripped = true;
 
@@ -3691,7 +3666,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myFooter[data-v-abfbddf2] {\n  background-color: #094067;\n  width: 100%;\n  text-align: center;\n  color: rgb(203, 231, 255);\n}\n.bigText[data-v-abfbddf2] {\n  font-size: 20px;\n}\n.biggerText[data-v-abfbddf2] {\n  font-size: 30px;\n  color: #ef4565;\n}", ""]);
+exports.push([module.i, ".myFooter[data-v-abfbddf2] {\n  background-color: #094067;\n  width: 100%;\n  text-align: center;\n  color: rgb(203, 231, 255);\n  position: sticky;\n  z-index: 2;\n}\n.bigText[data-v-abfbddf2] {\n  font-size: 20px;\n}\n.biggerText[data-v-abfbddf2] {\n  font-size: 30px;\n  color: #ef4565;\n}", ""]);
 
 // exports
 
@@ -3710,7 +3685,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n}\n.navbar i[data-v-153bfd55] {\n  font-size: 1.4rem;\n}", ""]);
+exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n  z-index: 999;\n}\n.navbar i[data-v-153bfd55] {\n  font-size: 1.4rem;\n}", ""]);
 
 // exports
 
@@ -3881,7 +3856,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_height[data-v-a26bf910] {\n  background-image: url(\"/images/graphics/404.png\");\n  background-size: contain;\n  background-position-x: left;\n  background-repeat: no-repeat;\n}\n.eb_height .mainbox .err[data-v-a26bf910] {\n  color: #0A4067;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 14rem;\n}\n.eb_height .mainbox .far[data-v-a26bf910] {\n  font-size: 11.5rem;\n  color: #0A4067;\n}\n.eb_height .mainbox .err2[data-v-a26bf910] {\n  color: #0A4067;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 14rem;\n}\n.eb_height h3[data-v-a26bf910] {\n  text-align: center;\n  font-family: \"Nunito Sans\", sans-serif;\n  font-size: 3rem;\n  color: #0A4067;\n}\n.eb_height .btn[data-v-a26bf910] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}\n.eb_height .btn[data-v-a26bf910]:hover {\n  background-color: whitesmoke;\n  color: #0A4067;\n  outline: 2px solid #0A4067;\n}", ""]);
+exports.push([module.i, "main[data-v-a26bf910] {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 600px;\n  justify-content: center;\n  text-align: center;\n}\nh1[data-v-a26bf910] {\n  color: lightgreen;\n  font-size: 12.5rem;\n  letter-spacing: 0.1em;\n  margin: 0.025em 0;\n  text-shadow: 0.05em 0.05em 0 rgba(0, 0, 0, 0.25);\n  white-space: nowrap;\n}\n@media (max-width: 30rem) {\nh1[data-v-a26bf910] {\n    font-size: 8.5rem;\n}\n}\nh1 > span[data-v-a26bf910] {\n  animation: spooky-a26bf910 2s alternate infinite linear;\n  color: #0A4067;\n  display: inline-block;\n}\nh2[data-v-a26bf910] {\n  color: lightslategray;\n  margin-bottom: 0.4em;\n  font-size: 2rem;\n}\np[data-v-a26bf910] {\n  color: gray;\n  margin-top: 0;\n}\n@keyframes spooky-a26bf910 {\nfrom {\n    transform: translatey(0.15em) scaley(0.95);\n}\nto {\n    transform: translatey(-0.15em);\n}\n}", ""]);
 
 // exports
 
@@ -21650,7 +21625,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

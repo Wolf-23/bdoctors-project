@@ -20,6 +20,8 @@
           width: 100%;
           text-align: center;
           color: rgb(203, 231, 255);
+          position: sticky;
+          z-index: 2;
       }
       .bigText{font-size:20px}
       .biggerText{

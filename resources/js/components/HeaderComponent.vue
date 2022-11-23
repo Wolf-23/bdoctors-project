@@ -46,6 +46,7 @@
     .navbar{
         background-color:#094067;
         box-shadow: none !important;
+        z-index: 999;
         i{
             font-size: 1.4rem;
         }
