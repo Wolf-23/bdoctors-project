@@ -2,18 +2,30 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center">Sponsorizza il tuo profilo</h1>
-        <p class="text-center">Sponsorizzando il tuo profilo, nelle ricerche comparirà prima degli altri dottori, inoltre il tuo profilo verrà aggiunto alla sezione "Medici in evidenza".</p>
+        <h3 class="text-center">Sponsorizza il tuo profilo</h3>
+        <p class="text-center">Sponsorizzando il tuo profilo, nelle ricerche comparirà prima degli altri dottori, inoltre il tuo profilo verrà aggiunto alla sezione "Medici in evidenza". Scegli tra queste sponsorizzazioni e procedi con il pagamento</p>
+        <div class="row">
+          @foreach ($sponsorships as $sponsorship )
+          <div class="card my-3 col-12 col-md-4 p-3">
+              <div class="card-body">
+                  <h5 class="card-title">{{ $sponsorship->name }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
+                  <h6 class="card-text">Prezzo: {{  $sponsorship->price }} €</h6>
+              </div>
+          </div>
+          @endforeach
+        </div>
         <div class="text-center">
           @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now())
             <h2 class="text-center mt-5">La tua sponsorizzazione scade il {{$newSponsorships->last()->ends_at}}</h2>
           @endif
           <form action="{{route('admin.sponsorship.store')}}" method="POST">
           @csrf
+          <h3>Scegli qui la tua sponsorizzazione</h3>
           <select name="sponsorship_id" id="" required>
             <option value="" selected disabled>Seleziona una sponsorizzazione</option>
             @foreach ($sponsorships as $sponsorship)
-            <option value="{{$sponsorship->id}}" >{{$sponsorship->name}} - {{$sponsorship->price}} € - {{$sponsorship->duration}} H</option>
+              <option value="{{$sponsorship->id}}" >{{$sponsorship->name}} - {{$sponsorship->price}} €</option>
             @endforeach
         </select>
         </div>
@@ -23,7 +35,7 @@
           <button id="submit-button"  @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now()) disabled @endif>Submit payment</button>
       </div>
       <div class="text-center">
-        <a href="{{route('admin.home')}}" class="card-link btn btn-primary">Torna alla Home</a>
+        <a href="{{route('admin.home')}}" class="card-link btn btn-primary mt-3">Torna alla Home</a>
       </div>
     </div>
     <script>

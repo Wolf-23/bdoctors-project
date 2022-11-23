@@ -17,3 +17,13 @@
   color: whitesmoke;
 }
 
+.my-radius-bg {
+  border-radius: 15px;
+  border: 1px solid #0A4067;
+  background-color: #C6EAEC;
+}
+
+.lightBg {
+  background-color: #C6EAEC;
+}
+

@@ -49407,7 +49407,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 
 // The checkout route
-var checkout = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './routes/checkout'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var checkout = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../checkout'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 app.use('/checkout', checkout);
 var app = new Vue({
   el: '#app'
