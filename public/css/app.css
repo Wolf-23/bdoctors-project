@@ -10944,7 +10944,7 @@ a.text-dark:focus {
 }
 
 .eb_height {
-  padding: 50px 0;
+  margin: 150px 0;
 }
 
 .eb_height .home_jumbo {
@@ -11108,13 +11108,13 @@ a.text-dark:focus {
 }
 
 .ourDoctors .my_cards .card {
-  width: 19.5rem;
+  width: 16rem;
   margin: 40px 10px;
   border-radius: 20px;
 }
 
 .ourDoctors .my_cards .card .eb_img {
-  height: 310px;
+  height: 210px;
 }
 
 .ourDoctors .my_cards .card .eb_img img {

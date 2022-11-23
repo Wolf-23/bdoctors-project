@@ -2443,7 +2443,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("section", {
-    staticClass: "container-fluid mt-5 pb-3 border-0"
+    staticClass: "container-fluid mt-5 eb_padd border-0"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-between"
   }, _vm._l(_vm.cards, function (card, index) {
@@ -3471,7 +3471,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "filters mb-5 mr-2 d-flex flex-column"
   }, [_c("h3", {
-    staticClass: "pb-2"
+    staticClass: "pb-3"
   }, [_vm._v("Media Voto")]), _vm._v(" "), _c("div", {
     staticClass: "votes d-md-block"
   }, [_c("input", {
@@ -3530,7 +3530,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "filters mb-5"
   }, [_c("h3", {
-    staticClass: "pb-2"
+    staticClass: "pb-3"
   }, [_vm._v("Numero Recensioni")]), _vm._v(" "), _c("div", {
     staticClass: "num-recensioni d-flex flex-column"
   }, [_c("input", {
@@ -3558,7 +3558,7 @@ var render = function render() {
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.reviewsCheck))])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 d-flex flex-column justify-content-center"
   }, [_c("h3", {
-    staticClass: "d-block pb-2"
+    staticClass: "d-block pb-3"
   }, [_vm._v("Specializzazioni")]), _vm._v(" "), _c("div", {
     staticClass: "filters_2 d-flex pb-5 m-auto align-self-center"
   }, [_c("select", {
@@ -3761,7 +3761,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".title[data-v-5821c7d3] {\n  padding-bottom: 100px;\n}\n.title h2[data-v-5821c7d3] {\n  font-size: 5.5rem;\n  color: #094067;\n}\ni[data-v-5821c7d3] {\n  font-size: 4rem;\n  color: #094067;\n}\np[data-v-5821c7d3] {\n  font-size: 1.2rem;\n}\n.text-pop-up-top[data-v-5821c7d3] {\n  animation: text-pop-up-top-5821c7d3 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-5821c7d3 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 449px) {\n.title h2[data-v-5821c7d3] {\n    font-size: 2.5rem;\n}\n}", ""]);
+exports.push([module.i, ".eb_padd[data-v-5821c7d3] {\n  padding-bottom: 120px;\n}\n.eb_padd .title[data-v-5821c7d3] {\n  padding-bottom: 100px;\n}\n.eb_padd .title h2[data-v-5821c7d3] {\n  font-size: 5.5rem;\n  color: #094067;\n}\ni[data-v-5821c7d3] {\n  font-size: 4rem;\n  color: #094067;\n}\np[data-v-5821c7d3] {\n  font-size: 1.2rem;\n}\n.text-pop-up-top[data-v-5821c7d3] {\n  animation: text-pop-up-top-5821c7d3 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-5821c7d3 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 449px) {\n.title h2[data-v-5821c7d3] {\n    font-size: 2.5rem;\n}\n}", ""]);
 
 // exports
 
@@ -21739,7 +21739,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/marcopaci/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

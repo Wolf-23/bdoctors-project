@@ -52,7 +52,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="filters mb-5 mr-2 d-flex flex-column">
-                <h3 class="pb-2">Media Voto</h3>
+                <h3 class="pb-3">Media Voto</h3>
                 <div class="votes d-md-block">
                   <input class="d-none" type="range" v-model="mediaVoto" min="1" max="5" name="mediaVoto" id="mediaVoto">
                   <button class="btn ml-md-2 mb-2 mb-md-0 mr-md-2" @click="aMethod(0)" :style="mediaVoto == 0? 'background-color:#ef4565':''">Disabilita Filtro</button>
@@ -65,7 +65,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
               <div class="filters mb-5">
-                <h3 class="pb-2">Numero Recensioni</h3>
+                <h3 class="pb-3">Numero Recensioni</h3>
                 <div class="num-recensioni d-flex flex-column">
                   <input type="range" v-model="reviewsCheck" min="0" max="10" name="reviewsRange" id="reviewsRange">
                   <span>{{reviewsCheck}}</span>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="col-12 d-flex flex-column justify-content-center">
-          <h3 class="d-block pb-2">Specializzazioni</h3>
+          <h3 class="d-block pb-3">Specializzazioni</h3>
           <div class="filters_2 d-flex pb-5 m-auto align-self-center">
             <select v-model="selectSpecialization">
               <option value=""></option>

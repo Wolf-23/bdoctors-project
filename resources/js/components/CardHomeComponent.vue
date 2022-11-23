@@ -1,5 +1,5 @@
 <template>
-    <section class="container-fluid mt-5 pb-3 border-0">
+    <section class="container-fluid mt-5 eb_padd border-0">
         <div class="title text-center">
             <h2 class="text-dark font-weight-bold text-pop-up-top">Perchè BDoctors?</h2>
         </div>
@@ -46,11 +46,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .title{
-        padding-bottom: 100px;
-        h2{
-            font-size: 5.5rem;
-            color: #094067;
+    .eb_padd{
+        padding-bottom: 120px;
+        .title{
+            padding-bottom: 100px;
+            h2{
+                font-size: 5.5rem;
+                color: #094067;
+            }
         }
     }
 
