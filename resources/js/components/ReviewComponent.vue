@@ -3,22 +3,22 @@
         <h1 class="text-pop-up-top eb_title text-center">Recensioni</h1>
         <div class="row">
             <div class="col-lg-12">
-                <div class="card shadow-drop-2-center my-5 py-3" v-for="(card, index) in cards" :key="index">
+                <div class="card shadow-drop-2-center my-5 py-3" v-for="(rev, index) in userReview" :key="index">
                     <div class="row">
                         <div class="col-sm-12 col-lg-5">
                             <div class="card-body d-flex flex-column justify-content-around align-items-center">
-                                <h4 class="card-title text-center textBlue py-1">{{card.name}}</h4>
+                                <h4 class="card-title text-center textBlue py-1">{{rev.name}} {{rev.surname}}</h4>
                                 <div class="text-center py-1">
-                                    <a class="star" v-for="index in 5" :key="index" href ="" :style="card.vote >= index? 'color: rgb(252, 153, 6);':''" ><i class="fa-solid fa-star"></i></a>
+                                    <a class="star" v-for="index in 5" :key="index" href ="" :style="rev.vote >= index? 'color: rgb(252, 153, 6);':''" ><i class="fa-solid fa-star"></i></a>
                                 </div>
                                 <div class="image-box py-1 d-flex justify-content-center align-items-center">
-                                    <a href="#" class="mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Simmons"><img :src="card.path" class="rounded-circle" width="70" alt="user"></a>
+                                    <a href="#" class="mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Simmons"><img :src="`https://bootdey.com/img/Content/avatar/avatar${index + 1}.png`" class="rounded-circle" width="70" alt="user"></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 col-lg-7 border-left">
                             <div class="card-body">
-                                <p class="textGray">{{card.text}}</p>
+                                <p class="textGray">{{rev.review_text}}</p>
                             </div>
                         </div>
                     </div>
@@ -33,28 +33,44 @@ export default {
     name: 'ReviewComponent',
     data(){
         return{
-            cards:[
-                {
-                    name:'Erik Borgogno',
-                    vote: 4,
-                    text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet quo esse ullam inventore quibusdam sint!',
-                    path : 'https://bootdey.com/img/Content/avatar/avatar1.png'
-                },
-                {
-                    name:'Name e Surname recensore',
-                    vote: 3,
-                    text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet quo esse ullam inventore quibusdam sint!',
-                    path : 'https://bootdey.com/img/Content/avatar/avatar2.png'
-                },
-                {
-                    name:'Name e Surname recensore',
-                    vote: 5,
-                    text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet quo esse ullam inventore quibusdam sint!',
-                    path : 'https://bootdey.com/img/Content/avatar/avatar4.png'
-                },
-            ]
+            profile: [],
+            reviews: [],
+            user_id: '',
+            userReview: []
         }
-    }   
+    },
+    mounted(){
+        this.getSingleProfile();
+        this.getReviews();
+    },
+    methods: {
+        getSingleProfile() {
+            let slug = this.$route.params.slug;
+            console.log(slug);
+            axios.get("/api/users/" + slug)
+                .then(response => {
+                this.profile = response.data.resolve;
+                this.user_id = response.data.resolve.id;
+                console.log(this.profile);
+            })
+                .catch(error => {
+                this.$router.push({ name: "not-found" });
+            });
+        },
+        getReviews(){
+            axios.get('/api/reviews/')
+            .then((response) =>{
+                this.reviews = response.data.results;
+                console.log(this.reviews);
+                this.reviews.filter((review) =>{
+                    if(review.user_id === this.user_id){
+                        return this.userReview.push(review);
+                    }
+                    console.log(this.userReview);
+                })
+            })  
+        },
+    },   
 }
 </script>
 
@@ -81,7 +97,8 @@ export default {
         color: #0A4067;
     }
     .textGray{
-    color:#5f6c7b;
+        color:#5f6c7b;
+        font-size: 1.5rem;
     }
     .textBlue{
         color: #0A4067;

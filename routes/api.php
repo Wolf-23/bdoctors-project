@@ -23,4 +23,6 @@ Route::get('users/{slug}', 'Api\UserController@show');
 Route::post('users/message' , 'Api\MessageController@store');
 Route::post('users/review' , 'Api\ReviewController@store');
 Route::get('specializations', 'api\SpecializationController@index');
+Route::get('reviews', 'api\ReviewController@index');
+
 
