@@ -6,11 +6,11 @@
         <p class="text-center">Sponsorizzando il tuo profilo, nelle ricerche comparirà prima degli altri dottori, inoltre il tuo profilo verrà aggiunto alla sezione "Medici in evidenza". Scegli tra queste sponsorizzazioni e procedi con il pagamento</p>
         <div class="row">
           @foreach ($sponsorships as $sponsorship )
-          <div class="card my-3 col-12 col-md-4 p-3">
+          <div class="card my-3 col-12 col-md-4 p-3 bg-primary">
               <div class="card-body">
-                  <h5 class="card-title">{{ $sponsorship->name }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
-                  <h6 class="card-text">Prezzo: {{  $sponsorship->price }} €</h6>
+                  <h5 class="card-title text-warning py-1">{{ $sponsorship->name }}</h5>
+                  <h6 class="card-subtitle py-1 mb-2">Questa sponsorizzazione dura {{  $sponsorship->duration }} ore!</h6>
+                  <h6 class="card-text py-1 text-warning">Prezzo: {{  $sponsorship->price }} €</h6>
               </div>
           </div>
           @endforeach
@@ -32,7 +32,7 @@
         <div id="dropin-wrapper">
           <div id="checkout-message"></div>
           <div id="dropin-container"></div>
-          <button id="submit-button"  @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now()) disabled @endif>Submit payment</button>
+          <button class="btn btn-success" id="submit-button"  @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now()) disabled @endif>Effettua pagamento</button>
       </div>
       <div class="text-center">
         <a href="{{route('admin.home')}}" class="card-link btn btn-primary mt-3">Torna alla Home</a>
