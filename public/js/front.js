@@ -2100,13 +2100,50 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_ReviewComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ReviewComponent.vue */ "./resources/js/components/ReviewComponent.vue");
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    ReviewComponent: _components_ReviewComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  components: {},
+  name: 'AllReviews',
+  data: function data() {
+    return {
+      profile: [],
+      reviews: [],
+      user_id: '',
+      userReview: []
+    };
   },
-  name: 'AllReviews'
+  mounted: function mounted() {
+    this.getSingleProfile();
+    this.getReviews();
+  },
+  methods: {
+    getSingleProfile: function getSingleProfile() {
+      var _this = this;
+      var slug = this.$route.params.slug;
+      console.log(slug);
+      axios.get("/api/users/" + slug).then(function (response) {
+        _this.profile = response.data.resolve;
+        _this.user_id = response.data.resolve.id;
+        console.log(_this.profile);
+      })["catch"](function (error) {
+        _this.$router.push({
+          name: "not-found"
+        });
+      });
+    },
+    getReviews: function getReviews() {
+      var _this2 = this;
+      axios.get('/api/reviews/').then(function (response) {
+        _this2.reviews = response.data.results;
+        console.log(_this2.reviews);
+        _this2.reviews.filter(function (review) {
+          if (review.user_id === _this2.user_id) {
+            return _this2.userReview.push(review);
+          }
+          console.log(_this2.userReview);
+        });
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2759,7 +2796,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12"
-  }, _vm._l(_vm.userReview, function (rev, index) {
+  }, _vm._l(_vm.userReview.slice(0, 3), function (rev, index) {
     return _c("div", {
       key: index,
       staticClass: "card shadow-drop-2-center my-5 py-3"
@@ -2832,8 +2869,64 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "container-fluid bg-light my-5"
-  }, [_c("ReviewComponent"), _vm._v(" "), _c("div", {
+    staticClass: "container bg-light my-5"
+  }, [_c("h1", {
+    staticClass: "text-pop-up-top eb_title text-center"
+  }, [_vm._v("Recensioni")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-12"
+  }, _vm._l(_vm.userReview, function (rev, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "card shadow-drop-2-center my-5 py-3"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-sm-12 col-lg-5"
+    }, [_c("div", {
+      staticClass: "card-body d-flex flex-column justify-content-around align-items-center"
+    }, [_c("h4", {
+      staticClass: "card-title text-center textBlue py-1"
+    }, [_vm._v(_vm._s(rev.name) + " " + _vm._s(rev.surname))]), _vm._v(" "), _c("div", {
+      staticClass: "text-center py-1"
+    }, _vm._l(5, function (index) {
+      return _c("a", {
+        key: index,
+        staticClass: "star",
+        style: rev.vote >= index ? "color: rgb(252, 153, 6);" : "",
+        attrs: {
+          href: ""
+        }
+      }, [_c("i", {
+        staticClass: "fa-solid fa-star"
+      })]);
+    }), 0), _vm._v(" "), _c("div", {
+      staticClass: "image-box py-1 d-flex justify-content-center align-items-center"
+    }, [_c("a", {
+      staticClass: "mr-2",
+      attrs: {
+        href: "#",
+        "data-toggle": "tooltip",
+        "data-placement": "top",
+        title: "",
+        "data-original-title": "Simmons"
+      }
+    }, [_c("img", {
+      staticClass: "rounded-circle",
+      attrs: {
+        src: "https://bootdey.com/img/Content/avatar/avatar".concat(index + 1, ".png"),
+        width: "70",
+        alt: "user"
+      }
+    })])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-sm-12 col-lg-7 border-left"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("p", {
+      staticClass: "textGray"
+    }, [_vm._v(_vm._s(rev.review_text))])])])])]);
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "m-auto text-center pt-4"
   }, [_c("router-link", {
     staticClass: "btn",
@@ -2844,7 +2937,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-arrow-left"
-  }), _vm._v(" Torna al Profilo")])], 1)], 1);
+  }), _vm._v(" Torna al Profilo")])], 1)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3801,7 +3894,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".btn[data-v-50e3d083] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}\n.btn[data-v-50e3d083]:hover {\n  background-color: whitesmoke;\n  color: #0A4067;\n  outline: 2px solid #0A4067;\n}", ""]);
+exports.push([module.i, ".btn[data-v-50e3d083] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}\n.btn[data-v-50e3d083]:hover {\n  background-color: whitesmoke;\n  color: #0A4067;\n  outline: 2px solid #0A4067;\n}\n.card[data-v-50e3d083] {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #fff;\n  background-clip: border-box;\n  border: 0 solid transparent;\n  border-radius: 0;\n  margin-top: 20px;\n}\n.card .star[data-v-50e3d083] {\n  color: #0A4067;\n}\n.eb_title[data-v-50e3d083] {\n  font-size: 4rem;\n  margin-top: 150px;\n  color: #0A4067;\n}\n.textGray[data-v-50e3d083] {\n  color: #5f6c7b;\n  font-size: 1.5rem;\n}\n.textBlue[data-v-50e3d083] {\n  color: #0A4067;\n}\n.text-pop-up-top[data-v-50e3d083] {\n  animation: text-pop-up-top-50e3d083 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-50e3d083 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n.shadow-drop-2-center[data-v-50e3d083] {\n  animation: shadow-drop-2-center-50e3d083 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes shadow-drop-2-center-50e3d083 {\n0% {\n    transform: translateZ(0);\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);\n}\n100% {\n    transform: translateZ(50px);\n    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);\n}\n}\n@media screen and (max-width: 425px) {\n.eb_title[data-v-50e3d083] {\n    font-size: 2.5rem;\n}\n}", ""]);
 
 // exports
 
@@ -21646,7 +21739,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopaci/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

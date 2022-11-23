@@ -65,9 +65,9 @@
             </div>
         </div>
         <div class="mt-3 text-center">
-            <a href="{{route('admin.edit')}}" class="btn eb_btn mx-4">Modifica Profilo</a>
-            <a href="{{route('admin.sponsorship.index', [Auth::user()->name])}}" class="btn btn-success mx-4">Sponsorizza Profilo</a>
-           <form class="d-inline-block mx-4" action="{{route('admin.destroy')}}" method="POST">
+            <a href="{{route('admin.edit')}}" class="btn eb_btn mx-3">Modifica Profilo</a>
+            <a href="{{route('admin.sponsorship.index', [Auth::user()->name])}}" class="btn btn-success mx-3">Sponsorizza Profilo</a>
+           <form class="d-inline-block mx-3" action="{{route('admin.destroy')}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Elimina Profilo</button>

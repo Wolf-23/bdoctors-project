@@ -3,7 +3,7 @@
         <h1 class="text-pop-up-top eb_title text-center">Recensioni</h1>
         <div class="row">
             <div class="col-lg-12">
-                <div class="card shadow-drop-2-center my-5 py-3" v-for="(rev, index) in userReview" :key="index">
+                <div class="card shadow-drop-2-center my-5 py-3" v-for="(rev, index) in userReview.slice(0,3)" :key="index">
                     <div class="row">
                         <div class="col-sm-12 col-lg-5">
                             <div class="card-body d-flex flex-column justify-content-around align-items-center">

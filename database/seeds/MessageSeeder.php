@@ -146,7 +146,197 @@ class MessageSeeder extends Seeder
                 'email' => 'filippotag@gmail.com',
                 'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
                 'user_id' => '8'
-            ]
+            ],
+            [
+                'name' => 'Vito',
+                'surname' => 'LoBianco',
+                'title' => 'Medicina Sportiva',
+                'email' => 'vitobianco@gmail.com',
+                'message_text' =>  'Salve, dovrei fare una visita urgente per attività agonistiche.',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Giorgio',
+                'surname' => 'Tuninetti',
+                'title' => 'Radiografia',
+                'email' => 'giotuni@gmail.com',
+                'message_text' =>  'Salve, ho un problema alla spalla. Mi fa molto male e vorrei fare una ecografia',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Deborah',
+                'surname' => 'Donato',
+                'title' => 'Mammografia',
+                'email' => 'deborahdonato@gmail.com',
+                'message_text' =>  'Salve, ho dolore al seno. Mi fa molto male e vorrei fare una mammografia',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Sonia',
+                'surname' => 'Galita',
+                'title' => 'Quando posso contattarla?',
+                'email' => 'soniagalita@gmail.com',
+                'message_text' =>  'Salve dottore, ho bisogno di contattarla. Mi può chiamare?',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Oronzo',
+                'surname' => 'Gonzo',
+                'title' => 'E\' urgente!',
+                'email' => 'oronzo@gmail.com',
+                'message_text' =>  'Salve, mi contatti, è urgente!',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Geraldo',
+                'surname' => 'Tagiro',
+                'title' => 'Radiografia',
+                'email' => 'geraldo@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Raimondo',
+                'surname' => 'Fiorentini',
+                'title' => 'Radiografia',
+                'email' => 'raimondo@gmail.com',
+                'message_text' =>  'Salve, ho un problema al piede sinistro. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Maya',
+                'surname' => 'Lagena',
+                'title' => 'Salve, sono una sua nuova paziente',
+                'email' => 'maya@gmail.com',
+                'message_text' =>  'Salve Dottore, sono Maya! Quando posso passare?',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Luna',
+                'surname' => 'Romano',
+                'title' => 'Radiografia',
+                'email' => 'luna@gmail.com',
+                'message_text' =>  'Salve, ho un problema. Vorrei prenotare una visita.',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Gioshua',
+                'surname' => 'Baldi',
+                'title' => 'Radiografia',
+                'email' => 'baldig@gmail.com',
+                'message_text' =>  'Salve dottore, mi fa male la pancia, cosa posso prendere?',
+                'user_id' => '11'
+            ],
+            [
+                'name' => 'Filippo',
+                'surname' => 'Innocenti',
+                'title' => 'Visita di routine',
+                'email' => 'filippoinno@gmail.com',
+                'message_text' =>  'Salve, vorrei fare una visita di routine.',
+                'user_id' => '11'
+            ],
+            [
+                'name' => 'Moira',
+                'surname' => 'Pollino',
+                'title' => 'Radiografia',
+                'email' => 'moira@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '13'
+            ],
+            [
+                'name' => 'Michael',
+                'surname' => 'Fagotto',
+                'title' => 'Radiografia',
+                'email' => 'mike@gmail.com',
+                'message_text' =>  'Salve, come funziona il vostro servizio? E quali sono i vostri prezzi?',
+                'user_id' => '14'
+            ],
+            [
+                'name' => 'Daniele',
+                'surname' => 'Greco',
+                'title' => 'Visita specialistica',
+                'email' => 'danigreco@gmail.com',
+                'message_text' =>  'Salve, ho bisogno urgente di contattarla!',
+                'user_id' => '14'
+            ],
+            [
+                'name' => 'Erik',
+                'surname' => 'Vezzuoli',
+                'title' => 'Geriartria',
+                'email' => 'erik@gmail.com',
+                'message_text' =>  'Salve, ho un problema di cui vorrei parlarne a voce con lei!',
+                'user_id' => '14'
+            ],
+
+            [
+                'name' => 'Filippo',
+                'surname' => 'Saltinbelli',
+                'title' => 'Medicina Sportiva',
+                'email' => 'filipposalt@gmail.com',
+                'message_text' =>  'Salve, dovrei svolgere della palestra. Che fogli medici dovrò presentare?',
+                'user_id' => '15'
+            ],
+            [
+                'name' => 'Fiorenza',
+                'surname' => 'Tagaro',
+                'title' => 'Radiografia',
+                'email' => 'fiorenza@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '17'
+            ],
+
+            [
+                'name' => 'Melissa',
+                'surname' => 'Solo',
+                'title' => 'Mammografia',
+                'email' => 'filippotag@gmail.com',
+                'message_text' =>  'Salve, ho un problema al seno. Mi fa molto male e vorrei fare una mammografia',
+                'user_id' => '17'
+            ],
+            [
+                'name' => 'Geppetto',
+                'surname' => 'Galimberti',
+                'title' => 'Radiografia',
+                'email' => 'gg@gmail.com',
+                'message_text' =>  'Salve, ho un problema al bacino. Mi fa molto male e vorrei fare una radiografia',
+                'user_id' => '19'
+            ],
+
+            [
+                'name' => 'Xena',
+                'surname' => 'Taliti',
+                'title' => 'Ecografia',
+                'email' => 'xena@gmail.com',
+                'message_text' =>  'Salve, penso di essere incinta. Vorrei fare un\' ecografia il prima possibile!',
+                'user_id' => '19'
+            ],
+            [
+                'name' => 'Maria',
+                'surname' => 'Spiga',
+                'title' => 'Visita di Routine',
+                'email' => 'filippotag@gmail.com',
+                'message_text' =>  'Salve, vorrei fare una visita di routine.',
+                'user_id' => '20'
+            ],
+
+            [
+                'name' => 'Cecilia',
+                'surname' => 'Sassi',
+                'title' => 'Controllo Ortopedico',
+                'email' => 'cec.sassi@gmail.com',
+                'message_text' =>  'Salve, vorrei fare un controllo ortopedico se è possibile, grazie',
+                'user_id' => '20'
+            ],
+            [
+                'name' => 'Marco',
+                'surname' => 'Amato',
+                'title' => 'Visita di controllo',
+                'email' => 'marco.amato@gmail.com',
+                'message_text' =>  'Salve, vorrei fare una visita di controllo, quando sarebbe disponibile?',
+                'user_id' => '20'
+            ],
+
+            
         ];
         foreach ($messages as $message) {
             $newMessage = new Message();

@@ -161,7 +161,241 @@ class ReviewSeeder extends Seeder
                 'vote' => '4',
                 'user_id' => '8'
             ],
+            // --------------------------------
+            // --------------------------------
+            [
+                'name' => 'Angela',
+                'surname' => 'Altero',
+                'review_text' =>  'Studio molto organizzato!',
+                'vote' => '4',
+                'user_id' => '1'
+            ],
+            [
+                'name' => 'Dario',
+                'surname' => 'Nudi',
+                'review_text' =>  'Medico fantastico, personale preparato!',
+                'vote' => '4',
+                'user_id' => '2'
+            ],
+            [
+                'name' => 'Franca',
+                'surname' => 'Ilari',
+                'review_text' =>  'Medico frettoloso! Attesa infinita!',
+                'vote' => '2',
+                'user_id' => '3'
+            ],
+            [
+                'name' => 'Anna',
+                'surname' => 'Sincereri',
+                'review_text' =>  'Medico molto consigliato!',
+                'vote' => '4',
+                'user_id' => '4'
+            ],
+            [
+                'name' => 'Anna ',
+                'surname' => 'Polini',
+                'review_text' =>  'Studio disorganizzato! problemi per le prenotazioni!',
+                'vote' => '1',
+                'user_id' => '5'
+            ],
+            [
+                'name' => 'Ugo',
+                'surname' => 'Spancer',
+                'review_text' =>  'Medico eccezionale!',
+                'vote' => '5',
+                'user_id' => '6'
+            ],
+            [
+                'name' => 'Luca',
+                'surname' => 'Brighi',
+                'review_text' =>  'Personale molto preparato!',
+                'vote' => '4',
+                'user_id' => '7'
+            ],
+            [
+                'name' => 'Angelino',
+                'surname' => 'Aneruti',
+                'review_text' =>  'Impossibile prenotare',
+                'vote' => '1',
+                'user_id' => '1'
+            ],
+            [
+                'name' => 'Rocco',
+                'surname' => 'Floridi',
+                'review_text' =>  'Medico preparatissimo ed empatico!',
+                'vote' => '5',
+                'user_id' => '2'
+            ],
+            [
+                'name' => 'Angela',
+                'surname' => 'Pirri',
+                'review_text' =>  'Medico frettoloso!',
+                'vote' => '2',
+                'user_id' => '3'
+            ],
+            [
+                'name' => 'Marco',
+                'surname' => 'Todoli',
+                'review_text' =>  'Tutto perfetto!',
+                'vote' => '5',
+                'user_id' => '4'
+            ],
+            [
+                'name' => 'Mirta',
+                'surname' => 'Ghini',
+                'review_text' =>  'Studio sporco, personale ok',
+                'vote' => '3',
+                'user_id' => '5'
+            ],
+            [
+                'name' => 'Claudia',
+                'surname' => 'Piovri',
+                'review_text' =>  'Medico freddo e distante, andava di fretta!',
+                'vote' => '1',
+                'user_id' => '6'
+            ],
+            [
+                'name' => 'Clara',
+                'surname' => 'Nido',
+                'review_text' =>  'Medico e personale super, comunicazioni e prenotazioni rapide e precise!',
+                'vote' => '4',
+                'user_id' => '7'
+            ],
+            [
+                'name' => 'Paolo',
+                'surname' => 'Nerini',
+                'review_text' =>  'Medico Fantastico!',
+                'vote' => '4',
+                'user_id' => '9'
+            ],
+            [
+                'name' => 'Teo',
+                'surname' => 'Ulivieri',
+                'review_text' =>  'Medico e personale super, comunicazioni e prenotazioni rapide e precise!',
+                'vote' => '4',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Angelo',
+                'surname' => 'Peri',
+                'review_text' =>  'Medico frettoloso! Studio caotico, attesa infinita,',
+                'vote' => '1',
+                'user_id' => '11'
+            ],
+            [
+                'name' => 'Marta',
+                'surname' => 'Silvi',
+                'review_text' =>  'Medici cordiali e attenti a tutto!',
+                'vote' => '4',
+                'user_id' => '11'
+            ],
+            [
+                'name' => 'Vito',
+                'surname' => 'Tinti',
+                'review_text' =>  'Studio sporco, personale ok',
+                'vote' => '3',
+                'user_id' => '13'
+            ],
+            [
+                'name' => 'Angelina',
+                'surname' => 'Neri',
+                'review_text' =>  'Medico frettoloso!',
+                'vote' => '3',
+                'user_id' => '12'
+            ],
+            [
+                'name' => 'Lorenzo',
+                'surname' => 'Nuvola',
+                'review_text' =>  'Il migliore di tutti!',
+                'vote' => '5',
+                'user_id' => '14'
+            ],
+            [
+                'name' => 'Gino',
+                'surname' => 'Mantovani',
+                'review_text' =>  'Medico frettoloso!',
+                'vote' => '3',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Mario',
+                'surname' => 'Rizzo',
+                'review_text' =>  'Medico molto professionale, consigliato!',
+                'vote' => '4',
+                'user_id' => '20'
+            ],
+            [
+                'name' => 'Angelo',
+                'surname' => 'Lisi',
+                'review_text' =>  'Medico puntuale e studio accogliente!',
+                'vote' => '4',
+                'user_id' => '17'
+            ],
+            [
+                'name' => 'Davide',
+                'surname' => 'Brusco',
+                'review_text' =>  'studio vecchio e sporco!',
+                'vote' => '1',
+                'user_id' => '10'
+            ],
+            [
+                'name' => 'Tito',
+                'surname' => 'Bresadola',
+                'review_text' =>  'Medico puntuale e studio accogliente!',
+                'vote' => '4',
+                'user_id' => '19'
+            ],
+            [
+                'name' => 'Angelo',
+                'surname' => 'Lisi',
+                'review_text' =>  'Medico puntuale e studio molto organizzato',
+                'vote' => '4',
+                'user_id' => '11'
+            ],
+            [
+                'name' => 'Claudio',
+                'surname' => 'Loppa',
+                'review_text' =>  'Medico consigliato, tutto perfetto!',
+                'vote' => '5',
+                'user_id' => '18'
+            ],
+            [
+                'name' => 'Antonella',
+                'surname' => 'Lusi',
+                'review_text' =>  'personale eccezionale',
+                'vote' => '4',
+                'user_id' => '18'
+            ],
+            [
+                'name' => 'Antonello',
+                'surname' => 'Ludovici',
+                'review_text' =>  'personale preparato',
+                'vote' => '4',
+                'user_id' => '8'
+            ],
+            [
+                'name' => 'Aida',
+                'surname' => 'Pioppi',
+                'review_text' =>  'Studio nuovo, medico molto gentile e preparato',
+                'vote' => '5',
+                'user_id' => '15'
+            ],
+            [
+                'name' => 'Asia',
+                'surname' => 'Masi',
+                'review_text' =>  'personale eccezionale',
+                'vote' => '4',
+                'user_id' => '19'
+            ],
+            [
+                'name' => 'Stefano',
+                'surname' => 'Landi',
+                'review_text' =>  'esperienza da dimenticare',
+                'vote' => '1',
+                'user_id' => '16'
+            ],
         ];
+
         foreach ($reviews as $review) {
             $newReview = new Review();
             $newReview->name = $review['name'];
@@ -170,7 +404,6 @@ class ReviewSeeder extends Seeder
             $newReview->vote = $review['vote'];
             $newReview->user_id = $review['user_id'];
             $newReview->save();
-            
         }
     }
 }
