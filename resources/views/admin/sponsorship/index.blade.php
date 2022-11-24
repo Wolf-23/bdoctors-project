@@ -17,7 +17,10 @@
         </div>
         <div class="text-center">
           @if ($newSponsorships->last() != '' && $newSponsorships->last()->ends_at > now())
-            <h2 class="text-center mt-5">La tua sponsorizzazione scade il {{$newSponsorships->last()->ends_at}}</h2>
+          <div class="bg-success text-center p-2 rounded mt-3 mb-4">
+            <h3>Sponsorizzazione Confermata!</h3>
+            <h3>Scade il {{$newSponsorships->last()->ends_at}}</h3>
+          </div>
           @endif
           <form action="{{route('admin.sponsorship.store')}}" method="POST">
           @csrf
