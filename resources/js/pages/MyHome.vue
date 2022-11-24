@@ -90,7 +90,7 @@
 
         <div v-if="profiles.length > 0" class="container-fluid pb-5">
           <div class="d-flex my_cards flex-wrap">
-            <div v-for="(profile, index) in profiles" :key="index" class="card shadow-drop-2-center pb-2">
+            <div v-for="(profile, index) in profiles" :key="index" class="card shadow-drop-2-center pb-2" :class="profile.sponsorships.length > 0 ? 'sponsored_body':''">
               <div class="eb_img">
                 <img class="card-img-top" :src=" profile.profile_pic == null || profile.profile_pic == false ? '/images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
               </div>
@@ -99,9 +99,9 @@
                   Profilo sponsorizzato
                 </div>
                 <div v-else></div>
-                <h3 class="card-title eb_color">Dr. {{profile.name}} <br> {{profile.surname}}</h3>
+                <h3 class="card-title eb_color" :class="profile.sponsorships.length > 0 ? 'sponsored_name':''" >Dr. {{profile.name}} <br> {{profile.surname}}</h3>
                 <p class="card-text eb_size text-secondary">{{profile.specializations[0].name}}</p>
-                <router-link class="btn" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
+                <router-link :class="profile.sponsorships.length > 0 ? 'btn sponsored_btn':'btn'" :to="{name:'single-profile', params:{slug:profile.slug}} ">Profilo</router-link>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default {
       specializations: [],
       selectSpecialization: 'Tutti i Medici', // filtro specializzazioni
       reviewsCheck: 0, //filtra numero recensioni
-      mediaVoto: 1, // filtra mediaVoti ( stelline )
+      mediaVoto: 0, // filtra mediaVoti ( stelline )
     }
   },
 
@@ -146,6 +146,8 @@ export default {
     this.getSpecializations()
     
   },
+
+  
 
   methods: {
 
@@ -170,22 +172,6 @@ export default {
       })
       .then( resolve => { 
         this.profiles = resolve.data.results;
-        console.log(this.profiles)
-        console.log(resolve.data.reviews_count)
-
-        //calcolo Media Voto per ogni profilo filtrato
-        return this.profiles.forEach(profile => {
-          profile.avgVote = 0
-          this.mediaVoto = profile.avgVote;
-        
-          let sum = 0
-          for(let x = 0 ; x < profile.reviews.length ; x++){
-            sum += profile.reviews[x].vote;
-          }
-
-          let average = sum / profile.reviews.length
-          return profile.avgVote = Math.floor(average,0);
-        })
       })
     }
       
@@ -256,13 +242,38 @@ export default {
     }
   }
 
-  .sponsored {
+  .sponsored_body {
 
     background-color: #0A4067;
     color:white;
-    padding: 1px,3px;
-    border-radius: 20px;
+
+    .sponsored {
+
+        background-color: #ddc350;
+        color:white;
+        padding: 1px,3px;
+        border-radius: 20px;
+        }
+
+        .sponsored_btn {
+          background-color:white !important;
+          color: #0A4067 !important;
+
+        &:hover {
+          background-color: #ddc350 !important;
+          color: white !important;
+
+        }
+    }
+
+    .sponsored_name{
+      color: white !important;
+    }
+
   }
+
+  
+  
 </style>
 
 

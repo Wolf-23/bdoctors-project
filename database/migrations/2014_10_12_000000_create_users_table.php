@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_pic')->nullable();
             $table->string('phone', 16)->nullable();
             $table->text('services')->nullable();
-            $table->integer('avgVote')->default(0);
+            $table->integer('avgVote')->default(1);
             $table->timestamps();
         });
     }

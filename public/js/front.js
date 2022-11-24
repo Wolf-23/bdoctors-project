@@ -2331,7 +2331,7 @@ __webpack_require__.r(__webpack_exports__);
       // filtro specializzazioni
       reviewsCheck: 0,
       //filtra numero recensioni
-      mediaVoto: 1 // filtra mediaVoti ( stelline )
+      mediaVoto: 0 // filtra mediaVoti ( stelline )
     };
   },
   mounted: function mounted() {
@@ -2358,20 +2358,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (resolve) {
         _this2.profiles = resolve.data.results;
-        console.log(_this2.profiles);
-        console.log(resolve.data.reviews_count);
-
-        //calcolo Media Voto per ogni profilo filtrato
-        return _this2.profiles.forEach(function (profile) {
-          profile.avgVote = 0;
-          _this2.mediaVoto = profile.avgVote;
-          var sum = 0;
-          for (var x = 0; x < profile.reviews.length; x++) {
-            sum += profile.reviews[x].vote;
-          }
-          var average = sum / profile.reviews.length;
-          return profile.avgVote = Math.floor(average, 0);
-        });
       });
     }
   }
@@ -3596,7 +3582,8 @@ var render = function render() {
   }, _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
-      staticClass: "card shadow-drop-2-center pb-2"
+      staticClass: "card shadow-drop-2-center pb-2",
+      "class": profile.sponsorships.length > 0 ? "sponsored_body" : ""
     }, [_c("div", {
       staticClass: "eb_img"
     }, [_c("img", {
@@ -3610,11 +3597,12 @@ var render = function render() {
     }, [profile.sponsorships.length > 0 ? _c("div", {
       staticClass: "sponsored"
     }, [_vm._v("\n                Profilo sponsorizzato\n              ")]) : _c("div"), _vm._v(" "), _c("h3", {
-      staticClass: "card-title eb_color"
+      staticClass: "card-title eb_color",
+      "class": profile.sponsorships.length > 0 ? "sponsored_name" : ""
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
       staticClass: "card-text eb_size text-secondary"
     }, [_vm._v(_vm._s(profile.specializations[0].name))]), _vm._v(" "), _c("router-link", {
-      staticClass: "btn",
+      "class": profile.sponsorships.length > 0 ? "btn sponsored_btn" : "btn",
       attrs: {
         to: {
           name: "single-profile",
@@ -3944,7 +3932,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}\n.sponsored[data-v-c98e7418] {\n  background-color: #0A4067;\n  color: white;\n  padding: 1px, 3px;\n  border-radius: 20px;\n}", ""]);
+exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}\n.sponsored_body[data-v-c98e7418] {\n  background-color: #0A4067;\n  color: white;\n}\n.sponsored_body .sponsored[data-v-c98e7418] {\n  background-color: #ddc350;\n  color: white;\n  padding: 1px, 3px;\n  border-radius: 20px;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418] {\n  background-color: white !important;\n  color: #0A4067 !important;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418]:hover {\n  background-color: #ddc350 !important;\n  color: white !important;\n}\n.sponsored_body .sponsored_name[data-v-c98e7418] {\n  color: white !important;\n}", ""]);
 
 // exports
 
