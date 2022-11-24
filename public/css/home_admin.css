@@ -17,6 +17,11 @@
   color: whitesmoke;
 }
 
+.eb_btn:hover {
+  opacity: 0.9;
+  color: white;
+}
+
 .my-radius-bg {
   border-radius: 15px;
   border: 1px solid #0A4067;

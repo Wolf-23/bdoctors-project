@@ -14,6 +14,10 @@
 .eb_btn{
     background-color: #0A4067;
     color: whitesmoke;
+    &:hover{
+        opacity: 0.9;
+        color: white;
+    }
 }
 
 .my-radius-bg {
