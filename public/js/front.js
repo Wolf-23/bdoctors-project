@@ -2499,9 +2499,20 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "navbar px-3 navbar-expand-md"
+  }, [_vm._m(0), _vm._v(" "), _c("span", {
+    staticClass: "ml-3 font-weight-bold logo-title"
+  }, [_vm._v("BDoctors")]), _vm._v(" "), _c("ul", {
+    staticClass: "navbar-nav mr-auto"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "navbar navbar-expand-md shadow-sm"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarNav"
+    }
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto"
-  }, _vm._l(_vm.menu, function (link, index) {
+  }, [_vm._l(_vm.menu, function (link, index) {
     return _c("li", {
       key: index,
       staticClass: "nav-item active"
@@ -2513,16 +2524,7 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(link.name))])], 1);
-  }), 0), _vm._v(" "), _c("div", {
-    staticClass: "navbar navbar-expand-md shadow-sm"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      id: "navbarNav"
-    }
-  }, [_c("ul", {
-    staticClass: "navbar-nav mr-auto"
-  }, [_c("li", {
+  }), _vm._v(" "), _c("li", {
     staticClass: "nav-item active d-flex"
   }, [_c("a", {
     staticClass: "nav-link btn eb_bg text-secondary mx-1",
@@ -2534,9 +2536,21 @@ var render = function render() {
     attrs: {
       href: "http://127.0.0.1:8000/register"
     }
-  }, [_vm._v(_vm._s("Register"))])])])])])]);
+  }, [_vm._v(_vm._s("Register"))])])], 2)])])]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "img-wrapper"
+  }, [_c("img", {
+    staticClass: "logo-img",
+    attrs: {
+      src: "/images/Bdoctors Logo 1000.png",
+      alt: ""
+    }
+  })]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("button", {
@@ -3792,7 +3806,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n  z-index: 999;\n}\n.navbar i[data-v-153bfd55] {\n  font-size: 1.4rem;\n}", ""]);
+exports.push([module.i, ".navbar[data-v-153bfd55] {\n  background-color: #094067;\n  box-shadow: none !important;\n  z-index: 999;\n}\n.navbar i[data-v-153bfd55] {\n  font-size: 1.4rem;\n}\n.img-wrapper[data-v-153bfd55] {\n  height: 43px;\n}\n.img-wrapper .logo-img[data-v-153bfd55] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.logo-title[data-v-153bfd55] {\n  color: #ef4565;\n  font-size: 30px;\n}", ""]);
 
 // exports
 
@@ -21732,7 +21746,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
