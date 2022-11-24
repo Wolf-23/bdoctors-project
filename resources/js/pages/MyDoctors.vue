@@ -15,8 +15,11 @@
               <span  class="textGray pl-2 pl-md-0" v-for="(spec , index) in profile.specializations" :key = "index">{{spec.name}} </span>
               <h5 class="mt-2 pl-2 pl-md-0 font-weight-bold text-secondary">PRESTAZIONI OFFERTE</h5>
               <span class="textGray pl-2 pl-md-0">{{profile.services}}</span>
-              <h5 class="mt-2 pl-2 pl-md-0 font-weight-bold text-secondary">CURRICULUM</h5>
-              <a class="btn" :href="profile.cv == false ? '': '/storage/' + profile.cv" download>Curriculum</a>
+              <div v-if="profile.cv">
+                <h5 class="mt-2 pl-2 pl-md-0 font-weight-bold text-secondary">CURRICULUM</h5>
+                <a  class="btn" :href="profile.cv == false ? 'disabled': '/storage/' + profile.cv" download>Curriculum</a>
+              </div>
+              <div class="else"></div>
             </div>
           </div>
           <h2 class="mt-3 text-center text-md-left eb_color font-weight-bold">CONTATTAMI</h2>

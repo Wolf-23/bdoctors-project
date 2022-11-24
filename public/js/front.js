@@ -3194,15 +3194,17 @@ var render = function render() {
     staticClass: "mt-2 pl-2 pl-md-0 font-weight-bold text-secondary"
   }, [_vm._v("PRESTAZIONI OFFERTE")]), _vm._v(" "), _c("span", {
     staticClass: "textGray pl-2 pl-md-0"
-  }, [_vm._v(_vm._s(_vm.profile.services))]), _vm._v(" "), _c("h5", {
+  }, [_vm._v(_vm._s(_vm.profile.services))]), _vm._v(" "), _vm.profile.cv ? _c("div", [_c("h5", {
     staticClass: "mt-2 pl-2 pl-md-0 font-weight-bold text-secondary"
   }, [_vm._v("CURRICULUM")]), _vm._v(" "), _c("a", {
     staticClass: "btn",
     attrs: {
-      href: _vm.profile.cv == false ? "" : "/storage/" + _vm.profile.cv,
+      href: _vm.profile.cv == false ? "disabled" : "/storage/" + _vm.profile.cv,
       download: ""
     }
-  }, [_vm._v("Curriculum")])], 2)]), _vm._v(" "), _c("h2", {
+  }, [_vm._v("Curriculum")])]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "else"
+  })], 2)]), _vm._v(" "), _c("h2", {
     staticClass: "mt-3 text-center text-md-left eb_color font-weight-bold"
   }, [_vm._v("CONTATTAMI")]), _vm._v(" "), _c("div", {
     staticClass: "container my-5 border-left border-primary"
