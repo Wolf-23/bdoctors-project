@@ -13,34 +13,35 @@ class UserController extends Controller
     {   
         $data = request()->all();
 
-        if($data['specializationName'] == 'Tutti i Medici'){
-
-         
-            $allUsers = User::with(['reviews','specializations','sponsorships'])
-            ->join('reviews','users.id','=','reviews.user_id','cross')
-            ->select('users.*',DB::raw('round(avg(vote)) as avgVote'))
-            ->groupBy('user_id')
-            ->having('avgVote','>=',$data['avgVote'])
+        $queryUsers = User::with(['reviews','specializations','sponsorships'])
+            ->select('users.*',DB::raw('(select round(avg(vote)) from reviews where user_id = users.id) as avgVote'))
             ->withCount(['sponsorships','reviews'])
-            ->has('reviews','>=', $data['reviewsNumber'])
-            ->orderBy('sponsorships_count', 'desc')->inRandomOrder()->get();
+            ->orderBy('sponsorships_count', 'desc')->inRandomOrder();
+            
+        if($data['avgVote'] > 0){
 
-           
-        } else {
-  
-            $allUsers = User::with(['reviews','specializations','sponsorships'])
-            ->join('reviews','users.id','=','reviews.user_id')
-            ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
-            ->groupBy('user_id')
-            ->having('avgVote','>=',$data['avgVote'])
-            ->whereHas('specializations', function ($q){
+            $queryUsers= $queryUsers->having('avgVote','>=',$data['avgVote']);
+
+        }
+
+        if($data['reviewsNumber'] > 0){
+
+        $queryUsers= $queryUsers->having('reviews_count','>=', $data['reviewsNumber']);
+
+        }
+
+        if($data['specializationName'] != 'Tutti i Medici'){
+
+       
+            $queryUsers = $queryUsers->whereHas('specializations', function ($q){
                 $data = request()->all();
-                $q->where('specialization_id', '=' , $data['specializationName']);})  
-            ->has('reviews','>=', $data['reviewsNumber'])
-            ->withCount('sponsorships')
-            ->orderBy('sponsorships_count', 'desc')->inRandomOrder()->get();
+                $q->where('specialization_id', '=' , $data['specializationName']);
+            });  
+            
         }
         
+        $allUsers = $queryUsers->get();
+
         return response()->json([
             'success' => true,
             'results' => $allUsers,
