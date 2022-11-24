@@ -27,29 +27,31 @@ class UserController extends Controller
 
             $data = request()->all();
             $allUsers = User::with(['reviews','specializations','sponsorships'])
-            ->withCount('sponsorships')
-            // ->join('reviews','users.id','=','reviews.user_id')
-            // ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
-            // ->groupBy('user_id')
+            ->join('reviews','users.id','=','reviews.user_id')
+            ->select('users.*',DB::raw('round(avg(vote)) as avgVote'))
+            ->groupBy('user_id')
+            ->having('avgVote','>=',$data['avgVote'])
             ->has('reviews','>=', $data['reviewsNumber'])
-            // ->where('users.avgVote','>=',$data['avgVote'])
+            ->withCount('sponsorships')
             ->orderBy('sponsorships_count', 'desc')
+            ->inRandomOrder()
             ->get();
            
         } else {
             
             $data = request()->all();
             $allUsers = User::with(['reviews','specializations','sponsorships'])
-            ->withCount('sponsorships')
-            // ->join('reviews','users.id','=','reviews.user_id')
-            // ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
-            // ->groupBy('user_id')
+            ->join('reviews','users.id','=','reviews.user_id')
+            ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
+            ->groupBy('user_id')
+            ->having('avgVote','>=',$data['avgVote'])
             ->whereHas('specializations', function ($q){
                 $data = request()->all();
                 $q->where('specialization_id', '=' , $data['specializationName']);})  
             ->has('reviews','>=', $data['reviewsNumber'])
-            // ->where('avgVote','>=',$data['avgVote'])
+            ->withCount('sponsorships')
             ->orderBy('sponsorships_count', 'desc')
+            ->inRandomOrder()
             ->get();
         }
          

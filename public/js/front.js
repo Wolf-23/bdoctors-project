@@ -2334,17 +2334,6 @@ __webpack_require__.r(__webpack_exports__);
       mediaVoto: 1 // filtra mediaVoti ( stelline )
     };
   },
-
-  computed: {
-    filteredSearch: function filteredSearch() {
-      var _this = this;
-      return this.profiles.filter(function (profile) {
-        if (profile.avgVote >= _this.mediaVoto || profile.reviews == 0) {
-          return profile;
-        }
-      });
-    }
-  },
   mounted: function mounted() {
     this.getData();
     this.getSpecializations();
@@ -2354,13 +2343,13 @@ __webpack_require__.r(__webpack_exports__);
       return this.mediaVoto = n;
     },
     getSpecializations: function getSpecializations() {
-      var _this2 = this;
+      var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/specializations/').then(function (response) {
-        _this2.specializations = response.data.results;
+        _this.specializations = response.data.results;
       });
     },
     getData: function getData() {
-      var _this3 = this;
+      var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/users', {
         params: {
           specializationName: this.selectSpecialization,
@@ -2368,14 +2357,14 @@ __webpack_require__.r(__webpack_exports__);
           reviewsNumber: this.reviewsCheck
         }
       }).then(function (resolve) {
-        _this3.profiles = resolve.data.results;
-        console.log(_this3.profiles);
+        _this2.profiles = resolve.data.results;
+        console.log(_this2.profiles);
         console.log(resolve.data.reviews_count);
 
         //calcolo Media Voto per ogni profilo filtrato
-        return _this3.profiles.forEach(function (profile) {
+        return _this2.profiles.forEach(function (profile) {
           profile.avgVote = 0;
-          _this3.mediaVoto = profile.avgVote;
+          _this2.mediaVoto = profile.avgVote;
           var sum = 0;
           for (var x = 0; x < profile.reviews.length; x++) {
             sum += profile.reviews[x].vote;
@@ -3604,7 +3593,7 @@ var render = function render() {
     staticClass: "container-fluid pb-5"
   }, [_c("div", {
     staticClass: "d-flex my_cards flex-wrap"
-  }, _vm._l(_vm.filteredSearch, function (profile, index) {
+  }, _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
       staticClass: "card shadow-drop-2-center pb-2"

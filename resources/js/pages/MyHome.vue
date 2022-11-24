@@ -90,7 +90,7 @@
 
         <div v-if="profiles.length > 0" class="container-fluid pb-5">
           <div class="d-flex my_cards flex-wrap">
-            <div v-for="(profile, index) in filteredSearch" :key="index" class="card shadow-drop-2-center pb-2">
+            <div v-for="(profile, index) in profiles" :key="index" class="card shadow-drop-2-center pb-2">
               <div class="eb_img">
                 <img class="card-img-top" :src=" profile.profile_pic == null || profile.profile_pic == false ? '/images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
               </div>
@@ -139,15 +139,7 @@ export default {
     }
   },
 
-  computed: {
-    filteredSearch: function(){
-      return this.profiles.filter(profile => {
-        if(profile.avgVote >= this.mediaVoto || profile.reviews == 0){
-          return profile
-        }
-      })
-    }
-  },
+
 
   mounted(){
     this.getData()
