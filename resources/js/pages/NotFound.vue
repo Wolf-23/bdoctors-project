@@ -22,7 +22,7 @@ export default {
         align-items: center;
         display: flex;
         flex-direction: column;
-        height: 600px;
+        height: calc(100vh - 263px);
         justify-content: center;
         text-align: center;
     }

@@ -117,7 +117,7 @@ export default {
 <style scoped lang="scss">
    .eb_width{
       
-      min-height: 100vh;
+      min-height: calc(100vh - 263px);
       input, textarea{
         border-radius: 10px;
         outline-color: #3da9fc;

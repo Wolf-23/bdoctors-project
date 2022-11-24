@@ -3896,7 +3896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_width[data-v-298400f2] {\n  min-height: 100vh;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}\n.eb_width .btn[data-v-298400f2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
+exports.push([module.i, ".eb_width[data-v-298400f2] {\n  min-height: calc(100vh - 263px);\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}\n.eb_width .btn[data-v-298400f2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
 
 // exports
 
@@ -3953,7 +3953,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "main[data-v-a26bf910] {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: 600px;\n  justify-content: center;\n  text-align: center;\n}\nh1[data-v-a26bf910] {\n  color: lightgreen;\n  font-size: 12.5rem;\n  letter-spacing: 0.1em;\n  margin: 0.025em 0;\n  text-shadow: 0.05em 0.05em 0 rgba(0, 0, 0, 0.25);\n  white-space: nowrap;\n}\n@media (max-width: 30rem) {\nh1[data-v-a26bf910] {\n    font-size: 8.5rem;\n}\n}\nh1 > span[data-v-a26bf910] {\n  animation: spooky-a26bf910 2s alternate infinite linear;\n  color: #0A4067;\n  display: inline-block;\n}\nh2[data-v-a26bf910] {\n  color: lightslategray;\n  margin-bottom: 0.4em;\n  font-size: 2rem;\n}\np[data-v-a26bf910] {\n  color: gray;\n  margin-top: 0;\n}\n@keyframes spooky-a26bf910 {\nfrom {\n    transform: translatey(0.15em) scaley(0.95);\n}\nto {\n    transform: translatey(-0.15em);\n}\n}", ""]);
+exports.push([module.i, "main[data-v-a26bf910] {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  height: calc(100vh - 263px);\n  justify-content: center;\n  text-align: center;\n}\nh1[data-v-a26bf910] {\n  color: lightgreen;\n  font-size: 12.5rem;\n  letter-spacing: 0.1em;\n  margin: 0.025em 0;\n  text-shadow: 0.05em 0.05em 0 rgba(0, 0, 0, 0.25);\n  white-space: nowrap;\n}\n@media (max-width: 30rem) {\nh1[data-v-a26bf910] {\n    font-size: 8.5rem;\n}\n}\nh1 > span[data-v-a26bf910] {\n  animation: spooky-a26bf910 2s alternate infinite linear;\n  color: #0A4067;\n  display: inline-block;\n}\nh2[data-v-a26bf910] {\n  color: lightslategray;\n  margin-bottom: 0.4em;\n  font-size: 2rem;\n}\np[data-v-a26bf910] {\n  color: gray;\n  margin-top: 0;\n}\n@keyframes spooky-a26bf910 {\nfrom {\n    transform: translatey(0.15em) scaley(0.95);\n}\nto {\n    transform: translatey(-0.15em);\n}\n}", ""]);
 
 // exports
 
