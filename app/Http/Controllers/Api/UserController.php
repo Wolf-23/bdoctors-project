@@ -19,26 +19,21 @@ class UserController extends Controller
             ->orderBy('sponsorships_count', 'desc')->inRandomOrder();
             
         if($data['avgVote'] > 0){
-
-            $queryUsers= $queryUsers->having('avgVote','>=',$data['avgVote']);
-
+            $queryUsers = $queryUsers->having('avgVote','>=',$data['avgVote']);
         }
 
         if($data['reviewsNumber'] > 0){
-
-        $queryUsers= $queryUsers->having('reviews_count','>=', $data['reviewsNumber']);
-
+            $queryUsers = $queryUsers->having('reviews_count','>=', $data['reviewsNumber']);
         }
 
         if($data['specializationName'] != 'Tutti i Medici'){
-
        
             $queryUsers = $queryUsers->whereHas('specializations', function ($q){
                 $data = request()->all();
                 $q->where('specialization_id', '=' , $data['specializationName']);
             });  
-            
         }
+        
         
         $allUsers = $queryUsers->get();
 
