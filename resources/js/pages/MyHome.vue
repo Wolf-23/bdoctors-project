@@ -244,7 +244,7 @@ export default {
 
   .sponsored_body {
 
-    background-color: #0A4067;
+    background-color: #4287b7;
     color:white;
 
     .sponsored {
@@ -260,7 +260,7 @@ export default {
           color: #0A4067 !important;
 
         &:hover {
-          background-color: #ddc350 !important;
+          background-color: #0A4067 !important;
           color: white !important;
 
         }
