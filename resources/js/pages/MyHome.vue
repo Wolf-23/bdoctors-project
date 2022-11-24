@@ -79,7 +79,7 @@
           <h3 class="d-block pb-3">Specializzazioni</h3>
           <div class="filters_2 d-flex pb-5 m-auto align-self-center">
             <select v-model="selectSpecialization">
-              <option value=""></option>
+              <option value="Tutti i Medici">Tutti i Medici</option>
               <option v-for="(specialization , index) in specializations" :key="index" :value="specialization.id">{{specialization.name}}</option>
             </select>
             <button class="btn" @click.prevent="getData()">Cerca</button>
@@ -92,10 +92,10 @@
           <div class="d-flex my_cards flex-wrap">
             <div v-for="(profile, index) in filteredSearch" :key="index" class="card shadow-drop-2-center pb-2">
               <div class="eb_img">
-                <img class="card-img-top " :src=" profile.profile_pic == false ? 'images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
+                <img class="card-img-top" :src=" profile.profile_pic == null || profile.profile_pic == false ? '/images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
               </div>
               <div class="card-body">
-                <div v-if="profile.sponsorships > 0">
+                <div class="sponsored" v-if="profile.sponsorships.length > 0">
                   Profilo sponsorizzato
                 </div>
                 <div v-else></div>
@@ -128,25 +128,23 @@ import ParallaxComponent from '../components/ParallaxComponent.vue';
 
 export default {
   components: { JumboComponent, CardHomeComponent, ParallaxComponent },
-
   name: 'MyHome',
   data(){
     return {
       profiles: [], // chiamata api
       specializations: [],
-      selectSpecialization: '', // filtro specializzazioni
+      selectSpecialization: 'Tutti i Medici', // filtro specializzazioni
       reviewsCheck: 0, //filtra numero recensioni
       mediaVoto: 1, // filtra mediaVoti ( stelline )
     }
   },
-  
-  computed:
-  {
+
+  computed: {
     filteredSearch: function(){
-      return this.profiles.filter( profile => {
-      if(profile.avgVote >= this.mediaVoto){
-      return profile
-      } 
+      return this.profiles.filter(profile => {
+        if(profile.avgVote >= this.mediaVoto || profile.reviews == 0){
+          return profile
+        }
       })
     }
   },
@@ -180,8 +178,10 @@ export default {
       })
       .then( resolve => { 
         this.profiles = resolve.data.results;
+        console.log(this.profiles)
+        console.log(resolve.data.reviews_count)
 
-        // calcolo Media Voto per ogni profilo filtrato
+        //calcolo Media Voto per ogni profilo filtrato
         return this.profiles.forEach(profile => {
           profile.avgVote = 0
           this.mediaVoto = profile.avgVote;
@@ -203,7 +203,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
   .text-pop-up-top {
     -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -263,6 +262,14 @@ export default {
       }
       
     }
+  }
+
+  .sponsored {
+
+    background-color: #0A4067;
+    color:white;
+    padding: 1px,3px;
+    border-radius: 20px;
   }
 </style>
 

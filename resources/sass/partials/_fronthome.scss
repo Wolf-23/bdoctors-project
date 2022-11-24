@@ -164,12 +164,17 @@
                 width: 16rem;
                 margin: 40px 10px;
                 border-radius: 20px;
+                overflow: hidden;
+                
                 .eb_img{
                     height: 210px;
+                    
+                    
                     img{
                         height: 100%;
                         width: 100%;
-                        object-fit: contain;
+                        object-fit: cover;
+                        
                     }
                 }
                 .eb_color{

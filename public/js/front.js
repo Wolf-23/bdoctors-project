@@ -2327,7 +2327,7 @@ __webpack_require__.r(__webpack_exports__);
       profiles: [],
       // chiamata api
       specializations: [],
-      selectSpecialization: '',
+      selectSpecialization: 'Tutti i Medici',
       // filtro specializzazioni
       reviewsCheck: 0,
       //filtra numero recensioni
@@ -2339,7 +2339,7 @@ __webpack_require__.r(__webpack_exports__);
     filteredSearch: function filteredSearch() {
       var _this = this;
       return this.profiles.filter(function (profile) {
-        if (profile.avgVote >= _this.mediaVoto) {
+        if (profile.avgVote >= _this.mediaVoto || profile.reviews == 0) {
           return profile;
         }
       });
@@ -2369,8 +2369,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (resolve) {
         _this3.profiles = resolve.data.results;
+        console.log(_this3.profiles);
+        console.log(resolve.data.reviews_count);
 
-        // calcolo Media Voto per ogni profilo filtrato
+        //calcolo Media Voto per ogni profilo filtrato
         return _this3.profiles.forEach(function (profile) {
           profile.avgVote = 0;
           _this3.mediaVoto = profile.avgVote;
@@ -3581,9 +3583,9 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      value: ""
+      value: "Tutti i Medici"
     }
-  }), _vm._v(" "), _vm._l(_vm.specializations, function (specialization, index) {
+  }, [_vm._v("Tutti i Medici")]), _vm._v(" "), _vm._l(_vm.specializations, function (specialization, index) {
     return _c("option", {
       key: index,
       domProps: {
@@ -3611,12 +3613,14 @@ var render = function render() {
     }, [_c("img", {
       staticClass: "card-img-top",
       attrs: {
-        src: profile.profile_pic == false ? "images/avatar.png" : "storage/" + profile.profile_pic,
+        src: profile.profile_pic == null || profile.profile_pic == false ? "/images/avatar.png" : "storage/" + profile.profile_pic,
         alt: "Card image cap"
       }
     })]), _vm._v(" "), _c("div", {
       staticClass: "card-body"
-    }, [profile.sponsorships > 0 ? _c("div", [_vm._v("\n                Profilo sponsorizzato\n              ")]) : _c("div"), _vm._v(" "), _c("h3", {
+    }, [profile.sponsorships.length > 0 ? _c("div", {
+      staticClass: "sponsored"
+    }, [_vm._v("\n                Profilo sponsorizzato\n              ")]) : _c("div"), _vm._v(" "), _c("h3", {
       staticClass: "card-title eb_color"
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
       staticClass: "card-text eb_size text-secondary"
@@ -3951,7 +3955,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}", ""]);
+exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}\n.sponsored[data-v-c98e7418] {\n  background-color: #0A4067;\n  color: white;\n  padding: 1px, 3px;\n  border-radius: 20px;\n}", ""]);
 
 // exports
 
@@ -21739,7 +21743,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopaci/Desktop/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

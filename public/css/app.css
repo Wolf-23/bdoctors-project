@@ -11111,6 +11111,7 @@ a.text-dark:focus {
   width: 16rem;
   margin: 40px 10px;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .ourDoctors .my_cards .card .eb_img {
@@ -11120,8 +11121,8 @@ a.text-dark:focus {
 .ourDoctors .my_cards .card .eb_img img {
   height: 100%;
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .ourDoctors .my_cards .card .eb_color {

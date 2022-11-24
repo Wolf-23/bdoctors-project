@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -19,33 +20,45 @@ class UserController extends Controller
      */
     public function index()
     {   
-            
         $data = request()->all();
-        $specializationName = $data['specializationName'];
-        $reviewsNumber = $data['reviewsNumber'];
-     
-        if($data['specializationName'] == ''){
-        
-        $allUsers = User::with(['specializations','reviews','sponsorships'])
-        ->get(['id','name','surname','slug','profile_pic']);
-            
-        } else {
-        $allUsers = User::with([ 'specializations', 'reviews','sponsorships'])
-        ->whereHas('specializations', function ($q){
+        $allUsers = User::with(['reviews','specializations']);
+
+        if($data['specializationName'] == 'Tutti i Medici' ){
+
             $data = request()->all();
-            $q->where('specialization_id', '=' , $data['specializationName']);})
-
-        ->whereHas('reviews',function(){},'>=',$data['reviewsNumber'])
-        ->get();
-
-        $allUsers->sortByDesc('sponsorships');
+            $allUsers = User::with(['reviews','specializations','sponsorships'])
+            ->withCount('sponsorships')
+            // ->join('reviews','users.id','=','reviews.user_id')
+            // ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
+            // ->groupBy('user_id')
+            ->has('reviews','>=', $data['reviewsNumber'])
+            // ->where('users.avgVote','>=',$data['avgVote'])
+            ->orderBy('sponsorships_count', 'desc')
+            ->get();
+           
+        } else {
+            
+            $data = request()->all();
+            $allUsers = User::with(['reviews','specializations','sponsorships'])
+            ->withCount('sponsorships')
+            // ->join('reviews','users.id','=','reviews.user_id')
+            // ->select('users.*',DB::raw('round(avg(vote)) as avgVote')) 
+            // ->groupBy('user_id')
+            ->whereHas('specializations', function ($q){
+                $data = request()->all();
+                $q->where('specialization_id', '=' , $data['specializationName']);})  
+            ->has('reviews','>=', $data['reviewsNumber'])
+            // ->where('avgVote','>=',$data['avgVote'])
+            ->orderBy('sponsorships_count', 'desc')
+            ->get();
         }
          
         return response()->json([
             'success' => true,
             'results' => $allUsers,
-            'reviews_count' => $allUsers
+            'reviews_count' =>  $allUsers
         ]);
+
     }
 
     public function show($slug)
@@ -66,4 +79,15 @@ class UserController extends Controller
     }
 };
 
-    
+
+            // foreach($allUsers as $user){
+
+            //     $avgVoteBack =  DB::table('reviews')
+            //     ->select('user_id',DB::raw('round(AVG(vote),0) as avgVote'))
+            //     ->groupBy('user_id')->join('users','avgVote','=','avgVote')->implode('avgVote','');
+            //     $newAvg = intval($avgVoteBack);
+            //     $user->wow = $newAvg;
+                   
+            // }
+
+

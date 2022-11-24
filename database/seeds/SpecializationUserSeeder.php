@@ -16,7 +16,7 @@ class SpecializationUserSeeder extends Seeder
         $users = User::all();
         $specializations = Specialization::all();
         foreach ($users as $user) {
-            $randomSpec = rand(0, count($specializations));
+            $randomSpec = rand(1, 5);
             $user->specializations()->attach($randomSpec);
         } 
     }
