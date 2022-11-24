@@ -3578,7 +3578,7 @@ var render = function render() {
   }, [_vm._v("Cerca")])])]), _vm._v(" "), _vm.profiles.length > 0 ? _c("div", {
     staticClass: "container-fluid pb-5"
   }, [_c("div", {
-    staticClass: "d-flex my_cards flex-wrap"
+    staticClass: "d-flex my_cards flex-wrap position-relative"
   }, _vm._l(_vm.profiles, function (profile, index) {
     return _c("div", {
       key: index,
@@ -3596,7 +3596,9 @@ var render = function render() {
       staticClass: "card-body"
     }, [profile.sponsorships.length > 0 ? _c("div", {
       staticClass: "sponsored"
-    }, [_vm._v("\n                Profilo sponsorizzato\n              ")]) : _c("div"), _vm._v(" "), _c("h3", {
+    }, [_c("i", {
+      staticClass: "fa-solid fa-star"
+    })]) : _c("div"), _vm._v(" "), _c("h3", {
       staticClass: "card-title eb_color",
       "class": profile.sponsorships.length > 0 ? "sponsored_name" : ""
     }, [_vm._v("Dr. " + _vm._s(profile.name) + " "), _c("br"), _vm._v(" " + _vm._s(profile.surname))]), _vm._v(" "), _c("p", {
@@ -3932,7 +3934,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}\n.sponsored_body[data-v-c98e7418] {\n  background-color: #4287b7;\n  color: white;\n}\n.sponsored_body .sponsored[data-v-c98e7418] {\n  background-color: #ddc350;\n  color: white;\n  padding: 1px, 3px;\n  border-radius: 20px;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418] {\n  background-color: white !important;\n  color: #0A4067 !important;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418]:hover {\n  background-color: #0A4067 !important;\n  color: white !important;\n}\n.sponsored_body .sponsored_name[data-v-c98e7418] {\n  color: white !important;\n}", ""]);
+exports.push([module.i, ".text-pop-up-top[data-v-c98e7418] {\n  animation: text-pop-up-top-c98e7418 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;\n}\n@keyframes text-pop-up-top-c98e7418 {\n0% {\n    transform: translateY(0);\n    transform-origin: 50% 50%;\n    text-shadow: none;\n}\n100% {\n    transform: translateY(-50px);\n    transform-origin: 50% 50%;\n    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (max-width: 625px) {\n.eb_height[data-v-c98e7418] {\n    padding-bottom: 0;\n}\n.eb_height .home_jumbo[data-v-c98e7418] {\n    width: 100% !important;\n    border-radius: 0;\n}\n.eb_height .home_jumbo .eb_space[data-v-c98e7418] {\n    margin: 0 !important;\n}\n.ourDoctors h1[data-v-c98e7418] {\n    font-size: 2.5rem;\n}\n.ourDoctors .filters_2[data-v-c98e7418] {\n    width: 80%;\n}\n}\n.sponsored_body[data-v-c98e7418] {\n  background-color: #4287b7;\n  color: white;\n}\n.sponsored_body .sponsored[data-v-c98e7418] {\n  color: #ddc350;\n  position: absolute;\n  top: 10px;\n  right: 20px;\n}\n.sponsored_body .sponsored i[data-v-c98e7418] {\n  font-size: 20px;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418] {\n  background-color: white !important;\n  color: #0A4067 !important;\n}\n.sponsored_body .sponsored_btn[data-v-c98e7418]:hover {\n  background-color: #0A4067 !important;\n  color: white !important;\n}\n.sponsored_body .sponsored_name[data-v-c98e7418] {\n  color: white !important;\n}", ""]);
 
 // exports
 
@@ -21720,7 +21722,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\lupin\Desktop\bdoctors-project\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

@@ -89,14 +89,14 @@
       
 
         <div v-if="profiles.length > 0" class="container-fluid pb-5">
-          <div class="d-flex my_cards flex-wrap">
+          <div class="d-flex my_cards flex-wrap position-relative">
             <div v-for="(profile, index) in profiles" :key="index" class="card shadow-drop-2-center pb-2" :class="profile.sponsorships.length > 0 ? 'sponsored_body':''">
               <div class="eb_img">
                 <img class="card-img-top" :src=" profile.profile_pic == null || profile.profile_pic == false ? '/images/avatar.png' : 'storage/'+ profile.profile_pic" alt="Card image cap">
               </div>
               <div class="card-body">
                 <div class="sponsored" v-if="profile.sponsorships.length > 0">
-                  Profilo sponsorizzato
+                  <i class="fa-solid fa-star"></i>
                 </div>
                 <div v-else></div>
                 <h3 class="card-title eb_color" :class="profile.sponsorships.length > 0 ? 'sponsored_name':''" >Dr. {{profile.name}} <br> {{profile.surname}}</h3>
@@ -248,11 +248,16 @@ export default {
     color:white;
 
     .sponsored {
-
-        background-color: #ddc350;
-        color:white;
-        padding: 1px,3px;
-        border-radius: 20px;
+      // background-color: white;
+      // padding: 3px;
+      // border-radius: 10px;
+        color:#ddc350;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        i {
+          font-size: 20px;
+        }
         }
 
         .sponsored_btn {
