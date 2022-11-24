@@ -18,12 +18,12 @@
       .myFooter{
           background-color: #094067;
           width: 100%;
+          display:block;
           text-align: center;
           color: rgb(203, 231, 255);
-          position: absolute;
           bottom: 0;
           left: 0;
-          z-index: 333;
+          right:0;
       }
       .bigText{font-size:20px}
       .biggerText{

@@ -3763,7 +3763,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myFooter[data-v-abfbddf2] {\n  background-color: #094067;\n  width: 100%;\n  text-align: center;\n  color: rgb(203, 231, 255);\n  position: sticky;\n  z-index: 2;\n}\n.bigText[data-v-abfbddf2] {\n  font-size: 20px;\n}\n.biggerText[data-v-abfbddf2] {\n  font-size: 30px;\n  color: #ef4565;\n}", ""]);
+exports.push([module.i, ".myFooter[data-v-abfbddf2] {\n  background-color: #094067;\n  width: 100%;\n  display: block;\n  text-align: center;\n  color: rgb(203, 231, 255);\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.bigText[data-v-abfbddf2] {\n  font-size: 20px;\n}\n.biggerText[data-v-abfbddf2] {\n  font-size: 30px;\n  color: #ef4565;\n}", ""]);
 
 // exports
 
@@ -3896,7 +3896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".eb_width[data-v-298400f2] {\n  overflow-y: auto;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}\n.eb_width .btn[data-v-298400f2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
+exports.push([module.i, ".eb_width[data-v-298400f2] {\n  min-height: 100vh;\n}\n.eb_width input[data-v-298400f2], .eb_width textarea[data-v-298400f2] {\n  border-radius: 10px;\n  outline-color: #3da9fc;\n  border: none;\n}\n.eb_width h1[data-v-298400f2] {\n  color: #094067;\n}\n.eb_width .textGray[data-v-298400f2] {\n  color: #5f6c7b;\n}\n.eb_width .btn[data-v-298400f2] {\n  background-color: #0A4067;\n  color: whitesmoke;\n}", ""]);
 
 // exports
 
@@ -21722,7 +21722,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\erikb\Desktop\BDoctor\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/cavita/B Doctors 4/bdoctors-project/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

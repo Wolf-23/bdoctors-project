@@ -116,7 +116,8 @@ export default {
 
 <style scoped lang="scss">
    .eb_width{
-      overflow-y: auto;
+      
+      min-height: 100vh;
       input, textarea{
         border-radius: 10px;
         outline-color: #3da9fc;
